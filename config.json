@@ -1,0 +1,11 @@
+{
+    "enabled": true,
+    "debug": {
+        "debug": false,
+        "hp": false,
+        "abnormal": false,
+        "skill": false,
+        "boss": false
+    },
+    "chat-name": "Guide"
+}
