@@ -26,7 +26,7 @@ RMHM | Debuff mechanic on first boss
 
 
 ## How to create a guide
-First enable debug setting in config.json, then go into t he dungeon you wish to create a guide for.
+First enable debug setting in config.json, then go into the dungeon you wish to create a guide for.
 Once you've entered look in console for the id. Once you have the id create a file under the guides folder.
 The file should start with the number followed by ".json"(or ".js" if you know what you're doing)
 
