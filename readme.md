@@ -12,7 +12,7 @@ Note: All commands starts with "guide"
 
 Command | Usage | Arguments
 --- | --- | ---
-- | Toggles the guide module | -
+x | Toggles the guide module | x
 debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss
 
 ## Supported
