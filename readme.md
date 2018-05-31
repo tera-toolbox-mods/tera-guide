@@ -5,6 +5,8 @@ Is a module for creating dungeon guides extremely easily by simple "scripting".
 ## Dependencies
 https://github.com/Kaseaa/library
 
+The say node library used for text-to-speech(works without it, so not needed). Install it by running "`npm install say`" in your proxy folder.
+
 ## Commands
 Note: All commands starts with "guide"
 
@@ -14,6 +16,7 @@ Command | Usage | Arguments
 debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss
 
 ## Supported
+Feel free to create your own guide/add-on and send a pull-request :=)
 
 Dungeon | How much is it scripted
 --- | ---
@@ -48,7 +51,7 @@ When creating an entry use a prefix, followed by "-huntingZoneId-templateId-" af
 Key | Required | Values | Usage
 --- | --- | --- | ---
 type | Yes | spawn, text, sound, stop_timer, func | Determines what action(s) will be taken when the event is called
-sub_type | Yes(text), No | notification(text), message(text) | Used in conjunction with certain types.
+sub_type | Yes(text), No | notification(text), message(text), speech(text) | Used in conjunction with certain types.
 id | Yes(spawn, sound, stop_timer), No | A unique identifier not used "anywhere" else in the file. | It's used for spawning item(the item id), stopping a notification/text in progress and id of a sound. **DO NOT USE 0 FOR THE ID IN ANY CASE!**
 delay | No | A delay in milliseconds | Creates a timer that can be used to delay ANY event.
 sub_delay | Yes(spawn), No | How long in milliseconds before it acts upon it. | Used with spawning items

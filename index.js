@@ -1,5 +1,10 @@
 const config = require('./config');
 
+// Try to silently import the say dependency
+let say = null;
+try { say = require('say') }
+catch(e) { say = null; }
+
 class TeraGuide{
     constructor(dispatch) {
         const { player, entity, library } = require('library')(dispatch);
@@ -232,6 +237,13 @@ class TeraGuide{
                         message: event['message']
                     };
                     break;
+                }
+                // If it's type speech, it's text to speech. But since it isn't "required" to a try/catch
+                case "speech": {
+                    try {
+                        timers[event['id'] || random_timer_id--] = setTimeout(say.speak, (event['delay'] || 0 ) / speed, event['message']);
+                    }catch(e) {}
+                    return;
                 }
                 // If we haven't implemented the sub_type the event asks for
                 default: {
