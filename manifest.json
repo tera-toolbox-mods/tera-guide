@@ -1,9 +1,11 @@
 {
     "files": {
         "config.json": "b067f0eb200d025cd43420883127498da6aa2c69005f5f4c9ac034f09867404d",
-        "index.js": "ff13ad9ea974a907086f22e1c3fd2ca23ec6cb9764a33abcb14ddf246a50c1be",
+        "index.js": "09f29b0af9703a35824fa2e0663925054e69643ee0bd735f849d4c16b76ed291",
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "readme.md": "6c5a1509d15e0007f9cd13c2061e13eb10d9918c5b69bab498749738941bc0f5",
+        "readme.md": "6ee89192e2ec166ac9c9e064e8173b9cf39a8c36f32734bf2a1d4d82269e961f",
+        ".vs/slnx.sqlite": "fb58a41941ffcdfcceda6606d577cea22ba34e477b3f2b998977af2f3343a345",
+        ".vs/slnx.sqlite-journal": "e7cfcf6f97850911e9a7cd41f648c9e527b9760df4336aa9955da1f647acd8a2",
         "guides/9920.js": "672f71a7b227a1ab7141759dd1cb9e7b985421b47e0003b11647ec0ced5f5e67",
         "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
         "guides/9970.js": "0ac350d9566de7b7087085eba9cb30afcd72f387217514b7047b014f85e7ae01"
