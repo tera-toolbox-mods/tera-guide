@@ -240,9 +240,8 @@ class TeraGuide{
                 }
                 // If it's type speech, it's text to speech. But since it isn't "required" to a try/catch
                 case "speech": {
-                    try {
-                        timers[event['id'] || random_timer_id--] = setTimeout(say.speak, (event['delay'] || 0 ) / speed, event['message']);
-                    }catch(e) {}
+                    // if the say dependency was found
+                    if(say) timers[event['id'] || random_timer_id--] = setTimeout(say.speak, (event['delay'] || 0 ) / speed, event['message']);
                     return;
                 }
                 // If we haven't implemented the sub_type the event asks for
