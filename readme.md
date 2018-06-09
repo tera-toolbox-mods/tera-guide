@@ -20,7 +20,7 @@ Feel free to create your own guide/add-on and send a pull-request :=)
 
 Dungeon | How much is it scripted
 --- | ---
-AAHM | Some small parts(probably inaccurate tbh)
+AAHM | Last boss
 HH P4 | Firewalls
 RMHM | Debuff mechanic on first boss
 
