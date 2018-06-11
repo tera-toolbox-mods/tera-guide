@@ -49,7 +49,10 @@ class TeraGuide{
 
         // Write generic debug message used when creating guides
         function debug_message(d, ...args) {
-            if(d) console.log(`[${Date.now() % 100000}][Guide]`, ...args);
+            if(d) {
+                console.log(`[${Date.now() % 100000}][Guide]`, ...args);
+                if(debug.chat) command.message(args.toString());
+            }
         }
 
         // Makes sure the event passes the class position check

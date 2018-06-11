@@ -12,8 +12,8 @@ Note: All commands starts with "guide"
 
 Command | Usage | Arguments
 --- | --- | ---
-x | Toggles the guide module | x
-debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss
+\- | Toggles the guide module | \-
+debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss, chat(prints to in chat rather than console)
 
 ## Supported
 Feel free to create your own guide/add-on and send a pull-request :=)

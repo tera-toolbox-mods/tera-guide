@@ -5,7 +5,8 @@
         "hp": false,
         "abnormal": false,
         "skill": false,
-        "boss": false
+        "boss": false,
+        "chat": false
     },
     "chat-name": "Guide"
 }
