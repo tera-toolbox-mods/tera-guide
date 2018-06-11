@@ -5,9 +5,21 @@ let say = null;
 try { say = require('say') }
 catch(e) { say = null; }
 
+// Tank class ids(brawler + lancer)
+const TANK_CLASS_IDS = [1, 10];
+
+// Dps class ids(not counting warrior)
+const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
+
+// Healer class ids
+const HEALER_CLASS_IDS = [6, 7];
+
+// Warrior Defence stance abnormality ids
+const WARRIOR_TANK_IDS = [100200, 100201];
+
 class TeraGuide{
     constructor(dispatch) {
-        const { player, entity, library } = require('library')(dispatch);
+        const { player, entity, library, effect } = require('library')(dispatch);
         const command = require('command')(dispatch);
 
         // An object of types and their corresponding function handlers
@@ -40,6 +52,52 @@ class TeraGuide{
             if(d) console.log(`[${Date.now() % 100000}][Guide]`, ...args);
         }
 
+        // Makes sure the event passes the class position check
+        function class_position_check(class_position) {
+            // if it's not defined we assume that it's for everyone
+            if(!class_position) return true;
+
+            switch(class_position) {
+                case "tank": {
+                    // if it's a warrior with dstance abnormality
+                    if(player.job === 0) {
+                        // Loop thru tank abnormalities
+                        for(let id of WARRIOR_TANK_IDS) {
+                            // if we have the tank abnormality return true
+                            if(effect.hasAbnormality(id)) return true;
+                        }
+                    }
+
+                    // if it's a tank return true
+                    if(TANK_CLASS_IDS.includes(player.job)) return true;
+                    break;
+                }
+                case "dps": {
+                    // If it's a warrior with dstance abnormality
+                    if(player.job === 0) {
+                        // Loop thru tank abnormalities
+                        for(let id of WARRIOR_TANK_IDS) {
+                            // if we have the tank abnormality return false
+                            if(effect.hasAbnormality(id)) return false;
+                        }
+                    }
+
+                    // if it's a dps return true
+                    if(DPS_CLASS_IDS.includes(player.job)) return true;
+                    break;
+                }
+                case "heal": {
+                    // if it's a healer return true
+                    if(HEALER_CLASS_IDS.includes(player.job)) return true;
+                    break;
+                }
+                default: {
+                    debug_message(debug.debug, "Failed to find class_position value:", class_position);
+                }
+            }
+            return false;
+        }
+
         // Handle events such as boss skill and abnormalities triggered
         function handle_event(ent, id, called_from_identifier, prefix_identifier, d, speed=1.0) {
             const unique_id = `${prefix_identifier}-${ent['huntingZoneId']}-${ent['templateId']}`;
@@ -55,8 +113,10 @@ class TeraGuide{
             // Loop over the events
             for(let event of events) {
                 const func = function_event_handlers[event['type']];
+                // The function couldn't be found, so it's an invalid type
                 if(!func) debug_message(debug.debug, "An event has invalid type:", event['type']);
-                else func(event, ent, speed);
+                // If the function is found and it passes the class position check, we start the event
+                else if(class_position_check(event['class_position'])) func(event, ent, speed=1.0);
             }
         }
 
@@ -165,7 +225,7 @@ class TeraGuide{
         /** Function/event handlers for types **/
 
         // Spawn handler
-        function spawn_handler(event, ent, speed) {
+        function spawn_handler(event, ent, speed=1.0) {
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Make sure sub_delay is defined
@@ -210,7 +270,7 @@ class TeraGuide{
         }
 
         // Text handler
-        function text_handler(event, ent, speed) {
+        function text_handler(event, ent, speed=1.0) {
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined
@@ -264,7 +324,7 @@ class TeraGuide{
         }
 
         // Sound handler
-        function sound_handler(event, ent, speed) {
+        function sound_handler(event, ent, speed=1.0) {
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Sound handler needs a id");
 
@@ -278,7 +338,7 @@ class TeraGuide{
         }
 
         // Stop timer handler
-        function stop_timer_handler(event, ent, speed) {
+        function stop_timer_handler(event, ent, speed=1.0) {
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Stop timer handler needs a id");
 
@@ -290,12 +350,12 @@ class TeraGuide{
         }
 
         // Func handler
-        function func_handler(event, ent, speed) {
+        function func_handler(event, ent, speed=1.0) {
             // Make sure func is defined
             if(!event['func']) return debug_message(true, "Func handler needs a func");
 
             // Start the timer for the function call
-            timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, text_handler, event, ent);
+            timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, dispatch);
         }
     }
 }
