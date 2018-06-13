@@ -83,6 +83,8 @@ class TeraGuide{
                             // if we have the tank abnormality return false
                             if(effect.hasAbnormality(id)) return false;
                         }
+                        // warrior didn't have tank abnormality
+                        return true;
                     }
 
                     // if it's a dps return true
