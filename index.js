@@ -293,10 +293,12 @@ class TeraGuide{
 
         // Text handler
         function text_handler(event, ent, speed=1.0) {
+            // Fetch the message(with region tag)
+            const message = event[`message_${dispatch.base.region}`] || event['message'];
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined
-            if(!event['message']) return debug_message(true, "Text handler needs a message");
+            if(!message) return debug_message(true, "Text handler needs a message");
 
             let sending_event = {};
             // Create the sending event
@@ -304,7 +306,7 @@ class TeraGuide{
                 // If it's type message, it's S_DUNGEON_EVENT_MESSAGE with unk1 41
                 case "message": {
                     sending_event = {
-                        message: event['message'],
+                        message: message,
                         unk1: 41,
                         unk2: 0,
                         unk3: 0
@@ -316,7 +318,7 @@ class TeraGuide{
                     sending_event = {
                         channel: 21,
                         authorName: config['chat-name'],
-                        message: event['message']
+                        message: message
                     };
                     break;
                 }
@@ -325,7 +327,7 @@ class TeraGuide{
                     // if the say dependency was found
                     if(say) {
                         timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-                            say.speak(event['message']);
+                            say.speak(message);
                         }, (event['delay'] || 0 ) / speed);
                     }
                     return;
