@@ -14,6 +14,7 @@ Command | Usage | Arguments
 --- | --- | ---
 \- | Toggles the guide module | \-
 debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss, chat(prints to in chat rather than console)
+event | triggeres an event, where you are the entity. Used for testing | First argument is a **type** from "Options". The second argument contains the values. Example: `/8 guide event spawn '{"id": 500, "sub_delay": 5000}'`
 
 ## Supported
 Feel free to create your own guide/add-on and send a pull-request :=)

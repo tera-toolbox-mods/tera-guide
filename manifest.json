@@ -4,10 +4,12 @@
             "overwrite": false,
             "hash": "23efaebce4061a1bdecdaa1b070cd4d902644bd700a57f7011a978e5c988d1fb"
         },
-        "index.js": "a8d0953eb4823f7b6917c95fdef512b8c6022d1d1c437d84d7bf9f8094f5373f",
+        "index.js": "20b0a0859fa4401c83eba8926dde837a316b34dba93f9a3bb99604383498a4f2",
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "readme.md": "8fee085d080cde90b8b7fc2aca4fbef9457cd903c3e6db1c91280d8459dc2ca9",
-        "guides/9920.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
+        "readme.md": "f598b178c7f69b7f6284d54027ebe29c9e188cc899c66d076b68163da2711d91",
+        "guides/9720.js": "9d0864a2d334bb8b18609638fa85c4d818cf101f3806c1b11983a653fe06a88f",
+        "guides/9920.js": "eb3992f098bb55f6baec6512efcea9eeb2384ce953767853a85682b95bf951f4",
+        "guides/9920_old.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
         "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
         "guides/9970.js": "0ac350d9566de7b7087085eba9cb30afcd72f387217514b7047b014f85e7ae01"
     },

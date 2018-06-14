@@ -59,6 +59,14 @@ class TeraGuide{
         function class_position_check(class_position) {
             // if it's not defined we assume that it's for everyone
             if(!class_position) return true;
+            // If it's an array
+            if(Array.isArray(class_position)) {
+                // If one of the class_positions pass, we can accept it
+                for(let ent of class_position) if(class_position_check(ent)) return true;
+
+                // All class_positions failed, so we return false
+                return false;
+            }
 
             switch(class_position) {
                 case "tank": {
@@ -97,7 +105,7 @@ class TeraGuide{
                     break;
                 }
                 default: {
-                    debug_message(debug.debug, "Failed to find class_position value:", class_position);
+                    debug_message(true, "Failed to find class_position value:", class_position);
                 }
             }
             return false;
@@ -119,7 +127,7 @@ class TeraGuide{
             for(let event of events) {
                 const func = function_event_handlers[event['type']];
                 // The function couldn't be found, so it's an invalid type
-                if(!func) debug_message(debug.debug, "An event has invalid type:", event['type']);
+                if(!func) debug_message(true, "An event has invalid type:", event['type']);
                 // If the function is found and it passes the class position check, we start the event
                 else if(class_position_check(event['class_position'])) func(event, ent, speed=1.0);
             }
@@ -210,13 +218,22 @@ class TeraGuide{
         });
 
         // Guide command
-        command.add('guide', (arg, sub_arg)=> {
-            switch(arg) {
+        command.add('guide', (type, arg1, arg2)=> {
+            switch(type) {
                 // Toggle debug settings
                 case "debug": {
-                    if(!sub_arg || debug[sub_arg] === undefined) return command.message(`Invalid sub command for debug mode. ${sub_arg}`);
-                    debug[sub_arg] = !debug[sub_arg];
-                    command.message(`Guide module debug(${sub_arg}) mode has been ${debug[sub_arg]?"enabled":"disabled"}.`);
+                    if(!arg1 || debug[arg1] === undefined) return command.message(`Invalid sub command for debug mode. ${arg1}`);
+                    debug[arg1] = !debug[arg1];
+                    command.message(`Guide module debug(${arg1}) mode has been ${debug[arg1]?"enabled":"disabled"}.`);
+                    break;
+                }
+                // Testing events
+                case "event": {
+                    // If we didn't get a second argument or the argument value isn't an event type, we return
+                    if(!arg1 || !function_event_handlers[arg1] || !arg2) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
+
+                    // Call a function handler with the event we got from arg2 with yourself as the entity
+                    function_event_handlers[arg1](JSON.parse(arg2), player);
                     break;
                 }
                 // No known sub command found, so toggle on/off
