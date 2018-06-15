@@ -24,7 +24,7 @@ const EVENT_FOR_DEBUFFS = [
         "id": 2,
         "delay": SECOND_TIMER_DELAY,
         "message": "Debuff swap will happen soon"
-    },
+    }
 ];
 
 module.exports = {

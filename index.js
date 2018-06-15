@@ -113,11 +113,11 @@ class TeraGuide{
 
         // Handle events such as boss skill and abnormalities triggered
         function handle_event(ent, id, called_from_identifier, prefix_identifier, d, speed=1.0) {
-            let unique_id = `${prefix_identifier}-${ent['huntingZoneId']}-${ent['templateId']}`;
-            let key = `${unique_id}-${id}`;
+            const unique_id = `${prefix_identifier}-${ent['huntingZoneId']}-${ent['templateId']}`;
+            const key = `${unique_id}-${id}`;
             debug_message(d, `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key}`);
 
-            let entry = active_guide[key];
+            const entry = active_guide[key];
             if(entry) return start_events(entry, ent, speed);
         }
 
@@ -125,7 +125,7 @@ class TeraGuide{
         function start_events(events=[], ent, speed=1.0) {
             // Loop over the events
             for(let event of events) {
-                let func = function_event_handlers[event['type']];
+                const func = function_event_handlers[event['type']];
                 // The function couldn't be found, so it's an invalid type
                 if(!func) debug_message(true, "An event has invalid type:", event['type']);
                 // If the function is found and it passes the class position check, we start the event
@@ -139,9 +139,11 @@ class TeraGuide{
         function s_action_stage(e) {
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
-                let ent = entity['mobs'][e.gameId.toString()];
+                const ent = entity['mobs'][e.gameId.toString()];
+                // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
+                e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(ent, library.getSkillInfo(e.skill, true, true).id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed);
+                if(ent) return handle_event(Object.assign({}, ent, e), library.getSkillInfo(e.skill, true, true).id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed);
             }
         }
         dispatch.hook('S_ACTION_STAGE', 5, {order: 15}, s_action_stage);
@@ -152,15 +154,15 @@ class TeraGuide{
         function abnormality_triggered(e) {
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
-                let empty = library.emptyLong();
+                const empty = library.emptyLong();
                 // If e.source isn't defined, we define it
                 if(e.source === undefined) e.source = empty;
 
                 // If the boss/mob get's a abnormality applied to it
-                let target_ent = entity['mobs'][e.target.toString()];
+                const target_ent = entity['mobs'][e.target.toString()];
 
                 // If the boss/mob is the cause for the abnormality
-                let source_ent = entity['mobs'][e.source.toString()];
+                const source_ent = entity['mobs'][e.source.toString()];
 
                 // If the mob/boss applies an abnormality to me, it's plausible we want to act on this
                 if(source_ent && player.isMe(e.target)) handle_event(source_ent, e.id, 'Abnormality', 'am', debug.debug || debug.abnormal);
@@ -184,7 +186,7 @@ class TeraGuide{
         dispatch.hook('S_BOSS_GAGE_INFO', 3, e=> {
              // If the guide module is active and a guide for the current dungeon is found
              if(enabled && guide_found) {
-                let ent = entity['mobs'][e.id.toString()];
+                const ent = entity['mobs'][e.id.toString()];
                 // We've confirmed it's a mob, so it's plausible we want to act on this
                 if(ent) return handle_event(ent, Math.floor(e.curHp / e.maxHp * 100), 'Health', 'h', debug.debug || debug.hp);
             }
@@ -256,7 +258,7 @@ class TeraGuide{
             //if(!event['distance']) return debug_message(true, "Spawn handler needs a distance");
 
             // The unique spawned id this item will be using.
-            let item_unique_id = random_timer_id--;
+            const item_unique_id = random_timer_id--;
 
             // The location of the item spawned
             let loc = ent['loc'].clone();
@@ -294,7 +296,7 @@ class TeraGuide{
         // Text handler
         function text_handler(event, ent, speed=1.0) {
             // Fetch the message(with region tag)
-            let message = event[`message_${dispatch.base.region}`] || event['message'];
+            const message = event[`message_${dispatch.base.region}`] || event['message'];
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined

@@ -4,14 +4,14 @@
             "overwrite": false,
             "hash": "23efaebce4061a1bdecdaa1b070cd4d902644bd700a57f7011a978e5c988d1fb"
         },
-        "index.js": "942e81d07f3f6a2e57e4d4c039075418b964494fedb9d2bf21795ceb7a7f6691",
+        "index.js": "b01a39eac673859aab6ab10fa1492fdbd11f331c74f2122538b9e7565ecf71a5",
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
         "readme.md": "f598b178c7f69b7f6284d54027ebe29c9e188cc899c66d076b68163da2711d91",
         "guides/9720.js": "9d0864a2d334bb8b18609638fa85c4d818cf101f3806c1b11983a653fe06a88f",
         "guides/9920.js": "eb3992f098bb55f6baec6512efcea9eeb2384ce953767853a85682b95bf951f4",
         "guides/9920_old.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
         "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
-        "guides/9970.js": "0ac350d9566de7b7087085eba9cb30afcd72f387217514b7047b014f85e7ae01"
+        "guides/9970.js": "0db701a73f14a71280252ec11803b33e16085ef68c8c081f96038d0c2a08131f"
     },
     "defs": {
         "S_SPAWN_COLLECTION": [
