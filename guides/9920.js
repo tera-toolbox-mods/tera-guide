@@ -61,6 +61,7 @@ function right_left_attack_HM(handlers) {
 }
 
 /* ------------------------------------------- */
+let third_boss_entity = null;
 const COLOURS_OFFSETS = {
     "red": 0,
     "yellow": 2.5,
@@ -69,11 +70,12 @@ const COLOURS_OFFSETS = {
 
 let clockwise = null;
 
-function set_clockwise(bool) {
+function set_clockwise(bool, handlers, _, ent) {
+    third_boss_entity = ent;
     clockwise = bool;
 }
 
-function change_colour(colour, handlers, _, ent) {
+function change_colour(colour, handlers) {
     // if we're already in the cage
     if(clockwise !== null) return;
     // Get the colour rotation
@@ -89,7 +91,7 @@ function change_colour(colour, handlers, _, ent) {
             "sub_delay": (i + 1) * 3000,
             "distance": 75,
             "offset": COLOURS_OFFSETS[current_colour]
-        }, ent);
+        }, third_boss_entity);
     }
 
     // clear out clockwise
