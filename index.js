@@ -210,12 +210,13 @@ class TeraGuide{
             
 
             // Try loading a guide
-            try{
+            try {
                 active_guide = require('./guides/' + e.zone);
                 guide_found = true;
             }catch(e) {
                 active_guide = {};
                 guide_found = false;
+                debug_message(debug.debug, e);
             }
         });
 

@@ -7,7 +7,7 @@ let print = true;
 const TIMER_DELAY = 600;
 
 const ITEM_SPAWNED_ON_SWIPE_ID = 556;
-const ITEM_SPAWNED_ON_SWIPE_SUB_DELAY = 5000;
+const ITEM_SPAWNED_ON_SWIPE_SUB_DELAY = 3000;
 const ITEM_SPAWNED_ON_SWIPE_DISTANCE = 150;
 
 //Ghergof: Knock up mech, AKA 'Your flesh will be deleted' callout
@@ -60,8 +60,80 @@ function right_left_attack_HM(handlers) {
     }, 3000);
 }
 
+/* ------------------------------------------- */
+const COLOURS_OFFSETS = {
+    "red": 0,
+    "yellow": 2.5,
+    "blue": -2.5,
+};
+
+let clockwise = null;
+
+function set_clockwise(bool) {
+    clockwise = bool;
+}
+
+function change_colour(colour, handlers, _, ent) {
+    // if we're already in the cage
+    if(clockwise !== null) return;
+    // Get the colour rotation
+    const colour_rotation = clockwise ? ["red", "yellow", "blue"] : ["blue", "yellow", "red"];
+
+    // Loop thru the three cage rotations
+    for(let i = 0; i < 3; i++) {
+        let current_colour = colour_rotation[(colour_rotation.indexOf(colour) + i) % 3];
+
+        handlers['spawn']({
+            "id": 561,
+            "delay": i * 2500,
+            "sub_delay": (i + 1) * 3000,
+            "distance": 75,
+            "offset": COLOURS_OFFSETS[current_colour]
+        }, ent);
+    }
+
+    // clear out clockwise
+    setTimeout(()=> {
+        clockwise = null;
+    }, 12000);
+}
+
+/* ------------------------------------------- */
+
 
 module.exports = {
+    /* -------------------------------- */
+    // Cage mechanic on third boss
+    // red
+    "ae-0-0-9203037": [{
+        "type": "func",
+        "func": change_colour.bind('red')
+    }],
+    // yellow
+    "ae-0-0-9203038": [{
+        "type": "func",
+        "func": change_colour.bind('yellow')
+    }],
+    // blue
+    "ae-0-0-9203039": [{
+        "type": "func",
+        "func": change_colour.bind('blue')
+    }],
+
+    // counter-clockwise
+    "s-920-3000-1317": [{
+        "type": "func",
+        "func": set_clockwise.bind(false)
+    }],
+
+    // clockwise
+    "s-920-3000-1318": [{
+        "type": "func",
+        "func": set_clockwise.bind(true)
+    }],
+
+    /* -------------------------------- */
+
 
     //Ghergof, not enraged
 

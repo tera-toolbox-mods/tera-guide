@@ -21,7 +21,8 @@ Feel free to create your own guide/add-on and send a pull-request :=)
 
 Dungeon | How much is it scripted
 --- | ---
-AAHM | Last boss
+AANM | All bosses
+AAHM | All bosses
 HH P4 | Firewalls
 RMHM | Debuff mechanic on first boss
 
