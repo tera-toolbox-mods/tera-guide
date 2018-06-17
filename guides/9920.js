@@ -107,29 +107,29 @@ module.exports = {
     // red
     "ae-0-0-9203037": [{
         "type": "func",
-        "func": change_colour.bind('red')
+        "func": change_colour.bind(null, 'red')
     }],
     // yellow
     "ae-0-0-9203038": [{
         "type": "func",
-        "func": change_colour.bind('yellow')
+        "func": change_colour.bind(null, 'yellow')
     }],
     // blue
     "ae-0-0-9203039": [{
         "type": "func",
-        "func": change_colour.bind('blue')
+        "func": change_colour.bind(null, 'blue')
     }],
 
     // counter-clockwise
     "s-920-3000-1317": [{
         "type": "func",
-        "func": set_clockwise.bind(false)
+        "func": set_clockwise.bind(null, false)
     }],
 
     // clockwise
     "s-920-3000-1318": [{
         "type": "func",
-        "func": set_clockwise.bind(true)
+        "func": set_clockwise.bind(null, true)
     }],
 
     /* -------------------------------- */
