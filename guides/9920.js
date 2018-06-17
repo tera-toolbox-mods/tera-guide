@@ -77,7 +77,7 @@ function set_clockwise(bool, handlers, _, ent) {
 
 function change_colour(colour, handlers) {
     // if we're already in the cage
-    if(clockwise !== null) return;
+    if(clockwise !== null || !third_boss_entity) return;
     // Get the colour rotation
     const colour_rotation = clockwise ? ["red", "yellow", "blue"] : ["blue", "yellow", "red"];
 
