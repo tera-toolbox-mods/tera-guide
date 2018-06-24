@@ -61,43 +61,40 @@ function right_left_attack_HM(handlers) {
 }
 
 /* ------------------------------------------- */
-let third_boss_entity = null;
+let colour_to_use = null;
 const COLOURS_OFFSETS = {
     "red": 0,
     "yellow": 2.5,
     "blue": -2.5,
 };
 
-let clockwise = null;
+function set_clockwise(clockwise, handlers, _, third_boss_entity) {
+    setTimeout(()=> {
+        // Get the colour rotation
+        const colour_rotation = clockwise ? ["red", "yellow", "blue"] : ["blue", "yellow", "red"];
 
-function set_clockwise(bool, handlers, _, ent) {
-    third_boss_entity = ent;
-    clockwise = bool;
+        // Loop thru the three cage rotations
+        for(let i = 0; i < 3; i++) {
+            let current_colour = colour_rotation[(colour_rotation.indexOf(colour_to_use) + i) % 3];
+
+            handlers['spawn']({
+                "id": 561,
+                "delay": i * 2500,
+                "sub_delay": (i + 1) * 3000,
+                "distance": 75,
+                "offset": COLOURS_OFFSETS[current_colour]
+            }, third_boss_entity);
+        }
+
+        // clear out clockwise
+        setTimeout(()=> {
+            clockwise = null;
+        }, 12000);
+    }, 1000);
 }
 
-function change_colour(colour, handlers) {
-    // if we're already in the cage
-    if(clockwise !== null || !third_boss_entity) return;
-    // Get the colour rotation
-    const colour_rotation = clockwise ? ["red", "yellow", "blue"] : ["blue", "yellow", "red"];
-
-    // Loop thru the three cage rotations
-    for(let i = 0; i < 3; i++) {
-        let current_colour = colour_rotation[(colour_rotation.indexOf(colour) + i) % 3];
-
-        handlers['spawn']({
-            "id": 561,
-            "delay": i * 2500,
-            "sub_delay": (i + 1) * 3000,
-            "distance": 75,
-            "offset": COLOURS_OFFSETS[current_colour]
-        }, third_boss_entity);
-    }
-
-    // clear out clockwise
-    setTimeout(()=> {
-        clockwise = null;
-    }, 12000);
+function change_colour(colour) {
+    colour_to_use = colour;
 }
 
 /* ------------------------------------------- */
