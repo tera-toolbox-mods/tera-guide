@@ -297,7 +297,7 @@ class TeraGuide{
         // Text handler
         function text_handler(event, ent, speed=1.0) {
             // Fetch the message(with region tag)
-            const message = event[`message_${dispatch.base.region}`] || event['message'];
+            const message = event[`message_${dispatch.base.region}`] || event[`message_${dispatch.base.region.toUpperCase()}`] || event['message'];
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined
