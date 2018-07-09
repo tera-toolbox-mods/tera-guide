@@ -22,7 +22,7 @@ const steptwo = 2 * Math.PI / 72;//72 flowers in total
 //inner flower circle
 
 for(let angle = -Math.PI; angle <= Math.PI; angle += stepone) {
-    
+    if(!SPAWN_CIRCLES) continue;
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
         "type": "spawn",
         "id": 603,
@@ -43,7 +43,7 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += stepone) {
 //outer flower circle
 
 for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
-	
+	if(!SPAWN_CIRCLES) continue;
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
 	    "type": "spawn",
         "id": 603,
@@ -400,12 +400,12 @@ module.exports = {
     //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 注:坦右边安全,打左边安全请自行更改
 	//heart thrust+anticlockwise spin+right swipe+AOEs from out to in
 	
-    "s-920-3000-1109": SPAWN_CIRCLES ? SPAWNING_FIRST_CIRCLE_FLOWERS : [],	
+    "s-920-3000-1109": SPAWNING_FIRST_CIRCLE_FLOWERS,	
     
 	//剑舞前戳+顺时针旋转+左手扇形攻击+内到外甜甜圈  注:坦左边安全,打右边安全请自行更改
 	//heart thrust+clockwise spin+left swipe+AOEs from in to out
 	
-	"s-920-3000-1111": SPAWN_CIRCLES ? SPAWNING_SECOND_CIRCLE_FLOWERS : [],
+	"s-920-3000-1111": SPAWNING_SECOND_CIRCLE_FLOWERS,
    
    //前后砸
    //front, back slam
@@ -443,12 +443,12 @@ module.exports = {
     //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 注:坦右边安全,打左边安全请自行更改
 	//heart thrust+anticlockwise spin+right swipe+AOEs from out to in
 	
-    "s-920-3000-2109": SPAWN_CIRCLES ? SPAWNING_FIRST_CIRCLE_FLOWERS : [],
+    "s-920-3000-2109": SPAWNING_FIRST_CIRCLE_FLOWERS,
 
     //剑舞前戳+顺时针旋转+左手扇形攻击+内到外甜甜圈  注:坦左边安全,打右边安全请自行更改
 	//heart thrust+clockwise spin+left swipe+AOEs from in to out
 	
-	"s-920-3000-2111": SPAWN_CIRCLES ? SPAWNING_SECOND_CIRCLE_FLOWERS : [],	
+	"s-920-3000-2111": SPAWNING_SECOND_CIRCLE_FLOWERS,	
 
    //前后砸
    //front, back slam
