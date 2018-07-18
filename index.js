@@ -192,6 +192,32 @@ class TeraGuide{
             }
         });
 
+        /** S_DUNGEON_EVENT_MESSAGE **/
+
+        dispatch.hook('S_DUNGEON_EVENT_MESSAGE', 2, e=> {
+            if (enabled && guide_found) {
+                const result = /@dungeon:(\d+)/g.exec(e.message);
+                if (result) {
+                    handle_event({
+                        huntingZoneId: 0,
+                        templateId: 0
+                    }, parseInt(result[1]), 'Dungeon Message', 'dm', debug.debug || debug.dm);
+                }
+            }
+        });
+
+        /** S_QUEST_BALLOON **/
+
+        dispatch.hook('S_QUEST_BALLOON', 1, e=> {
+            if (enabled && guide_found) {
+                const source_ent = entity['mobs'][e.source.toString()];
+                const result = /@monsterBehavior:(\d+)/g.exec(e.message);
+                if (result && source_ent) {
+                    handle_event(source_ent, parseInt(result[1]), 'Quest Balloon', 'qb', debug.debug || debug.qb);
+                }
+            }
+        });
+
         /** MISC **/
 
         // Load guide and clear out timers
