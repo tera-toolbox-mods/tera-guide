@@ -17,8 +17,38 @@ const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
 
+
+class DispatchWrapper {
+    constructor(dispatch) {
+        this._dispatch = dispatch;
+        this._hooks = [];
+    }
+
+    hook(...args) {
+        this._hooks.push(this._dispatch.hook(...args));
+    }
+
+    hookOnce(...args) {
+        this._dispatch.hookOnce(...args);
+    }
+
+    unhook(...args) {
+        throw new Error("unhook not supported for tera-guide");
+    }
+
+    _remove_all_hooks() {
+        for(const hook of this._hooks) this._dispatch.unhook(hook);
+    }
+
+    toServer(...args) { return this.send(...args); }
+    toClient(...args) { return this.send(...args); }
+    send(...args) { return this._dispatch.send(...args); }
+}
+
+
 class TeraGuide{
     constructor(dispatch) {
+        const fake_dispatch = new DispatchWrapper(dispatch);
         const { player, entity, library, effect } = require('library')(dispatch);
         const command = require('command')(dispatch);
 
@@ -226,6 +256,9 @@ class TeraGuide{
             for(let key in timers) clearTimeout(timers[key]);
             timers = {};
 
+            // Clear out previous hooks, that our previous guide module hooked
+            fake_dispatch._remove_all_hooks();
+
             // Send debug message
             debug_message(debug.debug, 'Entered zone:', e.zone);
 
@@ -244,6 +277,11 @@ class TeraGuide{
                 guide_found = false;
                 debug_message(debug.debug, e);
             }
+
+            // Try calling the "load" function
+            try {
+                active_guide.load(fake_dispatch);
+            }catch(e) { debug_message(debug.debug, e); }
         });
 
         // Guide command
@@ -462,7 +500,7 @@ class TeraGuide{
             if(!event['func']) return debug_message(true, "Func handler needs a func");
 
             // Start the timer for the function call
-            timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, dispatch);
+            timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
         }
     }
 }

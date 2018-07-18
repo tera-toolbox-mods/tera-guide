@@ -13,7 +13,7 @@ Note: All commands starts with "guide"
 Command | Usage | Arguments
 --- | --- | ---
 \- | Toggles the guide module | \-
-debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss, chat(prints to in chat rather than console)
+debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss, chat(prints to in chat rather than console), dm, qb
 event | triggeres an event, where you are the entity. Used for testing | First argument is a **type** from "Options". The second argument contains the values. Example: `/8 guide event spawn '{"id": 500, "sub_delay": 5000}'`
 
 ## Supported
@@ -34,6 +34,8 @@ The file should start with the number followed by ".js".
 
 It's important to note you will need to include the very basic information for the file to get loaded and for the module to print out information. It won't print out anything if it can't find number.js file. (`module.exports = {};`)
 
+When the module get's loaded, you're allowed to hook hooks using a "load" key. This key will get called with a dispatch argument passed upon getting loaded. The hooks will be automatically unloaded once the module finishes it's runtime.
+
 So, now to create actions have debug option on and log the attacks/abnormalities then script what you want to happen during those attacks. Please refer below to options(things you can trigger upon the abnormality or attack).
 
 ### Naming keys
@@ -49,13 +51,17 @@ Prefix s means handle a skill.
 
 Prefix h means health. For instance "h-huntingZoneId-templateId-60", means it'll trigger on 60%
 
+Prefix dm means dungeon message.
+
+Prefix qb means quest balloon.
+
 When creating an entry use a prefix, followed by "-huntingZoneId-templateId-" after the last "-" put the abnormality id, skill id or hp %.
 
 ### Options
 Key | Required | Values | Usage
 --- | --- | --- | ---
 type | Yes | spawn, text, sound, stop_timer, func | Determines what action(s) will be taken when the event is called
-sub_type | Yes(text), No | notification(text), message(text), speech(text) | Used in conjunction with certain types.
+sub_type | Yes(text), Maybe(spawn), No | notification(text), message(text), speech(text), collection(spawn(default)), item(spawn), build_object(spawn) | Used in conjunction with certain types.
 id | Yes(spawn, sound, stop_timer), No | A unique identifier not used "anywhere" else in the file. | It's used for spawning item(the item id), stopping a notification/text in progress and id of a sound. **DO NOT USE 0 FOR THE ID IN ANY CASE!**
 delay | No | A delay in milliseconds | Creates a timer that can be used to delay ANY event.
 sub_delay | Yes(spawn), No | How long in milliseconds before it acts upon it. | Used with spawning items
