@@ -258,6 +258,9 @@ class TeraGuide{
             // Make sure distance is defined
             //if(!event['distance']) return debug_message(true, "Spawn handler needs a distance");
 
+            // Set sub_type to be collection as default for backward compatibility
+            const sub_type =  event['sub_type'] || 'collection';
+
             // The unique spawned id this item will be using.
             const item_unique_id = random_timer_id--;
 
@@ -270,27 +273,78 @@ class TeraGuide{
             loc.w = ent['loc'].w + event['offset'] || 0;
             library.applyDistance(loc, event['distance'] || 0);
 
+            let sending_event = {
+                gameId: item_unique_id,
+                loc: loc,
+                w: loc.w
+            };
+
+            const despawn_event = {
+                gameId: item_unique_id,
+                unk: 0, // used in S_DESPAWN_BUILD_OBJECT
+                collected: false // used in S_DESPAWN_COLLECTION
+            };
+
+            // Create the sending event
+            switch(sub_type) {
+                // If it's type collection, it's S_SPAWN_COLLECTION
+                case "collection": {
+                    Object.assign(sending_event, {
+                        id: event['id'],
+                        amount: 1,
+                        extractor: false,
+                        extractorDisabled: false,
+                        extractorDisabledTime: 0
+                    });
+                    break;
+                }
+                // If it's type item, it's S_SPAWN_DROPITEM
+                case "item": {
+                    Object.assign(sending_event, {
+                        item: event['id'],
+                        amount: 1,
+                        expiry: 0,
+                        explode: false,
+                        masterwork: false,
+                        enchant: 0,
+                        source: library.emptyLong(),
+                        debug: false,
+                        owners: []
+                    });
+                    break;
+                }
+                // If it's type build_object, it's S_SPAWN_BUILD_OBJECT
+                case "build_object": {
+                    Object.assign(sending_event, {
+                        itemId : event['id'],
+                        unk : 0,
+                        ownerName : event['ownerName'] || '',
+                        message : event['message'] || ''
+                    });
+                    break;
+                }
+                // If we haven't implemented the sub_type the event asks for
+                default: {
+                    return debug_message(true, "Invalid sub_type for spawn handler:", event['sub_type']);
+                }
+            }
 
             // Create the timer for spawning the item
             timers[item_unique_id] = setTimeout(()=> {
-                dispatch.toClient('S_SPAWN_COLLECTION', 4, {
-                    gameId: item_unique_id,
-                    id: event['id'],
-                    amount: 1,
-                    loc: loc,
-                    w: loc.w,
-                    extractor: false,
-                    extractorDisabled: false,
-                    extractorDisabledTime: 0
-                });
+                switch(sub_type) {
+                    case "collection": return dispatch.toClient('S_SPAWN_COLLECTION', 4, sending_event);
+                    case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 6, sending_event);
+                    case "build_object": return dispatch.toClient('S_SPAWN_BUILD_OBJECT', 2, sending_event);
+                }
             }, event['delay'] || 0 / speed);
 
             // Create the timer for despawning the item
             timers[random_timer_id--] = setTimeout(()=> {
-                dispatch.toClient('S_DESPAWN_COLLECTION', 2, {
-                    gameId: item_unique_id,
-                    collected: false
-                });
+                switch(sub_type) {
+                    case "collection": return dispatch.toClient('S_DESPAWN_COLLECTION', 2, despawn_event);
+                    case "item": return dispatch.toClient('S_DESPAWN_DROPITEM', 4, despawn_event);
+                    case "build_object": return dispatch.toClient('S_DESPAWN_BUILD_OBJECT', 2, despawn_event);
+                }
             }, event['sub_delay'] / speed);
         }
 
