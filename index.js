@@ -48,6 +48,8 @@ class DispatchWrapper {
 
 class TeraGuide{
     constructor(dispatch) {
+        console.log("[Tera-Guide][Warning] Is no longer supported by original author meaning it will probably throw errors at some point and/or not function properly. Go ping Caali™");
+
         const fake_dispatch = new DispatchWrapper(dispatch);
         const { player, entity, library, effect } = require('library')(dispatch);
         const command = require('command')(dispatch);
