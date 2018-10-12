@@ -48,8 +48,6 @@ class DispatchWrapper {
 
 class TeraGuide{
     constructor(dispatch) {
-        console.log("[Tera-Guide][Warning] Is no longer supported by original author meaning it will probably throw errors at some point and/or not function properly. Go ping Caali™");
-
         const fake_dispatch = new DispatchWrapper(dispatch);
         const { player, entity, library, effect } = require('library')(dispatch);
         const command = require('command')(dispatch);
@@ -175,10 +173,10 @@ class TeraGuide{
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(Object.assign({}, ent, e), library.getSkillInfo(e.skill, true, true).id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed);
+                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed);
             }
         }
-        dispatch.hook('S_ACTION_STAGE', 5, {order: 15}, s_action_stage);
+        dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
 
         /** ABNORMALITY **/
 
@@ -209,7 +207,7 @@ class TeraGuide{
                 if(target_ent) handle_event(target_ent, e.id, 'Abnormality', 'ab', debug.debug || debug.abnormal);
             }
         }
-        dispatch.hook('S_ABNORMALITY_BEGIN', 2, {order: 15}, abnormality_triggered);
+        dispatch.hook('S_ABNORMALITY_BEGIN', 3, {order: 15}, abnormality_triggered);
         dispatch.hook('S_ABNORMALITY_REFRESH', 1, {order: 15}, abnormality_triggered);
 
         /** HEALTH **/
