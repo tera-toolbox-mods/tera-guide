@@ -10,5 +10,6 @@
         "dm": false,
         "qb": false
     },
+    "stream": false,
     "chat-name": "Guide"
 }
