@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "files": {
         "config.json": {
@@ -13,4 +14,69 @@
         "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
         "guides/9970.js": "0db701a73f14a71280252ec11803b33e16085ef68c8c081f96038d0c2a08131f"
     }
+=======
+{
+    "files": {
+        "config.json": {
+            "overwrite": false,
+            "hash": "b56701c0166c8ce6fa8e22c7b9d775ae2797ead50411acec53d5a9a13431b115"
+        },
+        "index.js": "f331bfd245bf44a906a140ed6548df66a5be732d7daa15168b9f3fa14690e943",
+        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
+        "readme.md": "3c0ded06da2ddec3677075a85a16c328829a52f0d394830c76dbeea879f2a01a",
+        "guides/9034.js": "cb8acd28306a0700db113195550e5db744e3ad635273b632713ff0ab492e81cb",
+        "guides/9720.js": "97e22d38be7eef7329f8dc66b6d21eca6acaa02cfec3450a24934ae9e83d85ca",
+        "guides/9920.js": "02948b350cbcb93e1ad593d40fd4d5f2cecae6b4a1c3ae726a99d25e6c35d087",
+        "guides/9920_old.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
+        "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
+        "guides/9970.js": "0db701a73f14a71280252ec11803b33e16085ef68c8c081f96038d0c2a08131f"
+    },
+    "defs": {
+        "S_SPAWN_COLLECTION": [
+            4
+        ],
+        "S_SPAWN_DROPITEM": [
+            6
+        ],
+        "S_SPAWN_BUILD_OBJECT": [
+            2
+        ],
+        "S_DESPAWN_COLLECTION": [
+            2
+        ],
+        "S_DESPAWN_DROPITEM": [
+            4
+        ],
+        "S_DESPAWN_BUILD_OBJECT": [
+            2
+        ],
+        "S_DUNGEON_EVENT_MESSAGE": [
+            2
+        ],
+        "S_CHAT": [
+            2
+        ],
+        "S_PLAY_SOUND": [
+            1
+        ],
+        "S_ACTION_STAGE": [
+            8
+        ],
+        "S_ABNORMALITY_BEGIN": [
+            3
+        ],
+        "S_ABNORMALITY_REFRESH": [
+            1
+        ],
+        "S_BOSS_GAGE_INFO": [
+            3
+        ],
+        "S_QUEST_BALLOON": [
+            1
+        ],
+        "S_LOAD_TOPO": [
+            3
+        ]
+    }
+>>>>>>> eaac07fe1b91f0aea6de3095539ab91e0e987628
 }
