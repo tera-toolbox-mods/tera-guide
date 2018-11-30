@@ -74,7 +74,7 @@ class TeraGuide{
         let active_guide = {};
 
         // All of the timers, where the key is the id
-        let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
+        let random_timer_id = 0xFFFFFFFAn; // Used if no id is specified
         let timers = {};
 
         /** HELPER FUNCTIONS **/
@@ -186,7 +186,7 @@ class TeraGuide{
         function abnormality_triggered(e) {
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
-                const empty = library.emptyLong();
+                const empty = 0n;
                 // If e.source isn't defined, we define it
                 if(e.source === undefined) e.source = empty;
 
@@ -200,7 +200,7 @@ class TeraGuide{
                 if(source_ent && player.isMe(e.target)) handle_event(source_ent, e.id, 'Abnormality', 'am', debug.debug || debug.abnormal);
 
                 // If "nothing"/server applies an abnormality to me, it's plausible we want to act on this. (spam rip)
-                if(player.isMe(e.target) && empty.equals(e.source)) handle_event({
+                if(player.isMe(e.target) && e.source === empty) handle_event({
                     huntingZoneId: 0,
                     templateId: 0
                 }, e.id, 'Abnormality', 'ae', debug.debug || debug.abnormal);
@@ -220,7 +220,7 @@ class TeraGuide{
              if(enabled && guide_found) {
                 const ent = entity['mobs'][e.id.toString()];
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(ent, Math.floor(e.curHp / e.maxHp * 100), 'Health', 'h', debug.debug || debug.hp);
+                if(ent) return handle_event(ent, Math.floor(Number(e.curHp) / Number(e.maxHp) * 100), 'Health', 'h', debug.debug || debug.hp);
             }
         });
 
@@ -374,7 +374,7 @@ class TeraGuide{
                         explode: false,
                         masterwork: false,
                         enchant: 0,
-                        source: library.emptyLong(),
+                        source: 0n,
                         debug: false,
                         owners: []
                     });
