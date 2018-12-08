@@ -49,7 +49,7 @@ class DispatchWrapper {
 class TeraGuide{
     constructor(dispatch) {
         const fake_dispatch = new DispatchWrapper(dispatch);
-        const { player, entity, library, effect } = require('library')(dispatch);
+        const { player, entity, library, effect } = dispatch.require.library;
         const command = dispatch.command;
 
         // An object of types and their corresponding function handlers
@@ -144,13 +144,20 @@ class TeraGuide{
         }
 
         // Handle events such as boss skill and abnormalities triggered
-        function handle_event(ent, id, called_from_identifier, prefix_identifier, d, speed=1.0) {
+        function handle_event(ent, id, called_from_identifier, prefix_identifier, d, speed=1.0, stage=false) {
             const unique_id = `${prefix_identifier}-${ent['huntingZoneId']}-${ent['templateId']}`;
             const key = `${unique_id}-${id}`;
-            debug_message(d, `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key}`);
+            const stage_string = (stage===false ? '' : `-${stage}`);
+
+            debug_message(d, `${called_from_identifier}: ${id} | Started by: ${unique_id} | key: ${key + stage_string}`);
+
+            if(stage !== false) {
+                const entry = active_guide[key + stage_string];
+                if(entry) start_events(entry, ent, speed);
+            }
 
             const entry = active_guide[key];
-            if(entry) return start_events(entry, ent, speed);
+            if(entry) start_events(entry, ent, speed);
         }
 
         // This is where all the magic happens
@@ -170,12 +177,12 @@ class TeraGuide{
         // Boss skill action
         function s_action_stage(e) {
             // If the guide module is active and a guide for the current dungeon is found
-            if(enabled && guide_found && e.stage === 0) {
+            if(enabled && guide_found) {
                 const ent = entity['mobs'][e.gameId.toString()];
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed);
+                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
             }
         }
         dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
@@ -186,9 +193,8 @@ class TeraGuide{
         function abnormality_triggered(e) {
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
-                const empty = library.emptyLong();
-                // If e.source isn't defined, we define it
-                if(e.source === undefined) e.source = empty;
+                // avoid errors ResidentSleeper (neede for abnormality refresh)
+                if(!e.source) e.source = 0n;
 
                 // If the boss/mob get's a abnormality applied to it
                 const target_ent = entity['mobs'][e.target.toString()];
@@ -200,7 +206,7 @@ class TeraGuide{
                 if(source_ent && player.isMe(e.target)) handle_event(source_ent, e.id, 'Abnormality', 'am', debug.debug || debug.abnormal);
 
                 // If "nothing"/server applies an abnormality to me, it's plausible we want to act on this. (spam rip)
-                if(player.isMe(e.target) && empty.equals(e.source)) handle_event({
+                if(player.isMe(e.target) && 0 == (e.source || 0)) handle_event({
                     huntingZoneId: 0,
                     templateId: 0
                 }, e.id, 'Abnormality', 'ae', debug.debug || debug.abnormal);
@@ -220,7 +226,7 @@ class TeraGuide{
              if(enabled && guide_found) {
                 const ent = entity['mobs'][e.id.toString()];
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(ent, Math.floor(e.curHp / e.maxHp * 100), 'Health', 'h', debug.debug || debug.hp);
+                if(ent) return handle_event(ent, Math.floor(Number(e.curHp) / Number(e.maxHp) * 100), 'Health', 'h', debug.debug || debug.hp);
             }
         });
 
@@ -374,7 +380,6 @@ class TeraGuide{
                         explode: false,
                         masterwork: false,
                         enchant: 0,
-                        source: library.emptyLong(),
                         debug: false,
                         owners: []
                     });
@@ -418,7 +423,7 @@ class TeraGuide{
         // Text handler
         function text_handler(event, ent, speed=1.0) {
             // Fetch the message(with region tag)
-            const message = event[`message_${dispatch.base.region}`] || event[`message_${dispatch.base.region.toUpperCase()}`] || event['message'];
+            const message = event[`message_${dispatch.region}`] || event[`message_${dispatch.region.toUpperCase()}`] || event['message'];
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined
