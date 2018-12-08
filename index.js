@@ -74,7 +74,7 @@ class TeraGuide{
         let active_guide = {};
 
         // All of the timers, where the key is the id
-        let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
+        let random_timer_id = 0xFFFFFFFAn; // Used if no id is specified
         let timers = {};
 
         /** HELPER FUNCTIONS **/
