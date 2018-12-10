@@ -341,7 +341,7 @@ for (let distance = 175; distance <= 425; distance += 25) {
 
 module.exports = {
 	load(dispatch) {
-		({ player, entity, library, effect } = require('library')(dispatch._dispatch));
+		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
 	// First Floor

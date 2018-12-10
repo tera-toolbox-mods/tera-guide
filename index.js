@@ -40,6 +40,10 @@ class DispatchWrapper {
         for(const hook of this._hooks) this._dispatch.unhook(hook);
     }
 
+    get require() {
+        return this._dispatch.require;
+    }
+
     toServer(...args) { return this.send(...args); }
     toClient(...args) { return this.send(...args); }
     send(...args) { return this._dispatch.send(...args); }
@@ -74,7 +78,7 @@ class TeraGuide{
         let active_guide = {};
 
         // All of the timers, where the key is the id
-        let random_timer_id = 0xFFFFFFFAn; // Used if no id is specified
+        let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};
 
         /** HELPER FUNCTIONS **/
