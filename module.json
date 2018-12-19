@@ -5,5 +5,9 @@
     "author": "Kasea",
     "dependencies": {
         "library": "https://raw.githubusercontent.com/Kaseaa/library/master/module.json"
-    }
+    },
+    "options": {
+        "guiName": "Tera Guide"
+    },
+    "description": "Guides you in Tera"
 }
