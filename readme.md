@@ -14,7 +14,7 @@ Command | Usage | Arguments
 --- | --- | ---
 \- | Toggles the guide module | \-
 debug | Toggles debug mode | debug(enables everything), hp, abnormal, skill, boss, chat(prints to in chat rather than console), dm, qb
-event | triggeres an event, where you are the entity. Used for testing | First argument is a **type** from "Options". The second argument contains the values. Example: `/8 guide event spawn '{"id": 500, "sub_delay": 5000}'`
+event | triggeres an event, where you are the entity. Used for testing | First argument is a **type** from "Options". The second argument contains the values(or the keyword `trigger`). Example: `/8 guide event spawn '{"id": 500, "sub_delay": 5000}'`, `/8 guide event trigger "h-444-2000-97"`
 stream | Toggles streamer mode | \-
 
 ## Supported

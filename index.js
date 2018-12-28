@@ -1,3 +1,4 @@
+const DispatchWrapper = require('./dispatch');
 const config = require('./config');
 
 // Try to silently import the say dependency
@@ -17,39 +18,6 @@ const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
 
-
-class DispatchWrapper {
-    constructor(dispatch) {
-        this._dispatch = dispatch;
-        this._hooks = [];
-    }
-
-    hook(...args) {
-        this._hooks.push(this._dispatch.hook(...args));
-    }
-
-    hookOnce(...args) {
-        this._dispatch.hookOnce(...args);
-    }
-
-    unhook(...args) {
-        throw new Error("unhook not supported for tera-guide");
-    }
-
-    _remove_all_hooks() {
-        for(const hook of this._hooks) this._dispatch.unhook(hook);
-    }
-
-    get require() {
-        return this._dispatch.require;
-    }
-
-    toServer(...args) { return this.send(...args); }
-    toClient(...args) { return this.send(...args); }
-    send(...args) { return this._dispatch.send(...args); }
-}
-
-
 class TeraGuide{
     constructor(dispatch) {
         const fake_dispatch = new DispatchWrapper(dispatch);
@@ -59,11 +27,15 @@ class TeraGuide{
         // An object of types and their corresponding function handlers
         const function_event_handlers = {
             "spawn": spawn_handler,
+            "despawn": despawn_handler,
             "text": text_handler,
             "sound": sound_handler,
             "stop_timer": stop_timer_handler,
-            "func": func_handler
+            "func": func_handler,
+            "lib": require('./lib')
         };
+        // export functionality for 3rd party modules
+        this.handlers = function_event_handlers;
 
         // A boolean for if the module is enabled or not
         let enabled = config['enabled'];
@@ -307,10 +279,14 @@ class TeraGuide{
             // Testing events
             event(arg1, arg2) {
                 // If we didn't get a second argument or the argument value isn't an event type, we return
-                if(!arg1 || !function_event_handlers[arg1] || !arg2) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
+                if(arg1 === "trigger" ? (!active_guide[arg2]) : (!arg1 || !function_event_handlers[arg1] || !arg2)) return command.message(`Invalid values for sub command "event" ${arg1} | ${arg2}`);
 
-                // Call a function handler with the event we got from arg2 with yourself as the entity
-                function_event_handlers[arg1](JSON.parse(arg2), player);
+                // if arg2 is "trigger". It means we want to trigger a event
+                if(arg1 === "trigger")
+                    start_events(active_guide[arg2], player);
+                else
+                    // Call a function handler with the event we got from arg2 with yourself as the entity
+                    function_event_handlers[arg1](JSON.parse(arg2), player);
             },
             stream() {
             	stream = !stream;
@@ -339,7 +315,7 @@ class TeraGuide{
             const sub_type =  event['sub_type'] || 'collection';
 
             // The unique spawned id this item will be using.
-            const item_unique_id = random_timer_id--;
+            const item_unique_id = event['force_gameId'] || random_timer_id--;
 
             // The location of the item spawned
             let loc = ent['loc'].clone();
@@ -347,7 +323,7 @@ class TeraGuide{
             // if pos is set, we use that
             if(event['pos']) loc = event['pos'];
 
-            loc.w = ent['loc'].w + event['offset'] || 0;
+            loc.w = (ent['loc'].w || 0) + (event['offset'] || 0);
             library.applyDistance(loc, event['distance'] || 0);
 
             let sending_event = {
@@ -422,6 +398,30 @@ class TeraGuide{
                     case "build_object": return dispatch.toClient('S_DESPAWN_BUILD_OBJECT', 2, despawn_event);
                 }
             }, event['sub_delay'] / speed);
+        }
+
+         // Despawn handler
+         function despawn_handler(event) {
+            // Make sure id is defined
+            if(!event['id']) return debug_message(true, "Spawn handler needs a id");
+            // Ignore if streamer mode is enabled
+            if(stream) return;
+
+            // Set sub_type to be collection as default for backward compatibility
+            const sub_type =  event['sub_type'] || 'collection';
+
+            const despawn_event = {
+                gameId: event['id'],
+                unk: 0, // used in S_DESPAWN_BUILD_OBJECT
+                collected: false // used in S_DESPAWN_COLLECTION
+            };
+
+            switch(sub_type) {
+                case "collection": return dispatch.toClient('S_DESPAWN_COLLECTION', 2, despawn_event);
+                case "item": return dispatch.toClient('S_DESPAWN_DROPITEM', 4, despawn_event);
+                case "build_object": return dispatch.toClient('S_DESPAWN_BUILD_OBJECT', 2, despawn_event);
+                default: return debug_message(true, "Invalid sub_type for despawn handler:", event['sub_type']);
+            }
         }
 
         // Text handler

@@ -1,10 +1,16 @@
 {
     "files": {
         "config.json": "b56701c0166c8ce6fa8e22c7b9d775ae2797ead50411acec53d5a9a13431b115",
-        "index.js": "b57bd412bd7d83fcc23cbdfe468a688a7967e90a0c3e330d62a9b27de2ac3bfc",
+        "dispatch.js": "521dce3d7a3f4aa1a985998a635cfeb6114155d762dc211bb8d27162de1aea90",
+        "index.js": "6c867301d6dbd1f57eaa911d624b5df0e280e020d32871ee4cd6923f5e2b80ea",
+        "lib.js": "f4eb0275e953f0abb72708b7e068c0f3b0a84e09afa0eca1d80f13f2b316421a",
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "readme.md": "3c0ded06da2ddec3677075a85a16c328829a52f0d394830c76dbeea879f2a01a",
+        "readme.md": "f280a8d0dd0678983d82a1986f410aca986890b3ee70434b44fee73bbef899ad",
         "guides/9034.js": "19c64a4edcc64c03b0d491bd6ad7a8bc530c29f896e6627ef10869a0f519e30e",
+        "guides/9044.js": {
+            "hash": "41e94ed19b68473d65a5fb731665a9448b6ac37af7d45d07694d00a7ba045dac",
+            "overwrite": false
+        },
         "guides/9720.js": "97e22d38be7eef7329f8dc66b6d21eca6acaa02cfec3450a24934ae9e83d85ca",
         "guides/9920.js": "02948b350cbcb93e1ad593d40fd4d5f2cecae6b4a1c3ae726a99d25e6c35d087",
         "guides/9920_old.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
