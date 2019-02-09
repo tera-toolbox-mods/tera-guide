@@ -4,10 +4,7 @@ const { exec } = require('child_process');
 //const iconv = require('iconv');
 // Try to silently import the say dependency
 
-let iconv = null;
-
-try { iconv = require('iconv') }
-catch(e) { iconv = null; }
+const iconv = require('./iconv-lite');
 
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
@@ -296,10 +293,7 @@ class TeraGuide{
                     function_event_handlers[arg1](JSON.parse(arg2), player);
             },
             语音() {
-				  if(!iconv) {
-		command.message(`需要iconv依赖，请参阅readme`);		  
-					return;  
-				     }
+
             	speaks = !speaks;
             	command.message(`语音提示 ${speaks?"开启":"关闭"}.`);
             },			
@@ -457,7 +451,22 @@ class TeraGuide{
                         channel: 21,
                         authorName: config['chat-name'],
                         message
+
                     };
+			            if(speaks){			
+	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+	exec(`powershell.exe Add-Type -AssemblyName System.speech; $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; $speak.Speak([Console]::In.ReadToEnd()); exit`).stdin.end(iconv.encode(message, 'gbk'));
+	
+	
+	              //  command.message(` ${(event['delay'] || 0 )}.`);
+                        }, (event['delay'] || 0 ) - 800 /speed);				
+				
+					};				
+					
+					
+					
+					
+					
                     break;
                 }
                 // If it's type notification, it's S_CHAT with channel 21
@@ -469,17 +478,17 @@ class TeraGuide{
 						channel: 27,
                         message: `<font color="#80FF00" size="32">${message}</font>`
                     };
-			         if(iconv) {
+
 		            if(speaks){			
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
 	exec(`powershell.exe Add-Type -AssemblyName System.speech; $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; $speak.Speak([Console]::In.ReadToEnd()); exit`).stdin.end(iconv.encode(message, 'gbk'));
 	
 	
 	              //  command.message(` ${(event['delay'] || 0 )}.`);
-                        }, (event['delay'] || 0 ) - 1000 /speed);				
+                        }, (event['delay'] || 0 ) - 800 /speed);				
 				
 					};
-					};
+
 					
                     break;				
 

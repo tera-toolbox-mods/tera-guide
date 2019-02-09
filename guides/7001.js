@@ -9,7 +9,7 @@ module.exports = {
 	
 
  
-  "ae-0-0-4030": [{"type": "text","sub_type": "notification","delay": 10000,"message": "test"} ,
+  "ae-0-0-4612": [{"type": "text","sub_type": "notification","delay": 6000,"message": "test"} ,
 
 
  ],
