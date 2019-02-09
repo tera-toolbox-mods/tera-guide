@@ -26,11 +26,7 @@ proxy频道输入:
 
 
 
-### 语音依赖
-https://github.com/michengs/iconv-lite
 
-请下载iconv-lite 将该文件解压Proxy\node_modules目录下并重命名为
-iconv然后运行里面的npm_install.bat进行安装
 
 
 # #当前副本支持
