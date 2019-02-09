@@ -14,7 +14,7 @@
 		"index.js": "68a73fcc46379a48ab51c11435ed936669d2c9aedbd63771d838fbe05a05f3a2",
 		"lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
 		"module.json": "aa8bda059f517cf6e13118ca1e12a2e9f4cec7fb1ebea736ae28ac269be1cf1e",
-		"readme.md": "4a81e69c4479ad7db02b2152718fc82a99f6bf449bdecbd7d24298e241344de7"
+		"readme.md": "a10d3e0b45668d6a32ecd7441a2d801ff201c02160dfc9f400fbfde69d5575f3"
 	},
 	"defs": {
 		"S_ABNORMALITY_BEGIN": [2,3],
