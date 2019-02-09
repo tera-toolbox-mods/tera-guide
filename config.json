@@ -11,5 +11,7 @@
         "qb": false
     },
     "stream": false,
+	 "speaks": true,
+	
     "chat-name": "Guide"
 }

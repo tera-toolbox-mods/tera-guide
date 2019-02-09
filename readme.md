@@ -7,6 +7,32 @@ https://github.com/michengs/library
 
 
 
+
+## 命令
+proxy频道输入:
+
+補助
+- 模组开/关
+- 默认: On
+
+
+補助 语音
+- 语音提示开/关
+- 默认: On
+
+補助 提示
+- 提示开/关
+- 默认: On
+
+
+
+### 语音依赖
+https://github.com/michengs/iconv-lite
+
+请下载iconv-lite 将该文件解压Proxy\node_modules目录下并重命名为
+iconv然后运行里面的npm_install.bat进行安装
+
+
 # #当前副本支持
 
 安塔洛斯深渊

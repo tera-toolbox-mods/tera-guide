@@ -6,7 +6,12 @@ const ITEM_SPAWN_ID = 556;
 
 module.exports = {
 
-   "ae-0-0-4030": [{"type": "text","sub_type": "speech","delay": 2000,"message": "test进入7001地图"} 
+	
+
+ 
+  "ae-0-0-4030": [{"type": "text","sub_type": "notification","delay": 10000,"message": "test"} ,
+
+
  ],
 		 
 

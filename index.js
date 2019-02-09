@@ -1,11 +1,13 @@
 const DispatchWrapper = require('./dispatch');
 const config = require('./config');
-
+const { exec } = require('child_process');
+//const iconv = require('iconv');
 // Try to silently import the say dependency
-let say = null;
 
-try { say = require('say') }
-catch(e) { say = null; }
+let iconv = null;
+
+try { iconv = require('iconv') }
+catch(e) { iconv = null; }
 
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
@@ -44,7 +46,7 @@ class TeraGuide{
         let debug = config['debug'];
         // A boolean for streamer mode
         let stream = config['stream'];
-
+        let speaks = config['speaks'];
         // A boolean indicating if a guide was found
         let guide_found = false;
         // The guide settings for the current zone
@@ -274,7 +276,7 @@ class TeraGuide{
         });
 
         // Guide command
-        command.add('guide', {
+        command.add(['guide','補助'], {
             // Toggle debug settings
             debug(arg1) {
                 if(!arg1 || debug[arg1] === undefined) return command.message(`Invalid sub command for debug mode. ${arg1}`);
@@ -293,13 +295,21 @@ class TeraGuide{
                     // Call a function handler with the event we got from arg2 with yourself as the entity
                     function_event_handlers[arg1](JSON.parse(arg2), player);
             },
-            stream() {
+            语音() {
+				  if(!iconv) {
+		command.message(`需要iconv依赖，请参阅readme`);		  
+					return;  
+				     }
+            	speaks = !speaks;
+            	command.message(`语音提示 ${speaks?"开启":"关闭"}.`);
+            },			
+            提示() {
             	stream = !stream;
-            	command.message(`Streamer mode has been ${stream?"enabled":"disabled"}.`);
+            	command.message(`系统消息提示已 ${stream?"开启":"关闭"}.`);
             },
             $default() {
                 enabled = !enabled;
-                command.message(`Guide module has been ${enabled?"enabled":"disabled"}.`);
+                command.message(`副本補助已 ${enabled?"开启":"关闭"}.`);
             }
         });
 
@@ -459,25 +469,24 @@ class TeraGuide{
 						channel: 27,
                         message: `<font color="#80FF00" size="32">${message}</font>`
                     };
+			         if(iconv) {
+		            if(speaks){			
+	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+	exec(`powershell.exe Add-Type -AssemblyName System.speech; $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; $speak.Speak([Console]::In.ReadToEnd()); exit`).stdin.end(iconv.encode(message, 'gbk'));
+	
+	
+	              //  command.message(` ${(event['delay'] || 0 )}.`);
+                        }, (event['delay'] || 0 ) - 1000 /speed);				
+				
+					};
+					};
+					
                     break;				
 
  
                 }
                 // If it's type speech, it's text to speech. But since it isn't "required" to a try/catch
-                case "speech": {
-                	// Ignore if streamer mode is enabled
-           			if(stream) return;
 
-                    // if the say dependency was found
-                    if(say) {
-                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-
-							
-                            say.speak(message);
-                        }, (event['delay'] || 0 ) / speed);
-                    }
-                    return;
-                }
                 // If we haven't implemented the sub_type the event asks for
                 default: {
                     return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
