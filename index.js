@@ -59,6 +59,7 @@ class TeraGuide{
         function debug_message(d, ...args) {
             if(d) {
                 console.log(`[${Date.now() % 100000}][Guide]`, ...args);
+                command.message(args.toString());		    
                 if(debug.chat) command.message(args.toString());
             }
         }
