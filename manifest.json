@@ -1,21 +1,37 @@
 {
-    "files": {
-        "config.json": "b56701c0166c8ce6fa8e22c7b9d775ae2797ead50411acec53d5a9a13431b115",
-        "dispatch.js": "521dce3d7a3f4aa1a985998a635cfeb6114155d762dc211bb8d27162de1aea90",
-        "index.js": "ab9b8bd01586b5890064e7c12fcb4be97859d581e20de34ea68515d1125ad508",
-        "lib.js": "f4eb0275e953f0abb72708b7e068c0f3b0a84e09afa0eca1d80f13f2b316421a",
-        "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "readme.md": "f280a8d0dd0678983d82a1986f410aca986890b3ee70434b44fee73bbef899ad",
-        "guides/9034.js": "19c64a4edcc64c03b0d491bd6ad7a8bc530c29f896e6627ef10869a0f519e30e",
-        "guides/9044.js": {
-            "hash": "41e94ed19b68473d65a5fb731665a9448b6ac37af7d45d07694d00a7ba045dac",
-            "overwrite": false
-        },
-        "guides/9720.js": "97e22d38be7eef7329f8dc66b6d21eca6acaa02cfec3450a24934ae9e83d85ca",
-        "guides/9920.js": "02948b350cbcb93e1ad593d40fd4d5f2cecae6b4a1c3ae726a99d25e6c35d087",
-        "guides/9920_old.js": "bf2ec9b452d2bbedc77dfc3a1ee61c522fff054f8b8afe3ebc265ef5252c166f",
-        "guides/9950.js": "640beb30746d70b83d2662db3655697de0a3d04a7a8d7f5e7ee67f105c408775",
-        "guides/9970.js": "0db701a73f14a71280252ec11803b33e16085ef68c8c081f96038d0c2a08131f"
-    },
-    "defs": {}
+	"files": {
+		"LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
+		"config.json": "9946cc6e60ff14e0fb03cbd65652066d664488fe3bbd8660f9e606218068dff7",
+		"dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
+		"guides/7001.js": "18297372f95793541e79471ee897ac16b005bacd341692350f97e6b6a0bfd807",
+		"guides/9034.js": "0ca4839903869d9da09ffb9c1682defdce08deb8d72f89f507e1bd2f5fadd39a",
+		"guides/9044.js": "b77472b32f8e79ae656e64d84fa9e894a6fb3099beae7a6a03b544f213040ae9",
+		"guides/9720.js": "14f58a4f47e49ac0d7d99e9564147ef4ee2e3fd2ec9ab367671c8e3ed42d010f",
+		"guides/9735.js": "13d52a1af11a96a1a94a824c094174b66b1a8bf982c9955ec1e1d7c15ade45f6",
+		"guides/9781.js": "0eff6f8d49132993a3706316faa87e3249733613f101303c6c49352d77a5f557",
+		"guides/9782.js": "afbc7595d0e668a2bdfd9493da7192ef20cd9e495c74b5cc81c0ec99083c776a",
+		"guides/9920.js": "8d79a4a13f7557393d0f422229c4a3944b4e2ea7927c7e766571e5bf7ec0d323",
+		"index.js": "68a73fcc46379a48ab51c11435ed936669d2c9aedbd63771d838fbe05a05f3a2",
+		"lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
+		"module.json": "aa8bda059f517cf6e13118ca1e12a2e9f4cec7fb1ebea736ae28ac269be1cf1e",
+		"readme.md": "4a81e69c4479ad7db02b2152718fc82a99f6bf449bdecbd7d24298e241344de7"
+	},
+	"defs": {
+		"S_ABNORMALITY_BEGIN": [2,3],
+		"S_ABNORMALITY_END": 1,
+		"S_ABNORMALITY_REFRESH": 1,
+		"S_ACTION_STAGE": 8,
+		"S_BOSS_GAGE_INFO": 3,
+		"S_CHAT": 2,
+		"S_DESPAWN_BUILD_OBJECT": 2,
+		"S_DESPAWN_COLLECTION": 2,
+		"S_DESPAWN_DROPITEM": 4,
+		"S_DUNGEON_EVENT_MESSAGE": 2,
+		"S_LOAD_TOPO": 3,
+		"S_PLAY_SOUND": 1,
+		"S_QUEST_BALLOON": 1,
+		"S_SPAWN_BUILD_OBJECT": 2,
+		"S_SPAWN_COLLECTION": 4,
+		"S_SPAWN_DROPITEM": 6
+	}
 }

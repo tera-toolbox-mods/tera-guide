@@ -3,6 +3,7 @@ const config = require('./config');
 
 // Try to silently import the say dependency
 let say = null;
+
 try { say = require('say') }
 catch(e) { say = null; }
 
@@ -59,7 +60,10 @@ class TeraGuide{
         function debug_message(d, ...args) {
             if(d) {
                 console.log(`[${Date.now() % 100000}][Guide]`, ...args);
-                command.message(args.toString());		    
+			//	command.message(`[${Date.now() % 100000}][Guide]`, ...args);
+				
+				 command.message(args.toString());
+				
                 if(debug.chat) command.message(args.toString());
             }
         }
@@ -439,22 +443,25 @@ class TeraGuide{
             switch(event['sub_type']) {
                 // If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
                 case "message": {
-                    sending_event = {
-                        message,
-                        type: 41,
-                        chat: false,
-                        channel: 0
-                    };
-                    break;
-                }
-                // If it's type notification, it's S_CHAT with channel 21
-                case "notification": {
-                    sending_event = {
+                   sending_event = {
                         channel: 21,
                         authorName: config['chat-name'],
                         message
                     };
                     break;
+                }
+                // If it's type notification, it's S_CHAT with channel 21
+                case "notification": {
+					
+	                    sending_event = {
+                        type: 43,
+                        chat: false,
+						channel: 27,
+                        message: `<font color="#80FF00" size="32">${message}</font>`
+                    };
+                    break;				
+
+ 
                 }
                 // If it's type speech, it's text to speech. But since it isn't "required" to a try/catch
                 case "speech": {
@@ -464,6 +471,8 @@ class TeraGuide{
                     // if the say dependency was found
                     if(say) {
                         timers[event['id'] || random_timer_id--] = setTimeout(()=> {
+
+							
                             say.speak(message);
                         }, (event['delay'] || 0 ) / speed);
                     }
@@ -479,8 +488,9 @@ class TeraGuide{
             timers[event['id'] || random_timer_id--] = setTimeout(()=> {
             	if (!stream) {
 	                switch(event['sub_type']) {
-	                    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);
-	                    case "notification": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                    case "notification": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);
+						
+	                   case " message": return dispatch.toClient('S_CHAT', 2, sending_event);
 	                }
             	} else {
             		// If streamer mode is enabled, send message all messages to party chat instead
