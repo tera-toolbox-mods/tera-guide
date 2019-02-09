@@ -6,7 +6,7 @@
 module.exports = {
 
 
-	 "ae-0-0-4032": [{"type": "text","sub_type": "notification","delay": 5000,"message": "欢迎进入rk9下级 boss " }],
+	 "ae-0-0-4032": [{"type": "text","sub_type": "notification","delay": 5000,"message": "欢迎进入rk9下级 ，proxy频道輸入“補助 语音”可关闭语音提示" }],
 	
 
 
