@@ -1,10 +1,8 @@
 const DispatchWrapper = require('./dispatch');
 const config = require('./config');
-const { exec } = require('child_process');
-//const iconv = require('iconv');
-// Try to silently import the say dependency
-
-const iconv = require('./iconv-lite');
+let voice = null;
+try { voice = require('voice') }
+catch(e) { voice = null; }
 
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
@@ -293,13 +291,19 @@ class TeraGuide{
                     function_event_handlers[arg1](JSON.parse(arg2), player);
             },
             语音() {
-
+         if(!voice){
+      	command.message(`需要voice依赖`);
+			 return;
+			
+			}
+			
+			
             	speaks = !speaks;
             	command.message(`语音提示 ${speaks?"开启":"关闭"}.`);
             },			
             提示() {
             	stream = !stream;
-            	command.message(`系统消息提示已 ${stream?"开启":"关闭"}.`);
+            	command.message(`系统消息提示已 ${stream?"关闭":"开启"}.`);
             },
             $default() {
                 enabled = !enabled;
@@ -447,26 +451,11 @@ class TeraGuide{
             switch(event['sub_type']) {
                 // If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
                 case "message": {
-                   sending_event = {
+                    sending_event = {
                         channel: 21,
                         authorName: config['chat-name'],
                         message
-
                     };
-			            if(speaks){			
-	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-	exec(`powershell.exe Add-Type -AssemblyName System.speech; $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; $speak.Speak([Console]::In.ReadToEnd()); exit`).stdin.end(iconv.encode(message, 'gbk'));
-	
-	
-	              //  command.message(` ${(event['delay'] || 0 )}.`);
-                        }, (event['delay'] || 0 ) - 800 /speed);				
-				
-					};				
-					
-					
-					
-					
-					
                     break;
                 }
                 // If it's type notification, it's S_CHAT with channel 21
@@ -478,18 +467,14 @@ class TeraGuide{
 						channel: 27,
                         message: `<font color="#80FF00" size="32">${message}</font>`
                     };
-
-		            if(speaks){			
+		            if(voice){
+		            if(speaks){	
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-	exec(`powershell.exe Add-Type -AssemblyName System.speech; $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer; $speak.Speak([Console]::In.ReadToEnd()); exit`).stdin.end(iconv.encode(message, 'gbk'));
-	
-	
-	              //  command.message(` ${(event['delay'] || 0 )}.`);
+                             voice.speak(message)
                         }, (event['delay'] || 0 ) - 800 /speed);				
 				
 					};
-
-					
+					};	
                     break;				
 
  
@@ -506,13 +491,12 @@ class TeraGuide{
             timers[event['id'] || random_timer_id--] = setTimeout(()=> {
             	if (!stream) {
 	                switch(event['sub_type']) {
-	                    case "notification": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);
-						
-	                   case " message": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                    case "notification": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);	
+	                    case " message": return dispatch.toClient('S_CHAT', 2, sending_event);
 	                }
             	} else {
             		// If streamer mode is enabled, send message all messages to party chat instead
-            		return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
+            	//	return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
             	}
             }, (event['delay'] || 0 ) / speed);
         }

@@ -3,9 +3,10 @@
 是一个通过简单的“脚本”非常容易地创建副本補助的模块。
 
 # #依赖性
+
 https://github.com/michengs/library
 
-
+需要libray模组依赖 下载解压放入 proxy/mods文件夹目录
 
 
 ## 命令
@@ -23,6 +24,15 @@ proxy频道输入:
 補助 提示
 - 提示开/关
 - 默认: On
+
+
+## 语音依赖
+
+https://github.com/michengs/voice
+
+下载并解压到 proxy/node_modules里面注意重命名为:voice
+
+
 
 
 
