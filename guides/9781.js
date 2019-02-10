@@ -421,7 +421,7 @@ module.exports = {
 	"s-781-2000-1111": [{"type": "text","sub_type": "notification","message": "360度攻击 "}],		
 	"s-781-2000-1302": [{"type": "text","sub_type": "notification","message": "点名"}],		
 	"s-781-2000-1121": [{"type": "text","sub_type": "notification","message": "召唤小怪快打"}],
-	"s-781-2000-1501": [{"type": "text","sub_type": "notification","message": "封场鉴定开始"}
+	"s-781-2000-1501": [{"type": "text","sub_type": "notification","message": "封场鉴定开始"},
 	{"type": "text","sub_type": "notification","delay": 1000,"message": "3"} ,
 	{"type": "text","sub_type": "notification","delay": 2000,"message": "2"} ,
 	{"type": "text","sub_type": "notification","delay": 3000,"message": "1"} 
