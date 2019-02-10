@@ -348,7 +348,7 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 	
-   "ae-0-0-4030": [{"type": "text","sub_type": "notification","delay": 5000,"message_TW": "欢迎进入贝里克神殿，proxy频道輸入“補助 语音”可关闭语音提示"} ],
+ "h-781-1000-100": [{"type": "text","sub_type": "message","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
 	
 
 	"s-781-1000-1401": [{"type": "text","sub_type": "notification","message": "右劈"},

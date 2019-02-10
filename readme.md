@@ -26,6 +26,17 @@ proxy频道输入:
 - 默认: On
 
 
+
+補助 2~10
+
+- 调节语音速度10为最快语速，默认为正常语速1
+
+
+
+
+
+
+
 ## 语音依赖
 
 https://github.com/michengs/voice

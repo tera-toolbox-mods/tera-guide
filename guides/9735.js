@@ -6,8 +6,7 @@
 module.exports = {
 
 
-	 "ae-0-0-4032": [{"type": "text","sub_type": "notification","delay": 5000,"message": "欢迎进入rk9下级 ，proxy频道輸入“補助 语音”可关闭语音提示" }],
-	
+ "h-735-1000-100": [{"type": "text","sub_type": "message","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
 
 
 "s-735-1000-1104-0":[{"type": "text","sub_type": "notification","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" }],	

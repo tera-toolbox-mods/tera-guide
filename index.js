@@ -46,7 +46,7 @@ class TeraGuide{
         let guide_found = false;
         // The guide settings for the current zone
         let active_guide = {};
-
+        let rate = 1 ;
         // All of the timers, where the key is the id
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};
@@ -305,6 +305,48 @@ class TeraGuide{
             	stream = !stream;
             	command.message(`系统消息提示已 ${stream?"关闭":"开启"}.`);
             },
+            2() {
+            	rate = 2
+            	command.message(`语音速度2`);			
+            },
+            3() {
+            	rate = 3
+            	command.message(`语音速度3`);
+            },	
+            4() {
+            	rate = 4
+            	command.message(`语音速度4`);
+            },				
+            5() {
+            	rate = 5
+            	command.message(`语音速度5`);
+            },
+            6() {
+            	rate = 6
+            	command.message(`语音速度6`);
+            },	
+            7() {
+            	rate = 7
+            	command.message(`语音速度7`);
+            },				
+            8() {
+            	rate = 8
+            	command.message(`语音速度8`);
+            },	
+	        9() {
+            	rate = 9
+            	command.message(`语音速度10`);
+            },			
+            10() {
+            	rate = 10
+            	command.message(`语音速度10`);
+            },	
+            help() {
+		command.message('補助 ，副本補助开/关 ');
+		command.message('補助 语音，副本補助语音开/关');
+		command.message('補助 提示， 副本提示开/关');
+		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');
+            },
             $default() {
                 enabled = !enabled;
                 command.message(`副本補助已 ${enabled?"开启":"关闭"}.`);
@@ -452,9 +494,9 @@ class TeraGuide{
                 // If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
                 case "message": {
                     sending_event = {
-                        channel: 21,
-                        authorName: config['chat-name'],
-                        message
+					channel: 25,
+					authorName: 'guide',
+					message
                     };
                     break;
                 }
@@ -470,8 +512,8 @@ class TeraGuide{
 		            if(voice){
 		            if(speaks){	
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-                             voice.speak(message)
-                        }, (event['delay'] || 0 ) - 800 /speed);				
+                             voice.speak(message,rate)
+                        }, (event['delay'] || 0 ) - 600 /speed);				
 				
 					};
 					};	
@@ -492,7 +534,7 @@ class TeraGuide{
             	if (!stream) {
 	                switch(event['sub_type']) {
 	                    case "notification": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);	
-	                    case " message": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                    case "message": return dispatch.toClient('S_CHAT', 2, sending_event);
 	                }
             	} else {
             		// If streamer mode is enabled, send message all messages to party chat instead
