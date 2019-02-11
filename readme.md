@@ -4,7 +4,7 @@
 
 # #依赖性
 
-https://github.com/michengs/library
+https://github.com/Kaseaa/library
 
 需要libray模组依赖 下载解压放入 proxy/mods文件夹目录
 
