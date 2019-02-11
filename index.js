@@ -42,6 +42,9 @@ class TeraGuide{
         // A boolean for streamer mode
         let stream = config['stream'];
         let speaks = config['speaks'];
+        let notice = config['notice'];	
+        let systemNotice = config['systemNotice'];	
+		
         // A boolean indicating if a guide was found
         let guide_found = false;
         // The guide settings for the current zone
@@ -154,13 +157,14 @@ class TeraGuide{
 
         // Boss skill action
         function s_action_stage(e) {
+			let skillid = e.skill.id % 1000;			
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
                 const ent = entity['mobs'][e.gameId.toString()];
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+                if(ent) return handle_event(Object.assign({}, ent, e), skillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
             }
         }
         dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
@@ -293,18 +297,39 @@ class TeraGuide{
             语音() {
          if(!voice){
       	command.message(`需要voice依赖`);
-			 return;
-			
+			 return;		
 			}
-			
-			
             	speaks = !speaks;
-            	command.message(`语音提示 ${speaks?"开启":"关闭"}.`);
-            },			
-            提示() {
-            	stream = !stream;
-            	command.message(`系统消息提示已 ${stream?"关闭":"开启"}.`);
+            	command.message(`语音通知 ${speaks?"开启":"关闭"}.`);
+            },	
+            語音() {
+         if(!voice){
+      	command.message(`需要voice依赖`);
+			 return;		
+			}
+            	speaks = !speaks;
+            	command.message(`语音通知 ${speaks?"开启":"关闭"}.`);
             },
+            通知() {
+            	stream = !stream;
+            	command.message(`消息通知已 ${stream?"关闭":"开启"}.`);
+            },
+            組隊長通知() {
+            	notice = !notice;	
+            	command.message(`虚拟队长通知已 ${notice?"开启":"关闭"}.`);
+            },				
+            组队长通知() {
+            	notice = !notice;	
+            	command.message(`虚拟队长通知已 ${notice?"开启":"关闭"}.`);
+            },	
+            組隊通知() {
+				notice = !notice;
+            	command.message(`组队通知已 ${systemNotice?"开启":"关闭"}.`);
+            },	
+            组队通知() {
+            	systemNotice = !systemNotice;
+            	command.message(`组队通知已 ${systemNotice?"开启":"关闭"}.`);
+            },			
             2() {
             	rate = 2
             	command.message(`语音速度2`);			
@@ -342,10 +367,12 @@ class TeraGuide{
             	command.message(`语音速度10`);
             },	
             help() {
-		command.message('補助 ，副本補助开/关 ');
+		command.message('補助 ，副本補助开/关 ，默认系统通知');
 		command.message('補助 语音，副本補助语音开/关');
-		command.message('補助 提示， 副本提示开/关');
-		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');
+		command.message('補助 通知， 副本通知开/关');
+		command.message('補助 组队通知， 组队通知开/关');
+		command.message('補助 组队长通知，组队长通知开/关');		
+		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');		
             },
             $default() {
                 enabled = !enabled;
@@ -478,7 +505,6 @@ class TeraGuide{
                 default: return debug_message(true, "Invalid sub_type for despawn handler:", event['sub_type']);
             }
         }
-
         // Text handler
         function text_handler(event, ent, speed=1.0) {
             // Fetch the message(with region tag)
@@ -489,41 +515,54 @@ class TeraGuide{
             if(!message) return debug_message(true, "Text handler needs a message");
 
             let sending_event = {};
+			let sending_events = {};
             // Create the sending event
             switch(event['sub_type']) {
                 // If it's type message, it's S_DUNGEON_EVENT_MESSAGE with type 41
+				//混合通知
                 case "message": {
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {					
+				    if(voice){
+		            if(speaks){	
+                   voice.speak(message,rate)
+					};
+					};		
+           }, (event['delay'] || 0 ) - 600 /speed);					
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+		     if(stream) return;
+		      sendMessage(message);		
+           }, (event['delay'] || 0 )   /speed);
+                    break;		
+                }
+				//组队长通知
+                case "alert": {
                     sending_event = {
-					channel: 25,
+					channel: 21,
 					authorName: 'guide',
 					message
                     };
                     break;
                 }
-                // If it's type notification, it's S_CHAT with channel 21
-                case "notification": {
-					
-	                    sending_event = {
-                        type: 43,
-                        chat: false,
-						channel: 27,
-                        message: `<font color="#80FF00" size="32">${message}</font>`
-                    };
+				//语音通知
+                case "speech": {
 		            if(voice){
 		            if(speaks){	
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
                              voice.speak(message,rate)
                         }, (event['delay'] || 0 ) - 600 /speed);				
-				
 					};
-					};	
+					};
+                    break;
+                }	
+                 //团队长通知				
+                case "notification": {
+                    sending_event = {
+					channel: 25,
+					authorName: 'guide',
+					message
+                    };
                     break;				
-
- 
                 }
-                // If it's type speech, it's text to speech. But since it isn't "required" to a try/catch
-
-                // If we haven't implemented the sub_type the event asks for
                 default: {
                     return debug_message(true, "Invalid sub_type for text handler:", event['sub_type']);
                 }
@@ -533,8 +572,10 @@ class TeraGuide{
             timers[event['id'] || random_timer_id--] = setTimeout(()=> {
             	if (!stream) {
 	                switch(event['sub_type']) {
-	                    case "notification": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);	
-	                    case "message": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                //    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
+	                    case "notification": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                    case "alert": return dispatch.toClient('S_CHAT', 2, sending_event);						
+						
 	                }
             	} else {
             		// If streamer mode is enabled, send message all messages to party chat instead
@@ -542,7 +583,26 @@ class TeraGuide{
             	}
             }, (event['delay'] || 0 ) / speed);
         }
-
+	 function sendMessage(message) {
+        if (notice) {
+            dispatch.toClient('S_CHAT', 2, {
+                channel: 21, //21 = p-notice, 1 = party, 2 = guild
+                message
+            });
+        } else if(systemNotice) {
+            dispatch.toClient('S_CHAT', 2, {
+                channel: 1, //21 = p-notice, 1 = party, 2 = guild
+                message
+            });				
+        } else {
+            dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
+                type: 42,
+                chat: 0,
+                channel: 27,
+                message: `<font color="#80FF00" size="32">${message}</font>`
+            });
+        }
+    }		
         // Sound handler
         function sound_handler(event, ent, speed=1.0) {
             // Make sure id is defined

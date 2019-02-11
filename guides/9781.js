@@ -8,7 +8,7 @@ let player, entity, library, effect;
 function single_stage_callout(message, handlers, event, entity) {
 	if (entity.stage == 0) {
 		handlers['text']({
-	        "sub_type": "notification",
+	        "sub_type": "message",
 			"message": message,
 		});
 	}
@@ -26,7 +26,7 @@ function knockback_firstfloor(handlers) {
 
     if(knockbackCounter >= 2) {
         handlers['text']({
-            "sub_type": "notification",
+            "sub_type": "message",
 			"message": "KNOCKBACK",
         });
         knockbackCounter = 0;
@@ -158,7 +158,7 @@ function start_fifthfloor(handlers, event, entity, dispatch) {
 					}
 
 					handlers['text']({
-			        	"sub_type": "notification",
+			        	"sub_type": "message",
 						"message": buffer.join(" - ")
 			        });
 
@@ -348,59 +348,40 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 	
- "h-781-1000-100": [{"type": "text","sub_type": "message","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
+ "h-781-1000-100": [{"type": "text","sub_type": "notification","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
 	
 
-	"s-781-1000-1401": [{"type": "text","sub_type": "notification","message": "右劈"},
+	"s-781-1000-401": [{"type": "text","sub_type": "message","message": "右劈"},
 	
 	 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
  {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
  {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}	
 	],
-	"s-781-1000-1402": [{"type": "text","sub_type": "notification","message": "左劈"},
+	"s-781-1000-402": [{"type": "text","sub_type": "message","message": "左劈"},
  {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
  {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
 {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
  {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}	
 	],
-	"s-781-1000-2401": [{"type": "text","sub_type": "notification","message": "右劈"},
-	 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
- {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}	
-	],
-	"s-781-1000-2402": [{"type": "text","sub_type": "notification","message": "左劈"},
-	 {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
- {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}	
-	],	
 	
 
 	
 
-	"s-781-1000-1303": [{"type": "text","sub_type": "notification","message": "旋转攻击"}],
-	"s-781-1000-1113": [{"type": "text","sub_type": "notification","message": "前劈"}],
-	"s-781-1000-1303": [{"type": "func","func": single_stage_callout.bind(null, "后抓")}],
-	"s-781-1000-1308": [{"type": "text","sub_type": "notification","message": "出"}],
-	"s-781-1000-1309": [{"type": "text","sub_type": "notification","message": "进"}],
+	"s-781-1000-303": [{"type": "text","sub_type": "message","message": "旋转攻击"}],
+	"s-781-1000-113": [{"type": "text","sub_type": "message","message": "前劈"}],
+	"s-781-1000-308": [{"type": "text","sub_type": "message","message": "出"}],
+	"s-781-1000-309": [{"type": "text","sub_type": "message","message": "进"}],
+	"s-781-1000-303": [{"type": "func","func": single_stage_callout.bind(null, "！")}],
 
-	// 愤怒
-
-	"s-781-1000-2303": [{"type": "text","sub_type": "notification","message": "旋转攻击"}],
-	"s-781-1000-2113": [{"type": "text","sub_type": "notification","message": "前劈"}],
-	"s-781-1000-2303": [{"type": "func","func": single_stage_callout.bind(null, "后抓")}],
-	"s-781-000-2308": [{"type": "text","sub_type": "notification","message": "出"}],
-	"s-781-1000-2309": [{"type": "text","sub_type": "notification","message": "进"}],
 
 	// 2王杜立温
 
 	// Cage Mechanic
-	"s-781-2000-1122": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1122)}],
-	"s-781-2000-1123": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1123)}],
-	"s-781-2000-1124": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1124)}],
-	"s-781-2000-1127": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1127)}],
+	"s-781-2000-122": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1122)}],
+	"s-781-2000-123": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1123)}],
+	"s-781-2000-124": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1124)}],
+	"s-781-2000-127": [{"type": "func","func": cage_mechanic_thirdfloor.bind(null, 1127)}],
 
 	"ae-0-0-90340306": [{"type": "func","func": cage_set_debuff.bind(null, 0, true)}],
 	"ae-0-0-90340307": [{"type": "func","func": cage_set_debuff.bind(null, 0, false)}],
@@ -413,89 +394,50 @@ module.exports = {
 	"ae-0-0-90340314": [{"type": "func","func": cage_set_debuff.bind(null, 4, true)}],
 	"ae-0-0-90340315": [{"type": "func","func": cage_set_debuff.bind(null, 4, false)}],
 
-	// 一般
-	"s-781-2000-1503": [{"type": "text","sub_type": "notification","message": "坦快跑远"}],	
-	"s-781-2000-1106": [{"type": "text","sub_type": "notification","message": "后砸"}],	
-	"s-781-2000-1108": [{"type": "text","sub_type": "notification","message": "前砸"}],		
+	// 
+	"s-781-2000-503": [{"type": "text","sub_type": "message","message": "坦快跑远"}],	
+	"s-781-2000-106": [{"type": "text","sub_type": "message","message": "后砸"}],	
+	"s-781-2000-108": [{"type": "text","sub_type": "message","message": "前砸"}],		
 	
-	"s-781-2000-1111": [{"type": "text","sub_type": "notification","message": "360度攻击 "}],		
-	"s-781-2000-1302": [{"type": "text","sub_type": "notification","message": "点名"}],		
-	"s-781-2000-1121": [{"type": "text","sub_type": "notification","message": "召唤小怪快打"}],
-	"s-781-2000-1501": [{"type": "text","sub_type": "notification","message": "封场鉴定开始"},
-	{"type": "text","sub_type": "notification","delay": 1000,"message": "3"} ,
-	{"type": "text","sub_type": "notification","delay": 2000,"message": "2"} ,
-	{"type": "text","sub_type": "notification","delay": 3000,"message": "1"} 
+	"s-781-2000-111": [{"type": "text","sub_type": "message","message": "360度攻击 "}],		
+	"s-781-2000-302": [{"type": "text","sub_type": "message","message": "点名"}],		
+	"s-781-2000-121": [{"type": "text","sub_type": "message","message": "召唤小怪快打"}],
+	"s-781-2000-501": [{"type": "text","sub_type": "message","message": "封场鉴定开始"},
+	{"type": "text","sub_type": "message","delay": 1000,"message": "3"} ,
+	{"type": "text","sub_type": "message","delay": 2000,"message": "2"} ,
+	{"type": "text","sub_type": "message","delay": 3000,"message": "1"} 
 	],		
-	"s-781-2000-1112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
-	"s-781-2000-1130": [{"type": "text","sub_type": "notification","message": "左劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
-	"s-781-2000-1131": [{"type": "text","sub_type": "notification","message": "右劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
-	"s-781-2000-1134": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
-	"s-781-2000-1502": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
-
-
-	// 愤怒
-		"s-781-2000-2106": [{"type": "text","sub_type": "notification","message": "后砸"}],	
-	"s-781-2000-2108": [{"type": "text","sub_type": "notification","message": "前砸"}],	
-	"s-781-2000-2112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
-	"s-781-2000-2130": [{"type": "text","sub_type": "notification","message": "左劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
-	
-	
-	
-	"s-781-2000-2131": [{"type": "text","sub_type": "notification","message": "右劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
-	"s-781-2000-2134": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
-	"s-781-2000-2502": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
-
-
+	"s-781-2000-112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
+	"s-781-2000-130": [{"type": "text","sub_type": "message","message": "左劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
+	"s-781-2000-131": [{"type": "text","sub_type": "message","message": "右劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
+	"s-781-2000-134": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
+	"s-781-2000-502": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
 
 
 //----拉砍
 
-	"s-781-3000-1404": [{"type": "text","sub_type": "notification","message": "注视 (最近)"}].concat(lasers_markers_seventhfloor),
-	"s-781-3000-1405": [{"type": "text","sub_type": "notification","message": "注视 (最远)"}].concat(inverted_lasers_markers_seventhfloor),//
-	"s-781-3000-1301": [{"type": "text","sub_type": "notification","message": "集中 + 解状态"}].concat(lasers_markers_seventhfloor),
-	"s-781-3000-1302": [{"type": "text","sub_type": "notification","message": "集中 + 不 解状态"}].concat(inverted_lasers_markers_seventhfloor),//
-	"s-781-3000-3103": [{"type": "text","sub_type": "notification","message": "分散"}].concat(lasers_markers_seventhfloor),
-	"s-781-3000-3105": [{"type": "text","sub_type": "notification","message": "集中"}].concat(inverted_lasers_markers_seventhfloor),//
-	"s-781-3000-1116": [{"type": "text","sub_type": "notification","message": "冲击波"}],
-	// 
-	"s-781-3000-1701": [{"type": "text","sub_type": "notification","message": "后踢 + 前戳"}],
-	"s-781-3000-1136": [{"type": "text","sub_type": "notification","message": "点名"}],
-	// 一般
-	"s-781-3000-1152": [{"type": "func","func": single_stage_callout.bind(null, "击晕 + 后踢")}],
-	"s-781-3000-1138": rings_inout_seventhfloor,// 召唤安全范围
-	"s-781-3000-1144": [{"type": "text","sub_type": "notification","message": "出 "}],
-	"s-781-3000-1145": [{"type": "text","sub_type": "notification","message": "进"}],
-	"s-781-3000-1240": [{"type": "func","func": rings_seventhfloor}],
-	"s-781-3000-1401": [{"type": "text","sub_type": "notification","message": "驱散"}],
-	"s-781-3000-1402": [{"type": "text","sub_type": "notification","message": "睡"}],
+	"s-781-3000-404": [{"type": "text","sub_type": "message","message": "注视 (最近)"}].concat(lasers_markers_seventhfloor),
+	"s-781-3000-405": [{"type": "text","sub_type": "message","message": "注视 (最远)"}].concat(inverted_lasers_markers_seventhfloor),//
+	"s-781-3000-301": [{"type": "text","sub_type": "message","message": "集中 + 解状态"}].concat(lasers_markers_seventhfloor),
+	"s-781-3000-302": [{"type": "text","sub_type": "message","message": "集中 + 不 解状态"}].concat(inverted_lasers_markers_seventhfloor),//
+	"s-781-3000-103": [{"type": "text","sub_type": "message","message": "分散"}].concat(lasers_markers_seventhfloor),
+	"s-781-3000-105": [{"type": "text","sub_type": "message","message": "集中"}].concat(inverted_lasers_markers_seventhfloor),//
+	"s-781-3000-116": [{"type": "text","sub_type": "message","message": "冲击波"}],
+	"s-781-3000-701": [{"type": "text","sub_type": "message","message": "后踢 + 前戳"}],
+	"s-781-3000-136": [{"type": "text","sub_type": "message","message": "点名"}],
+	"s-781-3000-152": [{"type": "func","func": single_stage_callout.bind(null, "击晕 + 后踢")}],
+	"s-781-3000-138": rings_inout_seventhfloor,// 召唤安全范围
+	"s-781-3000-144": [{"type": "text","sub_type": "message","message": "出 "}],
+	"s-781-3000-145": [{"type": "text","sub_type": "message","message": "进"}],
+	"s-781-3000-240": [{"type": "func","func": rings_seventhfloor}],
+	"s-781-3000-401": [{"type": "text","sub_type": "message","message": "驱散"}],
+	"s-781-3000-402": [{"type": "text","sub_type": "message","message": "睡"}]
   
-	// 愤怒
-	"s-781-3000-2152": [{"type": "func","func": single_stage_callout.bind(null, "击晕 + 后踢")}],
-	"s-781-3000-2138": rings_inout_seventhfloor,// 召唤安全范围
-	"s-781-3000-2154": [{"type": "text","sub_type": "notification","message": "出 + 进"}],
-	"s-781-3000-2155": [{"type": "text","sub_type": "notification","message": "进+ 出"}],
-	"s-781-3000-2240": [{"type": "func","func": rings_seventhfloor}],
-	"s-781-3000-2401": [{"type": "text","sub_type": "notification","message": "驱散"}],
-	"s-781-3000-2402": [{"type": "text","sub_type": "notification","message": "睡"}],
+	// 
 
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
 
 };

@@ -10,8 +10,9 @@
         "dm": false,
         "qb": false
     },
+    "systemNotice": false,
+	 "notice": false,
     "stream": false,
-	 "speaks": true,
-	
+	 "speaks": true,	
     "chat-name": "Guide"
 }
