@@ -3,18 +3,27 @@ const config = require('./config');
 let voice = null;
 try { voice = require('voice') }
 catch(e) { voice = null; }
-
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
-
 // Dps class ids(not counting warrior)
 const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
-
 // Healer class ids
 const HEALER_CLASS_IDS = [6, 7];
-
 // Warrior Defence stance abnormality ids
 const WARRIOR_TANK_IDS = [100200, 100201];
+const cr = '</font><font color="#ff0000">';//RED 红色
+const co = '</font><font color="#ff7700">';//ORANGE 橘色
+const cy = '</font><font color="#ffff00">';//YELLOW 黄色
+const cg = '</font><font color="#00ff00">';//GREEN 绿色
+const cdb = '</font><font color="#2727ff">';//DARK BLUE 深蓝
+const cb = '</font><font color="#0077ff">';//BLUE  蓝色
+const cv = '</font><font color="#7700ff">';//VIOLET 紫色
+const cp = '</font><font color="#ff00ff">';//PINK   粉红
+const clp = '</font><font color="#ff77ff">';//LIGHT PINK 浅粉色
+const clb = '</font><font color="#00ffff">';//LIGHT BLUE 浅蓝色
+const cbl = '</font><font color="#000000">';//BLACK 黑色
+const cgr = '</font><font color="#777777">';//GRAY 灰色
+const cw = '</font><font color="#ffffff">';//WHITE 白色	
 
 class TeraGuide{
     constructor(dispatch) {
@@ -47,22 +56,22 @@ class TeraGuide{
 		
         // A boolean indicating if a guide was found
         let guide_found = false;
+		let cc = cg;
         // The guide settings for the current zone
         let active_guide = {};
         let rate = 1 ;
         // All of the timers, where the key is the id
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
-        let timers = {};
-
+        let timers = {};	
         /** HELPER FUNCTIONS **/
 
         // Write generic debug message used when creating guides
         function debug_message(d, ...args) {
             if(d) {
                 console.log(`[${Date.now() % 100000}][Guide]`, ...args);
-			//	command.message(`[${Date.now() % 100000}][Guide]`, ...args);
+
 				
-				 command.message(args.toString());
+				// command.message(args.toString());
 				
                 if(debug.chat) command.message(args.toString());
             }
@@ -157,18 +166,18 @@ class TeraGuide{
 
         // Boss skill action
         function s_action_stage(e) {
-			let skillid = e.skill.id % 1000;			
+		//	let skillid = e.skill.id % 1000;			
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
                 const ent = entity['mobs'][e.gameId.toString()];
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(Object.assign({}, ent, e), skillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
             }
         }
         dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
-
+		
         /** ABNORMALITY **/
 
         // Boss abnormality triggered
@@ -365,14 +374,81 @@ class TeraGuide{
             10() {
             	rate = 10
             	command.message(`语音速度10`);
+            },
+            cr() {
+            	cc = cr
+            	command.message( cr +"系统消息通知颜色红色");
+            },
+            co() {
+            	cc = co
+            	command.message( co +"系统消息通知颜色橘色");
+            },
+            cy() {
+            	cc = cy
+            	command.message( cy +"系统消息通知颜色黄色");
+            },
+            cg() {
+            	cc = cg
+            	command.message( cg +"系统消息通知颜色绿色");
+            },
+            cdb() {
+            	cc = cdb
+            	command.message( cdb +"系统消息通知颜色深蓝色");
+            },
+            cb() {
+            	cc = cb
+            	command.message( cb +"系统消息通知颜色蓝色");
+            },
+            cv() {
+            	cc = cv
+            	command.message( cv +"系统消息通知颜色紫色");
+            },
+            cp() {
+            	cc = cp
+            	command.message( cp +"系统消息通知颜色粉色");
+            },
+            clp() {
+            	cc = clp
+            	command.message( clp +"系统消息通知颜色浅粉色");
+            },
+            clb() {
+            	cc = clb
+            	command.message( clb +"系统消息通知颜色浅蓝色");
+            },
+            cbl() {
+            	cc = cbl
+            	command.message( cbl +"系统消息通知颜色黑色");
+            },
+            cgr() {
+            	cc = cgr
+            	command.message( cgr +"系统消息通知颜色灰色");
             },	
+            cw() {
+            	cc = cw
+            	command.message( cw +"系统消息通知颜色白色");
+            },
+
+			
             help() {
-		command.message('補助 ，副本補助开/关 ，默认系统通知');
+		command.message('補助 ，副本補助开/关 ，默认系统通知，通知颜色为绿色');
 		command.message('補助 语音，副本補助语音开/关');
 		command.message('補助 通知， 副本通知开/关');
 		command.message('補助 组队通知， 组队通知开/关');
 		command.message('補助 组队长通知，组队长通知开/关');		
-		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');		
+		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');
+		command.message(cr + '補助 cr，系统消息通知颜色为红色 ');
+		command.message(co + '補助 co，系统消息通知颜色为橙色 ');
+		command.message(cy + '補助 cy，系统消息通知颜色为黄色 ');
+		command.message(cg + '補助 cg，系统消息通知颜色为绿色 ');
+		command.message(cdb + '補助 cdb，系统消息通知颜色为青色 ');	
+		command.message(cb + '補助 cb，系统消息通知颜色为蓝色 ');
+		command.message(cv + '補助 cv，系统消息通知颜色为紫色 ');
+		command.message(cp + '補助 cp，系统消息通知颜色为粉红色 ');
+		command.message(clp + '補助 clp，系统消息通知颜色为浅粉色 ');	
+		command.message(clb + '補助 clb，系统消息通知颜色为浅蓝色 ');
+		command.message(cbl + '補助 cbl，系统消息通知颜色为黑色 ');
+		command.message(cgr + '補助 cgr，系统消息通知颜色为灰色 ');	
+		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
             },
             $default() {
                 enabled = !enabled;
@@ -577,10 +653,13 @@ class TeraGuide{
 	                    case "alert": return dispatch.toClient('S_CHAT', 2, sending_event);						
 						
 	                }
-            	} else {
+            	} 
+				/*
+				else {
             		// If streamer mode is enabled, send message all messages to party chat instead
             	//	return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
             	}
+				*/
             }, (event['delay'] || 0 ) / speed);
         }
 	 function sendMessage(message) {
@@ -599,7 +678,7 @@ class TeraGuide{
                 type: 42,
                 chat: 0,
                 channel: 27,
-                message: `<font color="#80FF00" size="32">${message}</font>`
+                message: ( cc +  message  ) //----------------------------------------------------------------------
             });
         }
     }		

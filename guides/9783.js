@@ -1,88 +1,92 @@
 ﻿//DRC
 //made by michengs
+let guidecounter = 0 ;//
+let guidetimer;//
+   function guid_voice(handlers) {   
+	  clearTimeout(guidetimer);
+      guidecounter++;
+    if(guidecounter >= 2) {	
+handlers['text']({
+"sub_type": "message",
+"delay": 2000,
+"message_TW": "proxy频道输入:補助 help 获取更多使用信息!"
+});
 
-
-
-
-
+handlers['text']({
+"sub_type": "notification",
+"delay": 2000,
+"message_TW": "proxy频道输入:補助 help <br>获取更多使用信息!"
+});
+    }
+    guidetimer = setTimeout(()=>{
+        guidecounter = 0;
+    }, 3000);
+}	
 
 
 module.exports = {
 
 
- "h-783-1000-100": [{"type": "text","sub_type": "notification","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
+ "h-783-1000-100": [{"type": "func","func": guid_voice}],
 
 //一王 
 
- "s-783-1000-108": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后跳眩晕" }],
- "s-783-1000-109": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
- "s-783-1000-119": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "蓄力捶地" }],
- "s-783-1000-127": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "雷电!!" }],
+ "s-783-1000-1108-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后跳眩晕" }],
+ "s-783-1000-1109-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
+ "s-783-1000-1119-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "蓄力捶地" }],
+ "s-783-1000-1127-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "雷电!!" }],
  
  
  //二王
- "s-783-2000-110": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前砸闪避" }],
- "s-783-2000-111": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右后踢击退" }], 
- "s-783-2000-115": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左后踢击退" }],
- "s-783-2000-119": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "跳跃眩晕" }],
- "s-783-2000-120": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前拳+后踢击退" }],
- "s-783-2000-316": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "火焰爆炸" }], 
- "s-783-2000-317": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "水波击飞" }],
- "s-783-2000-318": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地毯眩晕" }],
+ "s-783-2000-1110-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前砸闪避" }],
+ "s-783-2000-1111-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右后踢击退" }], 
+ "s-783-2000-1115-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左后踢击退" }],
+ "s-783-2000-1119-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "跳跃眩晕" }],
+ "s-783-2000-1120-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前拳+后踢击退" }],
+ "s-783-2000-1316-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "火焰爆炸" }], 
+ "s-783-2000-1317-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "水波击飞" }],
+ "s-783-2000-1318-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地毯眩晕" }],
  
  
  
  //三王
+ "s-783-3000-1106-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前推击退" }],
+ "s-783-3000-1109-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前插眩晕" }], 
+ "s-783-3000-1112-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
+ "s-783-3000-1301-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地刺击飞" }],
+ "s-783-3000-1303-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右" }],
+ "s-783-3000-1306-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左" }], 
+ "s-783-3000-1309-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "注视!!" }],
+ "s-783-3000-1315-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "恐惧吸血" }],
  
- "s-783-3000-106": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前推击退" }],
- "s-783-3000-109": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前插眩晕" }], 
- "s-783-3000-112": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
- "s-783-3000-301": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地刺击飞" }],
- "s-783-3000-303": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右" }],
- "s-78300-306": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左" }], 
- "s-783-3000-309": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "注视!!" }],
- "s-783-3000-315": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "恐惧吸血" }],
+  "s-783-1000-2108-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后跳眩晕" }],
+ "s-783-1000-2109-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
+ "s-783-1000-2119-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "蓄力捶地" }],
+ "s-783-1000-2127-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "雷电!!" }],
  
  
-
-	//303: {msg: '<font color="#80FF00" size="32">' +'→→→→右', sign_degrees1:  80, sign_distance1: 250, sign_degrees2:  260, sign_distance2: 250},
-	//306: {msg: '<font color="#80FF00" size="32">' +'左←←←←', sign_degrees1: 280, sign_distance1: 250, sign_degrees2:  100, sign_distance2: 250},
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //后跳+内外圈,安全区域：站里面+站外面
-	//Backstep+donuts, stay in, alert
-	
-     "s-783-1000-1104": [{"type": "text","sub_type": "speech","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" },
-//左边--------------------------------
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
- {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1},
- //右边--------------------------
-  {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
- {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}
+ //二王
+ "s-783-2000-2110-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前砸闪避" }],
+ "s-783-2000-2111-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右后踢击退" }], 
+ "s-783-2000-2115-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左后踢击退" }],
+ "s-783-2000-2119-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "跳跃眩晕" }],
+ "s-783-2000-2120-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前拳+后踢击退" }],
+ "s-783-2000-2316-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "火焰爆炸" }], 
+ "s-783-2000-2317-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "水波击飞" }],
+ "s-783-2000-2318-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地毯眩晕" }],
  
  
  
- 
-	 
-	 ],
+ //三王
+ "s-783-3000-2106-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前推击退" }],
+ "s-783-3000-2109-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "前插眩晕" }], 
+ "s-783-3000-2112-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "后扫击退" }],
+ "s-783-3000-2301-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "地刺击飞" }],
+ "s-783-3000-2303-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "右" }],
+ "s-783-3000-2306-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "左" }], 
+ "s-783-3000-2309-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "注视!!" }],
+ "s-783-3000-2315-0": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "恐惧吸血" }]
 
-     "s-783-1000-1304": [{"type": "text","sub_type": "speech","message": "alert", "message_TW": "出去" }]
-		 
   
 
 

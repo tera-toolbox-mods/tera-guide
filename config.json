@@ -6,7 +6,7 @@
         "abnormal": false,
         "skill": false,
         "boss": false,
-        "chat": false,
+        "chat": true,
         "dm": false,
         "qb": false
     },

@@ -6,57 +6,14 @@
 
 https://github.com/Kaseaa/library
 
-需要libray模组依赖 下载解压放入 proxy/mods文件夹目录
+需要libray模组依赖 下载解压放入 proxy/mods文件夹目录注意重命名为:library
 
 
 ## 命令
 
-默认系统通知开启！！！
+proxy频道输入:補助 help，获取更多使用信息。 
 
-proxy频道输入:
-
-補助
-
-- 模组开/关
-
-- 默认: On
-
-
-補助 语音
-
-- 语音通知开/关
-
-- 默认: On
-
-
-
-補助 组队长通知
-
--组队长通知开/关
-
-- 默认: off
-
-
-補助 组队通知
-
--组队通知开/关
-
-- 默认: off
-
-
-
-
-補助 通知
-
-- 通知开/关
-
-- 默认: On
-
-
-
-補助 2~10
-
-- 调节语音速度10为最快语速，默认为正常语速1
+<img src=https://u.cubeupload.com/michengs/HG9GDC237G6EQ3X6.png>
 
 
 
@@ -82,10 +39,6 @@ https://github.com/michengs/voice
 
 空洞的安塔洛斯深渊
 
-P4 火墙安全点
-
-幻影塔1-7层
-
 RK9-机库（test）
 
 贝里克神殿（test）
@@ -99,4 +52,5 @@ RK9-机库（test）
 其他副本待添加....
 
 更多参阅详见: 
+
 https://github.com/Kaseaa/tera-guide

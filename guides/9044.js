@@ -1,109 +1,209 @@
-﻿// RK9
+﻿// 火神
 //made by michengs
+let guidecounter = 0 ;//
+let guidetimer;//
+   function guid_voice(handlers) {   
+	  clearTimeout(guidetimer);
+      guidecounter++;
+    if(guidecounter >= 2) {	
+handlers['text']({
+"sub_type": "message",
+"delay": 2000,
+"message_TW": "proxy频道输入:補助 help 获取更多使用信息!"
+});
 
-let counter = 0;
-let timer;
-
-
-const ITEM_SPAWNED_ON_SWIPE_ID = 513;
-const ITEM_SPAWNED_ON_SWIPE_SUB_DELAY = 2500;
-const ITEM_SPAWNED_ON_SWIPE_DISTANCE = 150;
-
-
-
-
-
+handlers['text']({
+"sub_type": "notification",
+"delay": 2000,
+"message_TW": "proxy频道输入:補助 help <br>获取更多使用信息!"
+});
+    }
+    guidetimer = setTimeout(()=>{
+        guidecounter = 0;
+    }, 3000);
+}	
 
 module.exports = {
 
+ "h-444-1000-100": [{"type": "func","func": guid_voice}],
+ "h-444-2000-100": [{"type": "func","func": guid_voice}],
 
 
- "h-044-1000-100": [{"type": "text","sub_type": "message","delay": 2000,"message": "proxy频道输入:補助 help <br>获取更多使用信息!"}],
-
-
-
-
-//一王 
-//firstboss, 
-
-    //后跳+内外圈,安全区域：站里面+站外面
-	//Backstep+donuts, stay in, get out
-	
-     "s-735-1000-104-0": [{"type": "text","sub_type": "message","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" },
-//左边--------------------------------
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"},
- {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"},
-{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3},
- {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}
-	 
-	 ],
-
-     "s-735-1000-304-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "出去" }],
-		 
-     "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "get in", "message_TW": "进" }],	 
- 
-		 //眩晕
-     "s-735-1000-104-0": [{"type": "text","sub_type": "message","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" }],	
-
-		 //前后砸 
-
-	 "s-735-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	 			  
-     "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],		 
-		 	 
-//跳
-	
-"s-735-1000-309-0": [ 
-{"type": "text","sub_type": "message","message": "Dodge Stun", "message_TW": "开始发射4次导弹！！" },
-{"type": "text","sub_type": "message","delay": 7000,"message": "JUMP", "message_TW": "倒计时5"},
-{"type": "text","sub_type": "message","delay": 8000,"message": "JUMP", "message_TW": "倒计时4"},
-{"type": "text","sub_type": "message","delay": 9000,"message": "JUMP", "message_TW": "倒计时3"},
-{"type": "text","sub_type": "message","delay": 10000,"message": "JUMP", "message_TW": "倒计时2"},
-{"type": "text","sub_type": "message","delay": 11000,"message": "JUMP", "message_TW": "倒计时1"},
-{"type": "text","sub_type": "message","delay": 12000,"message": "JUMP", "message_TW": "快跳！"}
-],
-
-//拉人
-	     "s-735-1000-307-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "BOSS 拉人，注意无敌躲避！" }],
-	//炸弹
-	     "s-735-1000-306-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "召唤地雷！快打！" }],
-
-
-//------------------------------------2王
-
-//---愤怒前砸
-
-
-
-"s-735-2000-102-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "前砸注意躲避"}],
-
-"s-735-2000-108-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "后踢打手補师注意"}],
-
-"s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss扔溜溜球，注意躲避"}],
-
-"s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss近程攻击，快跑远"}],
-
-//------------------------------------3王
-//s拳
-"s-735-3000-116-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避右边 →↘"}],
-"s-735-3000-119-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避右边 →↘"}],	 
-"s-735-3000-118-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避 左边 ←↙"}],	 
-"s-735-3000-117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避 左边 ←↙"}],
-
-	
-//破盾
-	     "s-735-3000-321-0": [
-		  {"type": "text","sub_type": "message","message": "get out", "message_TW": "BOSS护盾 快打，不然灭团!" },
-          {"type": "text","sub_type": "message","delay": 105000,"message": "JUMP", "message_TW": "10S后准备破盾！"}	  
-		 ],
-		 
-	 
-		 
-//坦无敌闪
-"s-735-3000-129-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "坦无敌闪"}],
-	
-//出去	 
-"s-735-3000-324-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "出去"}] 
-		 
-
+  "s-444-1000-1101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-1000-1103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-1000-1108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-1000-1111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-1000-1112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-1113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-1000-1114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-1000-1115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-1000-1116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-1000-1117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-1000-1118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-1000-1119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-1000-1120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-1000-1121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-1000-1122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-1000-1123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-1000-1125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-1000-1131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-1000-1135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-1138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-1000-1139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-1000-1140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-1000-1141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-1000-1142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-1000-1308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-1000-1309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-1000-1310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-1000-1311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-1000-1312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }],  
+ "s-444-2000-1101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-2000-1103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-2000-1108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-2000-1111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-2000-1112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-1113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-2000-1114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-2000-1115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-2000-1116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-2000-1117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-2000-1118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-2000-1119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-2000-1120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-2000-1121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-2000-1122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-2000-1123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-2000-1125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-2000-1131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-2000-1135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-1138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-2000-1139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-2000-1140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-2000-1141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-2000-1142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-2000-1308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-2000-1309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-2000-1310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-2000-1311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-2000-1312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }],  
+//
+  "s-444-1000-2101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-1000-2103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-1000-2108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-1000-2111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-1000-2112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-2113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-1000-2114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-1000-2115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-1000-2116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-1000-2117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-1000-2118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-1000-2119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-1000-2120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-1000-2121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-1000-2122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-1000-2123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-1000-2125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-1000-2131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-1000-2135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-2138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-1000-2139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-1000-2140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-1000-2141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-1000-2142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-1000-2308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-1000-2309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-1000-2310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-1000-2311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-1000-2312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }],  
+ "s-444-2000-2101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-2000-2103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-2000-2108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-2000-2111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-2000-2112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-2113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-2000-2114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-2000-2115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-2000-2116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-2000-2117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-2000-2118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-2000-2119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-2000-2120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-2000-2121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-2000-2122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-2000-2123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-2000-2125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-2000-2131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-2000-2135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-2138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-2000-2139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-2000-2140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-2000-2141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-2000-2142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-2000-2308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-2000-2309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-2000-2310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-2000-2311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-2000-2312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }],
+ //
+ "s-444-1000-3101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-1000-3103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-1000-3108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-1000-3111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-1000-3112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-3113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-1000-3114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-1000-3115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-1000-3116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-1000-3117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-1000-3118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-1000-3119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-1000-3120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-1000-3121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-1000-3122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-1000-3123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-1000-3125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-1000-3131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-1000-3135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-1000-3138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-1000-3139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-1000-3140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-1000-3141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-1000-3142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-1000-3308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-1000-3309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-1000-3310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-1000-3311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-1000-3312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }],  
+ "s-444-2000-3101": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "锤地 270 重击" }], 
+ "s-444-2000-3103": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "前砸 闪避" }], 
+ "s-444-2000-3108": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "丢锤 (晕眩)" }], 
+ "s-444-2000-3111": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "后砸 (慢慢慢慢)" }],  
+ "s-444-2000-3112": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-3113": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "点名 (闪避)" }],  
+ "s-444-2000-3114": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "捶地 (秒杀)" }],  
+ "s-444-2000-3115": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 蓄力(击飞)" }],  
+ "s-444-2000-3116": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "甜甜圈" }],   
+ "s-444-2000-3117": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "随仇->跳劈 (击倒)" }],  
+ "s-444-2000-3118": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "主仇->跳劈 (击倒)" }],  
+ "s-444-2000-3119": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 安全→ (坦左移)" }],  
+ "s-444-2000-3120": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 安全← (坦右移)" }],  
+ "s-444-2000-3121": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  (4连半月)" }],  
+ "s-444-2000-3122": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第3下加速'" }],  
+ "s-444-2000-3123": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左  第2下加速" }],  
+ "s-444-2000-3125": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右 前砸(闪) | 后拉" }],  
+ "s-444-2000-3131": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 范围(挡) | 后拉" }],  
+ "s-444-2000-3135": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "完美格挡" }],  
+ "s-444-2000-3138": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "左 蓄力(击飞)" }],  
+ "s-444-2000-3139": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "转圈 (击倒)" }],  
+ "s-444-2000-3140": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  (4连半月)" }],  
+ "s-444-2000-3141": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第3下加速" }],  
+ "s-444-2000-3142": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "右  第2下加速" }],  
+ "s-444-2000-3308": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第1次晕" }],  
+ "s-444-2000-3309": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第2次晕" }],  
+ "s-444-2000-3310": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "第3次晕" }],  
+ "s-444-2000-3311": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (右手放锤)" }],  
+ "s-444-2000-3312": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "补师开盾 (左右放锤)" }]  
 
 };

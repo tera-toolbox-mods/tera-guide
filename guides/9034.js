@@ -10,10 +10,10 @@ function single_stage_callout(message, handlers, event, entity) {
 		});
 	}
 }
-
+	//"s-434-6000-2134": [{"type": "func","func": single_stage_callout.bind(null, "SLAM + BACK")}],
 // First Floor
 
-// Knockback
+// Knockback  5秒内连续出2次 固定处某技能 
 let knockbackCounter = 0;
 let knockbackTimer;
 
@@ -125,51 +125,7 @@ function cage_set_debuff(id, bool) {
 
 // Debuff Tracker
 
-let debuff_tracker_started = false;
 
-let debuffs_fifthfloor = {
-	90340501: {name: "FIRE", count: 0},
-	90340502: {name: "ICE", count: 0},
-};
-
-let debuff_call_event = null;
-
-function start_fifthfloor(handlers, event, entity, dispatch) {
-	const abnormality_change = (added, event) => {
-		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_fifthfloor[event.id]) {
-				if (added) {
-					debuffs_fifthfloor[event.id].count++;
-				} else {
-					debuffs_fifthfloor[event.id].count--;
-				}
-
-				if (debuff_call_event) {
-					clearTimeout(debuff_call_event);
-				}
-
-				debuff_call_event = setTimeout(() => {
-					let buffer = [];
-
-					for (const entry of Object.values(debuffs_fifthfloor)) {
-						buffer.push(`${entry.name}: ${entry.count}`);
-					}
-
-					handlers['text']({
-			        	"sub_type": "notification",
-						"message": buffer.join(" - ")
-			        });
-
-					debuff_call_event = null;
-				}, 200);
-		}
-	};
-
-	if (!debuff_tracker_started) {
-		dispatch.hook('S_ABNORMALITY_BEGIN', 2, abnormality_change.bind(null, true));
-		dispatch.hook('S_ABNORMALITY_END', 1, abnormality_change.bind(null, false));
-		debuff_tracker_started = true;
-	}
-}
 
 // Mobs Wave Attack Flowers
 
@@ -404,42 +360,27 @@ module.exports = {
 	"ae-0-0-90340314": [{"type": "func","func": cage_set_debuff.bind(null, 4, true)}],
 	"ae-0-0-90340315": [{"type": "func","func": cage_set_debuff.bind(null, 4, false)}],
 
-	// Not Enraged
-	"s-434-3000-1112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
-	"s-434-3000-1130": [{"type": "text","sub_type": "notification","message": "LEFT SWIPE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
-	"s-434-3000-1131": [{"type": "text","sub_type": "notification","message": "RIGHT SWIPE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
-	"s-434-3000-1134": [{"type": "func","func": single_stage_callout.bind(null, "DEBUFF")}],
-	"s-434-3000-1502": [{"type": "func","func": single_stage_callout.bind(null, "FORCED CAGE")}],
 
 
-	// Enraged
-	"s-434-3000-2112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}],
-	"s-434-3000-2130": [{"type": "text","sub_type": "notification","message": "LEFT SWIPE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
-	"s-434-3000-2131": [{"type": "text","sub_type": "notification","message": "RIGHT SWIPE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
-	"s-434-3000-2134": [{"type": "func","func": single_stage_callout.bind(null, "DEBUFF")}],
-	"s-434-3000-2502": [{"type": "func","func": single_stage_callout.bind(null, "FORCED CAGE")}],
 
-	// Fourth Floor
 
-	// Not Enraged
-	"s-434-4000-1102": [{"type": "func","func": single_stage_callout.bind(null, "INNER RINGS")}],
-	"s-434-4000-1103": [{"type": "func","func": single_stage_callout.bind(null, "OUTER RINGS")}],
-	"s-434-4000-1107": [{"type": "func","func": single_stage_callout.bind(null, "BACK")}],
-	"s-434-4000-1108": [{"type": "text","sub_type": "notification","message": "LINES"}],
-	"s-434-4000-1109": [{"type": "func","func": single_stage_callout.bind(null, "SINGLE LASER")}],
-	"s-434-4000-1114": [{"type": "text","sub_type": "notification","message": "SECONDARY AOE"}],
-	"s-434-4000-1205": [{"type": "text","sub_type": "notification","message": "360 LASER + WORMS"}],
-	"s-434-4000-1206": [{"type": "text","sub_type": "notification","message": "TRIPLE LASER"}],
+	"s-434-3000-112": [{"type": "func","func": single_stage_callout.bind(null, "STAB + KNOCKUP")}], //
+	//左边安全区
+	"s-434-3000-130": [{"type": "text","sub_type": "notification","message": "LEFT SWIPE"}, 
+	{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, 
+	{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": 1, "ownerName": "SAFE SPOT", "message": "SAFE"}, 
+	{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 2.3}, 
+	{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": 1}],
+	//右边安全区	
+	"s-434-3000-131": [{"type": "text","sub_type": "notification","message": "RIGHT SWIPE"}, 
+	{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, 
+	{"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"},
+	{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3},
+	{"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
+	
+	"s-434-3000-134": [{"type": "func","func": single_stage_callout.bind(null, "DEBUFF")}],       //
+	"s-434-3000-502": [{"type": "func","func": single_stage_callout.bind(null, "FORCED CAGE")}], //
 
-	// Enraged
-	"s-434-4000-2102": [{"type": "func","func": single_stage_callout.bind(null, "INNER RINGS")}],
-	"s-434-4000-2103": [{"type": "func","func": single_stage_callout.bind(null, "OUTER RINGS")}],
-	"s-434-4000-2107": [{"type": "func","func": single_stage_callout.bind(null, "BACK")}],
-	"s-434-4000-2108": [{"type": "text","sub_type": "notification","message": "LINES"}],
-	"s-434-4000-2109": [{"type": "func","func": single_stage_callout.bind(null, "SINGLE LASER")}],
-	"s-434-4000-2114": [{"type": "text","sub_type": "notification","message": "SECONDARY AOE"}],
-	"s-434-4000-2205": [{"type": "text","sub_type": "notification","message": "360 LASER + WORMS"}],
-	"s-434-4000-2206": [{"type": "text","sub_type": "notification","message": "TRIPLE LASER"}],
 
 
 	// Fifth Floor
@@ -451,60 +392,7 @@ module.exports = {
 	"s-434-5002-3106": mobflowers_fifthfloor,
 	"s-434-5003-3101": mobflowers_fifthfloor,	
 
-	// Not Enraged
-	"s-434-5000-1103": [{"type": "text","sub_type": "notification","message": "TAIL"}],
-	"s-434-5000-1104": [{"type": "text","sub_type": "notification","message": "ICE"}],
-	"s-434-5000-1105": [{"type": "text","sub_type": "notification","message": "FIRE"}],
-	"s-434-5000-1107": [{"type": "text","sub_type": "notification","message": "DOUBLE PAW"}],
-	"s-434-5000-1108": [{"type": "text","sub_type": "notification","message": "FIRE SPIN"}],
-	"s-434-5000-1109": [{"type": "text","sub_type": "notification","message": "ICE SPIN"}],
-	"s-434-5000-1118": [{"type": "func","func": single_stage_callout.bind(null, "BIG JUMP")}],
-	"s-434-5000-1119": [{"type": "text","sub_type": "notification","message": "STUN"}],
-	"s-434-5000-1120": [{"type": "text","sub_type": "notification","message": "STUN"}],
-	"s-434-5000-1124": [{"type": "text","sub_type": "notification","message": "SMALL JUMP"}],
 
-	// Enraged
-	"s-434-5000-2103": [{"type": "text","sub_type": "notification","message": "TAIL"}],
-	"s-434-5000-2104": [{"type": "text","sub_type": "notification","message": "ICE"}],
-	"s-434-5000-2105": [{"type": "text","sub_type": "notification","message": "FIRE"}],
-	"s-434-5000-2107": [{"type": "text","sub_type": "notification","message": "DOUBLE PAW"}],
-	"s-434-5000-2108": [{"type": "text","sub_type": "notification","message": "FIRE SPIN"}],
-	"s-434-5000-2109": [{"type": "text","sub_type": "notification","message": "ICE SPIN"}],
-	"s-434-5000-2118": [{"type": "func","func": single_stage_callout.bind(null, "BIG JUMP")}],
-	"s-434-5000-2119": [{"type": "text","sub_type": "notification","message": "STUN"}],
-	"s-434-5000-2120": [{"type": "text","sub_type": "notification","message": "STUN"}],
-	"s-434-5000-2124": [{"type": "text","sub_type": "notification","message": "SMALL JUMP"}],
-
-	// Sixth Floor
-
-	// Crystal Spawn
-	"dm-0-0-9034601": [{"type": "text","sub_type": "notification","message": "CRYSTAL SPAWNED"}],
-
-	// Not Enraged
-	"s-434-6000-1101": [{"type": "text","sub_type": "notification","message": "PRISON"}],
-	"s-434-6000-1103": [{"type": "func","func": single_stage_callout.bind(null, "SLAM")}],
-	"s-434-6000-1104": [{"type": "func","func": single_stage_callout.bind(null, "SLAM + BACK")}],
-	"s-434-6000-1106": [{"type": "func","func": single_stage_callout.bind(null, "BARRAGE + SLAM")}],
-	"s-434-6000-1107": [{"type": "func","func": single_stage_callout.bind(null, "BOMB")}],
-	"s-434-6000-1108": [{"type": "func","func": single_stage_callout.bind(null, "TRIPLE BOMB")}],
-	"s-434-6000-1109": [{"type": "func","func": single_stage_callout.bind(null, "SINGLE SWING")}],
-	"s-434-6000-1110": [{"type": "func","func": single_stage_callout.bind(null, "DOUBLE SWING")}],
-	"s-434-6000-1113": [{"type": "func","func": single_stage_callout.bind(null, "LASER")}],
-	"s-434-6000-1133": [{"type": "func","func": single_stage_callout.bind(null, "SLAM")}],
-	"s-434-6000-1134": [{"type": "func","func": single_stage_callout.bind(null, "SLAM + BACK")}],
-
-	// Enraged
-	"s-434-6000-2101": [{"type": "text","sub_type": "notification","message": "PRISON"}],
-	"s-434-6000-2103": [{"type": "func","func": single_stage_callout.bind(null, "SLAM")}],
-	"s-434-6000-2104": [{"type": "func","func": single_stage_callout.bind(null, "SLAM + BACK")}],
-	"s-434-6000-2106": [{"type": "func","func": single_stage_callout.bind(null, "BARRAGE + SLAM")}],
-	"s-434-6000-2107": [{"type": "func","func": single_stage_callout.bind(null, "BOMB")}],
-	"s-434-6000-2108": [{"type": "func","func": single_stage_callout.bind(null, "TRIPLE BOMB")}],
-	"s-434-6000-2109": [{"type": "func","func": single_stage_callout.bind(null, "SINGLE SWING")}],
-	"s-434-6000-2110": [{"type": "func","func": single_stage_callout.bind(null, "DOUBLE SWING")}],
-	"s-434-6000-2113": [{"type": "func","func": single_stage_callout.bind(null, "LASER")}],
-	"s-434-6000-2133": [{"type": "func","func": single_stage_callout.bind(null, "SLAM")}],
-	"s-434-6000-2134": [{"type": "func","func": single_stage_callout.bind(null, "SLAM + BACK")}],
 
 	// Seventh Floor
 
@@ -516,17 +404,8 @@ module.exports = {
 	"s-434-7000-1905": [{"type": "text","sub_type": "notification","message": "SPREAD"}].concat(lasers_markers_seventhfloor),
 	"s-434-7000-1906": [{"type": "text","sub_type": "notification","message": "GATHER"}].concat(inverted_lasers_markers_seventhfloor),
 
-	// Hold (BACK + STAB)
-	"s-434-7000-1701": [{"type": "text","sub_type": "notification","message": "BACK + STAB"}],
 
-	// Not Enraged
-	"s-434-7000-1152": [{"type": "func","func": single_stage_callout.bind(null, "STUN + BACK")}],
-	"s-434-7000-1138": rings_inout_seventhfloor,
-	"s-434-7000-1154": [{"type": "text","sub_type": "notification","message": "OUT + IN"}],
-	"s-434-7000-1155": [{"type": "text","sub_type": "notification","message": "IN + OUT"}],
-	"s-434-7000-1240": [{"type": "func","func": rings_seventhfloor}],
-	"s-434-7000-1401": [{"type": "text","sub_type": "notification","message": "PLAGUE/REGRESS"}],
-	"s-434-7000-1402": [{"type": "text","sub_type": "notification","message": "SLEEP"}],
+
 
 	// Enraged
 	"s-434-7000-2152": [{"type": "func","func": single_stage_callout.bind(null, "STUN + BACK")}],
