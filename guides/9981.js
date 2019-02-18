@@ -280,8 +280,8 @@ module.exports = {
 	"s-981-2000-2131-0": [{"type": "text","sub_type": "message","message": "右劈"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -2.3, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "build_object", "id": 1, "sub_delay": 2000, "distance": 100, "offset": -1, "ownerName": "SAFE SPOT", "message": "SAFE"}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -2.3}, {"type":"spawn", "sub_type": "item", "id": 98260, "sub_delay": 2000, "distance": 100, "offset": -1}],
 	"s-981-2000-2134-0": [{"type": "func","func": single_stage_callout.bind(null, "吃注视")}],
 	"s-981-2000-2502-0": [{"type": "func","func": single_stage_callout.bind(null, "鉴定准备")}],
-	
-    "dm-0-0-9981022": [{"type": "text","sub_type": "alert","message": "鉴定"}].concat(dlw_object),
+	"s-981-2000-4000-0": [{"type": "text","sub_type": "alert","message": "鉴定！！！！"}].concat(dlw_object),	
+    "dm-0-0-9981022": [{"type": "text","sub_type": "alert","message": "鉴定"}],
 	"dm-0-0-9981023": [{"type": "text","sub_type": "message","message": "全场鉴定"}],	
 	
 //9981022
@@ -300,10 +300,16 @@ module.exports = {
 	"s-981-3000-1302-0": [{"type": "text","sub_type": "message","message": "炸弹集中 + 不 解状态"},].concat(inverted_lasers_markers_seventhfloor),//
 	"s-981-3000-3103-0": [{"type": "text","sub_type": "message","message": "闪电分散"},].concat(lasers_markers_seventhfloor),
 	"s-981-3000-3105-0": [{"type": "text","sub_type": "message","message": "闪电集中"},].concat(inverted_lasers_markers_seventhfloor),//
-	"s-981-3000-1116-0": [{"type": "text","sub_type": "message","message": "前砸慢慢慢"}],
+	"s-981-3000-1116-0": [{"type": "text","sub_type": "message","message": "前砸"}],
+	"s-981-3000-2116-0": [{"type": "text","sub_type": "message","message": "前砸"}],	//
 	"s-981-3000-1701-0": [{"type": "text","sub_type": "message","message": "后踢 + 前戳"}],
-	"s-981-3000-1136-0": [{"type": "text","sub_type": "message","message": "点名"}],
-	"s-981-3000-1152-0": [{"type": "text","sub_type": "message","message": "击晕 + 后踢 "}],	
+	"s-981-3000-1113-0": [{"type": "text","sub_type": "message","message": "点名"}],
+	"s-981-3000-1151-0": [{"type": "text","sub_type": "message","message": "注意击晕"}],	
+	"s-981-3000-2151-0": [{"type": "text","sub_type": "message","message": "注意击晕"}],	
+	"s-981-3000-2113-0": [{"type": "text","sub_type": "message","message": "点名"}],	
+	"s-981-3000-1152-0": [{"type": "text","sub_type": "message","message": "击晕 + 后踢 "}],
+	"s-981-3000-2152-0": [{"type": "text","sub_type": "message","message": "击晕 + 后踢 "}], //
+	"s-981-3000-2138-0": rings_inout_seventhfloor,// 召唤安全范围250	//
 	"s-981-3000-1138-0": rings_inout_seventhfloor,// 召唤安全范围250
 	"s-981-3000-1144-0": [{"type": "text","sub_type": "message","message": "出 "}],
 	"s-981-3000-1145-0": [{"type": "text","sub_type": "message","message": "进"}],
