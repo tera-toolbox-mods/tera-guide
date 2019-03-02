@@ -25,6 +25,6 @@ module.exports = {
 
   //  "ae-0-0-70330": [	{"type": "func","func": back_attack_HM}],
   
-	"ae-0-0-70335": [{"type": "func","func": single_stage_callout.bind(null, "STUN + BACK")}]
+	//"ae-0-0-70335": [{"type": "func","func": single_stage_callout.bind(null, "STUN + BACK")}]
 		 
 };
