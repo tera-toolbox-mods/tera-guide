@@ -29,6 +29,70 @@ handlers['text']({
     }, 3000);
 }	
 	
+let rings_inout_seventhfloor = [];
+
+const sign_offsets_seventhfloor = [0.24, 1.29, 2.33, -2.88, -1.84, -0.8];//披萨A
+for (let offset of sign_offsets_seventhfloor) {
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 559,
+        "delay": 6000,		
+    	"sub_delay": 8000,
+    	"distance": 250,
+    	"offset": offset
+    });
+}	                                                                      //外
+for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 60) {
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 559,
+        "delay": 8000,		
+    	"sub_delay": 10000,
+    	"distance": 250,
+    	"offset": angle
+    });
+}	
+	                                                                   //內
+for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 60) {
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 559,
+        "delay": 10000,		
+    	"sub_delay": 12000,
+    	"distance": 150,
+    	"offset": angle
+    });
+}		
+
+	
+	
+const sign_offsets_seventhfloor1 = [-0.26, 0.79, 1.83, 2.9, -2.34, -1.3]; //披萨B
+for (let offset of sign_offsets_seventhfloor1) {
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 559,
+        "delay": 12000,		
+    	"sub_delay": 14000,
+    	"distance": 250,
+    	"offset": offset
+    });
+}	
+	
+const sign_offsets_seventhfloor2 = [-0.26, 1.29, 2.9, -1.84]; //披萨C
+for (let offset of sign_offsets_seventhfloor2) {
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 559,
+        "delay": 14000,		
+    	"sub_delay": 16000,
+    	"distance": 250,
+    	"offset": offset
+    });
+}		
+	
+	
+	
+	
 
 	
 module.exports = {
@@ -36,7 +100,7 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
- "h-735-1000-100": [{"type": "func","func": guid_voice}],
+ "h-735-1000-100": rings_inout_seventhfloor,
 
 
 //"h-735-1000-100": [{"type": "text","sub_type": "message","message": "右劈"}].concat(dlw_object),

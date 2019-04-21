@@ -300,8 +300,8 @@ module.exports = {
 	"s-981-3000-1302-0": [{"type": "text","sub_type": "message","message": "炸弹集中 + 不 解状态"},].concat(inverted_lasers_markers_seventhfloor),//
 	"s-981-3000-3103-0": [{"type": "text","sub_type": "message","message": "闪电分散"},].concat(lasers_markers_seventhfloor),
 	"s-981-3000-3105-0": [{"type": "text","sub_type": "message","message": "闪电集中"},].concat(inverted_lasers_markers_seventhfloor),//
-	"s-981-3000-1116-0": [{"type": "text","sub_type": "message","message": "前砸"}],
-	"s-981-3000-2116-0": [{"type": "text","sub_type": "message","message": "前砸"}],	//
+	"s-981-3000-1116-0": [{"type": "text","sub_type": "message","message": "內外炸"}],
+	"s-981-3000-2116-0": [{"type": "text","sub_type": "message","message": "內外炸"}],	//
 	"s-981-3000-1701-0": [{"type": "text","sub_type": "message","message": "后踢 + 前戳"}],
 	"s-981-3000-1113-0": [{"type": "text","sub_type": "message","message": "点名"}],
 	"s-981-3000-1151-0": [{"type": "text","sub_type": "message","message": "注意击晕"}],	
