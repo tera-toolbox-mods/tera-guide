@@ -40,7 +40,7 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	if(!SPAWN_CIRCLES) continue;
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
 	    "type": "spawn",
-        "id": 548,
+        "id": 553,
         "sub_delay": 6000,
         "distance": 300,
         "offset": angle
@@ -48,14 +48,14 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	
 	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
 		"type": "spawn",
-        "id": 548,
+        "id": 553,
         "sub_delay": 6000,
         "distance": 250,
         "offset": angle
 	});
 	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
 		"type": "spawn",
-        "id": 548,
+        "id": 553,
         "sub_delay": 6000,
         "distance": 200,
         "offset": angle
@@ -150,13 +150,13 @@ module.exports = {
     "s-3101-2000-1232-0": [{"type": "text","sub_type": "message","message": "靠近"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),	
 	
     "s-3101-2000-1231-0": [{"type": "text","sub_type": "message","message": "跑远"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),		
-	
+    "s-3101-2000-1230-0": [{"type": "text","sub_type": "message","message": "全屏攻击注意沉默" }],	
    // "s-3101-2000-1232-0": [{"type": "text","sub_type": "message","message": "靠近" }],	
    // "s-3101-2000-1231-0": [{"type": "text","sub_type": "message","message": "跑远" }],	
     "s-3101-2000-2108-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "后喷" }],	
     "s-3101-2000-1108-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "后喷" }],		
     "s-3101-2000-1235-0": [{"type": "text","sub_type": "message","message": "幻觉2人吃鉴定" }],
-    "s-3101-2000-1228-0": [{"type": "text","sub_type": "message","message": "快抱团" }]
+    "s-3101-2000-1228-0": [{"type": "text","sub_type": "message","message": "组员分伤" }]
     // Third boss
 
 
