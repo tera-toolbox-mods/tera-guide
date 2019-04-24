@@ -56,6 +56,7 @@ class TeraGuide{
 		
         // A boolean indicating if a guide was found
         let guide_found = false;
+        let spguide = false;		
 		let cc = cg;
         // The guide settings for the current zone
         let active_guide = {};
@@ -166,14 +167,19 @@ class TeraGuide{
 
         // Boss skill action
         function s_action_stage(e) {
-		//	let skillid = e.skill.id % 1000;			
+			let skillid = e.skill.id % 1000;			
             // If the guide module is active and a guide for the current dungeon is found
             if(enabled && guide_found) {
+				
                 const ent = entity['mobs'][e.gameId.toString()];
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
-                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+		  if ( spguide ) {
+               if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+            }else{
+                if(ent) return handle_event(Object.assign({}, ent, e), skillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+            }
             }
         }
         dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
@@ -270,6 +276,26 @@ class TeraGuide{
             // Try loading a guide
             try {
                 active_guide = require('./guides/' + e.zone);
+				
+	      //	command.message(`進入${e.zone}`);	
+  
+
+            if ( 9781 == e.zone || 9782 == e.zone || 9783 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone || 9982 == e.zone || 9983 == e.zone) {
+			spguide = true;
+            }else{
+               spguide = false;
+		    if ( 9735 == e.zone && voice ) {
+	  setTimeout(function () {
+      voice.speak('欢迎进入rk9下级',rate)
+	 command.message(`欢迎进入rk9下级！！！！`)		  
+		   }, 8000);
+            }	else if( 3101 == e.zone && voice ) {
+	  setTimeout(function () {
+      voice.speak('欢迎进入费尔奎娜巢穴下级',rate)
+	 command.message(`欢迎进入费尔奎娜巢穴下级！！！！`)		  
+		   }, 8000);
+            }	
+            }
                 guide_found = true;
             }catch(e) {
                 active_guide = {};
