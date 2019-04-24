@@ -41,7 +41,7 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
 	    "type": "spawn",
         "id": 553,
-        "sub_delay": 6000,
+        "sub_delay": 3000,
         "distance": 300,
         "offset": angle
 	});
@@ -73,8 +73,8 @@ module.exports = {
 
     "s-3101-1000-116-0": [{"type": "text","sub_type": "message","message": "顺<---甩尾" }],	
     "s-3101-1000-117-0": [{"type": "text","sub_type": "message","message": "逆--->甩尾" }],		
-    "s-3101-1000-121-0": [{"type": "text","sub_type": "message","message": "右-->砸地" }],			
-    "s-3101-1000-122-0": [{"type": "text","sub_type": "message","message": "左<--砸地" }],
+    "s-3101-1000-121-0": [{"type": "text","sub_type": "message","message": "右-->" }],			
+    "s-3101-1000-122-0": [{"type": "text","sub_type": "message","message": "左<--" }],
 	"s-3101-1000-124-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "注意晕眩"}],
 	"s-3101-1000-127-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "后喷"},
 	                       {"type": "text","class_position":"heal","sub_type": "message","message": "后喷"}],	
@@ -99,18 +99,22 @@ module.exports = {
     "s-3101-2000-232-0": [{"type": "text","sub_type": "message","message": "靠近"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),	
     "s-3101-2000-231-0": [{"type": "text","sub_type": "message","message": "跑远"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),		
     "s-3101-2000-230-0": [{"type": "text","sub_type": "message","message": "全屏攻击注意沉默" }],	
-    "s-3101-2000-108-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "前插+后喷" }],	
+    "s-3101-2000-108-0": [{"type": "text","sub_type": "message","message": "前插+后喷" }],	
     "s-3101-2000-235-0": [{"type": "text","sub_type": "message","message": "注视2人吃鉴定" }],
-    "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "组员分伤" }],
+  //  "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "组员分伤" }],
 	//-----------------------------------------------------------------------------------------------------------------------------------
-    "s-3101-2000-101-0": [{"type": "text","sub_type": "message","message": "右手 左手" }],	
-    "s-3101-2000-102-0": [{"type": "text","sub_type": "message","message": "左手 右手" }],	
-    "s-3101-2000-103-0": [{"type": "text","sub_type": "message","message": "旋转顺" }],
-    "s-3101-2000-104-0": [{"type": "text","sub_type": "message","message": "右手" }],
-    "s-3101-2000-105-0": [{"type": "text","sub_type": "message","message": "前突刺" }],
+	
+
+	
+	
+    "s-3101-2000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "右手 左手" }],	
+    "s-3101-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "左手 右手" }],	
+    "s-3101-2000-103-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "旋转顺" }],
+    "s-3101-2000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "右手" }],
+    "s-3101-2000-105-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "前突刺" }],
     "s-3101-2000-106-0": [{"type": "text","sub_type": "message","message": "！" }],
-    "s-3101-2000-107-0": [{"type": "text","sub_type": "message","message": "左手" }],	
-    "s-3101-2000-109-0": [{"type": "text","sub_type": "message","message": "4连击" }],	
+    "s-3101-2000-107-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "左手" }],	
+    "s-3101-2000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "4连击" }],	
     "s-3101-2000-110-0": [{"type": "text","sub_type": "message","message": "飞天" }],	
     "s-3101-2000-111-0": [{"type": "text","sub_type": "message","message": "飞天飞剑1" }],		
     "s-3101-2000-112-0": [{"type": "text","sub_type": "message","message": "飞天飞剑2" }],	
