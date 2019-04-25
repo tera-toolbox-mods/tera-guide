@@ -286,7 +286,9 @@ class TeraGuide{
                 guide_found = true;
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		if (StrSheet_Dungeon_String) {
+			
 		speak_voice('欢迎进入' + StrSheet_Dungeon_String.string , 8000, rate)
+		
 		} 
             }catch(e) {
                 active_guide = {};
@@ -738,10 +740,13 @@ class TeraGuide{
 		
 		function speak_voice ( alerts, delay, rate) {
         setTimeout(()=> {
-                        voice.speak(alerts,rate)
-                        command.message( cg + alerts );				
-                        }, delay );				
-		
+			if(voice){
+          voice.speak(alerts,rate)
+          command.message( cg + alerts );	
+			} else {
+          command.message( cr + alerts );	
+			}			
+          }, delay );				
         }		
     }
 }
