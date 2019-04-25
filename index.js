@@ -7,6 +7,7 @@ catch(e) { voice = null; }
 const TANK_CLASS_IDS = [1, 10];
 // Dps class ids(not counting warrior)
 const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
+const MapID = require('./StrSheet_Dungeon-0.json').String;
 // Healer class ids
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
@@ -64,6 +65,7 @@ class TeraGuide{
         // All of the timers, where the key is the id
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};	
+		let StrSheet_Dungeon_String = [];
         /** HELPER FUNCTIONS **/
 
         // Write generic debug message used when creating guides
@@ -272,31 +274,20 @@ class TeraGuide{
                 delete require.cache[require.resolve('./guides/' + e.zone)];
             }catch(e) {}
             
-
             // Try loading a guide
             try {
                 active_guide = require('./guides/' + e.zone);
-				
-	      //	command.message(`進入${e.zone}`);	
-  
 
             if ( 9781 == e.zone || 9782 == e.zone || 9783 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone || 9982 == e.zone || 9983 == e.zone) {
 			spguide = true;
-            }else{
+            }else{				
                spguide = false;
-		    if ( 9735 == e.zone && voice ) {
-	  setTimeout(function () {
-      voice.speak('欢迎进入rk9下级',rate)
-	 command.message(`欢迎进入rk9下级！！！！`)		  
-		   }, 8000);
-            }	else if( 3101 == e.zone && voice ) {
-	  setTimeout(function () {
-      voice.speak('欢迎进入费尔奎娜巢穴下级',rate)
-	 command.message(`欢迎进入费尔奎娜巢穴下级！！！！`)		  
-		   }, 8000);
-            }	
             }
                 guide_found = true;
+		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
+		if (StrSheet_Dungeon_String) {
+		speak_voice('欢迎进入' + StrSheet_Dungeon_String.string , 8000, rate)
+		} 
             }catch(e) {
                 active_guide = {};
                 guide_found = false;
@@ -744,6 +735,14 @@ class TeraGuide{
             // Start the timer for the function call
             timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
         }
+		
+		function speak_voice ( alerts, delay, rate) {
+        setTimeout(()=> {
+                        voice.speak(alerts,rate)
+                        command.message( cg + alerts );				
+                        }, delay );				
+		
+        }		
     }
 }
 
