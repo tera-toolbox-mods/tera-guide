@@ -11,7 +11,7 @@ let guidetimer;//
    function guid_voice(handlers) {   
 	  clearTimeout(guidetimer);
       guidecounter++;
-    if(guidecounter >= 2) {	
+    if(guidecounter >= 3) {	
 handlers['text']({
 "sub_type": "message",
 "delay": 2000,
