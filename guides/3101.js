@@ -101,7 +101,7 @@ module.exports = {
     "s-3101-2000-230-0": [{"type": "text","sub_type": "message","message": "全屏攻击注意沉默" }],	
     "s-3101-2000-108-0": [{"type": "text","sub_type": "message","message": "前插+后喷" }],	
     "s-3101-2000-235-0": [{"type": "text","sub_type": "message","message": "注视2人吃鉴定" }],
-  //  "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "组员分伤" }],
+    "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "组员分伤" }],
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	
 
@@ -150,7 +150,7 @@ module.exports = {
     "s-3101-2000-225-0": [{"type": "text","sub_type": "message","message": "！" }],
     "s-3101-2000-226-0": [{"type": "text","sub_type": "message","message": "空中吸收 蓄力" }],	
     "s-3101-2000-227-0": [{"type": "text","sub_type": "message","message": "5人隐形透明" }],
-    "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "开始" }],	
+  //  "s-3101-2000-228-0": [{"type": "text","sub_type": "message","message": "开始" }],	
     "s-3101-2000-229-0": [{"type": "text","sub_type": "message","message": "3个宝石种子传唤" }],	
     "s-3101-2000-233-0": [{"type": "text","sub_type": "message","message": "5个宝石种子传唤" }],
     "s-3101-2000-234-0": [{"type": "text","sub_type": "message","message": "注视" }]
