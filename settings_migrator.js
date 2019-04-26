@@ -1,3 +1,4 @@
+"use strict"
 const DefaultSettings = {
     "enabled": true,
     "systemNotice": false,
