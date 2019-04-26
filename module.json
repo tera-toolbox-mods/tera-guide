@@ -1,14 +1,17 @@
+
 {
-	"disableAutoUpdate": false,
+    "disableAutoUpdate": false,
+    "name": "TERA-Guide",
+    "options": {
+        "niceName": "副本提示",
+        "guiName": "副本提示",
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js",
+        "settingsVersion": 1
+    },
+    "author": "Kasea/michengs",
+    "description": "副本补助，教玩副本",
 	"servers": ["https://raw.githubusercontent.com/michengs/tera-guide/master/"],
 	"supportUrl": "https://github.com/michengs/tera-guide/pulls",
-	"name": "tera-guide",
-	"author": "Kasea/michengs",
-	"dependencies": {
-		"library": "https://raw.githubusercontent.com/michengs/library/master/module.json"
-	},
-	"options": {
-		"guiName": "Tera Guide"
-	},
-	"description": "Guides you in Tera"
+    "version": "81.03"
 }

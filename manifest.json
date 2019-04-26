@@ -2,7 +2,7 @@
 	"files": {
 		"LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
 		"StrSheet_Dungeon-0.json": "b9160cbca12f986179165ffc9723e65a71298332e4804988f6f2aba5cf899333",
-		"config.json": "73d16c59750b65edf93bb0eec54bfce382cbe10a45f6c7bbae1ff79e41ddd961",
+		"config.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
 		"dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
 		"guides/3101.js": "e638ddf11c43f4d098a060ee7ad81ed1ec412ec6ee51d365082938b31cbe1be9",
 		"guides/7001.js": "aa7e6a17850d33acdde77119338685b5ab6b51f6323c6f05e39b3d9f9aaf9601",
@@ -18,10 +18,11 @@
 		"guides/9981.js": "0ee82e521f37cdda180ac08311827dc80c024e50a5deab2143938a2439bfa47e",
 		"guides/9982.js": "db69fe117dd882210ebece8cc9e7a82bd799b1518c30427e6233b728cbfc93f7",
 		"guides/9983.js": "d4148c07d9b8d3e63c798d19013dfae76b64f217c6f705e5e302b0a0502b27fb",
-		"index.js": "673bc46b19d14a5fb7a7c4bb6f8c7c3902f9dc310b6ab10b09af4da73a9d3a45",
+		"index.js": "8094ac92dad7465d994d4c10d2335ad0fedcf20ba192b7d3f4909a0424710cc7",
 		"lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
-		"module.json": "aa8bda059f517cf6e13118ca1e12a2e9f4cec7fb1ebea736ae28ac269be1cf1e",
-		"readme.md": "4697367b1872c33c55e860038e194e699d7b4b0b7231a469bc07c541f70bc62d"
+		"module.json": "bc8c790cc319ebf4db0580fdd3ba83daa8adb98e3aca7772ec73af982e212b60",
+		"readme.md": "4697367b1872c33c55e860038e194e699d7b4b0b7231a469bc07c541f70bc62d",
+		"settings_migrator.js": "f009d1be6d3a65b460a8aaca80aa2e7ead06a5296152c34f3f6f68de9690d288"
 	},
 	"defs": {
 		"S_ABNORMALITY_BEGIN": 3,

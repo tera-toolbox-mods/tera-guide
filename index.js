@@ -1,4 +1,6 @@
 const DispatchWrapper = require('./dispatch');
+const fs = require('fs');
+const path = require('path');
 const config = require('./config');
 let voice = null;
 try { voice = require('voice') }
@@ -25,6 +27,16 @@ const clb = '</font><font color="#00ffff">';//LIGHT BLUE 浅蓝色
 const cbl = '</font><font color="#000000">';//BLACK 黑色
 const cgr = '</font><font color="#777777">';//GRAY 灰色
 const cw = '</font><font color="#ffffff">';//WHITE 白色	
+const rate1 = 1;
+const rate2 = 2;
+const rate3 = 3;
+const rate4 = 4;
+const rate5 = 5;
+const rate6 = 6;
+const rate7 = 7;
+const rate8 = 8;
+const rate9 = 9;
+const rate10 = 10;
 
 class TeraGuide{
     constructor(dispatch) {
@@ -41,27 +53,32 @@ class TeraGuide{
             "stop_timer": stop_timer_handler,
             "func": func_handler,
             "lib": require('./lib')
-        };
+        };	
+	if (dispatch.proxyAuthor !== 'caali') {
+		const options = require('./module').options;
+		if (options) {
+			const settingsVersion = options.settingsVersion;
+			if (settingsVersion) {
+				dispatch.settings = require('./' + (options.settingsMigrator || 'settings_migrator.js'))(dispatch.settings._version, settingsVersion, dispatch.settings);
+				dispatch.settings._version = settingsVersion;
+			}
+		}
+	}		
+
         // export functionality for 3rd party modules
         this.handlers = function_event_handlers;
 
         // A boolean for if the module is enabled or not
-        let enabled = config['enabled'];
+
         // A boolean for the debugging settings
         let debug = config['debug'];
-        // A boolean for streamer mode
-        let stream = config['stream'];
-        let speaks = config['speaks'];
-        let notice = config['notice'];	
-        let systemNotice = config['systemNotice'];	
-		
+
         // A boolean indicating if a guide was found
         let guide_found = false;
         let spguide = false;		
-		let cc = cg;
+		//let cc = cg;
         // The guide settings for the current zone
         let active_guide = {};
-        let rate = 1 ;
         // All of the timers, where the key is the id
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};	
@@ -73,9 +90,6 @@ class TeraGuide{
             if(d) {
                 console.log(`[${Date.now() % 100000}][Guide]`, ...args);
 
-				
-				// command.message(args.toString());
-				
                 if(debug.chat) command.message(args.toString());
             }
         }
@@ -171,7 +185,7 @@ class TeraGuide{
         function s_action_stage(e) {
 			let skillid = e.skill.id % 1000;			
             // If the guide module is active and a guide for the current dungeon is found
-            if(enabled && guide_found) {
+            if(dispatch.settings.enabled && guide_found) {
 				
                 const ent = entity['mobs'][e.gameId.toString()];
                 // Due to a bug for some bizare reason(probably proxy fucking itself) we do this ugly hack
@@ -191,7 +205,7 @@ class TeraGuide{
         // Boss abnormality triggered
         function abnormality_triggered(e) {
             // If the guide module is active and a guide for the current dungeon is found
-            if(enabled && guide_found) {
+            if(dispatch.settings.enabled && guide_found) {
                 // avoid errors ResidentSleeper (neede for abnormality refresh)
                 if(!e.source) e.source = 0n;
 
@@ -222,7 +236,7 @@ class TeraGuide{
         // Boss health bar triggered
         dispatch.hook('S_BOSS_GAGE_INFO', 3, e=> {
              // If the guide module is active and a guide for the current dungeon is found
-             if(enabled && guide_found) {
+             if(dispatch.settings.enabled && guide_found) {
                 const ent = entity['mobs'][e.id.toString()];
                 // We've confirmed it's a mob, so it's plausible we want to act on this
                 if(ent) return handle_event(ent, Math.floor(Number(e.curHp) / Number(e.maxHp) * 100), 'Health', 'h', debug.debug || debug.hp);
@@ -232,7 +246,7 @@ class TeraGuide{
         /** S_DUNGEON_EVENT_MESSAGE **/
 
         dispatch.hook('S_DUNGEON_EVENT_MESSAGE', 2, e=> {
-            if (enabled && guide_found) {
+            if (dispatch.settings.enabled && guide_found) {
                 const result = /@dungeon:(\d+)/g.exec(e.message);
                 if (result) {
                     handle_event({
@@ -246,7 +260,7 @@ class TeraGuide{
         /** S_QUEST_BALLOON **/
 
         dispatch.hook('S_QUEST_BALLOON', 1, e=> {
-            if (enabled && guide_found) {
+            if (dispatch.settings.enabled && guide_found) {
                 const source_ent = entity['mobs'][e.source.toString()];
                 const result = /@monsterBehavior:(\d+)/g.exec(e.message);
                 if (result && source_ent) {
@@ -287,7 +301,7 @@ class TeraGuide{
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		if (StrSheet_Dungeon_String) {
 			
-		speak_voice('欢迎进入' + StrSheet_Dungeon_String.string , 8000, rate)
+		speak_voice('欢迎进入' + StrSheet_Dungeon_String.string , 8000)
 		
 		} 
             }catch(e) {
@@ -303,7 +317,7 @@ class TeraGuide{
         });
 
         // Guide command
-        command.add(['guide','補助'], {
+        command.add(['guide','補助','辅助'], {
             // Toggle debug settings
             debug(arg1) {
                 if(!arg1 || debug[arg1] === undefined) return command.message(`Invalid sub command for debug mode. ${arg1}`);
@@ -327,124 +341,153 @@ class TeraGuide{
       	command.message(`需要voice依赖`);
 			 return;		
 			}
-            	speaks = !speaks;
-            	command.message(`语音通知 ${speaks?"开启":"关闭"}.`);
+            	dispatch.settings.speaks = !dispatch.settings.speaks;
+            	command.message(`语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`);
             },	
             語音() {
          if(!voice){
       	command.message(`需要voice依赖`);
 			 return;		
 			}
-            	speaks = !speaks;
-            	command.message(`语音通知 ${speaks?"开启":"关闭"}.`);
+            	dispatch.settings.speaks = !dispatch.settings.speaks;
+            	command.message(`语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`);
             },
             通知() {
-            	stream = !stream;
-            	command.message(`消息通知已 ${stream?"关闭":"开启"}.`);
+            	dispatch.settings.stream = !dispatch.settings.stream;
+            	command.message(`消息通知已 ${dispatch.settings.stream?"关闭":"开启"}.`);
             },
             組隊長通知() {
-            	notice = !notice;	
-            	command.message(`虚拟队长通知已 ${notice?"开启":"关闭"}.`);
+            	dispatch.settings.notice = !dispatch.settings.notice;	
+            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
             },				
             组队长通知() {
-            	notice = !notice;	
-            	command.message(`虚拟队长通知已 ${notice?"开启":"关闭"}.`);
+            	dispatch.settings.notice = !dispatch.settings.notice;	
+            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
             },	
             組隊通知() {
-				notice = !notice;
-            	command.message(`组队通知已 ${systemNotice?"开启":"关闭"}.`);
+				dispatch.settings.notice = !dispatch.settings.notice;
+            	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
             },	
             组队通知() {
-            	systemNotice = !systemNotice;
-            	command.message(`组队通知已 ${systemNotice?"开启":"关闭"}.`);
+            	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
+            	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
+            },
+            1() {
+            	
+            	command.message(`语音速度1`);
+	           dispatch.settings.rate.splice(0,1, rate1);			
             },			
             2() {
-            	rate = 2
-            	command.message(`语音速度2`);			
+        
+            	command.message(`语音速度2`);
+	           dispatch.settings.rate.splice(0,1, rate2);			
             },
             3() {
-            	rate = 3
+            
             	command.message(`语音速度3`);
+	           dispatch.settings.rate.splice(0,1, rate3);					
             },	
             4() {
-            	rate = 4
+            
             	command.message(`语音速度4`);
+	           dispatch.settings.rate.splice(0,1, rate4);					
             },				
             5() {
-            	rate = 5
+            
             	command.message(`语音速度5`);
+	           dispatch.settings.rate.splice(0,1, rate5);					
             },
             6() {
-            	rate = 6
+            	
             	command.message(`语音速度6`);
+	           dispatch.settings.rate.splice(0,1, rate6);					
             },	
             7() {
-            	rate = 7
+            
             	command.message(`语音速度7`);
+	           dispatch.settings.rate.splice(0,1, rate7);					
             },				
             8() {
-            	rate = 8
+            
             	command.message(`语音速度8`);
+	           dispatch.settings.rate.splice(0,1, rate8);					
             },	
 	        9() {
-            	rate = 9
+            	
             	command.message(`语音速度10`);
+	           dispatch.settings.rate.splice(0,1, rate9);					
             },			
             10() {
-            	rate = 10
+            	
             	command.message(`语音速度10`);
+	           dispatch.settings.rate.splice(0,1, rate10);					
             },
+
             cr() {
-            	cc = cr
-            	command.message( cr +"系统消息通知颜色红色");
+               command.message( cr +"系统消息通知颜色红色");
+	           dispatch.settings.cc.splice(0,1, cr );		   
             },
+            cc() {
+            
+            	command.message( dispatch.settings.cc +"查看系统消息通知颜色");
+			   
+            },			
             co() {
-            	cc = co
             	command.message( co +"系统消息通知颜色橘色");
+	           dispatch.settings.cc.splice(0,1, co);					
             },
             cy() {
-            	cc = cy
             	command.message( cy +"系统消息通知颜色黄色");
+	           dispatch.settings.cc.splice(0,1, cy);					
             },
             cg() {
-            	cc = cg
             	command.message( cg +"系统消息通知颜色绿色");
+	           dispatch.settings.cc.splice(0,1, cg);					
             },
             cdb() {
-            	cc = cdb
+
             	command.message( cdb +"系统消息通知颜色深蓝色");
+	           dispatch.settings.cc.splice(0,1, cr);					
             },
             cb() {
-            	cc = cb
+
             	command.message( cb +"系统消息通知颜色蓝色");
+	           dispatch.settings.cc.splice(0,1, cb);				
             },
             cv() {
-            	cc = cv
+
             	command.message( cv +"系统消息通知颜色紫色");
+	           dispatch.settings.cc.splice(0,1, cv);				
             },
             cp() {
-            	cc = cp
+
             	command.message( cp +"系统消息通知颜色粉色");
+	           dispatch.settings.cc.splice(0,1, cp);				
             },
             clp() {
-            	cc = clp
+
             	command.message( clp +"系统消息通知颜色浅粉色");
+	           dispatch.settings.cc.splice(0,1, clp);				
             },
             clb() {
-            	cc = clb
+
             	command.message( clb +"系统消息通知颜色浅蓝色");
+	           dispatch.settings.cc.splice(0,1, clb);				
             },
             cbl() {
-            	cc = cbl
+
             	command.message( cbl +"系统消息通知颜色黑色");
+	           dispatch.settings.cc.splice(0,1, cbl);				
             },
             cgr() {
-            	cc = cgr
+
             	command.message( cgr +"系统消息通知颜色灰色");
+	           dispatch.settings.cc.splice(0,1, cgr);				
             },	
             cw() {
-            	cc = cw
+
             	command.message( cw +"系统消息通知颜色白色");
+	           dispatch.settings.cc.splice(0,1, cw);				
             },
 
 			
@@ -454,7 +497,8 @@ class TeraGuide{
 		command.message('補助 通知， 副本通知开/关');
 		command.message('補助 组队通知， 组队通知开/关');
 		command.message('補助 组队长通知，组队长通知开/关');		
-		command.message('補助 2~10，调节语音速度10为最快语速，默认为1正常速度');
+		command.message('補助 1~10，调节语音速度10为最快语速，默认为1正常速度');
+		command.message(dispatch.settings.cc + '補助 cc，查看当前系统消息通知颜色');		
 		command.message(cr + '補助 cr，系统消息通知颜色为红色 ');
 		command.message(co + '補助 co，系统消息通知颜色为橙色 ');
 		command.message(cy + '補助 cy，系统消息通知颜色为黄色 ');
@@ -470,11 +514,11 @@ class TeraGuide{
 		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
             },
             $default() {
-                enabled = !enabled;
-                command.message(`副本補助已 ${enabled?"开启":"关闭"}.`);
+              dispatch.settings.enabled = !dispatch.settings.enabled;
+                command.message(`副本補助已 ${dispatch.settings.enabled?"开启":"关闭"}.`);
             }
         });
-
+		
         /** Function/event handlers for types **/
 
         // Spawn handler
@@ -485,8 +529,8 @@ class TeraGuide{
             if(!event['sub_delay']) return debug_message(true, "Spawn handler needs a sub_delay");
             // Make sure distance is defined
             //if(!event['distance']) return debug_message(true, "Spawn handler needs a distance");
-            // Ignore if streamer mode is enabled
-            if(stream) return;
+            // Ignore if dispatch.settings.streamer mode is enabled
+            if(dispatch.settings.stream) return;
 
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
@@ -581,8 +625,8 @@ class TeraGuide{
          function despawn_handler(event) {
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
-            // Ignore if streamer mode is enabled
-            if(stream) return;
+            // Ignore if dispatch.settings.streamer mode is enabled
+            if(dispatch.settings.stream) return;
 
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
@@ -618,13 +662,13 @@ class TeraGuide{
                 case "message": {
 	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {					
 				    if(voice){
-		            if(speaks){	
-                   voice.speak(message,rate)
+		            if(dispatch.settings.speaks){	
+                   voice.speak(message,dispatch.settings.rate)
 					};
 					};		
            }, (event['delay'] || 0 ) - 600 /speed);					
 	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-		     if(stream) return;
+		     if(dispatch.settings.stream) return;
 		      sendMessage(message);		
            }, (event['delay'] || 0 )   /speed);
                     break;		
@@ -641,9 +685,9 @@ class TeraGuide{
 				//语音通知
                 case "speech": {
 		            if(voice){
-		            if(speaks){	
+		            if(dispatch.settings.speaks){	
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-                             voice.speak(message,rate)
+                             voice.speak(message,dispatch.settings.rate)
                         }, (event['delay'] || 0 ) - 600 /speed);				
 					};
 					};
@@ -665,7 +709,7 @@ class TeraGuide{
 
             // Create the timer
             timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-            	if (!stream) {
+            	if (!dispatch.settings.stream) {
 	                switch(event['sub_type']) {
 	                //    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
 	                    case "notification": return dispatch.toClient('S_CHAT', 2, sending_event);
@@ -675,19 +719,19 @@ class TeraGuide{
             	} 
 				/*
 				else {
-            		// If streamer mode is enabled, send message all messages to party chat instead
+            		// If dispatch.settings.streamer mode is enabled, send message all messages to party chat instead
             	//	return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
             	}
 				*/
             }, (event['delay'] || 0 ) / speed);
         }
 	 function sendMessage(message) {
-        if (notice) {
+        if (dispatch.settings.notice) {
             dispatch.toClient('S_CHAT', 2, {
                 channel: 21, //21 = p-notice, 1 = party, 2 = guild
                 message
             });
-        } else if(systemNotice) {
+        } else if(dispatch.settings.systemNotice) {
             dispatch.toClient('S_CHAT', 2, {
                 channel: 1, //21 = p-notice, 1 = party, 2 = guild
                 message
@@ -697,7 +741,7 @@ class TeraGuide{
                 type: 42,
                 chat: 0,
                 channel: 27,
-                message: ( cc +  message  ) //----------------------------------------------------------------------
+                message: ( dispatch.settings.cc +  message  ) //----------------------------------------------------------------------
             });
         }
     }		
@@ -705,8 +749,8 @@ class TeraGuide{
         function sound_handler(event, ent, speed=1.0) {
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Sound handler needs a id");
-            // Ignore if streamer mode is enabled
-            if(stream) return;
+            // Ignore if dispatch.settings.streamer mode is enabled
+            if(dispatch.settings.stream) return;
 
             // Create the timer
             timers[event['id']] = setTimeout(()=> {
@@ -738,10 +782,10 @@ class TeraGuide{
             timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
         }
 		
-		function speak_voice ( alerts, delay, rate) {
+		function speak_voice ( alerts, delay) {
         setTimeout(()=> {
 			if(voice){
-          voice.speak(alerts,rate)
+          voice.speak(alerts,1)
           command.message( cg + alerts );	
 			} else {
           command.message( cr + alerts );	

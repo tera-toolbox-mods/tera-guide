@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+
     "debug": {
         "debug": false,
         "hp": false,
@@ -9,10 +9,6 @@
         "chat": true,
         "dm": false,
         "qb": false
-    },
-    "systemNotice": false,
-	 "notice": false,
-    "stream": false,
-	 "speaks": true,	
-    "chat-name": "Guide"
+    }
+
 }
