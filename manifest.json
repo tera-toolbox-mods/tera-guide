@@ -22,7 +22,7 @@
 		"lib.js": "513df666094c096340348f1c87acef9b7406c30f0873f267d207824c89193d40",
 		"module.json": "bc8c790cc319ebf4db0580fdd3ba83daa8adb98e3aca7772ec73af982e212b60",
 		"readme.md": "4697367b1872c33c55e860038e194e699d7b4b0b7231a469bc07c541f70bc62d",
-		"settings_migrator.js": "f009d1be6d3a65b460a8aaca80aa2e7ead06a5296152c34f3f6f68de9690d288"
+		"settings_migrator.js": "75b9200b77c81c7bd1693d359c37f5e219f3b8da68c18156aa9bcf00478e090b"
 	},
 	"defs": {
 		"S_ABNORMALITY_BEGIN": 3,

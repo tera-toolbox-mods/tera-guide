@@ -4,7 +4,7 @@ const DefaultSettings = {
     "notice": false,
     "stream": false,
 	"cc": [
-		"</font><font color=\"#00ff00\">"
+		"</font><font color=\"#ffff00\">"
 	],
 	"rate": [
 		1
