@@ -1,34 +1,27 @@
 ﻿// RK9
 //made by michengs
-let guidecounter = 0 ;//
-let guidetimer;//
 
-
- let player, entity, library, effect;
-
-
+let notice_guide = true;
+let player, entity, library, effect;
 	
-   function guid_voice(handlers) {   
-	  clearTimeout(guidetimer);
-      guidecounter++;
-    if(guidecounter >= 3) {	
+function guid_voice(handlers) {   
+if(notice_guide) {
 handlers['text']({
 "sub_type": "message",
 "delay": 2000,
-"message_TW": "proxy频道输入:補助 help 获取更多使用信息!"
+"message_TW": "获取更多信息 proxy频道输入:補助 help"
 });
 
 handlers['text']({
 "sub_type": "notification",
 "delay": 2000,
-"message_TW": "proxy频道输入:補助 help <br>获取更多使用信息!"
+"message_TW": "获取更多信息 proxy频道输入:補助 help"
 });
-    }
-    guidetimer = setTimeout(()=>{
-        guidecounter = 0;
-    }, 3000);
+}
+notice_guide = false;
+
 }	
-	
+/*	
 let rings_inout_seventhfloor = [];
 
 const sign_offsets_seventhfloor = [0.24, 1.29, 2.33, -2.88, -1.84, -0.8];//披萨A
@@ -92,21 +85,78 @@ for (let offset of sign_offsets_seventhfloor2) {
 	
 	
 	
-	
+	*/
+const SPAWN_CIRCLES = true;
 
+const steptwo = 2 * Math.PI / 30;//20 flowers in total
+//内圈
+let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
+let SPAWNING_SECOND_CIRCLE_FLOWERS = [];
+let SPAWNING_THIRD_CIRCLE_FLOWERS = [];
+//外圈
+
+for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
+	if(!SPAWN_CIRCLES) continue;
+	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
+	    "type": "spawn",
+        "id": 553,
+        "sub_delay": 3000,
+        "distance": 300,
+        "offset": angle
+	});
+	
+	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
+		"type": "spawn",
+        "id": 553,
+        "sub_delay": 6000,
+        "distance": 250,
+        "offset": angle
+	},
+	
+{
+		"type": "spawn",
+		"sub_type": "build_object",
+		"id": 1,
+		"sub_delay": 6000,
+		"distance": 225,
+		"ownerName": "安全界限",
+		"message": "安全界限",
+		"offset": -3.14
+	},
+{
+		"type": "spawn",
+		"sub_type": "build_object",
+		"id": 1,
+		"sub_delay": 6000,
+		"distance": 375,
+		"ownerName": "安全界限",
+		"message": "安全界限",
+		"offset": 0
+	});
+	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
+		"type": "spawn",
+        "id": 553,
+        "sub_delay": 6000,
+        "distance": 225,
+        "offset": -3.14
+	});	
+	
+}
+					
 	
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
- "h-735-1000-100": rings_inout_seventhfloor,
+ "h-735-1000-100": [{"type": "func","func": guid_voice}],
 
 
 
 
 
-     "s-735-1000-104-0": [{"type": "text","sub_type": "message","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" }],	
+
+     "s-735-1000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" }],	
 	 "s-735-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	 
      "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	
      "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "get in", "message_TW": "进" }],	 
@@ -124,7 +174,7 @@ module.exports = {
 ],
 //------------------------------------2王
 
-"s-735-2000-102-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "前砸注意躲避"}],
+"s-735-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "前砸注意躲避"}],
 "s-735-2000-108-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "后踢打手補师注意"}],
 "s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss扔溜溜球，注意躲避"}],
 "s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss近程攻击，快跑远"}],

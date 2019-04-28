@@ -1,29 +1,25 @@
 ﻿// vs
 //made by michengs o(∩_∩)o 
 
+let notice_guide = true;
 let player, entity, library, effect;
-let guidecounter = 0 ;//
-let guidetimer;//
-   function guid_voice(handlers) {   
-	  clearTimeout(guidetimer);
-      guidecounter++;
-    if(guidecounter >= 3) {	
+function guid_voice(handlers) {   
+if(notice_guide) {
 handlers['text']({
 "sub_type": "message",
 "delay": 2000,
-"message_TW": "proxy频道输入:補助 help 获取更多使用信息!"
+"message_TW": "获取更多信息 proxy频道输入:補助 help"
 });
 
 handlers['text']({
 "sub_type": "notification",
 "delay": 2000,
-"message_TW": "proxy频道输入:補助 help <br>获取更多使用信息!"
+"message_TW": "获取更多信息 proxy频道输入:補助 help"
 });
-    }
-    guidetimer = setTimeout(()=>{
-        guidecounter = 0;
-    }, 3000);
-}	
+}
+notice_guide = false;
+
+}		
 
 // Helper Functions
 
