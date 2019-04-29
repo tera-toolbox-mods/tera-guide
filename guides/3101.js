@@ -37,34 +37,39 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
         "offset": angle
 	});
 	
-	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-        "id": 553,
-        "sub_delay": 6000,
-        "distance": 250,
-        "offset": angle
-	},
-	
-{
-		"type": "spawn",
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": 6000,
-		"distance": 225,
-		"ownerName": "安全界限",
-		"message": "安全界限",
-		"offset": -3.14
-	},
-{
-		"type": "spawn",
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": 6000,
-		"distance": 375,
-		"ownerName": "安全界限",
-		"message": "安全界限",
-		"offset": 0
-	});
+	SPAWNING_SECOND_CIRCLE_FLOWERS.push(
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 375,"offset": 0 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 373.8,"offset": 0.157 },		
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 370.4,"offset": 0.315 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 364.7,"offset": 0.474 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 356.9,"offset": 0.636 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 347.3,"offset": 0.801 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 335.9,"offset": 0.97 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 323.1,"offset": 1.144 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 309.2,"offset": 1.325 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 294.6,"offset": 1.514 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 280,"offset": 1.713 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 265.7,"offset": 1.922 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 252.5,"offset": 2.144 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 241.2,"offset": 2.378 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 232.4,"offset": 2.625 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 226.9,"offset": 2.88 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 225,"offset": 3.141 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 373.8,"offset": -0.157 },		
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 370.4,"offset": -0.315 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 364.7,"offset": -0.474 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 356.9,"offset": -0.636 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 347.3,"offset": -0.801 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 335.9,"offset": -0.97 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 323.1,"offset": -1.144 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 309.2,"offset": -1.325 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 294.6,"offset": -1.514 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 280,"offset": -1.713 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 265.7,"offset": -1.922 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 252.5,"offset": -2.144 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 241.2,"offset": -2.378 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 232.4,"offset": -2.625 },
+{"type": "spawn","id": 553, "sub_delay": 6000,"distance": 226.9,"offset": -2.88 });
 	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
 		"type": "spawn",
         "id": 553,
