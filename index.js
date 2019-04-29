@@ -198,7 +198,7 @@ class TeraGuide{
             }
             }
         }
-        dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
+        dispatch.hook('S_ACTION_STAGE', 9, {order: 15}, s_action_stage);
 		
         /** ABNORMALITY **/
 
