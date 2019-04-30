@@ -85,7 +85,7 @@ for (let offset of sign_offsets_seventhfloor2) {
 	
 	
 	
-	*/
+	
 const SPAWN_CIRCLES = true;
 
 const steptwo = 2 * Math.PI / 30;//20 flowers in total
@@ -142,24 +142,78 @@ for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	});	
 	
 }
-					
+*/
+/*
+let rings_inout_seventhfloor = [];
+
+const sign_offsets_seventhfloor =   [0, -0.157, -0.315, -0.474, -0.636, -0.801, -0.97, -1.144, -1.325, -1.514, -1.713, -1.922, -2.144, -2.378, -2.625, -2.88, -3.141, 2.88, 2.625, 2.378, 2.144, 1.922, 1.713, 1.514, 1.325, 1.144,0.97, 0.801, 0.636, 0.474, 0.315, 0.157];//披萨A
+const sign_distances_seventhfloor = [375, 373.8, 370.4, 364.7, 356.9, 347.3, 335.9, 323.1, 309.2, 294.6, 280, 265.7, 252.5, 241.2, 232.4, 226.9, 225, 226.9, 232.4, 241.2, 252.5, 265.7, 280, 294.6, 309.2, 323.1 ,335.9, 347.3, 356.9, 364.7, 370.4, 373.8];//披萨A
+
+
+
+for (let offset of sign_offsets_seventhfloor; distance of sign_distances_seventhfloor  ) {
+	
+
+    rings_inout_seventhfloor.push({
+    	"type": "spawn",
+    	"id": 553,
+        "delay": 6000,		
+    	"sub_delay": 80000,
+    	"distance": distance,
+    	"offset": offset
+    });
+	
+	
+}					
+	*/
+
+	
+	const steptwo = 2 * Math.PI / 30;//20 flowers in total
+let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
+for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
+	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
+	    "type": "spawn",
+        "id": 553,
+        "sub_delay": 5000,
+        "distance": 680,
+        "offset": angle
+	});
+}
+	
+function rings_seventhfloor(handlers, event, entity) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+
+	library.applyDistance(shield_loc, 50);
+
+    for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
+        handlers['spawn']({
+        	"id": 603,
+        	"sub_delay": 5000,
+        	"distance": 200,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+
+
+}	
 	
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
- "h-735-1000-100": [{"type": "func","func": guid_voice}],
+    "h-3101-1000-100": [{"type": "func","func": guid_voice}],
 
 
 
 
 
 
-     "s-735-1000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Dodge Stun", "message_TW": "BOSS 眩晕攻击!坦克注意！" }],	
-	 "s-735-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	 
-     "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	
-     "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "get in", "message_TW": "进" }],	 
+     "s-735-1000-104-0": [{"type": "text","sub_type": "msgcg","message":  "注意眩暈"}],	
+	 "s-735-1000-112-0": [{"type": "text","sub_type": "msgcg","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	 
+     "s-735-1000-111-0": [{"type": "text","sub_type": "msgcg","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	
+   //  "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "get in", "message_TW": "进" }],	 
      "s-735-1000-306-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "召唤地雷！快打！" }], 
      "s-735-1000-307-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "BOSS 拉人，注意无敌躲避！" }],
 
