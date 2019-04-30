@@ -292,7 +292,7 @@ class TeraGuide{
             try {
                 active_guide = require('./guides/' + e.zone);
 
-            if ( 9781 == e.zone  || 9783 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone || 9983 == e.zone) {
+            if ( 9781 == e.zone || 3017 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
             }else{				
                spguide = false;
@@ -672,7 +672,38 @@ class TeraGuide{
 		      sendMessage(message);		
            }, (event['delay'] || 0 )   /speed);
                     break;		
-                }
+                }			
+                case "msgcp": {
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {					
+				    if(voice){
+		            if(dispatch.settings.speaks){	
+                   voice.speak(message,dispatch.settings.rate)
+					};
+					};		
+           }, (event['delay'] || 0 ) - 600 /speed);					
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+		     if(dispatch.settings.stream) return;
+		
+		      sendspMessage(message,cp);		
+           }, (event['delay'] || 0 )   /speed);
+                    break;		
+                }				
+                case "msgcg": {
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {					
+				    if(voice){
+		            if(dispatch.settings.speaks){	
+                   voice.speak(message,dispatch.settings.rate)
+					};
+					};		
+           }, (event['delay'] || 0 ) - 600 /speed);					
+	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
+		     if(dispatch.settings.stream) return;
+		
+		      sendspMessage(message,cg);		
+           }, (event['delay'] || 0 )   /speed);
+                    break;		
+                }				
+
 				//组队长通知
                 case "alert": {
                     sending_event = {
@@ -744,7 +775,17 @@ class TeraGuide{
                 message: ( dispatch.settings.cc +  message  ) //----------------------------------------------------------------------
             });
         }
-    }		
+    }	
+	 function sendspMessage(message,spcc) {
+       
+            dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
+                type: 42,
+                chat: 0,
+                channel: 27,
+                message: ( spcc +  message  )   //----------------------------------------------------------------------
+            });
+        
+    }	
         // Sound handler
         function sound_handler(event, ent, speed=1.0) {
             // Make sure id is defined
