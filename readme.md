@@ -6,6 +6,8 @@
 
 https://github.com/Kaseaa/library
 
+https://github.com/michengs/library
+
 需要libray模组依赖 下载解压放入 proxy/mods文件夹目录注意重命名为:library
 
 
