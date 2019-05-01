@@ -38,7 +38,7 @@ function rings_FLOWERS(handlers, event, entity) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
 
-	library.applyDistance(shield_loc, 75);
+	library.applyDistance(shield_loc, 75,0);
 
     for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
         handlers['spawn']({
