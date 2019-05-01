@@ -545,7 +545,7 @@ class TeraGuide{
             if(event['pos']) loc = event['pos'];
 
             loc.w = (ent['loc'].w || 0) + (event['offset'] || 0);
-            library.applyDistance(loc, event['distance'] || 0);
+            library.applyDistance(loc, event['distance'],event['degrees'] || 0);
 
             let sending_event = {
                 gameId: item_unique_id,
