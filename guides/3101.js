@@ -19,67 +19,42 @@ notice_guide = false;
 
 }	
 const SPAWN_CIRCLES = true;
-
 const steptwo = 2 * Math.PI / 30;//20 flowers in total
-//内圈
 let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
-let SPAWNING_SECOND_CIRCLE_FLOWERS = [];
-let SPAWNING_THIRD_CIRCLE_FLOWERS = [];
-//外圈
+//圈
 
 for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
 	if(!SPAWN_CIRCLES) continue;
 	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
 	    "type": "spawn",
-        "id": 556,
+        "id": 912,
         "sub_delay": 3000,
         "distance": 300,
         "offset": angle
 	});
-	
-	SPAWNING_SECOND_CIRCLE_FLOWERS.push(
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 375,"offset": 0 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 373.8,"offset": 0.157 },		
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 370.4,"offset": 0.315 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 364.7,"offset": 0.474 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 356.9,"offset": 0.636 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 347.3,"offset": 0.801 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 335.9,"offset": 0.97 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 323.1,"offset": 1.144 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 309.2,"offset": 1.325 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 294.6,"offset": 1.514 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 280,"offset": 1.713 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 265.7,"offset": 1.922 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 252.5,"offset": 2.144 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 241.2,"offset": 2.378 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 232.4,"offset": 2.625 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 226.9,"offset": 2.88 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 225,"offset": 3.141 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 373.8,"offset": -0.157 },		
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 370.4,"offset": -0.315 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 364.7,"offset": -0.474 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 356.9,"offset": -0.636 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 347.3,"offset": -0.801 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 335.9,"offset": -0.97 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 323.1,"offset": -1.144 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 309.2,"offset": -1.325 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 294.6,"offset": -1.514 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 280,"offset": -1.713 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 265.7,"offset": -1.922 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 252.5,"offset": -2.144 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 241.2,"offset": -2.378 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 232.4,"offset": -2.625 },
-{"type": "spawn","id": 556, "sub_delay": 6000,"distance": 226.9,"offset": -2.88 });
-	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-        "id": 556,
-        "sub_delay": 6000,
-        "distance": 225,
-        "offset": angle
-	});	
-	
 }
+//偏移
+function rings_FLOWERS(handlers, event, entity) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+
+	library.applyDistance(shield_loc, 75);
+
+    for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
+        handlers['spawn']({
+        	"id": 912,
+        	"sub_delay": 6000,
+        	"distance": 300,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}	
+
 module.exports = {
+	load(dispatch) {
+		({ player, entity, library, effect } = dispatch.require.library);
+	},	
+	
     // First boss
     "h-3101-1000-100": [{"type": "func","func": guid_voice}],
     // 1王
@@ -106,7 +81,8 @@ module.exports = {
     "s-3101-1000-156-0": [{"type": "text","sub_type": "message","message": "转身1" }],			
     "s-3101-1000-157-0": [{"type": "text","sub_type": "message","message": "转身2" }],		
     "s-3101-1000-305-0": [{"type": "text","sub_type": "message","message": "双手抱拳" }],			
-    "s-3101-1000-313-0": [{"type": "text","sub_type": "msgcp","message": "内外炸圈"}].concat(SPAWNING_SECOND_CIRCLE_FLOWERS),		
+    "s-3101-1000-313-0": [{"type": "text","sub_type": "msgcp","message": "内外炸圈"},
+	{"type": "func","func": rings_FLOWERS}],		
 
     //二王
     "s-3101-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "靠近"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),	
