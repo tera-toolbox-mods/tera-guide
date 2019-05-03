@@ -5,7 +5,7 @@ let player, entity, library, effect;
 let power = true;
 let Level = 0;
 let powerMsg = '';
-let LevelMsg = '';
+let levelMsg = [];
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -27,14 +27,14 @@ notice_guide = false;
 function start_boss() {
 power = false;
 Level = 0;
-let LevelMsg = '';
+let levelMsg = [];
 }
 
 function action_boss() {
 power = true;
 Level = 0;
 powerMsg = '';
-levelMsg = '注意四层爆炸哟'
+levelMsg = ['一层', '二层', '三层', '<font color="#FF0000">爆炸! 爆炸!</font>']
 }
 
 function action_level_boss() {
@@ -42,7 +42,7 @@ Level = 0;
 }
 function action_steptwo_boss() {
 Level = 0;	
-LevelMsg = 	'注意二层爆炸哟'	
+LevelMsg = ['一层', '<font color="#FF0000">爆炸! 爆炸!</font>']	
 
 }
 function power_attack(handlers) {
@@ -50,7 +50,7 @@ if(power) {
 
 
  Level++;
-powerMsg =   Level + LevelMsg;
+powerMsg =  ' | ' + levelMsg[Level];
 handlers['text']({
 "sub_type": "message",
 "message_TW": powerMsg
