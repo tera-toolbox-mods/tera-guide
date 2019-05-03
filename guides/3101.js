@@ -18,38 +18,20 @@ handlers['text']({
 notice_guide = false;
 
 }	
-const SPAWN_CIRCLES = true;
-const steptwo = 2 * Math.PI / 30;//20 flowers in total
-let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
-//圈
-
-for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
-	if(!SPAWN_CIRCLES) continue;
-	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
-	    "type": "spawn",
-        "id": 912,
-        "sub_delay": 3000,
-        "distance": 300,
-        "offset": angle
-	});
-}
-//偏移
-function rings_FLOWERS(handlers, event, entity) {
+	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 时间）
+function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
-
-	library.applyDistance(shield_loc, 75,0);
-
-    for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
+	library.applyDistance(shield_loc, distance, degrees);
+    for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
-        	"id": 912,
-        	"sub_delay": 6000,
-        	"distance": 300,
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
         	"offset": angle
         }, {loc: shield_loc});
     }
 }	
-
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -82,11 +64,13 @@ module.exports = {
     "s-3101-1000-157-0": [{"type": "text","sub_type": "message","message": "转身2" }],		
     "s-3101-1000-305-0": [{"type": "text","sub_type": "message","message": "双手抱拳" }],			
     "s-3101-1000-313-0": [{"type": "text","sub_type": "msgcp","message": "内外炸圈"},
-	{"type": "func","func": rings_FLOWERS}],		
+	{"type": "func","func": Spawnitem2.bind(null,912,0,75,15,300,6000)}],		
 
     //二王
-    "s-3101-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "靠近"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),	
-    "s-3101-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "跑远"}].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),		
+    "s-3101-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "靠近"},
+	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
+    "s-3101-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "跑远"},
+	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],		
     "s-3101-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "全屏攻击注意沉默" }],	
     "s-3101-2000-108-0": [{"type": "text","sub_type": "message","message": "前插+后喷" }],	
     "s-3101-2000-235-0": [{"type": "text","sub_type": "message","message": "注视2人吃鉴定" }],
