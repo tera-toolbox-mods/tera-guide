@@ -97,40 +97,58 @@ steptwo = false ;
 	if (notice && [118, 139, 141, 150, 152].includes(skillid)) {
 		notice = false;
 		setTimeout(() => notice = true, 4000);
-					};
+					}
 			if (skillid === 300) power = true, Level = 0, powerMsg = null;
 			if (skillid === 360 || skillid === 399) Level = 0;	
 			if (power && [118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215].includes(skillid)) {
 				Level++;
 						//powerMsg = '<font color="#FF0000">(' + Level + ') </font> ';
 				powerMsg = `{` + Level + `} `;
-					};
-					
-if ( skillid === 399) steptwo = true ;						
 				
-
-if (Level== 3) {
+				
+if (Level== 4) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "注意快炸了"
-});				
-} else if (Level== 1 && steptwo) {
+"message_TW": "电量填充完毕!!"
+});	
+handlers['text']({
+"sub_type": "notification",
+"message_TW": "电量填充完毕!!"
+});			
+} else if (Level== 2 && steptwo) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "注意快炸了"
-});				
-} ;
-		
-
-
+"message_TW": "电量填充完毕!!"
+});	
+handlers['text']({
+"sub_type": "notification",
+"message_TW": "电量填充完毕!!"
+});			
+} 				
+				
 if ( powerMsg !== null &&  skillid !== 399){
-				
+	
+if ( !steptwo &&  Level !== 4){
 handlers['text']({
 "sub_type": "message",
 "message_TW": powerMsg
-});	
-};
-			
+});
+}
+if ( steptwo &&  Level !== 2){
+handlers['text']({
+"sub_type": "message",
+"message_TW": powerMsg
+});
+}
+}				
+				
+				
+					}
+
+
+if ( skillid === 399){
+steptwo = true ;			
+}					
 }
 
 
