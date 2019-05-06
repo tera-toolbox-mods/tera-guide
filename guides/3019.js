@@ -4,8 +4,9 @@ let notice_guide = true;
 let player, entity, library, effect;
 let power = true;
 let Level = 0;
-let powerMsg = '';
-let levelMsg = [];
+let powerMsg = null;
+let   notice = true  ; 
+let steptwo = false ;
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -24,46 +25,9 @@ notice_guide = false;
 
 }		
 
-function start_boss() {
-power = false;
-Level = 0;
-let levelMsg = [];
-}
-
-function action_boss() {
-power = true;
-Level = 0;
-powerMsg = '';
-levelMsg = ['一层', '二层', '三层', '<font color="#FF0000">爆炸! 爆炸!</font>']
-}
-
-function action_level_boss() {
-Level = 0;
-}
-function action_steptwo_boss() {
-Level = 0;	
-LevelMsg = 	['一层', '<font color="#FF0000">爆炸! 爆炸!</font>']	
-
-}
-function power_attack(handlers) {
-if(power) {	
 
 
- Level++;
-powerMsg =  ' | ' + levelMsg[Level];
-handlers['text']({
-"sub_type": "message",
-"message_TW": powerMsg
-});
-}
-}
-	
-function power_check() {
-if(power) {	
-power = false;
-setTimeout(function() { power = true }, 4000);
-}
-}
+
 
 	
 // 	召喚光柱 ，告示牌提示（  角度 距离   时间）
@@ -119,10 +83,64 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
     }
 }
 
+function start_boss() {
+power = false;
+Level = 0;
+notice = true;
+powerMsg = null;
+steptwo = false ;
+}
+	function skilld_event(skillid, handlers, event, ent, dispatch) {
+	if (!notice) return;
+	if (notice && [118, 139, 141, 150, 152].includes(skillid)) {
+		notice = false;
+		setTimeout(() => notice = true, 4000);
+					}
+			if (skillid === 300) power = true, Level = 0, powerMsg = null;
+			if (skillid === 360 || skillid === 399) Level = 0;	
+			if (power && [118, 143, 145, 146, 144, 147, 148, 154, 155, 161, 162, 213, 215].includes(skillid)) {
+				Level++;
+						//powerMsg = '<font color="#FF0000">(' + Level + ') </font> ';
+				powerMsg = `{` + Level + `} `;
+					}
+
+if (Level== 3) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "注意快炸了"
+});				
+} else if (Level== 1 && steptwo) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "注意快炸了"
+});				
+} 
+if ( skillid === 399){
+steptwo = true ;			
+}	
+
+if ( powerMsg !== null &&  skillid !== 399){
+				
+handlers['text']({
+"sub_type": "message",
+"message_TW": powerMsg
+});	
+}	
+				
+}
+
+
+
 module.exports = {
 
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
+		
+		
+		
+		
+		
+		
 	},
 
  "h-3019-1000-100": [{"type": "func","func": guid_voice}
@@ -168,95 +186,102 @@ module.exports = {
  
 //三王
   "h-3019-3000-99": [{"type": "func","func": start_boss}],
+  
+
+  
   "s-3019-3000-118-0": [{"type": "text","sub_type": "message","message": "三连击左-右-喷" },
-   {"type": "func","func": power_attack}, 
-     {"type": "func","func": power_check} 
+	{"type": "func","func": skilld_event.bind(null, 118)} 
   ],
   "s-3019-3000-143-0": [{"type": "text","sub_type": "message","message": "左后" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 143)}  
   ],
   "s-3019-3000-145-0": [{"type": "text","sub_type": "message","message": "左后" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 145)}  
   ], 
   "s-3019-3000-146-0": [{"type": "text","sub_type": "message","message": "左后扩散" },
-     {"type": "func","func": power_attack},
+
      {"type": "func","func": SpawnThing.bind(null,215,370,8000)},	 
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,12,320,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,10,480,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,8,640,2500,8000)},	
-     {"type": "func","func": Spawnitem2.bind(null,445,215,370,6,800,2500,8000)}],
+     {"type": "func","func": Spawnitem2.bind(null,445,215,370,6,800,2500,8000)},
+	{"type": "func","func": skilld_event.bind(null, 146)} ],
   "s-3019-3000-154-0": [{"type": "text","sub_type": "message","message": "左后扩散" },
-     {"type": "func","func": power_attack},
      {"type": "func","func": SpawnThing.bind(null,215,370,8000)},	 
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,12,320,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,10,480,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,215,370,8,640,2500,8000)},	
-     {"type": "func","func": Spawnitem2.bind(null,445,215,370,6,800,2500,8000)}
+     {"type": "func","func": Spawnitem2.bind(null,445,215,370,6,800,2500,8000)},
+	{"type": "func","func": skilld_event.bind(null, 154)}  
 	 ],
 	 
 	 
   "s-3019-3000-144-0": [{"type": "text","sub_type": "message","message": "右后" },
-     {"type": "func","func": power_attack}], 
+	{"type": "func","func": skilld_event.bind(null, 144)}], 
   
   
   "s-3019-3000-147-0": [{"type": "text","sub_type": "message","message": "右后" },
-     {"type": "func","func": power_attack}],
+	{"type": "func","func": skilld_event.bind(null,147 )}  ],
 	 
   "s-3019-3000-148-0": [{"type": "text","sub_type": "message","message": "右后扩散" },
-     {"type": "func","func": power_attack},
      {"type": "func","func": SpawnThing.bind(null,155,388,8000)}, 
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,12,320,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,10,480,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,8,640,2500,8000)},	
-     {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)}],
+     {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)},
+	{"type": "func","func": skilld_event.bind(null, 148)}  ],
 
   "s-3019-3000-155-0": [{"type": "text","sub_type": "message","message": "右后扩散" },
-     {"type": "func","func": power_attack},
      {"type": "func","func": SpawnThing.bind(null,155,388,8000)}, 
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,15,160,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,12,320,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,10,480,2500,8000)},
      {"type": "func","func": Spawnitem2.bind(null,445,155,388,8,640,2500,8000)},	
-     {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)}],
+     {"type": "func","func": Spawnitem2.bind(null,445,155,388,6,800,2500,8000)},
+	{"type": "func","func": skilld_event.bind(null, 155)}  ],
 	 
   "s-3019-3000-161-0": [{"type": "text","sub_type": "message","message": "后砸 前砸" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 161)}   
   ],
   "s-3019-3000-162-0": [{"type": "text","sub_type": "message","message": "后砸 前砸" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 162)}   
   ],
   "s-3019-3000-213-0": [{"type": "text","sub_type": "message","message": "尾巴" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 213)}   
   ],
   "s-3019-3000-215-0": [{"type": "text","sub_type": "message","message": "尾巴" },
-     {"type": "func","func": power_attack} 
+	{"type": "func","func": skilld_event.bind(null, 215)}   
   ], 
    "s-3019-3000-139-0": [{"type": "text","sub_type": "message","message": "打右边" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
-   {"type": "func","func": SpawnThing.bind(null,270,200,8000)}],
+   {"type": "func","func": SpawnThing.bind(null,270,200,8000)},
+	{"type": "func","func": skilld_event.bind(null, 139)}  ],
   "s-3019-3000-150-0": [{"type": "text","sub_type": "message","message": "打右边" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
-   {"type": "func","func": SpawnThing.bind(null,270,200,8000)}],
+   {"type": "func","func": SpawnThing.bind(null,270,200,8000)},
+	{"type": "func","func": skilld_event.bind(null, 150)}  ],
   "s-3019-3000-141-0": [{"type": "text","sub_type": "message","message": "打左边" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
-   {"type": "func","func": SpawnThing.bind(null,90,200,8000)}], 
+   {"type": "func","func": SpawnThing.bind(null,90,200,8000)},
+	{"type": "func","func": skilld_event.bind(null, 141)}  ], 
   "s-3019-3000-152-0": [{"type": "text","sub_type": "message","message": "打左边" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,500,5000)},
   {"type": "func","func": Spawnitem1.bind(null,912,180,500,5000)},
-   {"type": "func","func": SpawnThing.bind(null,90,200,8000)}],
+   {"type": "func","func": SpawnThing.bind(null,90,200,8000)},
+	{"type": "func","func": skilld_event.bind(null, 152)}  ],
   "s-3019-3000-300-0": [{"type": "text","sub_type": "message","message": "一次觉醒 推人" },
-  {"type": "func","func": action_boss}],
+	{"type": "func","func": skilld_event.bind(null, 300)}  ],
   "s-3019-3000-399-0": [{"type": "text","sub_type": "message","message": "二次觉醒 推人" },
-  {"type": "func","func": action_steptwo_boss}  
+	{"type": "func","func": skilld_event.bind(null, 399)}    
   
   ], 
   "s-3019-3000-360-0": [{"type": "text","sub_type": "message","message": "爆炸爆炸" },
-  {"type": "func","func": action_level_boss}] 
+	{"type": "func","func": skilld_event.bind(null, 360)}  ] 
 
 };
