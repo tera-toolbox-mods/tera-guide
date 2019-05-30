@@ -1,7 +1,7 @@
 const DispatchWrapper = require('./dispatch');
 const fs = require('fs');
 const path = require('path');
-const config = require('./config');
+const dbg = require('./dbg');
 let voice = null;
 try { voice = require('voice') }
 catch(e) { voice = null; }
@@ -71,7 +71,7 @@ class TeraGuide{
         // A boolean for if the module is enabled or not
 
         // A boolean for the debugging settings
-        let debug = config['debug'];
+        let debug = dbg['debug'];
 
         // A boolean indicating if a guide was found
         let guide_found = false;
