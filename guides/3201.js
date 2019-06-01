@@ -3,6 +3,7 @@ let notice_guide = true;
 let   notice = true  ; 
 let boss = null;
 let counter = 0;
+let lastboss = false;
 let player, entity, library, effect;
 function guid_voice(handlers) {   
 if(notice_guide) {
@@ -39,6 +40,7 @@ function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handl
 }	
 
 function start_boss() {
+  lastboss = true  ;
   notice = true  ; 
   boss = null;
   counter = 0;
@@ -122,6 +124,14 @@ handlers['text']({
 "sub_type": "message",
 "message_TW": "打手位本体!!!"
 });			
+}
+
+if (skillid === 9203100 && lastboss ) {
+ counter = 0;		
+handlers['text']({
+"sub_type": "message",
+"message_TW": "死亡+1!!"
+});	
 }
 }
 
@@ -233,6 +243,9 @@ module.exports = {
    "am-3201-2000-32010220": [{"type": "text","sub_type": "message","message": "接下來吃分身" },
    	{"type": "func","func": skilld_event.bind(null, 32010220)}
    ],		
+	
+	
+	"ae-0-0-9203100": [{"type": "func","func": skilld_event.bind(null, 9203100)}],
 	
     "s-3201-2000-205-0": [{"type": "text","sub_type": "message","message": "起飞 共用" }],	
     "s-3201-2000-206-0": [{"type": "text","sub_type": "message","message": "近 共用秒杀" }],	
