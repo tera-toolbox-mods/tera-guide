@@ -22,7 +22,30 @@ handlers['text']({
 notice_guide = false;
 
 }	
-
+// 	召喚光柱 ，告示牌提示（  角度 距离   延迟时间 时间）
+function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "SAFE SPOT",
+			"message": "SAFE"
+        }, {loc: shield_loc});  
+        handlers['spawn']({
+			"sub_type": "item",
+        	"id": 88850,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});	
+}
 
 	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 时间）
 function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
@@ -145,18 +168,26 @@ module.exports = {
 
     // 1王追加
     "s-3201-1000-107-0": [{"type": "text","sub_type": "message","message": "后喷慢慢慢" },
-	{"type": "text","sub_type": "message","delay": 3000,"message": "击退!!!"}],	
+	{"type": "text","sub_type": "message","delay": 2250,"message": "击退!!!"}],	
     "s-3201-1000-111-0": [{"type": "text","sub_type": "message","message": "远程注意后喷" }],	
     "s-3201-1000-112-0": [{"type": "text","sub_type": "message","message": "左右噴" }],	
     "s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "击飞" }],
     "s-3201-1000-118-0": [{"type": "text","sub_type": "message","message": "击飞" }],	
-    "s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1500,"message": "前后喷 ↑↓" }],
-    "s-3201-1000-143-0": [{"type": "text","sub_type": "message","message": "8连击" }],	
-    "s-3201-1000-145-0": [{"type": "text","sub_type": "message","message": "8连击" }],		 
+    "s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "前后喷 ↑↓" }],
+    "s-3201-1000-143-0": [{"type": "text","sub_type": "message","message": "8连击" },
+	
+     {"type": "func","func": SpawnThing.bind(null,135,300,100,3000)},	
+     {"type": "func","func": SpawnThing.bind(null,225,300,3500,5000)}		
+	],	
+    "s-3201-1000-145-0": [{"type": "text","sub_type": "message","message": "8连击快" },
+     {"type": "func","func": SpawnThing.bind(null,135,300,100,2000)},	
+     {"type": "func","func": SpawnThing.bind(null,225,300,2500,5000)}		
+
+	],		 
     "s-3201-1000-311-0": [{"type": "text","sub_type": "message","message": "3次全屏攻击准备!" },
-	{"type": "text","sub_type": "message","delay": 4250,"message": "击退!"}],	
+	{"type": "text","sub_type": "message","delay": 4000,"message": "击退!"}],	
     "s-3201-1000-312-0": [{"type": "text","sub_type": "message","message": "吸血准备!!!" },
-	{"type": "text","sub_type": "message","delay": 2250,"message": "击退!!!"}],	
+	{"type": "text","sub_type": "message","delay": 2000,"message": "击退!!!"}],	
     "s-3201-1000-314-0": [{"type": "text","sub_type": "message","message": "内外炸圈" },
 	{"type": "func","func": Spawnitem2.bind(null,912,0,75,15,300,6000)}],	
 
@@ -208,8 +239,33 @@ module.exports = {
 "s-3201-2000-228-0": [ 
 {"type": "text","sub_type": "message","message": "组员分伤！！" },
 {"type": "text","sub_type": "message","delay": 3500,"message": "赶紧闪开"},
+/*
+	{"type": "text","sub_type": "MSG","delay": 250,"message": "1" },
+	{"type": "text","sub_type": "MSG","delay": 500,"message": "2" },	
+	{"type": "text","sub_type": "MSG","delay": 750,"message": "3" },	
+	{"type": "text","sub_type": "MSG","delay": 1000,"message": "4" },	
+	{"type": "text","sub_type": "MSG","delay": 1250,"message": "5" },	
+	{"type": "text","sub_type": "MSG","delay": 1500,"message": "6" },
+	{"type": "text","sub_type": "MSG","delay": 1750,"message": "7" },
+	{"type": "text","sub_type": "MSG","delay": 2000,"message": "8" },	
+	{"type": "text","sub_type": "MSG","delay": 2250,"message": "9" },	
+	{"type": "text","sub_type": "MSG","delay": 2500,"message": "10" },	
+	{"type": "text","sub_type": "MSG","delay": 2750,"message": "11" },	
+	{"type": "text","sub_type": "MSG","delay": 3000,"message": "12" },
+	{"type": "text","sub_type": "MSG","delay": 3250,"message": "13" },		
+	{"type": "text","sub_type": "MSG","delay": 3500,"message": "14" },	
+	{"type": "text","sub_type": "MSG","delay": 3750,"message": "15" },	
+	{"type": "text","sub_type": "MSG","delay": 4000,"message": "16" },	
+	{"type": "text","sub_type": "MSG","delay": 4250,"message": "17" },	
+	{"type": "text","sub_type": "MSG","delay": 4500,"message": "18" },
+	{"type": "text","sub_type": "MSG","delay": 4750,"message": "19" }, 
+	{"type": "text","sub_type": "MSG","delay": 5000,"message": "20" },	
+	{"type": "text","sub_type": "MSG","delay": 5250,"message": "21" },
+	{"type": "text","sub_type": "MSG","delay": 5500,"message": "22" },	
+	{"type": "text","sub_type": "MSG","delay": 5750,"message": "23" },	
+	{"type": "text","sub_type": "MSG","delay": 6000,"message": "24" }	
+*/
 
-{"type": "text","sub_type": "message","delay": 4300,"message": "2"}
 ],
 	
 	
