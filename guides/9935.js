@@ -6,6 +6,7 @@ let player, entity, library, effect;
 	let firstskill = 0,
 		secondskill = 0,
 		MSG = null,
+		print = false,
 		tempskill = 0;	
 function guid_voice(handlers) {   
 if(notice_guide) {
@@ -244,7 +245,19 @@ handlers['text']({
 });						
 }
 }
-
+function start_boss() {
+print = true;
+}
+function print_seventy(handlers) {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "70%",
+"message_TW": "70%"
+});
+}
+print = false;
+}
 module.exports = {
 	
 	load(dispatch) {
@@ -310,14 +323,22 @@ module.exports = {
 //------------------------------------2王
 
 "s-935-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "前砸注意躲避"}],
+"s-935-2000-105-0": [{"type": "text","sub_type": "message","message": "注意击飞"},
+{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,250,100,4000)}
+],
 "s-935-2000-108-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "后踢打手補师注意"}],
 "s-935-2000-301-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss扔溜溜球，注意躲避"}],
 
 "s-935-2000-304-0": [{"type": "text","sub_type": "message","message": "boss近程攻击，快跑远"}],
-
+"s-935-2000-305-0": [{"type": "text","sub_type": "message","message": "boss远程攻击，快靠近"},
+{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,125,100,4000)}
+],
+"s-935-2000-308-0": [{"type": "text","sub_type": "message","message": "左←"}],
+"s-935-2000-309-0": [{"type": "text","sub_type": "message","message": "右→"}],
 
 //------------------------------------3王
-
+    "h-935-3000-99": [{"type": "func","func": start_boss}],
+    "h-935-3000-70": [{"type": "func","func": print_seventy}],
    "dm-0-0-9935311": [{"type": "func","func": skilld_event.bind(null, 9935311)}],	
    "dm-0-0-9935312": [{"type": "func","func": skilld_event.bind(null, 9935312)}],	
    "dm-0-0-9935302": [{"type": "func","func": skilld_event.bind(null, 9935302)}],	   
@@ -388,7 +409,7 @@ module.exports = {
 	{"type": "func","func": Spawnitem.bind(null,912,340,210,0,3000)},		
 	{"type": "func","func": Spawnitem1.bind(null,912,350,210,0,290,3000)}],
 	
-"s-935-3000-129-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "坦无敌闪"}],	
+"s-935-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "坦无敌闪"}],	
 
 
 "s-935-3000-305-0": [{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,100,7000)}],
