@@ -6,8 +6,12 @@ let player, entity, library, effect;
 	let firstskill = 0,
 		secondskill = 0,
 		MSG = null,
+		MSG1 = null,		
 		print = false,
 		tempskill = 0;	
+	let firstskill1 = '？',
+		secondskill1 = '？',
+		tempskill1 = '？';		
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -103,45 +107,62 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 if (skillid === 9935311 ) {
 			firstskill = tempskill;
 			secondskill = 0;
-
+			firstskill1 = tempskill1;
+			secondskill1 = '？';
  MSG =  'Next: ' + firstskill + ' + ' + secondskill
+ MSG1 = 'Next: ' + firstskill1  + secondskill1  
 handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });
+handlers['text']({
+"sub_type": "alert",
+"message_TW":  MSG1
+});
 } else if (skillid === 9935312) { //REVERSE
 			secondskill = tempskill;
 			firstskill = 0;
+			secondskill1 = tempskill1;
+			firstskill1 = '？';			
  MSG =  'Next: ' + firstskill + ' + ' + secondskill
+ MSG1 = 'Next: ' + firstskill1 + secondskill1  
 handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });			
-			
+handlers['text']({
+"sub_type": "alert",
+"message_TW":  MSG1
+});			
 		}	
 
 if (skillid === 9935302 ) {
 			firstskill = '出';
 			tempskill = '出';
-
+			firstskill1 = '近';
+			tempskill1 = '近';
 handlers['text']({
 "sub_type": "alert",
 "delay": 3000,
-"message_TW":  "外"
+"message_TW":  "近"
 });
 		
 } else if (skillid === 9935303) { //
 			firstskill = '进';
 			tempskill = '进';
+			firstskill1 = '远';
+			tempskill1 = '远';			
 handlers['text']({
 "sub_type": "alert",
 "delay": 3000,
-"message_TW":  "內"
+"message_TW":  "远"
 });			
 			
 }else if (skillid === 9935304) { //
 			firstskill = '全';
 			tempskill = '全';
+			firstskill1 = '全';
+			tempskill1 = '全';			
 handlers['text']({
 "sub_type": "alert",
 "delay": 3000,
@@ -153,44 +174,59 @@ handlers['text']({
  if ( firstskill === 0 && skillid === 935301) {
 					firstskill = '出';
 					tempskill = '出';
- MSG = firstskill + ' + ' + secondskill 
+			        firstskill1 = '近';
+			        tempskill1 = '近';					
+ MSG = firstskill + ' + ' + secondskill
+ MSG1 = firstskill1 + ' + ' + secondskill1  
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					secondskill = tempskill;
-					firstskill = 0;		
+					firstskill = 0;	
+					secondskill1 = tempskill1;
+					firstskill1 = '？';						
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
-"message_TW":  "外"
+"message_TW":  "近"
 });		
 }else if ( firstskill === 0 && skillid === 935302) {
 					firstskill = '进';
 					tempskill = '进';
- MSG = firstskill + ' + ' + secondskill 
+			        firstskill1 = '远';
+			        tempskill1 = '远';					
+ MSG = firstskill + ' + ' + secondskill
+ MSG1 = firstskill1 + ' + ' + secondskill1 
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					secondskill = tempskill;
 					firstskill = 0;
+					secondskill1 = tempskill1;
+					firstskill1 = '？';					
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
-"message_TW":  "內"
+"message_TW":  "远"
 });						
 
 }else if ( firstskill === 0 && skillid === 935303) {
 					firstskill = '全';
 					tempskill = '全';
- MSG = firstskill + ' + ' + secondskill 
+					firstskill1 = '全';
+					tempskill1 = '全';					
+ MSG = firstskill + ' + ' + secondskill
+ MSG1 = firstskill1 + ' + ' + secondskill1 
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					secondskill = tempskill;
 					firstskill = 0;
+					secondskill1 = tempskill1;
+					firstskill1 = '？';						
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
@@ -201,43 +237,58 @@ handlers['text']({
  if ( secondskill === 0 && skillid === 935301) {
 					secondskill = '出';
 					tempskill = '出';
- MSG = firstskill + ' + ' + secondskill 
+					secondskill1 = '近';
+					tempskill1 = '近';					
+ MSG = firstskill + ' + ' + secondskill
+ MSG1 = firstskill1 + ' + ' + secondskill1 
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					firstskill = tempskill;
 					secondskill = 0;
+					firstskill1 = tempskill1;
+					secondskill1 = '？';					
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
-"message_TW":  "外"
+"message_TW":  "近"
 });	
 }else if ( secondskill === 0 && skillid === 935302) {
 					secondskill = '进';
 					tempskill = '进';
+					secondskill1 = '远';
+					tempskill1 = '远';						
  MSG = firstskill + ' + ' + secondskill 
+ MSG1 = firstskill1 + ' + ' + secondskill1  
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					firstskill = tempskill;
 					secondskill = 0;
+					firstskill1 = tempskill1;
+					secondskill1 = '？';					
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
-"message_TW":  "內"
+"message_TW":  "远"
 });	
 }else if ( secondskill === 0 && skillid === 935303) {
 					secondskill = '全';
 					tempskill = '全';
+					secondskill1 = '全';
+					tempskill1 = '全';						
  MSG = firstskill + ' + ' + secondskill 
+ MSG1 = firstskill1 + ' + ' + secondskill1 
  handlers['text']({
 "sub_type": "message",
 "message_TW":  MSG
 });	
 					firstskill = tempskill;
 					secondskill = 0;
+					firstskill1 = tempskill1;
+					secondskill1 = '？';						
 handlers['text']({
 "sub_type": "alert",
 "delay": 8000,
@@ -331,7 +382,7 @@ module.exports = {
 
 "s-935-2000-304-0": [{"type": "text","sub_type": "message","message": "boss近程攻击，快跑远"}],
 "s-935-2000-305-0": [{"type": "text","sub_type": "message","message": "boss远程攻击，快靠近"},
-{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,125,100,4000)}
+{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,225,100,4000)}
 ],
 "s-935-2000-308-0": [{"type": "text","sub_type": "message","message": "左←"}],
 "s-935-2000-309-0": [{"type": "text","sub_type": "message","message": "右→"}],
