@@ -11,7 +11,8 @@ let player, entity, library, effect;
 		tempskill = 0;	
 	let firstskill1 = '？',
 		secondskill1 = '？',
-		tempskill1 = '？';		
+		tempskill1 = '？';	
+let notice = true; 		
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -295,6 +296,12 @@ handlers['text']({
 "message_TW":  "全"
 });						
 }
+	if (notice && skillid == 301 ) {
+		notice = false;
+handlers['text']({"sub_type": "message","message_TW": "boss扔溜溜球注意躲避"});	
+		
+		setTimeout(() => notice = true, 13000);
+					}
 }
 function start_boss() {
 print = true;
@@ -378,7 +385,7 @@ module.exports = {
 {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,250,100,4000)}
 ],
 "s-935-2000-108-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "后踢打手補师注意"}],
-"s-935-2000-301-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss扔溜溜球，注意躲避"}],
+"s-935-2000-301-0": [{"type": "func","func": skilld_event.bind(null, 301)}],
 
 "s-935-2000-304-0": [{"type": "text","sub_type": "message","message": "boss近程攻击，快跑远"}],
 "s-935-2000-305-0": [{"type": "text","sub_type": "message","message": "boss远程攻击，快靠近"},
@@ -387,6 +394,22 @@ module.exports = {
 "s-935-2000-308-0": [{"type": "text","sub_type": "message","message": "左←"}],
 "s-935-2000-309-0": [{"type": "text","sub_type": "message","message": "右→"}],
 
+"s-935-2007-201-0": [
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,500,8000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,90,500,8000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,180,500,8000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,8000)}],
+					 
+"s-935-2007-306-0": [
+                      {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,500,4000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,90,500,4000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,180,500,4000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,4000)}],
+"s-935-2007-307-0": [
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,500,12000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,90,500,12000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,180,500,12000)},
+                     {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,12000)}],
 //------------------------------------3王
     "h-935-3000-99": [{"type": "func","func": start_boss}],
     "h-935-3000-70": [{"type": "func","func": print_seventy}],
