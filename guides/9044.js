@@ -191,34 +191,38 @@ module.exports = {
 	},
  "h-444-1000-100-0": [{"type": "func","func": guid_voice}],
  "h-444-2000-100-0": [{"type": "func","func": guid_voice}],
-  "s-444-2000-104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}], 
-  "s-444-2000-134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}],  
  
- "s-444-1000-103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },
-			
+ 
+  "s-444-2000-1104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}],
+  "s-444-2000-2104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}], 
+  
+  "s-444-2000-1134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}],  
+   "s-444-2000-2134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}], 
+   
+ "s-444-1000-2103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },		
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
  
- "s-444-1000-108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
- "s-444-1000-111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
+ "s-444-1000-2108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
+ "s-444-1000-2111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
 
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
  ],  
- "s-444-1000-113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
+ "s-444-1000-2113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
  
- "s-444-1000-114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
+ "s-444-1000-2114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
       {"type": "func","func": Spawnitem2.bind(null,445,356,260,10,320,100,4000)}				
 				
  ],  
- "s-444-1000-115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
- "s-444-1000-116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
+ "s-444-1000-2115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
+ "s-444-1000-2116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
- "s-444-1000-117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
- "s-444-1000-118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
+ "s-444-1000-2117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
+ "s-444-1000-2118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
  {"type": "func","func": skillds_event.bind(null, 118)}
  ],  
 
- "s-444-1000-121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
+ "s-444-1000-2121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
 
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
@@ -227,28 +231,82 @@ module.exports = {
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}				
 			
  ],    
- "s-444-1000-131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
+ "s-444-1000-2131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
      {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
 				
  ], 
-  "s-444-1000-132-0": [  
+  "s-444-1000-2132-0": [  
   {"type": "func","func": Spawnitem1.bind(null,912,270,200,0,500,2000)},
   {"type": "func","func": Spawnitem1.bind(null,912,270,200,180,500,2000)}],
 
- "s-444-1000-137-0": [
+ "s-444-1000-2137-0": [
 {"type": "text","sub_type": "message","message": "后砸 " },
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
  
- "s-444-1000-138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
- "s-444-1000-139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
- "s-444-1000-140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
+ "s-444-1000-2138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
+ "s-444-1000-2139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
+ "s-444-1000-2140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
    {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
-  {"type": "func","func": Spawnitem1.bind(null,912,270,100,0,500,6000)},				
-  {"type": "func","func": Spawnitem1.bind(null,912,270,100,180,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
  ],  
+//-----------------------------------------------------------------------------------------------------
+ "s-444-1000-1103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },		
+     {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
+ 
+ "s-444-1000-1108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
+ "s-444-1000-1111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
 
+     {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
+ ],  
+ "s-444-1000-1113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
+ 
+ "s-444-1000-1114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
+      {"type": "func","func": Spawnitem2.bind(null,445,356,260,10,320,100,4000)}				
+				
+ ],  
+ "s-444-1000-1115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
+ "s-444-1000-1116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
+	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
+ ],   
+ "s-444-1000-1117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
+ "s-444-1000-1118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
+ {"type": "func","func": skillds_event.bind(null, 118)}
+ ],  
+
+ "s-444-1000-1121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
+
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}				
+			
+ ],    
+ "s-444-1000-1131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
+     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
+				
+ ], 
+  "s-444-1000-1132-0": [  
+  {"type": "func","func": Spawnitem1.bind(null,912,270,200,0,500,2000)},
+  {"type": "func","func": Spawnitem1.bind(null,912,270,200,180,500,2000)}],
+
+ "s-444-1000-1137-0": [
+{"type": "text","sub_type": "message","message": "后砸 " },
+     {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
+ 
+ "s-444-1000-1138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
+ "s-444-1000-1139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
+ "s-444-1000-1140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
+ //-------------------------------------------------------------------------------------------------
   "h-444-2000-99": [{"type": "func","func": start_boss},
        {
             "type": "spawn",
@@ -261,47 +319,49 @@ module.exports = {
             }
         }],
 
-  "s-444-2000-101-0": [{"type": "text","sub_type": "message","message": "锤地 270 重击" },
+  "s-444-2000-1101-0": [{"type": "text","sub_type": "message","message": "锤地 270 重击" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,0,190,500,4000)},
   {"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,3000)}],
 
- "s-444-2000-103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },
+ "s-444-2000-1103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },
 				
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
  
- "s-444-2000-107-0": [{"type": "text","sub_type": "message","message": "重击 闪避" }], 
- "s-444-2000-108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
- "s-444-2000-111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
+ "s-444-2000-1107-0": [{"type": "text","sub_type": "message","message": "重击 闪避" }], 
+ "s-444-2000-1108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
+ "s-444-2000-1111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
  ],  
  
- "s-444-2000-112-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+ "s-444-2000-1112-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+       {"type": "text","sub_type": "message","delay": 1040,"message": "1" },
+    //  {"type": "text","sub_type": "message","delay": 2040,"message": "1" },	
      {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}				
 				
  ], 
  
- "s-444-2000-113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
+ "s-444-2000-1113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
  
- "s-444-2000-114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
+ "s-444-2000-1114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
       {"type": "func","func": Spawnitem2.bind(null,445,356,260,10,320,100,4000)}				
 				
  ],  
- "s-444-2000-115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
- "s-444-2000-116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
+ "s-444-2000-1115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
+ "s-444-2000-1116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
- "s-444-2000-117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
- "s-444-2000-118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
+ "s-444-2000-1117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
+ "s-444-2000-1118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
   {"type": "func","func": skillds_event.bind(null, 118)}
  ],  
- "s-444-2000-119-0": [{"type": "text","sub_type": "message","message": "右 安全→ (坦左移)" },
+ "s-444-2000-1119-0": [{"type": "text","sub_type": "message","message": "右 安全→ (坦左移)" },
 	   {"type": "func","func": SpawnThing.bind(null,270,300,100,2000)}			
  ],  
  "s-444-2000-120-0": [{"type": "text","sub_type": "message","message": "左 安全← (坦右移)" },
  	   {"type": "func","func": SpawnThing.bind(null,90,300,100,2000)}	
  ], 
 
- "s-444-2000-121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
+ "s-444-2000-1121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
 
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
@@ -310,84 +370,202 @@ module.exports = {
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}				
 			
  ],  
- "s-444-2000-122-0": [{"type": "text","sub_type": "message","message": "左  第3下加速'" },
+ "s-444-2000-1122-0": [{"type": "text","sub_type": "message","message": "左  第3下加速'" },
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"} 
  ],  
- "s-444-2000-123-0": [{"type": "text","sub_type": "message","message": "左  第2下加速" },
+ "s-444-2000-1123-0": [{"type": "text","sub_type": "message","message": "左  第2下加速" },
    {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
  ],  
- "s-444-2000-125-0": [{"type": "text","sub_type": "message","message": "右 前砸(闪) | 后拉" }, 
+ "s-444-2000-1125-0": [{"type": "text","sub_type": "message","message": "右 前砸(闪) | 后拉" }, 
       {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}
  ],  
- "s-444-2000-126-0": [  
+ "s-444-2000-1126-0": [  
   {"type": "func","func": Spawnitem1.bind(null,912,90,200,0,500,2000)},
   {"type": "func","func": Spawnitem1.bind(null,912,90,200,180,500,2000)}],  
  
- "s-444-2000-131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
+ "s-444-2000-1131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
      {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
 				
  ], 
-  "s-444-2000-132-0": [  
+  "s-444-2000-1132-0": [  
   {"type": "func","func": Spawnitem1.bind(null,912,270,200,0,500,2000)},
   {"type": "func","func": Spawnitem1.bind(null,912,270,200,180,500,2000)}], 
- "s-444-2000-135-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+ "s-444-2000-1135-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+       {"type": "text","sub_type": "message","delay": 535,"message": "1" },
+    //  {"type": "text","sub_type": "message","delay": 1535,"message": "1" },		  
       {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}	
  ],  
- "s-444-2000-137-0": [
+ "s-444-2000-1137-0": [
 {"type": "func","func": skilld_event.bind(null, 137)},
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
  
- "s-444-2000-138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
- "s-444-2000-139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
- "s-444-2000-140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
-   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
-  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
-  {"type": "func","func": Spawnitem1.bind(null,912,270,100,0,500,6000)},				
-  {"type": "func","func": Spawnitem1.bind(null,912,270,100,180,500,6000)},				
-  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
- ],  
- "s-444-2000-141-0": [{"type": "text","sub_type": "message","message": "右  第3下加速" },
+ "s-444-2000-1138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
+ "s-444-2000-1139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
+ "s-444-2000-1140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
    {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
  ],  
- "s-444-2000-142-0": [{"type": "text","sub_type": "message","message": "右  第2下加速" },
+ "s-444-2000-1141-0": [{"type": "text","sub_type": "message","message": "右  第3下加速" },
    {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
   {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
  ],  
- "s-444-2000-308-0": [{"type": "text","sub_type": "message","message": "第1次晕" }],  
- "s-444-2000-309-0": [{"type": "text","sub_type": "message","message": "第2次晕" }],  
- "s-444-2000-310-0": [{"type": "text","sub_type": "message","message": "第3次晕" }], 
+ "s-444-2000-1142-0": [{"type": "text","sub_type": "message","message": "右  第2下加速" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
+ "s-444-2000-1308-0": [{"type": "text","sub_type": "message","message": "第1次晕" }],  
+ "s-444-2000-1309-0": [{"type": "text","sub_type": "message","message": "第2次晕" }],  
+ "s-444-2000-1310-0": [{"type": "text","sub_type": "message","message": "第3次晕" }], 
 
- "s-444-2000-311-0": [{"type": "text","sub_type": "message","message": "补师开盾 (右手放锤)" },
+ "s-444-2000-1311-0": [{"type": "text","sub_type": "message","message": "补师开盾 (右手放锤)" },
   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,6000)},
   {"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,6000)}				
 				
  ],  
- "s-444-2000-312-0": [{"type": "text","sub_type": "message","message": "补师开盾 (左右放锤)" },
+ "s-444-2000-1312-0": [{"type": "text","sub_type": "message","message": "补师开盾 (左右放锤)" },
    {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,500,6000)},
   {"type": "func","func": Spawnitem1.bind(null,912,0,0,180,500,6000)}], 
+//---------------------------------------------------------------------------------------------------
+  "s-444-2000-2101-0": [{"type": "text","sub_type": "message","message": "锤地 270 重击" },
+  {"type": "func","func": Spawnitem1.bind(null,912,0,0,190,500,4000)},
+  {"type": "func","func": Spawnitem1.bind(null,912,0,0,270,500,3000)}],
+
+ "s-444-2000-2103-0": [{"type": "text","sub_type": "message","message": "前砸 闪避" },
+				
+     {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
+ 
+ "s-444-2000-2107-0": [{"type": "text","sub_type": "message","message": "重击 闪避" }], 
+ "s-444-2000-2108-0": [{"type": "text","sub_type": "message","message": "丢锤 (晕眩)" }], 
+ "s-444-2000-2111-0": [{"type": "text","sub_type": "message","message": "后砸 (慢慢慢慢)" },
+     {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}				
+ ],  
+ 
+ "s-444-2000-2112-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+       {"type": "text","sub_type": "message","delay": 1800,"message": "1" },
+       {"type": "text","sub_type": "message","delay": 2700,"message": "2" },	   
+   //   {"type": "text","sub_type": "message","delay": 2800,"message": "1" },	
+   //   {"type": "text","sub_type": "message","delay": 3690,"message": "2" },	
+     {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}				
+				
+ ], 
+ 
+ "s-444-2000-2113-0": [{"type": "text","sub_type": "message","message": "点名 (闪避)" }], 
+ 
+ "s-444-2000-2114-0": [{"type": "text","sub_type": "message","message": "捶地 (秒杀)" },
+      {"type": "func","func": Spawnitem2.bind(null,445,356,260,10,320,100,4000)}				
+				
+ ],  
+ "s-444-2000-2115-0": [{"type": "text","sub_type": "message","message": "右 蓄力(击飞)" }],  
+ "s-444-2000-2116-0": [{"type": "text","sub_type": "message","message": "甜甜圈" },
+	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
+ ],   
+ "s-444-2000-2117-0": [{"type": "text","sub_type": "message","message": "随仇->跳劈 (击倒)" }],  
+ "s-444-2000-2118-0": [{"type": "text","sub_type": "message","message": "主仇->跳劈 (击倒)" },
+  {"type": "func","func": skillds_event.bind(null, 118)}
+ ],  
+ "s-444-2000-2119-0": [{"type": "text","sub_type": "message","message": "右 安全→ (坦左移)" },
+	   {"type": "func","func": SpawnThing.bind(null,270,300,100,2000)}			
+ ],  
+ "s-444-2000-2120-0": [{"type": "text","sub_type": "message","message": "左 安全← (坦右移)" },
+ 	   {"type": "func","func": SpawnThing.bind(null,90,300,100,2000)}	
+ ], 
+
+ "s-444-2000-2121-0": [{"type": "text","sub_type": "message","message": "左  (4连半月)" },
+
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}				
+			
+ ],  
+ "s-444-2000-2122-0": [{"type": "text","sub_type": "message","message": "左  第3下加速'" },
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"} 
+ ],  
+ "s-444-2000-2123-0": [{"type": "text","sub_type": "message","message": "左  第2下加速" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
+ "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message": "右 前砸(闪) | 后拉" }, 
+      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}
+ ],  
+ "s-444-2000-2126-0": [  
+  {"type": "func","func": Spawnitem1.bind(null,912,90,200,0,500,2000)},
+  {"type": "func","func": Spawnitem1.bind(null,912,90,200,180,500,2000)}],  
+ 
+ "s-444-2000-2131-0": [{"type": "text","sub_type": "message","message": "左 范围(挡) | 后拉" },
+     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
+				
+ ], 
+  "s-444-2000-2132-0": [  
+  {"type": "func","func": Spawnitem1.bind(null,912,270,200,0,500,2000)},
+  {"type": "func","func": Spawnitem1.bind(null,912,270,200,180,500,2000)}], 
+ "s-444-2000-2135-0": [{"type": "text","sub_type": "message","message": "完美格挡" },
+      {"type": "text","sub_type": "message","delay": 535,"message": "1" },
+      {"type": "text","sub_type": "message","delay": 1535,"message": "2" },	  
+     // {"type": "text","sub_type": "message","delay": 1535,"message": "1" },	
+     // {"type": "text","sub_type": "message","delay": 2535,"message": "2" },		  
+      {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}	
+ ],  
+ "s-444-2000-2137-0": [
+{"type": "func","func": skilld_event.bind(null, 137)},
+     {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
+ 
+ "s-444-2000-2138-0": [{"type": "text","sub_type": "message","message": "左 蓄力(击飞)" }],  
+ "s-444-2000-2139-0": [{"type": "text","sub_type": "message","message": "转圈 (击倒)" }],  
+ "s-444-2000-2140-0": [{"type": "text","sub_type": "message","message": "右  (4连半月)" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
+ "s-444-2000-2141-0": [{"type": "text","sub_type": "message","message": "右  第3下加速" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
+ "s-444-2000-2142-0": [{"type": "text","sub_type": "message","message": "右  第2下加速" },
+   {"type": "func","func": Spawnitem1.bind(null,912,90,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,90,50,180,500,6000)},					
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,0,500,6000)},				
+  {"type": "func","func": Spawnitem1.bind(null,912,270,50,180,500,6000)},				
+  {"type": "text","sub_type": "message","delay": 60000,"message": "四连半月 (就绪)"}
+ ],  
 
    "ab-444-2000-90442000": [{"type": "func","func": skilld_event.bind(null, 90442000)}],	
    "ab-444-2000-90442001": [{"type": "func","func": skilld_event.bind(null, 90442001)}],
    "ab-444-2000-90442304": [{"type": "func","func": skilld_event.bind(null, 90442304)}],
    "ab-444-2000-90444001": [{"type": "func","func": skilld_event.bind(null, 90444001)}],
   
-  "s-444-2500-201-0": [{"type": "func","func": print_th}],
-  "s-444-2500-305-0": [{"type": "func","func": skilld_event.bind(null, 305)},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}]  
+  "s-444-2500-1201-0": [{"type": "func","func": print_th}],
+  "s-444-2500-1305-0": [{"type": "func","func": skilld_event.bind(null, 305)},
+   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,4000)}]  
 
 };
