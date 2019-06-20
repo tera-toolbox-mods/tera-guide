@@ -352,10 +352,22 @@ class TeraGuide{
             	dispatch.settings.speaks = !dispatch.settings.speaks;
             	command.message(`语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`);
             },
+           voice() {
+         if(!voice){
+      	command.message(`need voice Dependencies`);
+			 return;		
+			}
+            	dispatch.settings.speaks = !dispatch.settings.speaks;
+            	command.message(`text-to-speech ${dispatch.settings.speaks?"on":"off"}.`);
+            },			
             通知() {
             	dispatch.settings.stream = !dispatch.settings.stream;
             	command.message(`消息通知已 ${dispatch.settings.stream?"关闭":"开启"}.`);
             },
+            notice() {
+            	dispatch.settings.stream = !dispatch.settings.stream;
+            	command.message(`notice ${dispatch.settings.stream?"off":"on"}.`);
+            },			
             組隊長通知() {
             	dispatch.settings.notice = !dispatch.settings.notice;	
             	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
@@ -364,13 +376,17 @@ class TeraGuide{
             	dispatch.settings.notice = !dispatch.settings.notice;	
             	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
             },	
+            alert() {
+            	dispatch.settings.notice = !dispatch.settings.notice;
+            	command.message(`Virtual captain has been ${dispatch.settings.notice?"on":"off"}.`);
+            },
             組隊通知() {
-				dispatch.settings.notice = !dispatch.settings.notice;
-            	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
-            },	
-            组队通知() {
             	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
             	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
+            },			
+            systemNotice() {
+            	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
+            	command.message(`system Notice ${dispatch.settings.systemNotice?"on":"off"}.`);
             },
             1() {
             	
@@ -489,7 +505,6 @@ class TeraGuide{
             	command.message( cw +"系统消息通知颜色白色");
 	           dispatch.settings.cc.splice(0,1, cw);				
             },
-
 			
             help() {
 		command.message('補助 ，副本補助开/关 ，默认系统通知，通知颜色为绿色');
@@ -515,7 +530,7 @@ class TeraGuide{
             },
             $default() {
               dispatch.settings.enabled = !dispatch.settings.enabled;
-                command.message(`副本補助已 ${dispatch.settings.enabled?"开启":"关闭"}.`);
+                command.message(`副本補助已 ${dispatch.settings.enabled?"on":"off"}.`);
             }
         });
 		
