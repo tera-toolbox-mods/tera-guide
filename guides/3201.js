@@ -167,6 +167,8 @@ module.exports = {
     "h-3201-1000-100": [{"type": "func","func": guid_voice}],
 
     // 1王追加
+    "s-3201-1000-103-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "闪避!!!" }],	
+    "s-3201-1000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "眩晕!!!" }],	
     "s-3201-1000-107-0": [{"type": "text","sub_type": "message","message": "后喷慢慢慢" },
 	{"type": "text","sub_type": "message","delay": 2250,"message": "击退!!!"}],	
     "s-3201-1000-111-0": [{"type": "text","sub_type": "message","message": "远程注意后喷" }],	
@@ -174,15 +176,38 @@ module.exports = {
     "s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "击飞" }],
     "s-3201-1000-118-0": [{"type": "text","sub_type": "message","message": "击飞" }],	
     "s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "前后喷 ↑↓" }],
-    "s-3201-1000-143-0": [{"type": "text","sub_type": "message","message": "8连击" },
-	
-     {"type": "func","func": SpawnThing.bind(null,135,300,100,3000)},	
-     {"type": "func","func": SpawnThing.bind(null,225,300,3500,5000)}		
+    "s-3201-1000-143-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "8连左→右" },
+	 {"type": "text","class_position":"dps","sub_type": "message","message": "8连右←左" },
+	 {"type": "text","class_position":"heal","sub_type": "message","message": "8连右←左" },	 
+     {"type": "func","func": SpawnThing.bind(null,150,300,100,2715)},	//1
+     {"type": "func","func": SpawnThing.bind(null,225,300,2800,4175)},   //6
+	 
+     {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
+     {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)}   //7	 
+//860
+//1370
+//2185
+//2715
+//3430
+//4175
+//4945
+//6130	 
 	],	
-    "s-3201-1000-145-0": [{"type": "text","sub_type": "message","message": "8连击快" },
-     {"type": "func","func": SpawnThing.bind(null,135,300,100,2000)},	
-     {"type": "func","func": SpawnThing.bind(null,225,300,2500,5000)}		
-
+    "s-3201-1000-145-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "8连左→右" },
+	 {"type": "text","class_position":"dps","sub_type": "message","message": "8连右←左" },
+	 {"type": "text","class_position":"heal","sub_type": "message","message": "8连右←左" },	
+     {"type": "func","func": SpawnThing.bind(null,30,300,100,1000)},	//1
+     {"type": "func","func": SpawnThing.bind(null,330,300,1100,5000)},   //7	 	
+     {"type": "func","func": SpawnThing.bind(null,150,300,100,2000)},	  //1
+     {"type": "func","func": SpawnThing.bind(null,225,300,2500,5000)}	//6
+//860
+//1370
+//2185
+//2715
+//3430
+//4175
+//4945
+//6130
 	],		 
     "s-3201-1000-311-0": [{"type": "text","sub_type": "message","message": "3次全屏攻击准备!" },
 	{"type": "text","sub_type": "message","delay": 4000,"message": "击退!"}],	
@@ -212,7 +237,8 @@ module.exports = {
 	"s-3201-1000-142-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "右手+左手"}],	
     "s-3201-1000-148-0": [{"type": "text","sub_type": "message","message": "右手蓄力" }],		
     "s-3201-1000-149-0": [{"type": "text","sub_type": "message","message": "左手蓄力" }],			
-    "s-3201-1000-150-0": [{"type": "text","sub_type": "message","message": "移动" }],		
+    "s-3201-1000-150-0": [{"type": "text","sub_type": "message","message": "移动" }],	
+    "s-3201-1000-151-0": [{"type": "text","sub_type": "message","message": "眩晕!!!" }],		
     "s-3201-1000-156-0": [{"type": "text","sub_type": "message","message": "转身1" }],			
     "s-3201-1000-157-0": [{"type": "text","sub_type": "message","message": "转身2" }],		
     "s-3201-1000-305-0": [{"type": "text","sub_type": "message","message": "双手抱拳" }],			
@@ -224,7 +250,9 @@ module.exports = {
 	
     "h-3201-2000-99": [{"type": "func","func": start_boss}],	
     "s-3201-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "靠近"},
-	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
+	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)},
+	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,875,3000)}	
+	],	
     "s-3201-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "跑远"},
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],		
     "s-3201-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "全屏攻击注意沉默" }],	
@@ -239,33 +267,6 @@ module.exports = {
 "s-3201-2000-228-0": [ 
 {"type": "text","sub_type": "message","message": "组员分伤！！" },
 {"type": "text","sub_type": "message","delay": 3500,"message": "赶紧闪开"},
-/*
-	{"type": "text","sub_type": "MSG","delay": 250,"message": "1" },
-	{"type": "text","sub_type": "MSG","delay": 500,"message": "2" },	
-	{"type": "text","sub_type": "MSG","delay": 750,"message": "3" },	
-	{"type": "text","sub_type": "MSG","delay": 1000,"message": "4" },	
-	{"type": "text","sub_type": "MSG","delay": 1250,"message": "5" },	
-	{"type": "text","sub_type": "MSG","delay": 1500,"message": "6" },
-	{"type": "text","sub_type": "MSG","delay": 1750,"message": "7" },
-	{"type": "text","sub_type": "MSG","delay": 2000,"message": "8" },	
-	{"type": "text","sub_type": "MSG","delay": 2250,"message": "9" },	
-	{"type": "text","sub_type": "MSG","delay": 2500,"message": "10" },	
-	{"type": "text","sub_type": "MSG","delay": 2750,"message": "11" },	
-	{"type": "text","sub_type": "MSG","delay": 3000,"message": "12" },
-	{"type": "text","sub_type": "MSG","delay": 3250,"message": "13" },		
-	{"type": "text","sub_type": "MSG","delay": 3500,"message": "14" },	
-	{"type": "text","sub_type": "MSG","delay": 3750,"message": "15" },	
-	{"type": "text","sub_type": "MSG","delay": 4000,"message": "16" },	
-	{"type": "text","sub_type": "MSG","delay": 4250,"message": "17" },	
-	{"type": "text","sub_type": "MSG","delay": 4500,"message": "18" },
-	{"type": "text","sub_type": "MSG","delay": 4750,"message": "19" }, 
-	{"type": "text","sub_type": "MSG","delay": 5000,"message": "20" },	
-	{"type": "text","sub_type": "MSG","delay": 5250,"message": "21" },
-	{"type": "text","sub_type": "MSG","delay": 5500,"message": "22" },	
-	{"type": "text","sub_type": "MSG","delay": 5750,"message": "23" },	
-	{"type": "text","sub_type": "MSG","delay": 6000,"message": "24" }	
-*/
-
 ],
 	
 	

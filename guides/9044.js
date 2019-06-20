@@ -23,7 +23,24 @@ handlers['text']({
 }
 notice_guide = false;
 
-}		
+}	
+function SpawnThingobject( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "巴哈勒",
+			"message": "王坐方向"
+        }, {loc: shield_loc});  
+}
+
+	
 // 	召喚光柱 ，告示牌提示（  角度 距离   延迟时间 时间）
 function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
@@ -190,9 +207,15 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
  "h-444-1000-100-0": [{"type": "func","func": guid_voice}],
- "h-444-2000-100-0": [{"type": "func","func": guid_voice}],
- 
- 
+ "h-444-2000-100": [{"type": "func","func": guid_voice},
+ // {"type": "func","func": Spawnitem1.bind(null,542,0,0,0,3000,6000000)},
+  //{"type": "func","func": Spawnitem1.bind(null,542,0,0,180,3000,6000000)}
+  	   {"type": "func","func": SpawnThingobject.bind(null,0,-700,100,60000000)} 
+  
+  
+ ],
+ 	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
+
   "s-444-2000-1104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}],
   "s-444-2000-2104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}], 
   
@@ -307,6 +330,7 @@ module.exports = {
   {"type": "text","sub_type": "message","delay": 60000,"message": "半月准备"}
  ],  
  //-------------------------------------------------------------------------------------------------
+ /*
   "h-444-2000-99": [{"type": "func","func": start_boss},
        {
             "type": "spawn",
@@ -318,7 +342,7 @@ module.exports = {
                 z: 4022
             }
         }],
-
+*/
   "s-444-2000-1101-0": [{"type": "text","sub_type": "message","message": "锤地 270 重击" },
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,190,500,4000)},
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,3000)}],
