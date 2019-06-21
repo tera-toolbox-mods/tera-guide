@@ -220,8 +220,17 @@ module.exports = {
  "h-444-2000-100": [{"type": "func","func": guid_voice},
  // {"type": "func","func": Spawnitem1.bind(null,542,0,0,0,3000,6000000)},
   //{"type": "func","func": Spawnitem1.bind(null,542,0,0,180,3000,6000000)}
-  	   {"type": "func","func": SpawnThingobject.bind(null,0,-700,100,60000000)} 
-  
+  	   {"type": "func","func": SpawnThingobject.bind(null,0,-700,100,60000000)}, 
+        {
+            "type": "spawn",
+            "id": 6,
+            "sub_delay": 99999999,
+            "pos": {
+                x: -116268,
+                y: 115070,
+                z: 4022
+            }
+        } 
   
  ],
  	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
@@ -466,6 +475,10 @@ module.exports = {
   {"type": "func","func": Spawnitem1.bind(null,553,270,50,180,500,6000)},				
   {"type": "text","sub_type": "message","delay": 60000,"message":  'Waves soon...',"message_TW": "半月准备"}	
  ],  
+  "s-444-2000-1307-0": [{"type": "text","sub_type": "message","message":  '!',"message_TW": "隕石集中" },
+        {"type": "text","sub_type": "message","delay": 20000,"message":  'last aerolite',"message_TW": "准备解王" }
+  
+  ], 
  "s-444-2000-1308-0": [{"type": "text","sub_type": "message","message":  'Stun (1)',"message_TW": "第1次晕" }],  
  "s-444-2000-1309-0": [{"type": "text","sub_type": "message","message":  'Stun (2)',"message_TW": "第2次晕" }],  
  "s-444-2000-1310-0": [{"type": "text","sub_type": "message","message":  'Stun (3)',"message_TW": "第3次晕" }], 
