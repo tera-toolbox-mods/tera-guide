@@ -25,11 +25,14 @@ notice_guide = false;
 
 }		
 
-
-
-
-
-	
+	function  applyDistance(loc, distance, degrees) {
+        let r = loc.w; //(loc.w / 0x8000) * Math.PI;
+     	let	rads = (degrees * Math.PI/180);
+	    let	finalrad = r - rads;
+        loc.x += Math.cos(finalrad) * distance;
+        loc.y += Math.sin(finalrad) * distance;
+        return loc;
+    }
 // 	召喚光柱 ，告示牌提示（  角度 距离   时间）
 function SpawnThing( degrees, radius, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
@@ -71,7 +74,7 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
     let	degrees = 360 - degree;	
-	library.applyDistance(shield_loc, distance, degrees);
+	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
         	"id": item,

@@ -18,11 +18,19 @@ handlers['text']({
 notice_guide = false;
 
 }	
+	function  applyDistance(loc, distance, degrees) {
+        let r = loc.w; //(loc.w / 0x8000) * Math.PI;
+     	let	rads = (degrees * Math.PI/180);
+	    let	finalrad = r - rads;
+        loc.x += Math.cos(finalrad) * distance;
+        loc.y += Math.sin(finalrad) * distance;
+        return loc;
+    }
 	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 时间）
 function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
-	library.applyDistance(shield_loc, distance, degrees);
+	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
         	"id": item,
