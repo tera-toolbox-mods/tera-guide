@@ -10,7 +10,7 @@ Is a module for creating dungeon guides extremely easily by simple "scripting".
 
 
 
-https://github.com/michengs/library
+https://github.com/tera-toolbox-mods/library
 
 extract it to tera-proxy/mods/
 
