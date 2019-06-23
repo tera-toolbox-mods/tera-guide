@@ -3,251 +3,157 @@
 
 let notice_guide = true;
 let player, entity, library, effect;
-	
+let power = false;
+let Level = 0;
+let notice = true;
+let powerMsg = null;
+let steptwo = false ;	
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
 "sub_type": "message",
 "delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
+"message_TW": "一层', '<font color=#FF0000>爆炸! 爆炸!</font>"
 });
 
 handlers['text']({
 "sub_type": "notification",
 "delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
+"message_TW": "一层', '<font color=#FF0000>爆炸! 爆炸!</font>"
 });
 }
 notice_guide = false;
 
 }	
-/*	
-let rings_inout_seventhfloor = [];
-
-const sign_offsets_seventhfloor = [0.24, 1.29, 2.33, -2.88, -1.84, -0.8];//披萨A
-for (let offset of sign_offsets_seventhfloor) {
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 559,
-        "delay": 6000,		
-    	"sub_delay": 8000,
-    	"distance": 250,
-    	"offset": offset
-    });
-}	                                                                      //外
-for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 60) {
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 559,
-        "delay": 8000,		
-    	"sub_delay": 10000,
-    	"distance": 250,
-    	"offset": angle
-    });
-}	
-	                                                                   //內
-for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 60) {
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 559,
-        "delay": 10000,		
-    	"sub_delay": 12000,
-    	"distance": 150,
-    	"offset": angle
-    });
-}		
-
-	
-	
-const sign_offsets_seventhfloor1 = [-0.26, 0.79, 1.83, 2.9, -2.34, -1.3]; //披萨B
-for (let offset of sign_offsets_seventhfloor1) {
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 559,
-        "delay": 12000,		
-    	"sub_delay": 14000,
-    	"distance": 250,
-    	"offset": offset
-    });
-}	
-	
-const sign_offsets_seventhfloor2 = [-0.26, 1.29, 2.9, -1.84]; //披萨C
-for (let offset of sign_offsets_seventhfloor2) {
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 559,
-        "delay": 14000,		
-    	"sub_delay": 16000,
-    	"distance": 250,
-    	"offset": offset
-    });
-}		
-	
-	
-	
-	
-const SPAWN_CIRCLES = true;
-
-const steptwo = 2 * Math.PI / 30;//20 flowers in total
-//内圈
-let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
-let SPAWNING_SECOND_CIRCLE_FLOWERS = [];
-let SPAWNING_THIRD_CIRCLE_FLOWERS = [];
-//外圈
-
-for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
-	if(!SPAWN_CIRCLES) continue;
-	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
-	    "type": "spawn",
-        "id": 553,
-        "sub_delay": 3000,
-        "distance": 300,
-        "offset": angle
-	});
-	
-	SPAWNING_SECOND_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-        "id": 553,
-        "sub_delay": 6000,
-        "distance": 250,
-        "offset": angle
-	},
-	
-{
-		"type": "spawn",
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": 6000,
-		"distance": 225,
-		"ownerName": "安全界限",
-		"message": "安全界限",
-		"offset": -3.14
-	},
-{
-		"type": "spawn",
-		"sub_type": "build_object",
-		"id": 1,
-		"sub_delay": 6000,
-		"distance": 375,
-		"ownerName": "安全界限",
-		"message": "安全界限",
-		"offset": 0
-	});
-	SPAWNING_THIRD_CIRCLE_FLOWERS.push({
-		"type": "spawn",
-        "id": 553,
-        "sub_delay": 6000,
-        "distance": 225,
-        "offset": -3.14
-	});	
-	
-}
-*/
-/*
-let rings_inout_seventhfloor = [];
-
-const sign_offsets_seventhfloor =   [0, -0.157, -0.315, -0.474, -0.636, -0.801, -0.97, -1.144, -1.325, -1.514, -1.713, -1.922, -2.144, -2.378, -2.625, -2.88, -3.141, 2.88, 2.625, 2.378, 2.144, 1.922, 1.713, 1.514, 1.325, 1.144,0.97, 0.801, 0.636, 0.474, 0.315, 0.157];//披萨A
-const sign_distances_seventhfloor = [375, 373.8, 370.4, 364.7, 356.9, 347.3, 335.9, 323.1, 309.2, 294.6, 280, 265.7, 252.5, 241.2, 232.4, 226.9, 225, 226.9, 232.4, 241.2, 252.5, 265.7, 280, 294.6, 309.2, 323.1 ,335.9, 347.3, 356.9, 364.7, 370.4, 373.8];//披萨A
-
-
-
-for (let offset of sign_offsets_seventhfloor; distance of sign_distances_seventhfloor  ) {
-	
-
-    rings_inout_seventhfloor.push({
-    	"type": "spawn",
-    	"id": 553,
-        "delay": 6000,		
-    	"sub_delay": 80000,
-    	"distance": distance,
-    	"offset": offset
-    });
-	
-	
-}					
-	*/
-
-	
-	const steptwo = 2 * Math.PI / 30;//20 flowers in total
-let SPAWNING_FIRST_CIRCLE_FLOWERS = [];
-for(let angle = -Math.PI; angle <= Math.PI; angle += steptwo) {
-	SPAWNING_FIRST_CIRCLE_FLOWERS.push({
-	    "type": "spawn",
-        "id": 553,
-        "sub_delay": 5000,
-        "distance": 680,
-        "offset": angle
-	});
-}
-	
-function rings_seventhfloor(handlers, event, entity) {
+// 	召喚光柱 ，告示牌提示（  角度 距离   延迟时间 时间）
+function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;
-
-	library.applyDistance(shield_loc, 50);
-
-    for (let angle = -Math.PI; angle <= Math.PI; angle += 2 * Math.PI / 40) {
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
         handlers['spawn']({
-        	"id": 603,
-        	"sub_delay": 5000,
-        	"distance": 200,
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "SAFE SPOT",
+			"message": "SAFE"
+        }, {loc: shield_loc});  
+        handlers['spawn']({
+			"sub_type": "item",
+        	"id": 88850,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});	
+}
+
+	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
+function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
+	
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;	
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);		
+    let angle = angles * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
         	"offset": angle
         }, {loc: shield_loc});
     }
+}
+	function  applyDistance(loc, distance, degrees) {
+        let r = loc.w; //(loc.w / 0x8000) * Math.PI;
+     	let	rads = (degrees * Math.PI/180);
+	    let	finalrad = r - rads;
+        loc.x += Math.cos(finalrad) * distance;
+        loc.y += Math.sin(finalrad) * distance;
+        return loc;
+    }
+	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 延迟 时间）
+function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);
+    for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
+        handlers['spawn']({
+			"sub_type": "item",			
+        	"id": item,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
+
+function SpawnThingobject( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "巴哈勒",
+			"message": "王坐方向"
+        }, {loc: shield_loc});  
+}
 
 
-}	
-	
 module.exports = {
+	
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
-    "h-3101-1000-100": [{"type": "func","func": guid_voice}],
-
-
-
-
-
-
-     "s-735-1000-104-0": [{"type": "text","sub_type": "msgcg","message":  "注意眩暈"}],	
-	 "s-735-1000-112-0": [{"type": "text","sub_type": "msgcg","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	 
-     "s-735-1000-111-0": [{"type": "text","sub_type": "msgcg","message": "BACK ATTACK", "message_TW": "BOSS 攻击身后打手请注意！" }],	
-   //  "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "get in", "message_TW": "进" }],	 
-     "s-735-1000-306-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "召唤地雷！快打！" }], 
-     "s-735-1000-307-0": [{"type": "text","sub_type": "message","message": "get out", "message_TW": "BOSS 拉人，注意无敌躲避！" }],
-
-"s-735-1000-309-0": [ 
-{"type": "text","sub_type": "message","message": "Dodge Stun", "message_TW": "开始发射4次导弹！！" },
-{"type": "text","sub_type": "message","delay": 7000,"message": "JUMP", "message_TW": "倒计时5"},
-{"type": "text","sub_type": "message","delay": 8000,"message": "JUMP", "message_TW": "倒计时4"},
-{"type": "text","sub_type": "message","delay": 9000,"message": "JUMP", "message_TW": "倒计时3"},
-{"type": "text","sub_type": "message","delay": 10000,"message": "JUMP", "message_TW": "倒计时2"},
-{"type": "text","sub_type": "message","delay": 11000,"message": "JUMP", "message_TW": "倒计时1"},
-{"type": "text","sub_type": "message","delay": 12000,"message": "JUMP", "message_TW": "快跳！"}
+    "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_TW": "BOSS 攻击身后打手请注意！" }],	
+    "s-735-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_TW": "BOSS 攻击身后打手请注意！" }],
+    "s-735-1000-205-0": [{"type": "text","sub_type": "message","message": "wind","message_TW": "即将开启通风系统，请离开中间！" }],	
+    "s-735-1000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_TW": "出去！" }],
+    "s-735-1000-305-0": [{"type": "text","sub_type": "message","message": "IN","message_TW": "进！" }],	
+    "s-735-1000-306-0": [{"type": "text","sub_type": "message","message": "Incoming Summon","message_TW": "召唤地雷！快打！" }], 	
+    "s-735-1000-307-0": [{"type": "text","sub_type": "message","message": "PULL","message_TW": "BOSS 拉人，注意无敌躲避！" }],	
+	
+    "s-735-1000-309-0": [ 
+      {"type": "text","sub_type": "message","message": "Four missile launches were initiated","message_TW": "开始发射4次导弹！！" },
+      {"type": "text","sub_type": "message","delay": 7000,"message": "5", "message_TW": "5"},
+      {"type": "text","sub_type": "message","delay": 8000,"message": "4", "message_TW": "4"},
+      {"type": "text","sub_type": "message","delay": 9000,"message": "3", "message_TW": "3"},
+      {"type": "text","sub_type": "message","delay": 10000,"message": "2", "message_TW": "2"},
+      {"type": "text","sub_type": "message","delay": 11000,"message": "1", "message_TW": "1"},
+      {"type": "text","sub_type": "message","delay": 12000,"message": "JUMP", "message_TW": "快跳！"}
 ],
 //------------------------------------2王
 
-"s-735-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "前砸注意躲避"}],
-"s-735-2000-108-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "后踢打手補师注意"}],
-"s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss扔溜溜球，注意躲避"}],
-"s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "boss近程攻击，快跑远"}],
-
+"s-735-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front","message_TW": "前砸注意躲避"}],
+"s-735-2000-108-0": [{"type": "text","sub_type": "message","message": "back","message_TW": "后踢打手補师注意"}],
+"s-735-2000-301-0": [{"type": "text","sub_type": "message","message": "throws","message_TW": "boss扔溜溜球，注意躲避"}],
+"s-735-2000-304-0": [{"type": "text","sub_type": "message","message": "OUT","message_TW": "快跑远"}],
 //------------------------------------3王
 //s拳
-"s-735-3000-116-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避右边 →↘"}],
-"s-735-3000-119-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避右边 →↘"}],
-"s-735-3000-118-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避 左边 ←↙"}],	 
-"s-735-3000-117-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "S拳秒杀躲避 左边 ←↙"}],
-"s-735-3000-129-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "坦无敌闪"}],	
+"s-735-3000-116-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_TW": "S拳秒杀躲避右边 →↘"}],
+"s-735-3000-119-0": [{"type": "text","sub_type": "message","message": "RIGHT →↘","message_TW": "S拳秒杀躲避右边 →↘"}],
+"s-735-3000-118-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_TW": "S拳秒杀躲避 左边 ←↙"}],	 
+"s-735-3000-117-0": [{"type": "text","sub_type": "message","message": "LEFT ←↙","message_TW": "S拳秒杀躲避 左边 ←↙"}],
+"s-735-3000-129-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "dodge","message_TW": "坦无敌闪"}],	
 
   "s-735-3000-321-0": [
-		  {"type": "text","sub_type": "message","message": "get out", "message_TW": "BOSS护盾 快打，不然灭团!" },
-          {"type": "text","sub_type": "message","delay": 90000,"message": "JUMP", "message_TW": "10S后准备破盾！"}	  
+		  {"type": "text","sub_type": "message","message": "SHIELD!","message_TW": "BOSS护盾 快打，不然灭团!" },
+          {"type": "text","sub_type": "message","delay": 90000,"message": "After 10s SHIELD! ", "message_TW": "10S后准备破盾！"}	    
 		 ],
 
 
 //出去	 
-"s-735-3000-324-0": [{"type": "text","sub_type": "message","message": "stay in↑ + get out↓","message_TW": "出去"}]
+"s-735-3000-324-0": [{"type": "text","sub_type": "message","message": "get out↓","message_TW": "出去"}]
 
 };

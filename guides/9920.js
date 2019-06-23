@@ -406,7 +406,7 @@ module.exports = {
 
 //点名出剑刃风暴（1204）
 //random target energy beam
-"s-920-3000-1204-0": [{"type": "text","sub_type": "message","message": "energy beam","message": "点名剑气"}],
+"s-920-3000-1204-0": [{"type": "text","sub_type": "message","message": "energy beam","message_TW": "点名剑气"}],
 
 //剑舞前戳+逆时针旋转+右手扇形攻击+外到内甜甜圈 注:坦右边安全,打左边安全请自行更改
 //heart thrust+anticlockwise spin+right swipe+AOEs from out to in
