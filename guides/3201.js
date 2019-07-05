@@ -148,21 +148,21 @@ handlers['text']({
 if (skillid === 203 && counter == 0 ) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "打手位本体!",
+"message_TW": "dps位本体!",
 "message": "dps entity"
 });	
 }
 if (skillid === 204 && counter == 0 ) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "坦位本体!!",
+"message_TW": "tank位本体!!",
 "message": "tank entity"
 });	
 }
 if (notice && skillid === 234 && counter == 0 ) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "打手位本体!!!",
+"message_TW": "dps位本体!!!",
 "message": "dps entity"
 });			
 }

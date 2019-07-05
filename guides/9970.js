@@ -37,14 +37,14 @@ module.exports = {
     // Debuff rotation happening
     "s-970-1000-1307": EVENT_FOR_DEBUFFS,
 	
-    "s-970-3000-1322-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "内外炸" }],
-    "s-970-3000-1303-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "进" }],
-    "s-970-3000-2113-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "出" }],	
+  //  "s-970-3000-1322-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "内外炸" }],
+  //  "s-970-3000-1303-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "进" }],
+   // "s-970-3000-2113-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "出" }],	
 	
 	
 	
-    "s-970-3000-1301-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "炸圈" }],	
-    "s-970-3000-2303-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "进" }]
+  //  "s-970-3000-1301-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "炸圈" }],	
+  //  "s-970-3000-2303-0": [{"type": "text","sub_type": "message","message": "alert", "message_TW": "进" }]
     // Meh, fill in with stop_timer id 1 below 70% hp, but cba
     
     // Second boss

@@ -168,37 +168,38 @@ module.exports = {
 
 
  
- "s-783-1000-108-0": [{"type": "text","sub_type": "message", "message": "后跳眩晕" }],
- "s-783-1000-109-0": [{"type": "text","sub_type": "message", "message": "后扫击退" }],
- "s-783-1000-119-0": [{"type": "text","sub_type": "message", "message": "蓄力捶地" }],
- "s-783-1000-127-0": [{"type": "text","sub_type": "message", "message": "雷电!!" }],
- "dm-0-0-9783103": [{"type": "text","sub_type": "message", "message": "100能量鉴定!!" }],
- "dm-0-0-9783103": [{"type": "text","sub_type": "message", "message": "100能量鉴定!!" }],
+ "s-783-1000-108-0": [{"type": "text","sub_type": "message","message": "back stun","message_TW": "后跳眩晕" }],
+ "s-783-1000-109-0": [{"type": "text","sub_type": "message","message": "Knockback","message_TW": "后扫击退" }],
+ "s-783-1000-119-0": [{"type": "text","sub_type": "message","message": "energy","message_TW": "蓄力捶地" }],
+ "s-783-1000-127-0": [{"type": "text","sub_type": "message","message": "thunder","message_TW": "雷电!!" }],
+ "dm-0-0-9783103": [{"type": "text","sub_type": "message","message": "100","message_TW": "100能量鉴定!!" }],
+ "dm-0-0-9783103": [{"type": "text","sub_type": "message","message": "100","message_TW": "100能量鉴定!!" }],
  //二王
- "s-783-2000-110-0": [{"type": "text","class_position":"tank","sub_type": "message", "message": "前砸闪避" }],
- "s-783-2000-111-0": [{"type": "text","class_position":"dps","sub_type": "message", "message": "右后踢击退" },
-                      {"type": "text","class_position":"heal","sub_type": "message", "message": "右后踢击退" }], 					  
- "s-783-2000-115-0": [{"type": "text","class_position":"dps","sub_type": "message", "message": "左后踢击退" },
-                      {"type": "text","class_position":"heal","sub_type": "message", "message": "左后踢击退" }], 
- "s-783-2000-119-0": [{"type": "text","sub_type": "message", "message": "跳跃眩晕" }],
- "s-783-2000-120-0": [{"type": "text","sub_type": "message", "message": "前拳+后踢击退" }],
- "s-783-2000-316-0": [{"type": "text","sub_type": "message", "message": "火焰爆炸" }], 
- "s-783-2000-317-0": [{"type": "text","sub_type": "message", "message": "水波击飞" }],
- "s-783-2000-318-0": [{"type": "text","sub_type": "message", "message": "地毯眩晕" }].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
+ "s-783-2000-110-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front","message_TW": "前砸闪避" }],
+ "s-783-2000-111-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "right back","message_TW": "右后踢击退" },
+                      {"type": "text","class_position":"heal","sub_type": "message","message": "right back","message_TW": "右后踢击退" }], 					  
+ "s-783-2000-115-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "left back","message_TW": "左后踢击退" },
+                      {"type": "text","class_position":"heal","sub_type": "message","message": "left back","message_TW": "左后踢击退" }], 
+ "s-783-2000-119-0": [{"type": "text","sub_type": "message","message": "jump stun","message_TW": "跳跃眩晕" }],
+ "s-783-2000-120-0": [{"type": "text","sub_type": "message","message": "front + back","message_TW": "前拳+后踢击退" }],
+ "s-783-2000-316-0": [{"type": "text","sub_type": "message","message": "Flame Blast","message_TW": "火焰爆炸" }], 
+ "s-783-2000-317-0": [{"type": "text","sub_type": "message","message": "water wave","message_TW": "水波击飞" }],
+ "s-783-2000-318-0": [{"type": "text","sub_type": "message","message": "stun","message_TW": "地毯眩晕" }].concat(SPAWNING_FIRST_CIRCLE_FLOWERS),
  
  
  
  //三王
- "s-783-3000-106-0": [{"type": "text","class_position":"tank","sub_type": "message", "message": "前推击退" }],
- "s-783-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message", "message": "前插眩晕" }], 
- "s-783-3000-112-0": [{"type": "text","class_position":"dps","sub_type": "message", "message": "后扫击退" },
-                      {"type": "text","class_position":"heal","sub_type": "message", "message": "后扫击退" }],
- "s-783-3000-301-0": [{"type": "text","sub_type": "message", "message": "地刺击飞" }],
+ "s-783-3000-106-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front","message_TW": "前推击退" }],
+ "s-783-3000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "stun","message_TW": "前插眩晕" }], 
+ "s-783-3000-112-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Knockback","message_TW": "后扫击退" },
+                      {"type": "text","class_position":"heal","sub_type": "message","message": "Knockback","message_TW": "后扫击退" }],
+ "s-783-3000-301-0": [{"type": "text","sub_type": "message","message": "diaup","message_TW": "地刺击飞" }],
  
- "s-783-3000-303-0": [{"type": "text","sub_type": "message", "message": "右" }].concat(SPAWNING_right_FLOWERS),
- "s-783-3000-306-0": [{"type": "text","sub_type": "message", "message": "左" }].concat(SPAWNING_left_FLOWERS),
- "s-783-3000-309-0": [{"type": "text","sub_type": "message", "message": "注视!!" }],
- "s-783-3000-315-0": [{"type": "text","sub_type": "message", "message": "恐惧吸血" }]
+ "s-783-3000-303-0": [{"type": "text","sub_type": "message","message": "right","message_TW": "右" }].concat(SPAWNING_right_FLOWERS),
+ "s-783-3000-306-0": [{"type": "text","sub_type": "message","message": "left","message_TW": "左" }].concat(SPAWNING_left_FLOWERS),
+ "s-783-3000-309-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_TW": "注视!!" }],
+ "s-783-3000-315-0": [{"type": "text","sub_type": "message","message": "suck blood","message_TW": "恐惧吸血" }]
+
 
 
 };
