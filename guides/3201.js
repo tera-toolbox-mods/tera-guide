@@ -125,11 +125,11 @@ setTimeout(function () {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "重置buff!",
-"message": "tank"
+"message": "debuff reload"
 });	
 		boss = 01;
 }
-		   }, 70000);		
+		   }, 80000);		
 }	
 if (skillid === 32010220) { //吃本体buff
 		boss = 0;
@@ -138,11 +138,11 @@ setTimeout(function () {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "重置buff!",
-"message": "tank"
+"message": "debuff reload"
 });	
 		boss = 01;
 }
-		   }, 70000);			
+		   }, 80000);			
 }	
 
 if (skillid === 203 && boss === 0 ) {
@@ -203,7 +203,7 @@ handlers['text']({
 		   }, 55000);	
 }
 
-if (skillid === 203 && boss == 01 ) {
+if (skillid === 203 && boss === 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "dps位本体!",
@@ -217,7 +217,7 @@ handlers['text']({
 });	
 		   }, 55000);	
 }
-if (skillid === 204 && boss == 01 ) {
+if (skillid === 204 && boss === 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "tank位本体!!",
@@ -231,7 +231,7 @@ handlers['text']({
 });	
 		   }, 55000);	
 }
-if (notice && skillid === 234 && boss == 01 ) {
+if (notice && skillid === 234 && boss === 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "dps位本体!!!",
