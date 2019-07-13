@@ -1,9 +1,9 @@
 // 
 let notice_guide = true;
 let   notice = true  ; 
-let boss = null;
-let counter = 0;
+let boss = 01;
 let lastboss = false;
+let timer = 01;
 let player, entity, library, effect;
 function guid_voice(handlers) {   
 if(notice_guide) {
@@ -73,8 +73,7 @@ function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handl
 function start_boss() {
   lastboss = true  ;
   notice = true  ; 
-  boss = null;
-  counter = 0;
+  boss = 01;
 }
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {
@@ -85,90 +84,165 @@ if (skillid === 203 || skillid === 204) {
 		
 }	
 
-if (skillid === 234 || skillid === 203 || skillid === 204 ) {
-setTimeout(() => counter++, 4000);
-}	
-
-if (notice && skillid === 234 && boss && counter >= 1 ) {
+if (notice && skillid === 234 && boss === 1  ) { //203 204技能没出/满足234 打手位置本体技能/满足吃分身buff
 handlers['text']({
 "sub_type": "message",
 "message_TW": "打手位!!!",
 "message": "dps"
 
-});			
+});	
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);		
 }
-if (notice && skillid === 234 && !boss && counter >= 1  ) {
+if (notice && skillid === 234 && boss === 0 ) { //203 204技能没出/满足234 打手位置本体技能/满足吃本体buff
 handlers['text']({
 "sub_type": "message",
 "message_TW": "坦位!!!",
 "message": "tank"
-});			
+});	
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);			
 }
-if (skillid === 32010224) {
-		boss = true;
+if (skillid === 32010224) {  //吃分身buff
+		boss = 1;
+setTimeout(function () {
+	if (boss === 1){
+handlers['text']({
+"sub_type": "message",
+"message_TW": "重置buff!",
+"message": "tank"
+});	
+		boss = 01;
+}
+		   }, 70000);		
 }	
-if (skillid === 32010220) {
-		boss = false;
+if (skillid === 32010220) { //吃本体buff
+		boss = 0;
+setTimeout(function () {
+	if (boss === 0){
+handlers['text']({
+"sub_type": "message",
+"message_TW": "重置buff!",
+"message": "tank"
+});	
+		boss = 01;
+}
+		   }, 70000);			
 }	
 
-if (skillid === 203 && !boss && counter >= 1 ) {
+if (skillid === 203 && boss === 0 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "坦位!",
 "message": "tank"
 });	
-
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }	
-if (skillid === 203 && boss && counter >= 1 ) {
+if (skillid === 203 && boss === 1 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "打手位!",
 "message": "dps"
 });	
-
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }
 
-if (skillid === 204 && boss && counter >= 1 ) {
+if (skillid === 204 && boss === 1 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "坦位!!",
 "message": "tank"
 });	
-
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }
-if (skillid === 204 && !boss && counter >= 1 ) {
+if (skillid === 204 && boss === 0 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "打手位!!",
 "message": "dps"
 });	
-
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }
 
-if (skillid === 203 && counter == 0 ) {
+if (skillid === 203 && boss == 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "dps位本体!",
 "message": "dps entity"
 });	
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }
-if (skillid === 204 && counter == 0 ) {
+if (skillid === 204 && boss == 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "tank位本体!!",
 "message": "tank entity"
 });	
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);	
 }
-if (notice && skillid === 234 && counter == 0 ) {
+if (notice && skillid === 234 && boss == 01 ) {
 handlers['text']({
 "sub_type": "message",
 "message_TW": "dps位本体!!!",
 "message": "dps entity"
-});			
+});
+setTimeout(function () {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "诅咒准备!",
+"message": "debuff coming soon！"
+});	
+		   }, 55000);				
 }
 
 if (skillid === 9203100 && lastboss ) {
- counter = 0;		
+	
 handlers['text']({
 "sub_type": "message",
 "message_TW": "死亡+1!!"
@@ -182,7 +256,7 @@ module.exports = {
 	},	
 	
     // First boss
-    "h-3201-1000-100": [{"type": "func","func": guid_voice}],
+  //  "h-3201-1000-100": [{"type": "func","func": guid_voice}],
 
     // 1王
     "s-3201-1000-103-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "dodge","message_TW": "闪避!!!" }],	
@@ -192,8 +266,15 @@ module.exports = {
 	
     "s-3201-1000-111-0": [{"type": "text","sub_type": "message","message": "Ranged DPS attention","message_TW": "远程注意后喷" }],	
     "s-3201-1000-112-0": [{"type": "text","sub_type": "message","message": "left right","message_TW": "左右噴" }],	
-    "s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_TW": "击飞（慢）" }],
-    "s-3201-1000-118-0": [{"type": "text","sub_type": "message","message": "Jump P (Slow)","message_TW": "击飞P（慢）" }],	
+    "s-3201-1000-113-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_TW": "击飞慢" },
+	{"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_TW": "閃!"},	
+	{"type": "text","sub_type": "notification","delay": 1500,"message": "pull","message_TW": "閃!"}		
+	
+	],
+    "s-3201-1000-118-0": [{"type": "text","sub_type": "message","message": "Jump P (Slow)","message_TW": "击飞P慢" },
+	{"type": "text","sub_type": "message","delay": 1500,"message": "pull","message_TW": "閃!"},	
+	{"type": "text","sub_type": "notification","delay": 1500,"message": "pull","message_TW": "閃!"}		
+	],	
     "s-3201-1000-119-0": [{"type": "text","sub_type": "message","delay": 1000,"message": "Back + Front","message_TW": "前后喷 ↑↓" }],
     "s-3201-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右-->" }],			
     "s-3201-1000-122-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_TW": "左<--" }],
@@ -204,8 +285,8 @@ module.exports = {
 	"s-3201-1000-131-0": [{"type": "text","class_position":"dps","sub_type": "message","message": "Ranged DPS attention","message_TW": "远程注意后喷"},
 	                       {"type": "text","class_position":"heal","sub_type": "message","message": "Ranged DPS attention","message_TW": "远程注意后喷"}],								   
     "s-3201-1000-132-0": [{"type": "text","sub_type": "message","message": "left right ←→","message_TW": "左右喷 ←→" }],			
-    "s-3201-1000-133-0": [{"type": "text","sub_type": "message","message": "Jump (Fast)","message_TW": "击飞（快） " }],			
-    "s-3201-1000-138-0": [{"type": "text","sub_type": "message","message": "Jump P (Fast)","message_TW": "击飞P（快）" }],	
+    "s-3201-1000-133-0": [{"type": "text","sub_type": "message","message": "Jump (Fast)","message_TW": "击飞快" }],			
+    "s-3201-1000-138-0": [{"type": "text","sub_type": "message","message": "Jump P (Fast)","message_TW": "击飞P快" }],	
     "s-3201-1000-139-0": [{"type": "text","sub_type": "message","message": "Back + Front (Fast)","message_TW": "前后喷（快）↑↓" }],
     "s-3201-1000-141-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "双手前砸 (慢)" }],	
 	"s-3201-1000-142-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "右手+左手"}],	
@@ -271,7 +352,11 @@ module.exports = {
     "s-3201-2000-226-0": [{"type": "text","sub_type": "message","message_TW": "空中吸收 蓄力" }],	
     "s-3201-2000-228-0": [ 
        {"type": "text","sub_type": "message","message": "Team up","message_TW": "组员分伤！！" },
-       {"type": "text","sub_type": "message","delay": 3500,"message": "dodge","message_TW": "赶紧闪开"}
+       {"type": "text","sub_type": "message","delay": 3500,"message": "dodge","message_TW": "闪"},
+       {"type": "text","sub_type": "notification","delay": 3500,"message": "dodge","message_TW": "闪"},
+       {"type": "text","sub_type": "message","delay": 65000,"message": "dodge","message_TW": "宝石分伤准备"}   
+   
+	   
 ],
     "s-3201-2000-229-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3个宝石种子传唤" }],	
     "s-3201-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "AOE","message_TW": "全屏攻击注意沉默" }],
