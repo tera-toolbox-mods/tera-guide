@@ -5,6 +5,8 @@ let boss = 01;
 let lastboss = false;
 let timer = 01;
 let player, entity, library, effect;
+let	print = false;
+
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -74,8 +76,11 @@ function start_boss() {
   lastboss = true  ;
   notice = true  ; 
   boss = 01;
+  print = true ; 
 }
-
+function start_boss1() {
+  print = true ;
+}
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 	
 if (skillid === 203 || skillid === 204) {
@@ -250,6 +255,26 @@ handlers['text']({
 }
 }
 
+function print_eighty(handlers) {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "80%",
+"message_TW": "诅咒准备"
+});
+}
+print = false;
+}	
+function print_seventyfive(handlers) {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "75%",
+"message_TW": "宝石分伤准备"
+});
+}
+print = false;
+}
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -323,12 +348,12 @@ module.exports = {
 
     "h-3201-2000-99": [{"type": "func","func": start_boss}],	
 	
-    "s-3201-2000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right left","message_TW": "右手 左手" }],	
-    "s-3201-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left right","message_TW": "左手 右手" }],	
+ //   "s-3201-2000-101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right left","message_TW": "右手 左手" }],	
+  //  "s-3201-2000-102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left right","message_TW": "左手 右手" }],	
     "s-3201-2000-103-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "spin","message_TW": "旋转顺" }],
-    "s-3201-2000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右手" }],
+  //  "s-3201-2000-104-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右手" }],
     "s-3201-2000-105-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front","message_TW": "前突刺" }],
-    "s-3201-2000-107-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_TW": "左手" }],	
+ //   "s-3201-2000-107-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_TW": "左手" }],	
     "s-3201-2000-108-0": [{"type": "text","sub_type": "message","message": "Back attack!","message_TW": "前插+后喷" }],		
     "s-3201-2000-109-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "quaternion Attack","message_TW": "4连击" }],	
     "s-3201-2000-110-0": [{"type": "text","sub_type": "message","message_TW": "飞天" }],			
@@ -354,10 +379,7 @@ module.exports = {
        {"type": "text","sub_type": "message","message": "Team up","message_TW": "组员分伤！！" },
        {"type": "text","sub_type": "message","delay": 3500,"message": "dodge","message_TW": "闪"},
        {"type": "text","sub_type": "notification","delay": 3500,"message": "dodge","message_TW": "闪"},
-       {"type": "text","sub_type": "message","delay": 65000,"message": "dodge","message_TW": "宝石分伤准备"}   
-   
-	   
-],
+       {"type": "text","sub_type": "message","delay": 65000,"message": "dodge","message_TW": "宝石分伤准备"}],
     "s-3201-2000-229-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3个宝石种子传唤" }],	
     "s-3201-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "AOE","message_TW": "全屏攻击注意沉默" }],
     "s-3201-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "OUT safe ↓","message_TW": "跑远"},{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
@@ -366,6 +388,12 @@ module.exports = {
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,875,3000)}	
 	],		
     "s-3201-2000-233-0": [{"type": "text","sub_type": "message","message": "5","message_TW": "5个宝石种子传唤" }],
+	
+"h-3201-2000-81": [{"type": "func","func": print_eighty}],	
+"h-3201-2000-78": [{"type": "func","func": start_boss1}],	
+"h-3201-2000-76": [{"type": "func","func": print_seventyfive}],	
+	
+	
     "s-3201-2000-234-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_TW": "注视" },
 	{"type": "func","func": skilld_event.bind(null, 234)}],
     "s-3201-2000-235-0": [{"type": "text","sub_type": "message","message": "Debuffs","message_TW": "注视2人吃鉴定" }]	
