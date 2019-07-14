@@ -439,9 +439,9 @@ module.exports = {
 	//320124-------------302 301
 		
    "s-3201-320120-204": [{"type": "func","func": SpawnThing5.bind(null,0, 0, 100, 10000)},   //炸弹慢
-                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,100,10000)}],
+                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,125,10000)}],
    
-   "s-3201-320120-205": [{"type": "func","func": SpawnThing6.bind(null,0, 0, 100, 3000)},   //炸弹
-                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,100,3000)}]		
+   "s-3201-320120-205": [{"type": "func","func": SpawnThing6.bind(null,0, 0, 10, 100)},   //炸弹
+                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,125,100)}]			
 
 };
