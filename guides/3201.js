@@ -415,8 +415,8 @@ module.exports = {
        {"type": "text","sub_type": "message","delay": 65000,"message": "dodge","message_TW": "宝石分伤准备"}],
     "s-3201-2000-229-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3个宝石炸弹" }],	
     "s-3201-2000-230-0": [{"type": "text","sub_type": "msgcg","message": "AOE","message_TW": "全屏攻击" }],
-    "s-3201-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "OUT safe ↓","message_TW": "出"},{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
-    "s-3201-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "IN safe ↑","message_TW": "进"},
+    "s-3201-2000-231-0": [{"type": "text","sub_type": "msgcp","message": "OUT safe ↓","message_TW": "出 ↓"},{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)}],	
+    "s-3201-2000-232-0": [{"type": "text","sub_type": "msgcp","message": "IN safe ↑","message_TW": "进 ↑"},
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,300,3000)},
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,1000,3000)}	
 	],		
