@@ -292,7 +292,7 @@ class TeraGuide{
             try {
                 active_guide = require('./guides/' + e.zone);
 
-            if ( 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
+            if ( 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
             }else{				
                spguide = false;
@@ -731,7 +731,8 @@ class TeraGuide{
                 case "MSG": {
 
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-              command.message( cr + message );	
+              command.message( cr + message );
+              console.log( cr + message );			  
                         }, (event['delay'] || 0 ) - 600 /speed);		  
 		  
                     break;
