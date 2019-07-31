@@ -7,6 +7,7 @@ let	skill = 0;
 let	print = false;
 let notice = true; 
 let notices = true;
+let	printend = false;
 function guid_voice(handlers) {   
 if(notice_guide) {
 handlers['text']({
@@ -201,6 +202,7 @@ handlers['text']({"sub_type": "message","message": "back","message_TW": "后砸"
 }
 function start_boss() {
 print = true;
+printend = true;
 }
 function print_th(handlers) {
 if(print) {
@@ -212,6 +214,23 @@ handlers['text']({
 }
 print = false;
 }
+function print_end(handlers) {
+if(printend) {
+handlers['text']({
+"sub_type": "message",
+"message": "laser (loading)",
+"message_TW": "消滅火神"
+});
+handlers['text']({
+"sub_type": "message",
+"delay": 30000,
+"message": "laser (loading)",
+"message_TW": "拿錘"
+});
+}
+printend = false;
+}
+
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -362,6 +381,8 @@ module.exports = {
             }
         }],
 */
+
+  "h-444-2000-0": [{"type": "func","func": print_end}],
   "s-444-2000-1101-0": [{"type": "text","sub_type": "message","message":  '4 Hit combo',"message_TW": "锤地 270 重击" },
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,190,500,4000)},
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,3000)}],
