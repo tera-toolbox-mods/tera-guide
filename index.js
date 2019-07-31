@@ -292,7 +292,7 @@ class TeraGuide{
             try {
                 active_guide = require('./guides/' + e.zone);
 
-            if ( 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
+            if ( 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
             }else{				
                spguide = false;
