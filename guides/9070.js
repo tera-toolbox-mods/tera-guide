@@ -193,9 +193,7 @@ module.exports = {
   "qb-470-600-470053": [{"type": "text","sub_type": "message","message_TW": "开始" }], 
  
  
-  "qb-470-1000-470019": [{"type": "text","sub_type": "message","message_TW": "判别" },  
-  {"type": "func","func": skilld_event.bind(null, 666)}
-  ]
+  //"qb-470-1000-470019": [{"type": "func","func": skilld_event.bind(null, 666)}]
  
  
  
