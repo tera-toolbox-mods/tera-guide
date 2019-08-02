@@ -13,7 +13,7 @@
 		"guides/9044.js": "dce22ba4e67e8c3699dcb1d162d70f473994163e7c5ba8c13c4fb4b2af2aaa96",
 		"guides/9059.js": "628e3d4b7db8e75b04eb2ba0b6e65b1d8c1edb55710d2d10b4cdbb617bf4ffb9",
 		"guides/9067.js": "d0c0861124905e967d311c36a875ffc1743f5d605165f768fccf4a43d08e10b9",
-		"guides/9070.js": "0aeb283e72407ac6808632555a0a8fc4f4f98cf1087d88c78841f8322b30eac4",
+		"guides/9070.js": "40202f839e3d3b66978dc05331b938bb92fb4409e5e248dd57b6b37d2e6b8c49",
 		"guides/9720.js": "8821e8b8842258b6d4474ee36e4758e9a1a95f8c3f4c1bfd114e3faee72d4428",
 		"guides/9735.js": "1d7165f74f899f7fe7c66718b77c175780de76a1dc2b6e6efeaf9044e720d3d0",
 		"guides/9759.js": "2e52ccf29ad5a02d14a6e64d0eff4674d118ea57ada431254db671c1d6e30e8b",
@@ -37,6 +37,7 @@
 	},
 	"defs": {
 		"S_ABNORMALITY_BEGIN": 3,
+		"S_ABNORMALITY_END": 1,
 		"S_ABNORMALITY_REFRESH": 1,
 		"S_ACTION_STAGE": 9,
 		"S_BOSS_GAGE_INFO": 3,
