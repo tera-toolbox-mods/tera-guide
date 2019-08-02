@@ -12,8 +12,8 @@ let bossBuffs = [],
 	
 const BossActions_TW = {
     213: {truth: '大实话 -> 破盾',     lie: '吹牛 -> 跑远'},   // "My shield will save me!" (shield)
-    212: {truth: '大实话 -> b远离',     lie: '吹牛 -> b靠进'},          // "I will kill you all!" (aoe around boss)
-    218: {truth: '大实话 -> p远离',     lie: '吹牛 -> p靠近'}           // "One of you must die!" (aoe around player)
+    212: {truth: '大实话 -> 远离boss',     lie: '吹牛 -> 靠进boss'},          // "I will kill you all!" (aoe around boss)
+    218: {truth: '大实话 -> 玩家远离',     lie: '吹牛 -> 靠近玩家'}           // "One of you must die!" (aoe around player)
 };
 
 const BossActions = {
