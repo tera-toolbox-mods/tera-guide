@@ -25,7 +25,7 @@ DO NOT INSTALLED IT AS "library-master" MAKE SURE IT'S NAMED "library"
 ## 命令
 
 Note: All commands starts with "guide"
-<details>
+
 
     - guide to toggle module (DEFAULT: ON)
     - guide voice to toggle text-to-speech (DEFAULT: ON)
@@ -66,27 +66,38 @@ https://github.com/michengs/voice
 # #当前副本支持
 
 
-安塔洛斯深渊      AANM | All bosses
+安塔洛斯深渊           AANM | All bosses
 
-空洞的安塔洛斯深渊   AAHM | All bosses
+空洞的安塔洛斯深渊     AAHM | All bosses
 
-空洞的安塔洛斯深渊7人 AAHM 7man
+空洞的安塔洛斯深渊7人  AAHM 7man
 
-RK9-机库  RK9 NM
+RK9-机库               RK9 NM
 
-困难RK9-机库  RK9 HM
+困难RK9-机库           RK9 HM
 
-贝里克神殿  Velik's Sanctuary NM
+贝里克神殿             Velik's Sanctuary NM
 
-坍塌的贝里克神殿  Velik's Sanctuary HM
+坍塌的贝里克神殿       Velik's Sanctuary HM
 
-泰内布利斯城堡上/下/7人   Dark Reach Citadel (5 man NM, HM and 7man)
+泰内布利斯城堡上/下/7人 Dark Reach Citadel (5 man NM, HM and 7man)
 
-里安的地下殿堂上/下/7人    Grotto of Lost Souls (5 man NM, HM and 7man)
+里安的地下殿堂上/下/7人 Grotto of Lost Souls (5 man NM, HM and 7man)
  
-費爾奎娜巢穴上/下  Parquina's Nest (Gossamers Vault)  Normal mode & Hard mode
+費爾奎娜巢穴上/下       Parquina's Nest (Gossamers Vault)  Normal mode & Hard mode
 
-巴哈勒神殿    Bahaar's Sanctum
+巴哈勒神殿              Bahaar's Sanctum
+
+殘暴費勒諾的實驗室      Demokron Factory Hard
+
+吹牛王塔勒斯基的遊樂場  Manglemire guide
+
+邪惡的奧露卡神殿        sky cruiser guide
+
+伯恩斯坦惡靈島上/下     Forsaken Island
+
+
+
 
 Add Dungeon for other modules ....
 
