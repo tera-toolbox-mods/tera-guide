@@ -164,7 +164,7 @@ for (let distance = 50; distance <= 250; distance += 50) {
 module.exports = {
 
  //"h-983-1000-100": [{"type": "text","sub_type": "message","message": "_","message_TW": "地毯眩晕" }].concat(SPAWNING_left_FLOWERS),
- "h-983-1000-100": [{"type": "func","func": guid_voice}],
+ //"h-983-1000-100": [{"type": "func","func": guid_voice}],
 
 
  

@@ -398,7 +398,7 @@ module.exports = {
 // 	召喚点 ，提示（ 提示标志 角度 距离   延迟时间 时间）
 
 
-    "h-935-1000-100": [{"type": "func","func": guid_voice}],
+   // "h-935-1000-100": [{"type": "func","func": guid_voice}],
 
 
     "s-935-1000-108-0": [{"type": "text","sub_type": "message","message": "OUT","message_TW": "出去！" }],

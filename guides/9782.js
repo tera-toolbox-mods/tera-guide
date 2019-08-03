@@ -87,7 +87,7 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 
- "h-782-1000-100": [{"type": "func","func": guid_voice}],
+ //"h-782-1000-100": [{"type": "func","func": guid_voice}],
  
 
  

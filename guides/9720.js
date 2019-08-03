@@ -60,7 +60,7 @@ counter = 0;
 }
 
 module.exports = {
- "h-720-1000-100": [{"type": "func","func": guid_voice}],
+// "h-720-1000-100": [{"type": "func","func": guid_voice}],
 
 //一王 
 //firstboss,

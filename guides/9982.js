@@ -174,7 +174,7 @@ module.exports = {
 
 	},
 
- "h-982-1000-100": [{"type": "func","func": guid_voice}
+ //"h-982-1000-100": [{"type": "func","func": guid_voice}
  
  
  ],

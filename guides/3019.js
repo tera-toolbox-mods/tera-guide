@@ -174,10 +174,7 @@ module.exports = {
 
 	},
 
- "h-3019-1000-100": [{"type": "func","func": guid_voice}
- 
- 
- ],
+// "h-3019-1000-100": [{"type": "func","func": guid_voice}],
 
 	
  //一王

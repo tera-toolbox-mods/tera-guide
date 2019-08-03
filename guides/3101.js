@@ -46,7 +46,7 @@ module.exports = {
 	},	
 	
     // First boss
-    "h-3101-1000-100": [{"type": "func","func": guid_voice}],
+   // "h-3101-1000-100": [{"type": "func","func": guid_voice}],
     // 1王
 
     "s-3101-1000-121-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右-->" }],			

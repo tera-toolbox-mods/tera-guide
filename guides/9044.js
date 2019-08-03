@@ -235,7 +235,7 @@ module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
- "h-444-1000-100-0": [{"type": "func","func": guid_voice}],
+// "h-444-1000-100-0": [{"type": "func","func": guid_voice}],
  "h-444-2000-100": [{"type": "func","func": guid_voice},
  // {"type": "func","func": Spawnitem1.bind(null,542,0,0,0,3000,6000000)},
   //{"type": "func","func": Spawnitem1.bind(null,542,0,0,180,3000,6000000)}
