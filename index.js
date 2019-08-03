@@ -301,7 +301,7 @@ class TeraGuide{
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		if (StrSheet_Dungeon_String) {
 			
-		speak_voice('欢迎进入' + StrSheet_Dungeon_String.string , 8000)
+		speak_voice('已进入副本' + StrSheet_Dungeon_String.string , 8000)
 		
 		} 
             }catch(e) {
@@ -852,9 +852,11 @@ class TeraGuide{
         setTimeout(()=> {
 			if(voice){
           voice.speak(alerts,1)
-          command.message( cg + alerts );	
+          command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）');
+          sendMessage( cr + alerts +  cg +'（语音提示）');		  
 			} else {
-          command.message( cr + alerts );	
+          command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）' );
+          sendMessage( cr + alerts +  cg +'（无语音提示）');		  
 			}			
           }, delay );				
         }		
