@@ -301,7 +301,7 @@ class TeraGuide{
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		if (StrSheet_Dungeon_String) {
 			
-		speak_voice('已进入副本' + StrSheet_Dungeon_String.string , 8000)
+		speak_voice('已进入副本： ' + StrSheet_Dungeon_String.string , 8000)
 		
 		} 
             }catch(e) {
