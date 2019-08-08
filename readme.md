@@ -92,7 +92,9 @@ RK9-机库               RK9 NM
 
 吹牛王塔勒斯基的遊樂場  Manglemire guide
 
-邪惡的奧露卡神殿        sky cruiser guide
+奧露卡神殿上/下         Bathysmal rise guide
+
+暴風的艾爾凱拉斯號      sky cruiser guide
 
 伯恩斯坦惡靈島上/下     Forsaken Island
 
