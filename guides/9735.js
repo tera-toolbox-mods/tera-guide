@@ -110,11 +110,71 @@ function SpawnThingobject( degrees, radius, delay, times, handlers, event, entit
 }
 
 
+
+
+
+
+let skills_hand = {
+	1112:  {truth: 'Truth -> Break shield',     lie: 'Lie -> Puddles (run away)'},
+	1111:  {truth: 'Truth -> Break shield',     lie: 'Lie -> Puddles (run away)'},	
+	1305:  {truth: 'Truth -> Break shield',     lie: 'Lie -> Puddles (run away)'},	
+	1304:  {truth: 'Truth -> Break shield',     lie: 'Lie -> Puddles (run away)'}	
+	
+};
+//let debuff_tracker_started = false;	
+
+function start_skills(handlers, event, entity, dispatch) {
+	const skill_change = (added, event) => {
+		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && skills_hand[event.id]) {
+
+			
+					handlers['text']({
+			        	"sub_type": "notification",
+						"message": skills_hand[event.id].lie
+			        });
+			
+
+		}
+	};
+		dispatch.hook('S_ACTION_STAGE',9, skill_change.bind(null, true));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
 	
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
+
+
+
+    "h-735-1000-100": [{"type": "func","func": start_skills}],	
+
 
     "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_TW": "BOSS 攻击身后打手请注意！" }],	
     "s-735-1000-112-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_TW": "BOSS 攻击身后打手请注意！" }],

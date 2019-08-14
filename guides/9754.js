@@ -38,7 +38,7 @@ module.exports = {
 "s-754-1002-2107-0": [{"type": "text","sub_type": "message","message": "Back Hit! (Fast)","message_TW": "后击！（快）"}],
 "s-754-1002-1112-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_TW": "跳跃（慢）"}],
 "s-754-1002-2112-0": [{"type": "text","sub_type": "message","message": "Jump (Fast)","message_TW": "跳跃（快）"}],
-"s-754-1002-3105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}]
+"s-754-1002-3105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
 "s-754-1002-3117-0": [{"type": "text","sub_type": "message","message": "In Out In","message_TW": "进 出 进"}],
 "s-754-1002-3110-0": [{"type": "text","sub_type": "message","message": "Pizza mech","message_TW": "披萨机制"}]
 
