@@ -75,7 +75,8 @@ class TeraGuide{
 
         // A boolean indicating if a guide was found
         let guide_found = false;
-        let spguide = false;		
+        let spguide = false;
+        let esguide = false;		
 		//let cc = cg;
         // The guide settings for the current zone
         let active_guide = {};
@@ -183,7 +184,9 @@ class TeraGuide{
 
         // Boss skill action
         function s_action_stage(e) {
-			let skillid = e.skill.id % 1000;			
+			let skillid = e.skill.id % 1000;
+			let eskillid;
+			if (e.skill.id > 3000){ eskillid = e.skill.id}else{eskillid = e.skill.id % 1000}		
             // If the guide module is active and a guide for the current dungeon is found
             if(dispatch.settings.enabled && guide_found) {
 				
@@ -193,7 +196,11 @@ class TeraGuide{
                 // We've confirmed it's a mob, so it's plausible we want to act on this
 		  if ( spguide ) {
                if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
-            }else{
+            }
+			else if ( esguide ) {
+                if(ent) return handle_event(Object.assign({}, ent, e), eskillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+            }
+			else{
                 if(ent) return handle_event(Object.assign({}, ent, e), skillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
             }
             }
@@ -291,18 +298,25 @@ class TeraGuide{
             // Try loading a guide
             try {
                 active_guide = require('./guides/' + e.zone);
-                   //奧盧卡             邪惡奧盧卡     暴風拉斯       
-            if ( 9754 == e.zone || 9054 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
+                   //奧盧卡                 暴風拉斯       
+            if ( 9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
-            }else{				
+			        // 
+            } else if( 9000 == e.zone ) {
+			esguide = true;
+            }
+			else{				
                spguide = false;
+			   esguide = false;
             }
                 guide_found = true;
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		if (StrSheet_Dungeon_String) {
-			
-		speak_voice('已进入副本： ' + StrSheet_Dungeon_String.string , 8000)
-		
+        if( spguide ) {
+                  speak_voice('进入SP副本： ' + StrSheet_Dungeon_String.string , 8000)
+            }else if( esguide ) {
+                  speak_voice('进入ES副本： ' + StrSheet_Dungeon_String.string , 8000)
+            }else{speak_voice('进入副本： ' + StrSheet_Dungeon_String.string , 8000)}
 		} 
             }catch(e) {
                 active_guide = {};
