@@ -173,7 +173,7 @@ module.exports = {
 
 
 
-    "h-735-1000-100": [{"type": "func","func": start_skills}],	
+   // "h-735-1000-100": [{"type": "func","func": start_skills}],	
 
 
     "s-735-1000-111-0": [{"type": "text","sub_type": "message","message": "BACK ATTACK","message_TW": "BOSS 攻击身后打手请注意！" }],	

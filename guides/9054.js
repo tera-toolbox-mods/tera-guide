@@ -31,17 +31,19 @@ module.exports = {
 	},
 
 //1王
+
+
 "s-454-1000-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "左手"}],
 "s-454-1000-1102-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "右手"}],
-"s-454-1000-1103-0": [{"type": "text","sub_type": "message","message_TW": "3连闪避"}],
-"s-454-1000-1104-0": [{"type": "text","sub_type": "message","message_TW": "旋转6次"},
+"s-454-1000-1103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Slow)","message_TW": "3连闪避"}],
+"s-454-1000-1104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Slow)","message_TW": "旋转6次"},
 	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
-"s-454-1000-1105-0": [{"type": "text","sub_type": "message","message_TW": "进"}],
+"s-454-1000-1105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
 "s-454-1000-1106-0": [{"type": "text","sub_type": "message","message_TW": "点名"}],
 "s-454-1000-1107-0": [{"type": "text","sub_type": "message","message_TW": "乌龟行动"}],
 "s-454-1000-1108-0": [{"type": "text","sub_type": "message","message_TW": "左侧"}],
 "s-454-1000-1109-0": [{"type": "text","sub_type": "message","message_TW": "右侧"}],
-"s-454-1000-1201-0": [{"type": "text","sub_type": "message","message_TW": "身体撞击"}],
+"s-454-1000-1201-0": [{"type": "text","sub_type": "message","message": "Body Slam!","message_TW": "身体撞击"}],
 "s-454-1000-1202-0": [{"type": "text","sub_type": "message","message_TW": "乌龟防御动作"}],
 "s-454-1000-1203-0": [{"type": "text","sub_type": "message","message_TW": "乌龟眩晕"}],
 "s-454-1000-1204-0": [{"type": "text","sub_type": "message","message_TW": "乌龟模式提醒"}],
@@ -50,15 +52,15 @@ module.exports = {
 //--------------------------------------------------------------------------------------------------------------------
 "s-454-1000-2101-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "左手"}],
 "s-454-1000-2102-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "右手"}],
-"s-454-1000-2103-0": [{"type": "text","sub_type": "message","message_TW": "3连闪避"}],
-"s-454-1000-2104-0": [{"type": "text","sub_type": "message","message_TW": "旋转6次"},
+"s-454-1000-2103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Fast)","message_TW": "3连闪避"}],
+"s-454-1000-2104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Fast)","message_TW": "旋转6次"},
 	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
-"s-454-1000-2105-0": [{"type": "text","sub_type": "message","message_TW": "进"}],
+"s-454-1000-2105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
 "s-454-1000-2106-0": [{"type": "text","sub_type": "message","message_TW": "点名"}],
 "s-454-1000-2107-0": [{"type": "text","sub_type": "message","message_TW": "乌龟行动"}],
 "s-454-1000-2108-0": [{"type": "text","sub_type": "message","message_TW": "左侧"}],
 "s-454-1000-2109-0": [{"type": "text","sub_type": "message","message_TW": "右侧"}],
-"s-454-1000-2201-0": [{"type": "text","sub_type": "message","message_TW": "身体撞击"}],
+"s-454-1000-2201-0": [{"type": "text","sub_type": "message","message": "Body Slam!","message_TW": "身体撞击"}],
 "s-454-1000-2202-0": [{"type": "text","sub_type": "message","message_TW": "乌龟防御动作"}],
 "s-454-1000-2203-0": [{"type": "text","sub_type": "message","message_TW": "乌龟眩晕"}],
 "s-454-1000-2204-0": [{"type": "text","sub_type": "message","message_TW": "乌龟模式提醒"}],
@@ -67,9 +69,12 @@ module.exports = {
 "s-454-1000-3101-0": [{"type": "text","sub_type": "message","message_TW": "石堆破坏"}],
 "s-454-1000-3102-0": [{"type": "text","sub_type": "message","message_TW": "前喷"}],
 "s-454-1000-3103-0": [{"type": "text","sub_type": "message","message_TW": "击倒boss"}],
-"s-454-1000-3104-0": [{"type": "text","sub_type": "message","message_TW": "破盾不然团灭"}],
+"s-454-1000-3104-0": [{"type": "text","sub_type": "message","message": "SHIELD!","message_TW": "破盾不然团灭"}],
 
 //2王
+
+
+
 
 "s-454-1001-1102-0": [{"type": "text","sub_type": "message","message": "Back Flip (Fast)","message_TW": "后空翻"}],
 "s-454-1001-1104-0": [{"type": "text","sub_type": "message","message": "Frontal Spin!","message_TW": "正面旋转！"}],
@@ -80,7 +85,6 @@ module.exports = {
 "s-454-1001-1113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
 "s-454-1001-1101-0": [{"type": "text","sub_type": "MSG","message_TW": "1101违规攻击"}],
 "s-454-1001-1103-0": [{"type": "text","sub_type": "MSG","message_TW": "1103严重攻击1heavyatk 01老话"}],
-"s-454-1001-1105-0": [{"type": "text","sub_type": "MSG","message_TW": "1105严重攻击尾部时差backatk老话"}],
 "s-454-1001-1106-0": [{"type": "text","sub_type": "MSG","message_TW": "1106严重攻击尾声左转roundatk 01老话"}],
 "s-454-1001-1107-0": [{"type": "text","sub_type": "MSG","message_TW": "1107深海攻击尾声roundatk 02"}],
 "s-454-1001-1111-0": [{"type": "text","sub_type": "MSG","message_TW": "1111深海鱼会前+突进攻击activemove"}],
@@ -99,7 +103,6 @@ module.exports = {
 "s-454-1001-2113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
 "s-454-1001-2101-0": [{"type": "text","sub_type": "MSG","message_TW": "2101违规攻击"}],
 "s-454-1001-2103-0": [{"type": "text","sub_type": "MSG","message_TW": "2103严重攻击1heavyatk 01老话"}],
-"s-454-1001-2105-0": [{"type": "text","sub_type": "MSG","message_TW": "2105严重攻击尾部时差backatk老话"}],
 "s-454-1001-2106-0": [{"type": "text","sub_type": "MSG","message_TW": "2106严重攻击尾声左转roundatk 01老话"}],
 "s-454-1001-2107-0": [{"type": "text","sub_type": "MSG","message_TW": "2107深海攻击尾声roundatk 02"}],
 "s-454-1001-2111-0": [{"type": "text","sub_type": "MSG","message_TW": "2111深海鱼会前+突进攻击activemove"}],
