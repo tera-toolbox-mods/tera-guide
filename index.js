@@ -914,10 +914,11 @@ class TeraGuide{
         setTimeout(()=> {
 			if(voice){
           voice.speak(alerts,1)
-          command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）');	  
+         // command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）');	 
+         text_handler({"sub_type": "PRMSG","message_TW": '（输入"guide help"可获取更多使用信息）', "message": '（Enter "guide help" for more information）' });  		  
 			} else {
-          command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）' );
-	  
+         // command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）' );
+         text_handler({"sub_type": "PRMSG","message_TW": '（输入"guide help"可获取更多使用信息）', "message": '（Enter "guide help" for more information）' });  	  
 			}			
           }, delay );				
         }			
