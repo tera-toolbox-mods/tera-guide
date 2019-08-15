@@ -24,7 +24,37 @@ function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handl
         }, {loc: shield_loc});
     }
 }
-
+function SpawnThing5( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "球形闪电",
+			"message": "球形闪电"
+        }, {loc: shield_loc});  
+}
+function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
+	
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;	
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);		
+    let angle = angles * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -35,7 +65,8 @@ module.exports = {
 
 "s-454-1000-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "左手"}],
 "s-454-1000-1102-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "右手"}],
-"s-454-1000-1103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Slow)","message_TW": "3连闪避"}],
+"s-454-1000-1103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Slow)","message_TW": "3连闪避"},
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}],
 "s-454-1000-1104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Slow)","message_TW": "旋转6次"},
 	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
 "s-454-1000-1105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
@@ -52,7 +83,8 @@ module.exports = {
 //--------------------------------------------------------------------------------------------------------------------
 "s-454-1000-2101-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "左手"}],
 "s-454-1000-2102-0": [{"type": "text","class_position":"tank","sub_type": "message","message_TW": "右手"}],
-"s-454-1000-2103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Fast)","message_TW": "3连闪避"}],
+"s-454-1000-2103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Fast)","message_TW": "3连闪避"},
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}],
 "s-454-1000-2104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Fast)","message_TW": "旋转6次"},
 	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
 "s-454-1000-2105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
@@ -79,15 +111,16 @@ module.exports = {
 "s-454-1001-1102-0": [{"type": "text","sub_type": "message","message": "Back Flip (Fast)","message_TW": "后空翻"}],
 "s-454-1001-1104-0": [{"type": "text","sub_type": "message","message": "Frontal Spin!","message_TW": "正面旋转！"}],
 "s-454-1001-1105-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴"}],
-"s-454-1001-1108-0": [{"type": "text","sub_type": "message","message_TW": "深海鱼源距离粘液场准备动作"}],
-"s-454-1001-1109-0": [{"type": "text","sub_type": "message","message_TW": "深海捕获捕获攻击"}],
+"s-454-1001-1108-0": [{"type": "text","sub_type": "message","message_TW": "隨仇放毒"}],
+"s-454-1001-1109-0": [{"type": "text","sub_type": "message","message_TW": "拉人放毒"},
+                      {"type": "text","sub_type": "message","delay": 2000,"message_TW": "闪"}],
 "s-454-1001-1110-0": [{"type": "text","sub_type": "message","message": "Cyclone! (Slow)","message_TW": "死亡旋轉"}],
 "s-454-1001-1113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
-"s-454-1001-1101-0": [{"type": "text","sub_type": "MSG","message_TW": "1101违规攻击"}],
+//"s-454-1001-1101-0": [{"type": "text","sub_type": "MSG","message_TW": "1101违规攻击"}],
 "s-454-1001-1103-0": [{"type": "text","sub_type": "MSG","message_TW": "1103严重攻击1heavyatk 01老话"}],
 "s-454-1001-1106-0": [{"type": "text","sub_type": "MSG","message_TW": "1106严重攻击尾声左转roundatk 01老话"}],
 "s-454-1001-1107-0": [{"type": "text","sub_type": "MSG","message_TW": "1107深海攻击尾声roundatk 02"}],
-"s-454-1001-1111-0": [{"type": "text","sub_type": "MSG","message_TW": "1111深海鱼会前+突进攻击activemove"}],
+"s-454-1001-1111-0": [{"type": "text","sub_type": "message","message_TW": "旋转突进攻击"}],
 "s-454-1001-1112-0": [{"type": "text","sub_type": "MSG","message_TW": "1112深海气象台grogy老话"}],
 "s-454-1001-1210-0": [{"type": "text","sub_type": "MSG","message_TW": "1210深海3回转+突击movetk 01愤怒"}],
 "s-454-1001-1211-0": [{"type": "text","sub_type": "MSG","message_TW": "1211深海鱼会前+突进攻击activemove愤怒"}],
@@ -97,23 +130,24 @@ module.exports = {
 "s-454-1001-2102-0": [{"type": "text","sub_type": "message","message": "Back Flip (Fast)","message_TW": "后空翻"}],
 "s-454-1001-2104-0": [{"type": "text","sub_type": "message","message": "Frontal Spin!","message_TW": "正面旋转！"}],
 "s-454-1001-2105-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴"}],
-"s-454-1001-2108-0": [{"type": "text","sub_type": "message","message_TW": "深海鱼源距离粘液场准备动作"}],
-"s-454-1001-2109-0": [{"type": "text","sub_type": "message","message_TW": "深海捕获捕获攻击"}],
+"s-454-1001-2108-0": [{"type": "text","sub_type": "message","message_TW": "隨仇放毒"}],
+"s-454-1001-2109-0": [{"type": "text","sub_type": "message","message_TW": "拉人放毒"},
+                      {"type": "text","sub_type": "message","delay": 2000,"message_TW": "闪"}],
 "s-454-1001-2110-0": [{"type": "text","sub_type": "message","message": "Cyclone! (Slow)","message_TW": "死亡旋轉"}],
 "s-454-1001-2113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
-"s-454-1001-2101-0": [{"type": "text","sub_type": "MSG","message_TW": "2101违规攻击"}],
+//"s-454-1001-2101-0": [{"type": "text","sub_type": "MSG","message_TW": "2101违规攻击"}],
 "s-454-1001-2103-0": [{"type": "text","sub_type": "MSG","message_TW": "2103严重攻击1heavyatk 01老话"}],
 "s-454-1001-2106-0": [{"type": "text","sub_type": "MSG","message_TW": "2106严重攻击尾声左转roundatk 01老话"}],
 "s-454-1001-2107-0": [{"type": "text","sub_type": "MSG","message_TW": "2107深海攻击尾声roundatk 02"}],
-"s-454-1001-2111-0": [{"type": "text","sub_type": "MSG","message_TW": "2111深海鱼会前+突进攻击activemove"}],
+"s-454-1001-2111-0": [{"type": "text","sub_type": "message","message_TW": "旋转突进攻击"}],
 "s-454-1001-2112-0": [{"type": "text","sub_type": "MSG","message_TW": "2112深海气象台grogy老话"}],
 "s-454-1001-2210-0": [{"type": "text","sub_type": "MSG","message_TW": "2210深海3回转+突击movetk 01愤怒"}],
 "s-454-1001-2211-0": [{"type": "text","sub_type": "MSG","message_TW": "2211深海鱼会前+突进攻击activemove愤怒"}],
 "s-454-1001-2212-0": [{"type": "text","sub_type": "MSG","message_TW": "2212深海气象台grogy愤怒"}],
 "s-454-1001-2214-0": [{"type": "text","sub_type": "MSG","message_TW": "2214深度Active Move愤怒"}],
-"s-454-1001-3103-0": [{"type": "text","sub_type": "MSG","message_TW": "3103严重的准备动作"}],
-"s-454-1001-3104-0": [{"type": "text","sub_type": "MSG","message_TW": "3104严重发射恐惧动作"}],
-"s-454-1001-3105-0": [{"type": "text","sub_type": "MSG","message_TW": "3105深海前占卜场"}],
+"s-454-1001-3103-0": [{"type": "text","sub_type": "message","message_TW": "击倒检定"}],
+//"s-454-1001-3104-0": [{"type": "text","sub_type": "MSG","message_TW": "3104严重发射恐惧动作"}],
+"s-454-1001-3105-0": [{"type": "text","sub_type": "message","message_TW": "放毒"}],
 "s-454-1001-3102-0": [{"type": "text","sub_type": "message","message_TW": "大跳跃攻击"}],
 
 //3王
@@ -170,29 +204,40 @@ module.exports = {
 "s-454-1002-3205-0": [{"type": "text","sub_type": "MSG","message_TW": "3205上街图案时周围"}],
 
 //------------------------------------------特殊
-"s-454-4010-1101-0": [{"type": "text","sub_type": "MSG","message_TW": "1101奥尔卡的神电水势模式第一阶段"}],
-"s-454-4010-1102-0": [{"type": "text","sub_type": "MSG","message_TW": "1102奥加卡水势模式施展动作"}],
-"s-454-4010-1103-0": [{"type": "text","sub_type": "MSG","message_TW": "1103奥尔卡的神殿水势模式"}],
-"s-454-4010-1104-0": [{"type": "text","sub_type": "MSG","message_TW": "1104奥尔卡的神电范围攻击"}],
-"s-454-4010-1105-0": [{"type": "text","sub_type": "MSG","message_TW": "1105奥尔卡的神殿中央水势模式2步"}],
-"s-454-4010-1106-0": [{"type": "text","sub_type": "MSG","message_TW": "1106奥尔卡的神殿中央水势模式3个步骤"}],
-"s-454-4010-1107-0": [{"type": "text","sub_type": "MSG","message_TW": "1107奥尔卡的神殿中央水势模式4个步骤"}],
-"s-454-4010-1108-0": [{"type": "text","sub_type": "MSG","message_TW": "1108奥尔卡的神殿中央水势模式5步"}],
-"s-454-4010-1109-0": [{"type": "text","sub_type": "MSG","message_TW": "1109奥尔卡的神殿突进后场"}],
-"s-454-4010-2101-0": [{"type": "text","sub_type": "MSG","message_TW": "2101深海鱼图案1"}],
-"s-454-4010-2102-0": [{"type": "text","sub_type": "MSG","message_TW": "2102深海鱼图案2"}],
-"s-454-4010-2103-0": [{"type": "text","sub_type": "MSG","message_TW": "2103深海鱼图案3"}],
-"s-454-4010-3101-0": [{"type": "text","sub_type": "MSG","message_TW": "3101巨大的乌龟喷出毒气"}],
-"s-454-4010-3102-0": [{"type": "text","sub_type": "MSG","message_TW": "3102巨大的乌龟不出毒气"}],
+
+"qb-454-1000-454012": [{"type": "text","sub_type": "message","message_TW": "修石板"}],
+"dm-0-0-905420": [{"type": "text","sub_type": "message","message_TW": "水墙检定"}],
+"s-754-100-1101-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "召喚电球"},
+                     {"type": "func","func": SpawnThing5.bind(null,0, 0, 10, 6100)}],
+"s-454-106-3201-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "1"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+"s-454-107-3202-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "2"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+"s-454-108-3203-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "3"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+"s-454-109-3204-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "4"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+"s-454-4010-1101": [{"type": "text","sub_type": "MSG","message_TW": "1101奥尔卡的神电水势模式第一阶段"}],
+"s-454-4010-1102": [{"type": "text","sub_type": "MSG","message_TW": "1102奥加卡水势模式施展动作"}],
+"s-454-4010-1103": [{"type": "text","sub_type": "MSG","message_TW": "1103奥尔卡的神殿水势模式"}],
+"s-454-4010-1104": [{"type": "text","sub_type": "MSG","message_TW": "1104奥尔卡的神电范围攻击"}],
+"s-454-4010-1105": [{"type": "text","sub_type": "MSG","message_TW": "1105奥尔卡的神殿中央水势模式2步"}],
+"s-454-4010-1106": [{"type": "text","sub_type": "MSG","message_TW": "1106奥尔卡的神殿中央水势模式3个步骤"}],
+"s-454-4010-1107": [{"type": "text","sub_type": "MSG","message_TW": "1107奥尔卡的神殿中央水势模式4个步骤"}],
+"s-454-4010-1108": [{"type": "text","sub_type": "MSG","message_TW": "1108奥尔卡的神殿中央水势模式5步"}],
+"s-454-4010-1109": [{"type": "text","sub_type": "MSG","message_TW": "1109奥尔卡的神殿突进后场"}],
+"s-454-4010-2101": [{"type": "text","sub_type": "MSG","message_TW": "2101深海鱼图案1"}],
+"s-454-4010-2102": [{"type": "text","sub_type": "MSG","message_TW": "2102深海鱼图案2"}],
+"s-454-4010-2103": [{"type": "text","sub_type": "MSG","message_TW": "2103深海鱼图案3"}],
+"s-454-4010-3101": [{"type": "text","sub_type": "MSG","message_TW": "3101巨大的乌龟喷出毒气"}],
+"s-454-4010-3102": [{"type": "text","sub_type": "MSG","message_TW": "3102巨大的乌龟不出毒气"}],
 
 
-"s-454-401-1101-0": [{"type": "text","sub_type": "MSG","message_TW": "-1101奥加电具体进攻模式"}],
-"s-454-401-1102-0": [{"type": "text","sub_type": "MSG","message_TW": "-1102奥加卡水势模式施展动作"}],
-"s-454-401-1103-0": [{"type": "text","sub_type": "MSG","message_TW": "-1103奥尔卡的神殿水势模式"}],
-"s-454-401-1104-0": [{"type": "text","sub_type": "MSG","message_TW": "-1104奥尔卡的神电电站攻击时动作"}],
-"s-454-401-1105-0": [{"type": "text","sub_type": "MSG","message_TW": "-1105奥尔卡的神电电站"}]
-
-
+"s-454-401-1101": [{"type": "text","sub_type": "MSG","message_TW": "-1101奥加电具体进攻模式"}],
+"s-454-401-1102": [{"type": "text","sub_type": "MSG","message_TW": "-1102奥加卡水势模式施展动作"}],
+"s-454-401-1103": [{"type": "text","sub_type": "MSG","message_TW": "-1103奥尔卡的神殿水势模式"}],
+"s-454-401-1104": [{"type": "text","sub_type": "MSG","message_TW": "-1104奥尔卡的神电电站攻击时动作"}],
+"s-454-401-1105": [{"type": "text","sub_type": "MSG","message_TW": "-1105奥尔卡的神电电站"}]
 
 		 
 };
