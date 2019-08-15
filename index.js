@@ -9,7 +9,8 @@ catch(e) { voice = null; }
 const TANK_CLASS_IDS = [1, 10];
 // Dps class ids(not counting warrior)
 const DPS_CLASS_IDS = [2, 3, 4, 5, 8, 9, 11, 12];
-const MapID = require('./StrSheet_Dungeon-0.json').String;
+const MapID_TW = require('./StrSheet_TW_Dungeon.json').String;
+const MapID = require('./StrSheet_Dungeon.json').String;
 // Healer class ids
 const HEALER_CLASS_IDS = [6, 7];
 // Warrior Defence stance abnormality ids
@@ -84,6 +85,7 @@ class TeraGuide{
         let random_timer_id = 0xFFFFFFFA; // Used if no id is specified
         let timers = {};	
 		let StrSheet_Dungeon_String = [];
+		let StrSheet_TW_Dungeon_String = [];		
         /** HELPER FUNCTIONS **/
 
         // Write generic debug message used when creating guides
@@ -195,7 +197,7 @@ class TeraGuide{
                 e.loc.w = e.w;
                 // We've confirmed it's a mob, so it's plausible we want to act on this
 		  if ( spguide ) {
-               if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
+               if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1 === 0 ? debug.boss : false), e.speed, e.stage);
             }
 			else if ( esguide ) {
                 if(ent) return handle_event(Object.assign({}, ent, e), eskillid, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
@@ -311,12 +313,17 @@ class TeraGuide{
             }
                 guide_found = true;
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
-		if (StrSheet_Dungeon_String) {
+		StrSheet_TW_Dungeon_String = MapID_TW.find(obj => obj.id === e.zone);		
+		if (StrSheet_TW_Dungeon_String) {
         if( spguide ) {
-                  speak_voice('进入SP副本： ' + StrSheet_Dungeon_String.string , 8000)
+				 text_handler({"sub_type": "alert","delay": 8000,"message_TW": '进入SP副本： ' +  cr +  StrSheet_TW_Dungeon_String.string, "message": ' Enter SP  Dungeon： ' +  cr + StrSheet_Dungeon_String.string});  
+                		speak_voice('：', 8000)	;
             }else if( esguide ) {
-                  speak_voice('进入ES副本： ' + StrSheet_Dungeon_String.string , 8000)
-            }else{speak_voice('进入副本： ' + StrSheet_Dungeon_String.string , 8000)}
+				 text_handler({"sub_type": "alert","delay": 8000,"message_TW": '进入ES副本： ' +  cr + StrSheet_TW_Dungeon_String.string, "message": ' Enter ES  Dungeon： ' + cr +  StrSheet_Dungeon_String.string}); 
+                		speak_voice('：', 8000)	;		 
+            }else{				 text_handler({"sub_type": "alert","delay": 8000,"message_TW": '进入副本： ' +  cr + StrSheet_TW_Dungeon_String.string, "message": ' Enter   Dungeon： ' +  cr + StrSheet_Dungeon_String.string}); 
+                		speak_voice('：', 8000)	;
+			}
 		} 
             }catch(e) {
                 active_guide = {};
@@ -402,121 +409,139 @@ class TeraGuide{
             	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
             	command.message(`system Notice ${dispatch.settings.systemNotice?"on":"off"}.`);
             },
-            1() {
-            	
+            1() {          	
             	command.message(`语音速度1`);
+            	command.message(`Voice speed 1`);				
 	           dispatch.settings.rate.splice(0,1, rate1);			
             },			
-            2() {
-        
+            2() {       
             	command.message(`语音速度2`);
+            	command.message(`Voice speed 2`);				
 	           dispatch.settings.rate.splice(0,1, rate2);			
             },
             3() {
             
             	command.message(`语音速度3`);
+            	command.message(`Voice speed 3`);				
 	           dispatch.settings.rate.splice(0,1, rate3);					
             },	
             4() {
             
             	command.message(`语音速度4`);
+            	command.message(`Voice speed 4`);				
 	           dispatch.settings.rate.splice(0,1, rate4);					
             },				
             5() {
             
             	command.message(`语音速度5`);
+            	command.message(`Voice speed 5`);				
 	           dispatch.settings.rate.splice(0,1, rate5);					
             },
             6() {
             	
             	command.message(`语音速度6`);
+            	command.message(`Voice speed 6`);				
 	           dispatch.settings.rate.splice(0,1, rate6);					
             },	
             7() {
             
             	command.message(`语音速度7`);
+            	command.message(`Voice speed 7`);				
 	           dispatch.settings.rate.splice(0,1, rate7);					
             },				
             8() {
             
             	command.message(`语音速度8`);
+            	command.message(`Voice speed 8`);				
 	           dispatch.settings.rate.splice(0,1, rate8);					
             },	
 	        9() {
             	
-            	command.message(`语音速度10`);
+            	command.message(`语音速度9`);
+            	command.message(`Voice speed 9`);				
 	           dispatch.settings.rate.splice(0,1, rate9);					
             },			
             10() {
             	
             	command.message(`语音速度10`);
+            	command.message(`Voice speed 10`);				
 	           dispatch.settings.rate.splice(0,1, rate10);					
             },
-
             cr() {
                command.message( cr +"系统消息通知颜色红色");
+		       command.message(cr + ' system message notification color is red ');			   
 	           dispatch.settings.cc.splice(0,1, cr );		   
             },
             cc() {
             
             	command.message( dispatch.settings.cc +"查看系统消息通知颜色");
-			   
+		command.message(dispatch.settings.cc + 'View the current system message notification color');			   
             },			
             co() {
             	command.message( co +"系统消息通知颜色橘色");
+		command.message(co + ' system message notification color is ORANGE ');				
 	           dispatch.settings.cc.splice(0,1, co);					
             },
             cy() {
             	command.message( cy +"系统消息通知颜色黄色");
+		command.message(cy + ' system message notification color is YELLOW ');				
 	           dispatch.settings.cc.splice(0,1, cy);					
             },
             cg() {
             	command.message( cg +"系统消息通知颜色绿色");
+		command.message(cg + ' system message notification color is GREEN ');				
 	           dispatch.settings.cc.splice(0,1, cg);					
             },
             cdb() {
 
             	command.message( cdb +"系统消息通知颜色深蓝色");
+		command.message(cdb + ' system message notification color is DARK BLUE ');					
 	           dispatch.settings.cc.splice(0,1, cr);					
             },
             cb() {
 
             	command.message( cb +"系统消息通知颜色蓝色");
+		command.message(cb + ' system message notification color is BLUE ');				
 	           dispatch.settings.cc.splice(0,1, cb);				
             },
             cv() {
-
             	command.message( cv +"系统消息通知颜色紫色");
+		command.message(cv + ' system message notification color is VIOLET ');				
 	           dispatch.settings.cc.splice(0,1, cv);				
             },
             cp() {
 
             	command.message( cp +"系统消息通知颜色粉色");
+		command.message(cp + ' system message notification color is PINK ');					
 	           dispatch.settings.cc.splice(0,1, cp);				
             },
             clp() {
 
             	command.message( clp +"系统消息通知颜色浅粉色");
+		command.message(clp + ' system message notification color is LIGHT PINK ');				
 	           dispatch.settings.cc.splice(0,1, clp);				
             },
             clb() {
 
             	command.message( clb +"系统消息通知颜色浅蓝色");
+		command.message(clb + ' system message notification color is LIGHT BLUE ');					
 	           dispatch.settings.cc.splice(0,1, clb);				
             },
             cbl() {
 
             	command.message( cbl +"系统消息通知颜色黑色");
+		command.message(cbl + ' system message notification color is BLACK ');			
 	           dispatch.settings.cc.splice(0,1, cbl);				
             },
             cgr() {
-
+		command.message(cgr + ' system message notification color is GRAY ');	
             	command.message( cgr +"系统消息通知颜色灰色");
 	           dispatch.settings.cc.splice(0,1, cgr);				
             },	
             cw() {
 
             	command.message( cw +"系统消息通知颜色白色");
+		command.message(cw + ' system message notification color is WHITE ');					
 	           dispatch.settings.cc.splice(0,1, cw);				
             },
 			
@@ -541,10 +566,31 @@ class TeraGuide{
 		command.message(cbl + '補助 cbl，系统消息通知颜色为黑色 ');
 		command.message(cgr + '補助 cgr，系统消息通知颜色为灰色 ');	
 		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
+		command.message('guide,  on/off, default system notification, notification color green ');
+		command.message('guide  voice，text-to-speech on/off');
+		command.message('guide notice， party notice on/off');
+		command.message('guide alert， Virtual captain  notifie on/off');
+		command.message('guide systemNotice，system Notice on/off');		
+		command.message('guide 1~10，to settings Voice speed');
+		command.message(dispatch.settings.cc + 'guide cc，View the current system message notification color');
+		command.message(cr + 'guide cr， system message notification color is red ');
+		command.message(co + 'guide co， system message notification color is ORANGE ');
+		command.message(cy + 'guide cy， system message notification color is YELLOW ');
+		command.message(cg + 'guide cg， system message notification color is GREEN ');
+		command.message(cdb + 'guide cdb， system message notification color is DARK BLUE ');	
+		command.message(cb + 'guide cb， system message notification color is BLUE ');
+		command.message(cv + 'guide cv， system message notification color is VIOLET ');
+		command.message(cp + 'guide cp， system message notification color is PINK ');
+		command.message(clp + 'guide clp， system message notification color is LIGHT PINK ');	
+		command.message(clb + 'guide clb， system message notification color is LIGHT BLUE ');
+		command.message(cbl + 'guide cbl， system message notification color is BLACK ');
+		command.message(cgr + 'guide cgr， system message notification color is GRAY ');	
+		command.message(cw + 'guide cw， system message notification color is WHITE ');	
             },
             $default() {
               dispatch.settings.enabled = !dispatch.settings.enabled;
                 command.message(`副本補助已 ${dispatch.settings.enabled?"on":"off"}.`);
+                command.message(`guide ${dispatch.settings.enabled?"on":"off"}.`);				
             }
         });
 		
@@ -751,7 +797,10 @@ class TeraGuide{
 		  
                     break;
                 }				
-				
+                case "PRMSG": {
+              command.message( cr + message );	             
+                    break;
+                }				
 				//语音通知
                 case "speech": {
 		            if(voice){
@@ -861,19 +910,18 @@ class TeraGuide{
             // Start the timer for the function call
             timers[event['id'] || random_timer_id--] = setTimeout(event['func'], (event['delay'] || 0) / speed, function_event_handlers, event, ent, fake_dispatch);
         }
-		
 		function speak_voice ( alerts, delay) {
         setTimeout(()=> {
 			if(voice){
           voice.speak(alerts,1)
-          command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）');
-          sendMessage( cr + alerts +  cg +'（语音提示）');		  
+          command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）');	  
 			} else {
-          command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）' );
-          sendMessage( cr + alerts +  cg +'（无语音提示）');		  
+          command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）' );
+	  
 			}			
           }, delay );				
-        }		
+        }			
+	
     }
 }
 
