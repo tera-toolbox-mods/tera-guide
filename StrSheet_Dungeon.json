@@ -494,11 +494,11 @@
     },
     {
       "id": 9054,
-      "string": "邪惡的奧露卡神殿"
+      "string": "Bathysmal Rise (Hard)"
     },
     {
       "id": 9754,
-      "string": "奧露卡神殿"
+      "string": "Bathysmal Rise"
     },
     {
       "id": 9055,
@@ -514,11 +514,11 @@
     },
     {
       "id": 9916,
-      "string": "暴風的艾爾凱拉斯號"
+      "string": "Sky Cruiser Endeavor (Hard)"
     },
     {
       "id": 9716,
-      "string": "艾爾凱拉斯號"
+      "string": "Sky Cruiser Endeavor"
     },
     {
       "id": 9885,
@@ -578,11 +578,11 @@
     },
     {
       "id": 9059,
-      "string": "伯恩斯坦惡靈島"
+      "string": "Forsaken Island"
     },
     {
       "id": 9759,
-      "string": "伯恩斯坦惡靈島 (高階)"
+      "string": "Forsaken Island"
     },
     {
       "id": 9830,
@@ -590,11 +590,11 @@
     },
     {
       "id": 9067,
-      "string": "殘暴費勒諾的實驗室"
+      "string": "Demokron Factory (Hard)"
     },
     {
       "id": 9767,
-      "string": "費勒諾的實驗室"
+      "string": "Demokron Factory"
     },
     {
       "id": 9769,
@@ -614,7 +614,7 @@
     },
     {
       "id": 9070,
-      "string": "吹牛王塔勒斯基的遊樂場"
+      "string": "Manglemire"
     },
     {
       "id": 9069,
@@ -646,11 +646,11 @@
     },
     {
       "id": 9981,
-      "string": "塌陷的貝里克神殿"
+      "string": "Velik's Sanctuary (Hard)"
     },
     {
       "id": 9781,
-      "string": "貝里克神殿"
+      "string": "Velik's Sanctuary"
     },
     {
       "id": 9681,
@@ -670,11 +670,11 @@
     },
     {
       "id": 9735,
-      "string": "RK9 機庫"
+      "string": "RK-9 Kennel"
     },
     {
       "id": 9935,
-      "string": "終極RK9 機庫"
+      "string": "RK-9 Kennel (Hard)"
     },
     {
       "id": 9505,
@@ -706,11 +706,11 @@
     },
     {
       "id": 9920,
-      "string": "空洞的安塔洛斯深淵"
+      "string": "Antaroth's Abyss (Hard)"
     },
     {
       "id": 9720,
-      "string": "安塔洛斯深淵"
+      "string": "Antaroth's Abyss"
     },
     {
       "id": 9034,
@@ -718,23 +718,23 @@
     },
     {
       "id": 9783,
-      "string": "泰內布利斯城堡"
+      "string": "Dark Reach Citadel"
     },
     {
       "id": 9983,
-      "string": "漆黑的泰內布利斯城堡"
+      "string": "Dark Reach Citadel (Hard)"
     },
     {
       "id": 9782,
-      "string": "里安的地下殿堂"
+      "string": "Grotto of Lost Souls"
     },
     {
       "id": 9982,
-      "string": "扭曲的里安地下殿堂"
+      "string": "Grotto of Lost Souls (Hard)"
     },
     {
       "id": 9044,
-      "string": "巴哈勒神殿"
+      "string": "Bahaar's Sanctum"
     },
     {
       "id": 3012,
@@ -746,15 +746,15 @@
     },
     {
       "id": 3018,
-      "string": "漆黑的泰內布利斯城堡(7人)"
+      "string": "Dark Reach Citadel (7-man)"
     },
     {
       "id": 3019,
-      "string": "扭曲的里安地下殿堂(7人)"
+      "string": "Grotto of Lost Souls (7-man)"
     },
     {
       "id": 3017,
-      "string": "空洞的安塔洛斯深淵(7人)"
+      "string": "Antaroth's Abyss (7-man)"
     },
     {
       "id": 3001,
@@ -770,11 +770,11 @@
     },
     {
       "id": 3101,
-      "string": "費爾奎娜巢穴"
+      "string": "Gossamer Vault"
     },
     {
       "id": 3201,
-      "string": "燦爛的費爾奎娜巢穴"
+      "string": "Gossamer Vault (Hard)"
     }
   ]
 }
