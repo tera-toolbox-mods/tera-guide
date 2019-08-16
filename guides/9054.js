@@ -206,17 +206,17 @@ module.exports = {
 "qb-454-1000-454012": [{"type": "text","sub_type": "message","message": "Fix the SLATE","message_TW": "修石板"}],
 "dm-0-0-905420": [{"type": "text","sub_type": "message","message": "Water wall","message_TW": "水墙检定"}],
 "s-454-403-1101-0": [{"type": "text","sub_type": "message","message_TW": "墻"},
-                    {"type": "func","func": SpawnThing6.bind(null,300, 180, 100, 9000)}],
+                    {"type": "func","func": SpawnThing6.bind(null,475, 180, 100, 9000)}],
 "s-454-100-1101-0": [{"type": "text","sub_type": "message","message": "electric ball","message_TW": "召喚电球"},
                     {"type": "func","func": SpawnThing.bind(null,0, 0, 100, 9000)}],
 "s-454-106-3101-0": [{"type": "text","sub_type": "message","message": "1","message_TW": "1"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,513,0,0,0,3000,17000)}],
 "s-454-107-3102-0": [{"type": "text","sub_type": "message","message": "2","message_TW": "2"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,513,0,0,0,3000,17000)}],
 "s-454-108-3103-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,513,0,0,0,3000,17000)}],
 "s-454-109-3104-0": [{"type": "text","sub_type": "message","message": "4","message_TW": "4"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,17000)}]
+   {"type": "func","func": Spawnitem1.bind(null,513,0,0,0,3000,17000)}]
 
 		 
 };
