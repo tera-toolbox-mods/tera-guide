@@ -236,13 +236,13 @@ module.exports = {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 // "h-444-1000-100-0": [{"type": "func","func": guid_voice}],
- "h-444-2000-100": [{"type": "func","func": guid_voice},
+ "h-444-2000-100": [
  // {"type": "func","func": Spawnitem1.bind(null,542,0,0,0,3000,6000000)},
   //{"type": "func","func": Spawnitem1.bind(null,542,0,0,180,3000,6000000)}
   	   {"type": "func","func": SpawnThingobject.bind(null,0,-700,100,60000000)}, 
         {
             "type": "spawn",
-            "id": 6,
+            "id": 513,
             "sub_delay": 99999999,
             "pos": {
                 x: -116268,

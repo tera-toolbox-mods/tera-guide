@@ -57,6 +57,21 @@ function SpawnThing5( degrees, radius, delay, times, handlers, event, entity ) {
 			"message": "球形闪电"
         }, {loc: shield_loc});  
 }
+function SpawnThing6( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "水墙背面",
+			"message": "水墙背面"
+        }, {loc: shield_loc});  
+}
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
@@ -87,24 +102,26 @@ module.exports = {
 "s-754-1001-2105-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴"}],
 //-------------------------------------------------------------------------------------------------------------
 
-"dm-0-0-905420": [{"type": "text","sub_type": "message","message_TW": "水墙检定"}],
-"qb-754-1000-454012": [{"type": "text","sub_type": "message","message_TW": "修石板"}],
+"dm-0-0-905420": [{"type": "text","sub_type": "message","message": "Water wall","message_TW": "水墙检定"}],
+"s-754-403-1101-0": [{"type": "text","sub_type": "message","message_TW": "墻"},
+                    {"type": "func","func": SpawnThing6.bind(null,300, 180, 100, 9000)}],
+"qb-754-1000-454012": [{"type": "text","sub_type": "message","message": "Fix the SLATE","message_TW": "修石板"}],
 "qb-754-1002-454001": [{"type": "text","sub_type": "message","message_TW": "电球"}],
 "qb-754-305-454005": [{"type": "text","sub_type": "message","message_TW": "水浪检定"}],
 "qb-754-306-454006": [{"type": "text","sub_type": "message","message_TW": "水浪检定"}],
 "qb-754-307-454007": [{"type": "text","sub_type": "message","message_TW": "水浪检定"}],
 
-"s-754-100-1101-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "召喚电球"},
+"s-754-100-1101-0": [{"type": "text","sub_type": "message","message": "electric ball","message_TW": "召喚电球"},
                      {"type": "func","func": SpawnThing5.bind(null,0, 0, 10, 6100)}],
 
-"s-754-106-3201-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "1"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
-"s-754-107-3202-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "2"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
-"s-754-108-3203-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "3"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
-"s-754-109-3204-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "4"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+"s-754-106-3201-0": [{"type": "text","sub_type": "message","message": "1","message_TW": "1"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,11000)}],
+"s-754-107-3202-0": [{"type": "text","sub_type": "message","message": "2","message_TW": "2"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,11000)}],
+"s-754-108-3203-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,11000)}],
+"s-754-109-3204-0": [{"type": "text","sub_type": "message","message": "4","message_TW": "4"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,11000)}],
 
 
 "s-754-1002-1107-0": [{"type": "text","sub_type": "message","message": "Back Hit! (Slow)","message_TW": "后击！（慢）"}],
