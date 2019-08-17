@@ -11,13 +11,15 @@ let player, entity, library, effect;
         loc.y += Math.sin(finalrad) * distance;
         return loc;
     }
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
+function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay,times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
+    let	degrees = 360 - degree;
 	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
         	"id": item,
+			"delay": delay,
         	"sub_delay": times,
         	"distance": radius,
         	"offset": angle
@@ -78,12 +80,12 @@ module.exports = {
 	},
 
 "s-754-1000-1103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Slow)","message_TW": "头砸 (慢)"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,0,4000)}
 
 
 ],
 "s-754-1000-2103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Fast)","message_TW": "头砸 (快)"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}],
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,0,4000)}],
 "s-754-1000-2104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Fast)","message_TW": "旋出（快）"}],
 "s-754-1000-1104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Slow)","message_TW": "旋出（慢）"}],
 "s-754-1000-1201-0": [{"type": "text","sub_type": "message","message": "Body Slam!","message_TW": "身体撞击"}],
@@ -104,7 +106,7 @@ module.exports = {
 
 "dm-0-0-905420": [{"type": "text","sub_type": "message","message": "Water wall","message_TW": "水墙检定"}],
 "s-754-403-1101-0": [{"type": "text","sub_type": "message","message_TW": "墻"},
-                    {"type": "func","func": SpawnThing6.bind(null,475, 180, 100, 9000)}],
+                    {"type": "func","func": SpawnThing6.bind(null,500, 180, 100, 9000)}],
 "qb-754-1000-454012": [{"type": "text","sub_type": "message","message": "Fix the SLATE","message_TW": "修石板"}],
 "qb-754-1002-454001": [{"type": "text","sub_type": "message","message_TW": "电球"}],
 "qb-754-305-454005": [{"type": "text","sub_type": "message","message_TW": "水浪检定"}],
@@ -112,7 +114,7 @@ module.exports = {
 "qb-754-307-454007": [{"type": "text","sub_type": "message","message_TW": "水浪检定"}],
 
 "s-754-100-1101-0": [{"type": "text","sub_type": "message","message": "electric ball","message_TW": "召喚电球"},
-                     {"type": "func","func": SpawnThing5.bind(null,0, 0, 10, 6100)}],
+                     {"type": "func","func": SpawnThing5.bind(null,0, 0, 10, 3000)}],
 
 "s-754-106-3201-0": [{"type": "text","sub_type": "message","message": "1","message_TW": "1"},
    {"type": "func","func": Spawnitem1.bind(null,513,0,0,0,3000,11000)}],
@@ -129,7 +131,8 @@ module.exports = {
 "s-754-1002-1112-0": [{"type": "text","sub_type": "message","message": "Jump (Slow)","message_TW": "跳跃（慢）"}],
 "s-754-1002-2112-0": [{"type": "text","sub_type": "message","message": "Jump (Fast)","message_TW": "跳跃（快）"}],
 "s-754-1002-3105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
-"s-754-1002-3117-0": [{"type": "text","sub_type": "message","message": "In Out In","message_TW": "进 出 进"}],
+"s-754-1002-3117-0": [{"type": "text","sub_type": "message","message": "In Out In","message_TW": "进 出 进"},
+	                  {"type": "func","func": Spawnitem2.bind(null,513,0,0,15,275,0,10000)}],
 "s-754-1002-3110-0": [{"type": "text","sub_type": "message","message": "Pizza mech","message_TW": "披萨机制"}]
 
 		 

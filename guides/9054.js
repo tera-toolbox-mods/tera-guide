@@ -11,19 +11,22 @@ let player, entity, library, effect;
         loc.y += Math.sin(finalrad) * distance;
         return loc;
     }
-function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
+
+function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay,times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
+    let	degrees = 360 - degree;
 	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({
         	"id": item,
+			"delay": delay,
         	"sub_delay": times,
         	"distance": radius,
         	"offset": angle
         }, {loc: shield_loc});
     }
-}
+}	
 function SpawnThing5( degrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;			
@@ -104,9 +107,9 @@ module.exports = {
 "s-454-1000-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_TW": "左手"}],
 "s-454-1000-1102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右手"}],
 "s-454-1000-1103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Slow)","message_TW": "3连闪避"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}],
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,0,4000)}],
 "s-454-1000-1104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Slow)","message_TW": "旋转6次"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,0,5000)}],
 "s-454-1000-1105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
 "s-454-1000-1106-0": [{"type": "text","sub_type": "message","message": "Random hatred","message_TW": "点名"}],
 "s-454-1000-1107-0": [{"type": "text","sub_type": "message","message_TW": "乌龟行动"}],
@@ -122,9 +125,9 @@ module.exports = {
 "s-454-1000-2101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "left","message_TW": "左手"}],
 "s-454-1000-2102-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "right","message_TW": "右手"}],
 "s-454-1000-2103-0": [{"type": "text","sub_type": "message","message": "Head Slam! (Fast)","message_TW": "3连闪避"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,4000)}],
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,200,15,275,0,4000)}],
 "s-454-1000-2104-0": [{"type": "text","sub_type": "message","message": "Spin get out (Fast)","message_TW": "旋转6次"},
-	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,5000)}],
+	                  {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,200,0,5000)}],
 "s-454-1000-2105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
 "s-454-1000-2106-0": [{"type": "text","sub_type": "message","message": "Random hatred","message_TW": "点名"}],
 "s-454-1000-2107-0": [{"type": "text","sub_type": "message","message_TW": "乌龟行动"}],
@@ -192,38 +195,34 @@ module.exports = {
 
 //-----------------------------------------------------------------------------------------------------------------------------
 "s-454-1002-3105-0": [{"type": "text","sub_type": "message","message": "Get in","message_TW": "进"}],
-"s-454-1002-3117-0": [{"type": "text","sub_type": "message","message": "In Out In","message_TW": "进 出 进"}],
-
+"s-454-1002-3117-0": [{"type": "text","sub_type": "message","message": "In Out In","message_TW": "进 出 进"},
+	                  {"type": "func","func": Spawnitem2.bind(null,513,0,0,15,275,0,10000)}],
 "s-454-1002-3110-0": [{"type": "text","sub_type": "message","message": "Pizza mech","message_TW": "披萨机制"},
                     {"type": "func","func": SpawnThing5.bind(null,30, 201, 100, 2000)},
                     {"type": "func","func": SpawnThing5.bind(null,90, 201, 100, 2000)},					
                     {"type": "func","func": SpawnThing5.bind(null,150, 201, 100, 2000)},					
                     {"type": "func","func": SpawnThing5.bind(null,210, 201, 100, 2000)},					
                     {"type": "func","func": SpawnThing5.bind(null,270, 201, 100, 2000)},
-                    {"type": "func","func": SpawnThing5.bind(null,330, 201, 100, 2000)},	
-					
+                    {"type": "func","func": SpawnThing5.bind(null,330, 201, 100, 2000)},						
                     {"type": "func","func": SpawnThing5.bind(null,0, 201, 2000, 4000)},
                     {"type": "func","func": SpawnThing5.bind(null,60, 201, 2000, 4000)},					
                     {"type": "func","func": SpawnThing5.bind(null,120, 201, 2000, 4000)},					
                     {"type": "func","func": SpawnThing5.bind(null,180, 201, 2000, 4000)},					
                     {"type": "func","func": SpawnThing5.bind(null,240, 201, 2000, 4000)},
                     {"type": "func","func": SpawnThing5.bind(null,300, 201, 2000, 4000)},	
-
                     {"type": "func","func": SpawnThing5.bind(null,30, 201, 4000, 6000)},
                     {"type": "func","func": SpawnThing5.bind(null,90, 201, 4000, 6000)},					
                     {"type": "func","func": SpawnThing5.bind(null,150, 201, 4000, 6000)},					
                     {"type": "func","func": SpawnThing5.bind(null,210, 201, 4000, 6000)},					
                     {"type": "func","func": SpawnThing5.bind(null,270, 201, 4000, 6000)},
-                    {"type": "func","func": SpawnThing5.bind(null,330, 201, 4000, 6000)}	
-					
-],
-
-
+                    {"type": "func","func": SpawnThing5.bind(null,330, 201, 4000, 6000)}],
 "s-454-1002-3106-0": [{"type": "text","sub_type": "message","message_TW": "全場切割檢定"}],
 "s-454-1002-3113-0": [{"type": "text","sub_type": "message","message": "SHIELD！","message_TW": "破盾"}],
 "s-454-1002-3115-0": [{"type": "text","sub_type": "message","message": "25%","message_TW": "爆走模式"}],
 "s-454-1002-3119-0": [{"type": "text","sub_type": "message","message_TW": "水浪檢定"}],
-"qb-454-1002-454001": [{"type": "text","sub_type": "alert","message": "electric ball","message_TW": "电球"}],
+"qb-454-1002-454001": [{"type": "text","sub_type": "alert","message": "electric ball","message_TW": "电球"},
+                      {"type": "text","sub_type": "message","delay": 45000,"message_TW": "电球准备就绪"}
+],
 
 //------------------------------------------特殊
 "qb-454-402-454008": [{"type": "text","sub_type": "message","message": "Water wave attack","message_TW": "水波攻擊"},
