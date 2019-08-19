@@ -146,15 +146,15 @@ module.exports = {
 
 //2王
 
-
-
+"s-454-1001-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front attack","message_TW": "前拱"}],
+"s-454-1001-2101-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "front attack","message_TW": "前拱"}],
 
 "s-454-1001-1102-0": [{"type": "text","sub_type": "message","message": "Back Flip (Fast)","message_TW": "后空翻"}],
 "s-454-1001-1104-0": [{"type": "text","sub_type": "message","message": "Frontal Spin!","message_TW": "正面旋转！"}],
 "s-454-1001-1105-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴"}],
 "s-454-1001-1108-0": [{"type": "text","sub_type": "message","message": "random poison","message_TW": "隨仇放毒"}],
 "s-454-1001-1109-0": [{"type": "text","sub_type": "message","message": "Pull + poison","message_TW": "拉人放毒"},
-                      {"type": "text","sub_type": "message","delay": 2000,"message_TW": "闪"}],
+                      {"type": "text","sub_type": "message","delay": 1500,"message_TW": "闪"}],
 "s-454-1001-1110-0": [{"type": "text","sub_type": "message","message": "Cyclone! (Slow)","message_TW": "死亡旋轉"}],
 "s-454-1001-1113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
 "s-454-1001-1111-0": [{"type": "text","sub_type": "message","message": "Spin lunge attack","message_TW": "旋转突进攻击"}],
@@ -164,7 +164,7 @@ module.exports = {
 "s-454-1001-2105-0": [{"type": "text","sub_type": "message","message": "Tail","message_TW": "尾巴"}],
 "s-454-1001-2108-0": [{"type": "text","sub_type": "message","message": "random poison","message_TW": "隨仇放毒"}],
 "s-454-1001-2109-0": [{"type": "text","sub_type": "message","message": "Pull + poison","message_TW": "拉人放毒"},
-                      {"type": "text","sub_type": "message","delay": 2000,"message_TW": "闪"}],
+                      {"type": "text","sub_type": "message","delay": 1500,"message_TW": "闪"}],
 "s-454-1001-2110-0": [{"type": "text","sub_type": "message","message": "Cyclone! (Slow)","message_TW": "死亡旋轉"}],
 "s-454-1001-2113-0": [{"type": "text","sub_type": "message","message_TW": "深海粘液场"}],
 "s-454-1001-2111-0": [{"type": "text","sub_type": "message","message": "Spin lunge attack","message_TW": "旋转突进攻击"}],
@@ -221,26 +221,31 @@ module.exports = {
 "s-454-1002-3115-0": [{"type": "text","sub_type": "message","message": "25%","message_TW": "爆走模式"}],
 "s-454-1002-3119-0": [{"type": "text","sub_type": "message","message_TW": "水浪檢定"}],
 "qb-454-1002-454001": [{"type": "text","sub_type": "alert","message": "electric ball","message_TW": "电球"},
-                      {"type": "text","sub_type": "message","delay": 45000,"message_TW": "电球准备就绪"}
+                      {"type": "text","sub_type": "alert","delay": 45000,"message_TW": "电球准备就绪"}
 ],
 
 //------------------------------------------特殊
 "qb-454-402-454008": [{"type": "text","sub_type": "message","message": "Water wave attack","message_TW": "水波攻擊"},
-   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)}],
+   {"type": "text","sub_type": "notification","delay": 70000,"message": "Water wave attack soon","message_TW": "水波攻擊准备"},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,4000)},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,90,3000,4000)},   
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,180,3000,4000)},
+   {"type": "func","func": Spawnitem1.bind(null,912,0,0,270,3000,4000)}  
+   ],
 "qb-454-1000-454012": [{"type": "text","sub_type": "message","message": "Fix the SLATE","message_TW": "修石板"}],
 "dm-0-0-905420": [{"type": "text","sub_type": "message","message": "Water wall","message_TW": "水墙检定"}],
 "s-454-403-1101-0": [{"type": "text","sub_type": "message","message_TW": "墻"},
                     {"type": "func","func": SpawnThing6.bind(null,500, 180, 100, 9000)}],
-"s-454-100-1101-0": [{"type": "text","sub_type": "message","message": "electric ball","message_TW": "召喚电球"},
+"s-454-100-1101-0": [{"type": "text","sub_type": "notification","message": "electric ball","message_TW": "召喚电球"},
                     {"type": "func","func": SpawnThing.bind(null,0, 0, 100, 3000)}],
 "s-454-106-3101-0": [{"type": "text","sub_type": "message","message": "1","message_TW": "1"},
-   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,2200,17000)}],
 "s-454-107-3102-0": [{"type": "text","sub_type": "message","message": "2","message_TW": "2"},
-   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,2200,17000)}],
 "s-454-108-3103-0": [{"type": "text","sub_type": "message","message": "3","message_TW": "3"},
-   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,17000)}],
+   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,2200,17000)}],
 "s-454-109-3104-0": [{"type": "text","sub_type": "message","message": "4","message_TW": "4"},
-   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,3000,17000)}]
+   {"type": "func","func": Spawnitem1.bind(null,553,0,0,0,2200,17000)}]
 
 		 
 };
