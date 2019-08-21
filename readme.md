@@ -98,6 +98,8 @@ RK9-机库               RK9 NM
 
 伯恩斯坦惡靈島上/下     Forsaken Island
 
+超越的拉坎里斯的廢墟    Ruinous Manor (Hard)
+
 
 
 
