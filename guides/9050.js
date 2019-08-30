@@ -1,30 +1,16 @@
-// 火神
+// 
 //made by michengs
+let timer;
+let counter = 0;
 let notice_guide = true;
 let player, entity, library, effect;
 let	shining = false;
 let	skill = 0;
-let	print = false;
+let print = true;
 let notice = true; 
 let notices = true;
 let	printend = false;
-function guid_voice(handlers) {   
-if(notice_guide) {
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-
-handlers['text']({
-"sub_type": "notification",
-"delay": 2000,
-"message_TW": "获取更多信息 proxy频道输入:補助 help"
-});
-}
-notice_guide = false;
-
-}	
+	
 	function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
      	let	rads = (degrees * Math.PI/180);
@@ -122,52 +108,133 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
         }, {loc: shield_loc});
     }
 }
+function start_1boss90() {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "90%",
+"message_TW": "召唤傀儡"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
+function start_1boss70() {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "70%",
+"message_TW": "召唤傀儡"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
+function start_1boss30() {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "30%",
+"message_TW": "召唤傀儡，1.5倍攻速"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
+function start_1boss10() {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message": "10%",
+"message_TW": "召唤傀儡"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
 
+function skilld_event(skillid, handlers, event, ent, dispatch) {
 
+	if ([1109, 2109].includes(skillid)) { 
+clearTimeout(timer);
+counter++;
+if(counter >= 2) {
+handlers['text']({
+"sub_type": "message",
+"message": "......",
+"message_TW": "......"
+});
+shining = true;
+}
+
+setTimeout(function () {
+if(!shining) {	
+
+handlers['text']({
+"sub_type": "message",
+"message": "move out",
+"message_TW": `范围攻击准备就绪`
+});
+}	
+		   }, 3100);
+timer = setTimeout(()=>{
+counter = 0;
+//shining = true;
+}, 3000);
+setTimeout(() => shining = false, 8000);			
+				                          }		
+}
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
+	
+ "h-450-1001-90": [{"type": "func","func": start_1boss90}], 	
+ "h-450-1001-70": [{"type": "func","func": start_1boss70}], 		
+ "h-450-1001-30": [{"type": "func","func": start_1boss30}], 		
+ "h-450-1001-10": [{"type": "func","func": start_1boss10}], 		
+	
+	
  "s-450-1001-1101-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1101巨型虫植物前方触水攻击atk 01老马" }], 
- "s-450-1001-1102-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "旋转攻击" }], 
- "s-450-1001-1103-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1103巨型虫植物地板触水攻击heavyatk 01老马" }], 
+ "s-450-1001-1102-0": [{"type": "text","sub_type": "message","message":  'spin',"message_TW": "旋转攻击" }], 
+ "s-450-1001-1103-0": [{"type": "text","sub_type": "message","message":  'floor',"message_TW": "点名地板攻击" }], 
  "s-450-1001-1104-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1104巨型虫植物根传唤攻击longAtk 01老话" }], 
- "s-450-1001-1105-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "远离" },
+ "s-450-1001-1105-0": [{"type": "text","sub_type": "message","message":  'OUT',"message_TW": "远离" },
 	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,375,100,4000)}], 
  "s-450-1001-1106-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1106巨型虫植物右转攻击roundAtk 01老话" }], 
  "s-450-1001-1107-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1107巨型虫植物左转攻击roundAtk 02" }], 
  "s-450-1001-1108-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1108巨大食用物赞助动作1spSummon 01老话" }], 
- "s-450-1001-1109-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "準備遠離" }], 
- "s-450-1001-1110-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "擊倒" }], 
+ "s-450-1001-1109-0": [{"type": "func","func": skilld_event.bind(null, 1109)}], 
+ "s-450-1001-1110-0": [{"type": "text","sub_type": "message","message":  'knock down',"message_TW": "击倒" }], 
  "s-450-1001-1301-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "1301巨大虫植物大气wait" }], 
  "s-450-1001-2101-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2101巨大虫植物前方触水攻击atk 01愤怒" }], 
- "s-450-1001-2102-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "旋转攻击" }], 
- "s-450-1001-2103-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2103巨型虫植物地板触水攻击heavyatk 01愤怒" }], 
+ "s-450-1001-2102-0": [{"type": "text","sub_type": "message","message":  'spin',"message_TW": "旋转攻击" }], 
+ "s-450-1001-2103-0": [{"type": "text","sub_type": "message","message":  'floor',"message_TW": "点名地板攻击" }], 
  "s-450-1001-2104-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2104巨型虫植物根传唤攻击longAtk 01愤怒" }], 
- "s-450-1001-2105-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "远离" },
+ "s-450-1001-2105-0": [{"type": "text","sub_type": "message","message":  'OUT',"message_TW": "远离" },
 	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,375,100,4000)}], 
  "s-450-1001-2106-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2106巨大虫植物右转攻击roundAtk 01愤怒" }], 
  "s-450-1001-2107-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2107巨大食虫植物左转攻击roundAtk 02愤怒" }], 
  "s-450-1001-2108-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "2108巨大食用物赞助动作1spSummon 01愤怒" }], 
- "s-450-1001-2109-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "準備遠離" }], 
- "s-450-1001-2110-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "擊倒" }], 
+ "s-450-1001-2109-0": [{"type": "func","func": skilld_event.bind(null, 2109)}], 
+ "s-450-1001-2110-0": [{"type": "text","sub_type": "message","message":  'knock down',"message_TW": "击倒" }], 
 
 
 //-----------------------------------------------------------------------------------------------------2
- "s-450-45016-1308-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "圈" },
-	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,400,100,8000)}], 
+ "s-450-45016-1308-0": [{"type": "text","sub_type": "message","message":  'Circle of poison',"message_TW": "圈" },
+	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,400,100,7000)}], 
 
-"s-450-1002-1101-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂右手攻击atk 01老话" }],
-"s-450-1002-1102-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂左手拍攻击atk 02老话" }],
+"s-450-1002-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'right',"message_TW": "右手" }],
+"s-450-1002-1102-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'left',"message_TW": "左手" }],
 "s-450-1002-1103-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "用巨型马蜂前脚进行蜂箱旋转攻击heavyAtkcomboatk 01" }],
-"s-450-1002-1105-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "用巨型马蜂的前锋攻击heavyAtk 03老末" }],
-"s-450-1002-1106-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂空中飞来发射毒针的longAtk老马" }],
-"s-450-1002-1107-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "飞天攻击" }],
+"s-450-1002-1105-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'double handed',"message_TW": "双手" }],
+"s-450-1002-1106-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'stun',"message_TW": "毒针晕" }],
+"s-450-1002-1107-0": [{"type": "text","sub_type": "message","message":  'flying attack',"message_TW": "飞天攻击" }],
 "s-450-1002-1109-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂左转攻击roundAtk 01老话" }],
 "s-450-1002-1110-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂右转攻击roundAtk 02" }],
 "s-450-1002-1151-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂活动activemove nove" }],
 "s-450-1002-1201-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂模式提醒modeAlarm" }],
-"s-450-1002-1202-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨马蜂巢longMove nove" }],
+"s-450-1002-1202-0": [{"type": "text","sub_type": "message","message":  'knock down',"message_TW": "俯冲击倒" }],
 "s-450-1002-1203-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂grogy" }],
 "s-450-1002-1204-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂逃跑runAway" }],
 "s-450-1002-1301-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂待机动作" }],
@@ -181,27 +248,27 @@ module.exports = {
 "s-450-1002-1309-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂模式闹钟modeAlarm老话8" }],
 "s-450-1002-1310-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂模式提醒modeAlarm老马9" }],
 "s-450-1002-1311-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂模式提醒modeAlarm老马10" }],
-"s-450-1002-2101-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂右手攻击atk 01愤怒" }],
-"s-450-1002-2102-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂左手拍攻击atk 02愤怒" }],
+"s-450-1002-2101-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'right',"message_TW": "右手" }],
+"s-450-1002-2102-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'left',"message_TW": "左手" }],
 "s-450-1002-2103-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "用巨型马蜂前脚进行蜂箱旋转攻击heavyAtkcomboatk 01" }],
-"s-450-1002-2105-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "用巨型马蜂的前锋攻击heavyAtk 03愤怒" }],
-"s-450-1002-2106-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂空中飞来发射毒针的longAtk愤怒" }],
-"s-450-1002-2107-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "飞天攻击" }],
+"s-450-1002-2105-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'double handed',"message_TW": "双手" }],
+"s-450-1002-2106-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'stun',"message_TW": "毒针晕" }],
+"s-450-1002-2107-0": [{"type": "text","sub_type": "message","message":  'flying attack',"message_TW": "飞天攻击" }],
 "s-450-1002-2109-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂左转攻击roundAtk 01愤怒" }],
 "s-450-1002-2110-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂右转攻击roundAtk 02愤怒" }],
 "s-450-1002-2151-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂活动activeMove愤怒" }],
 "s-450-1002-2201-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂模式提醒modeAlarm愤怒" }],
-"s-450-1002-2202-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的马蜂longMove愤怒" }],
+"s-450-1002-2202-0": [{"type": "text","sub_type": "message","message":  'knock down',"message_TW": "俯冲击倒" }],
 "s-450-1002-2203-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂grogy" }],
 "s-450-1002-2204-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大马蜂逃跑runAway" }],
 "s-450-1002-2301-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨型马蜂待机动作" }],
 "s-450-1002-2302-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的马蜂不可保障的50%" }],					
- "s-450-1002-1108-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "壓人" }], 
- "s-450-1002-2108-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "壓人" }], 
- "s-450-1002-2104-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "拉人" },
-                      {"type": "text","sub_type": "message","delay": 3000,"message":  'Perfect Defense',"message_TW": "閃避" }],  
- "s-450-1002-1104-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "拉人" },
-                      {"type": "text","sub_type": "message","delay": 3000,"message":  'Perfect Defense',"message_TW": "閃避" }],
+ "s-450-1002-1108-0": [{"type": "text","sub_type": "message","message":  'overpower',"message_TW": "壓人" }], 
+ "s-450-1002-2108-0": [{"type": "text","sub_type": "message","message":  'overpower',"message_TW": "壓人" }], 
+ "s-450-1002-2104-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人" },
+                      {"type": "text","sub_type": "message","delay": 3000,"message":  'dodge',"message_TW": "閃避" }],  
+ "s-450-1002-1104-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人" },
+                      {"type": "text","sub_type": "message","delay": 3000,"message":  'dodge',"message_TW": "閃避" }],
 					  
 					  
 "s-450-1003-1101-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的金龟角攻击Atk 01老马" }],
@@ -250,7 +317,9 @@ module.exports = {
 "s-450-1003-2114-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大金龟攻击气体spatk02愤怒" }],
 "s-450-1003-2151-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大金龟是Active activetiveMove愤怒" }],
 "s-450-1003-2201-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大金龟长款MongMove愤怒" }],
-"s-450-1003-2301-0": [{"type": "text","sub_type": "message","message":  '_',"message_TW": "打水晶柱" }],
+"s-450-1003-2301-0": [{"type": "text","sub_type": "message","message":  'hit Crystal column',"message_TW": "打水晶柱" },
+                      {"type": "text","sub_type": "message","delay": 5000,"message_TW": "走位" }
+],
 "s-450-1003-2302-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的金龟子光逆2打" }],
 "s-450-1003-2303-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的金龟是光逆冲击3打" }],
 "s-450-1003-2304-0": [{"type": "text","sub_type": "MSG","message":  '_',"message_TW": "巨大的金龟攻击前方斯顿" }],
