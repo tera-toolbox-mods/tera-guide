@@ -17,13 +17,13 @@
 
 	if ([1306, 1307, 1308, 1309, 1310].includes(skillid)) {
              circlecount += (skillid - 1306) + 1;
-            handlers['text']({"sub_type": "message","message": `${circlecount} - ${(circlecount & 1) ? "odd - red" : "even - blue"}`,"message_TW": `${circlecount} - ${(circlecount & 1) ? "基数 - 红" : "偶数 - 蓝"}`});			
+            handlers['text']({"sub_type": "notification","message": `${circlecount} - ${(circlecount & 1) ? "odd - red" : "even - blue"}`,"message_TW": `${circlecount} - ${(circlecount & 1) ? "基数 - 红" : "偶数 - 蓝"}`});			
 				                                    }
 													
 	if ([1319, 1320, 1321, 1322, 1323].includes(skillid)) {
            //  circlecount += (skillid - 1306) + 1;
              circlecount += (skillid - 1319) + 1;			 
-            handlers['text']({"sub_type": "message","message": `${circlecount} - ${(circlecount & 1) ? "odd - red" : "even - blue"}`,"message_TW": `${circlecount} - ${(circlecount & 1) ? "基数 - 红" : "偶数 - 蓝"}`});			
+            handlers['text']({"sub_type": "notification","message": `${circlecount} - ${(circlecount & 1) ? "odd - red" : "even - blue"}`,"message_TW": `${circlecount} - ${(circlecount & 1) ? "基数 - 红" : "偶数 - 蓝"}`});			
 				                                    }
 
 
@@ -88,12 +88,12 @@ module.exports = {
  "h-466-46602-30": [{"type": "func","func": start_boss30}],
  
  
- "qb-466-46621-466050": [{"type": "text","sub_type": "notification","message":  'Don\'t hit RED',"message_TW": "红(顺) | (蓝+白" }],
- "qb-466-46621-466051": [{"type": "text","sub_type": "notification","message":  'Don\'t hit WHITE',"message_TW": "白(顺) | (红+蓝)" }],
- "qb-466-46621-466052": [{"type": "text","sub_type": "notification","message":  'Don\'t hit BLUE',"message_TW": "蓝(顺) | (红+白)" }],//------------
- "qb-466-46622-466054": [{"type": "text","sub_type": "notification","message":  'Hit RED',"message_TW": "红(逆)" }],
- "qb-466-46622-466055": [{"type": "text","sub_type": "notification","message":  'Hit WHITE',"message_TW": "白(逆)" }],  //--------------------
- "qb-466-46622-466056": [{"type": "text","sub_type": "notification","message":  'Hit BLUE',"message_TW": "蓝(逆)" }], 
+ "qb-466-46621-466050": [{"type": "text","sub_type": "notification","message":  'Don\'t hit RED',"message_TW": "打 蓝+白" }],
+ "qb-466-46621-466051": [{"type": "text","sub_type": "notification","message":  'Don\'t hit WHITE',"message_TW": "打 红+蓝" }],
+ "qb-466-46621-466052": [{"type": "text","sub_type": "notification","message":  'Don\'t hit BLUE',"message_TW": "打 红+白" }],//------------
+ "qb-466-46622-466054": [{"type": "text","sub_type": "notification","message":  'Hit RED',"message_TW": "打红(逆)" }],
+ "qb-466-46622-466055": [{"type": "text","sub_type": "notification","message":  'Hit WHITE',"message_TW": "打白(逆)" }],  //--------------------
+ "qb-466-46622-466056": [{"type": "text","sub_type": "notification","message":  'Hit BLUE',"message_TW": "打蓝(逆)" }], 
  "s-466-46602-1116-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人(群体)" }], 
  "s-466-46602-2116-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人(群体)" }], 
  "s-466-46602-1223-0": [{"type": "text","sub_type": "message","message":  'Double RED',"message_TW": "红圈" }],  
