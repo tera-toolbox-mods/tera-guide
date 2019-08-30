@@ -100,9 +100,9 @@ RK9-机库               RK9 NM
 
 超越的拉坎里斯的廢墟    Ruinous Manor (Hard)
 
-岱魔鲁斯的轮盘 (Demon’s Wheel)
+岱魔鲁斯的轮盘          (Demon’s Wheel)
 
-
+貪婪的卡舒帕露峽谷      Rift's Edge (Hard) (10-Person)
 
 Add Dungeon for other modules ....
 
