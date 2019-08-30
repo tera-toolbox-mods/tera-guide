@@ -21,7 +21,7 @@
 				                                    }
 													
 	if ([1319, 1320, 1321, 1322, 1323].includes(skillid)) {
-             circlecount += (skillid - 1306) + 1;
+           //  circlecount += (skillid - 1306) + 1;
              circlecount += (skillid - 1319) + 1;			 
             handlers['text']({"sub_type": "message","message": `${circlecount} - ${(circlecount & 1) ? "odd - red" : "even - blue"}`,"message_TW": `${circlecount} - ${(circlecount & 1) ? "基数 - 红" : "偶数 - 蓝"}`});			
 				                                    }
