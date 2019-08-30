@@ -301,7 +301,7 @@ class TeraGuide{
             try {
                 active_guide = require('./guides/' + e.zone);
                    //奧盧卡                 暴風拉斯       
-            if ( 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
+            if (9750 == e.zone ||   9066 == e.zone || 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
 			        // 
             } else if( 9000 == e.zone ) {
