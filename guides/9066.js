@@ -39,7 +39,7 @@
 	if ([21303].includes(skillid)) { 
 	if(print) {
 handlers['text']({
-"sub_type": "message",
+"sub_type": "notification",
 "message": "Hit ALL",
 "message_TW": "打所有"
 });
