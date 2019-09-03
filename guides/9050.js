@@ -108,7 +108,7 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
         }, {loc: shield_loc});
     }
 }
-function start_1boss90() {
+function start_1boss90(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
@@ -119,7 +119,7 @@ handlers['text']({
 print = false;
 setTimeout(() => print = true, 10000);	
 }
-function start_1boss70() {
+function start_1boss70(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
@@ -130,7 +130,7 @@ handlers['text']({
 print = false;
 setTimeout(() => print = true, 10000);	
 }
-function start_1boss30() {
+function start_1boss30(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
@@ -141,7 +141,7 @@ handlers['text']({
 print = false;
 setTimeout(() => print = true, 10000);	
 }
-function start_1boss10() {
+function start_1boss10(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
@@ -156,18 +156,7 @@ setTimeout(() => print = true, 10000);
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 
 	if ([1109, 2109].includes(skillid)) { 
-clearTimeout(timer);
-counter++;
-if(counter >= 2) {
-handlers['text']({
-"sub_type": "message",
-"message": "......",
-"message_TW": "......"
-});
-shining = true;
-}
 
-setTimeout(function () {
 if(!shining) {	
 
 handlers['text']({
@@ -175,13 +164,10 @@ handlers['text']({
 "message": "move out",
 "message_TW": `范围攻击准备就绪`
 });
+shining = true;
 }	
-		   }, 3100);
-timer = setTimeout(()=>{
-counter = 0;
-//shining = true;
-}, 3000);
-setTimeout(() => shining = false, 8000);			
+
+setTimeout(() => shining = false, 10000);			
 				                          }		
 }
 module.exports = {
