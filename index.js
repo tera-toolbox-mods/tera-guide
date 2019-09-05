@@ -479,11 +479,11 @@ class TeraGuide{
             	if (!stream) {
 	                switch(event['sub_type']) {
 	                    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_event);
-	                    case "notification": return dispatch.toClient('S_CHAT', 2, sending_event);
+	                    case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
 	                }
             	} else {
             		// If streamer mode is enabled, send message all messages to party chat instead
-            		return dispatch.toClient('S_CHAT', 2, { channel: 1, authorName: config['chat-name'], message });
+            		return dispatch.toClient('S_CHAT', 3, { channel: 1, name: config['chat-name'], message });
             	}
             }, (event['delay'] || 0 ) / speed);
         }
