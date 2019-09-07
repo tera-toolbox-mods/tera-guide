@@ -254,11 +254,11 @@ module.exports = {
  ],
  	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
 
-  "s-444-2000-1104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}],
-  "s-444-2000-2104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}], 
+ // "s-444-2000-1104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}],
+ // "s-444-2000-2104-0": [ {"type": "func","func": skillds_event.bind(null, 104)}], 
   
-  "s-444-2000-1134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}],  
-   "s-444-2000-2134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}], 
+  //"s-444-2000-1134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}],  
+  // "s-444-2000-2134-0": [ {"type": "func","func": skillds_event.bind(null, 134)}], 
    
  "s-444-1000-2103-0": [{"type": "text","sub_type": "message","message": "Front (Dodge)","message_TW": "前砸 闪避" },		
      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}], 
@@ -279,8 +279,8 @@ module.exports = {
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
  "s-444-1000-2117-0": [{"type": "text","sub_type": "message","message":  'Jump (Bait)',"message_TW": "随仇->跳劈 (击倒)" }],  
- "s-444-1000-2118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" },
- {"type": "func","func": skillds_event.bind(null, 118)}
+ "s-444-1000-2118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" }
+ //{"type": "func","func": skillds_event.bind(null, 118)}
  ],  
 
  "s-444-1000-2121-0": [{"type": "text","sub_type": "message","message":  'Waves (Left)',"message_TW": "左  (4连半月)" },
@@ -333,8 +333,8 @@ module.exports = {
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
  "s-444-1000-1117-0": [{"type": "text","sub_type": "message","message":  'Jump (Bait)',"message_TW": "随仇->跳劈 (击倒)" }],  
- "s-444-1000-1118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" },
- {"type": "func","func": skillds_event.bind(null, 118)}
+ "s-444-1000-1118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" }
+ //{"type": "func","func": skillds_event.bind(null, 118)}
  ],  
 
  "s-444-1000-1121-0": [{"type": "text","sub_type": "message","message":  'Waves (Left)',"message_TW": "左  (4连半月)" },
@@ -347,8 +347,9 @@ module.exports = {
 			
  ],    
  "s-444-1000-1131-0": [{"type": "text","sub_type": "message","message":  'Front -> Left Scratch',"message_TW": "左 范围(挡) | 后拉" },
-     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
-				
+     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)},				
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,180,500,4000)},					
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,0,500,4000)}								
  ], 
   "s-444-1000-1132-0": [  
   {"type": "func","func": Spawnitem1.bind(null,553,270,200,0,500,2000)},
@@ -384,7 +385,7 @@ module.exports = {
 
   "h-444-2000-0": [{"type": "func","func": print_end}],
   "s-444-2000-1101-0": [{"type": "text","sub_type": "message","message":  '4 Hit combo',"message_TW": "锤地 270 重击" },
-  {"type": "func","func": Spawnitem1.bind(null,553,0,0,190,500,4000)},
+  {"type": "func","func": Spawnitem1.bind(null,553,0,0,195,500,4000)},
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,3000)}],
 
  "s-444-2000-1103-0": [{"type": "text","sub_type": "message","message":  'Front (Dodge)',"message_TW": "前砸 闪避" },
@@ -416,8 +417,8 @@ module.exports = {
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
  "s-444-2000-1117-0": [{"type": "text","sub_type": "message","message":  'Jump (Bait)',"message_TW": "随仇->跳劈 (击倒)" }],  
- "s-444-2000-1118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" },
-  {"type": "func","func": skillds_event.bind(null, 118)}
+ "s-444-2000-1118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" }
+ // {"type": "func","func": skillds_event.bind(null, 118)}
  ],  
  "s-444-2000-1119-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "右 安全→ (坦左移)" },
 	   {"type": "func","func": SpawnThing.bind(null,270,300,100,2000)}			
@@ -450,14 +451,18 @@ module.exports = {
   {"type": "text","sub_type": "message","delay": 60000,"message":  'Waves soon...',"message_TW": "半月准备"}	
  ],  
  "s-444-2000-1125-0": [{"type": "text","sub_type": "message","message":  'Front -> Right Scratch',"message_TW": "右 前砸(闪) | 后拉" }, 
-      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}
+      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)},				
+      {"type": "func","func": Spawnitem1.bind(null,553,356,400,180,500,3000)},					
+      {"type": "func","func": Spawnitem1.bind(null,553,356,400,0,500,3000)}
  ],  
  "s-444-2000-1126-0": [  
   {"type": "func","func": Spawnitem1.bind(null,553,90,200,0,500,2000)},
   {"type": "func","func": Spawnitem1.bind(null,553,90,200,180,500,2000)}],  
  
  "s-444-2000-1131-0": [{"type": "text","sub_type": "message","message":  'Front -> Left Scratch',"message_TW": "左 范围(挡) | 后拉" },
-     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
+     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)},				
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,180,500,4000)},					
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,0,500,4000)}				
 				
  ], 
   "s-444-2000-1132-0": [  
@@ -470,7 +475,8 @@ module.exports = {
       {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}	
  ],  
  "s-444-2000-1137-0": [
-{"type": "func","func": skilld_event.bind(null, 137)},
+//{"type": "func","func": skilld_event.bind(null, 137)},
+{"type": "text","sub_type": "message","message":  'Hammer back ',"message_TW": "后砸 " },
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
  
  "s-444-2000-1138-0": [{"type": "text","sub_type": "message","message":  'Knockup (Bait)',"message_TW": "左 蓄力(击飞)" }],  
@@ -514,7 +520,7 @@ module.exports = {
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,180,500,6000)}], 
 //---------------------------------------------------------------------------------------------------
   "s-444-2000-2101-0": [{"type": "text","sub_type": "message","message":  '4 Hit combo',"message_TW": "锤地 270 重击" },
-  {"type": "func","func": Spawnitem1.bind(null,553,0,0,190,500,4000)},
+  {"type": "func","func": Spawnitem1.bind(null,553,0,0,195,500,4000)},
   {"type": "func","func": Spawnitem1.bind(null,553,0,0,270,500,3000)}],
 
  "s-444-2000-2103-0": [{"type": "text","sub_type": "message","message":  'Front (Dodge)',"message_TW": "前砸闪避" },
@@ -548,8 +554,8 @@ module.exports = {
 	      {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,290,100,6000)}			
  ],   
  "s-444-2000-2117-0": [{"type": "text","sub_type": "message","message":  'Jump (Bait)',"message_TW": "随仇->跳劈 (击倒)" }],  
- "s-444-2000-2118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" },
-  {"type": "func","func": skillds_event.bind(null, 118)}
+ "s-444-2000-2118-0": [{"type": "text","sub_type": "message","message":  'Jump (Tank)',"message_TW": "主仇->跳劈 (击倒)" }
+  //{"type": "func","func": skillds_event.bind(null, 118)}
  ],  
  "s-444-2000-2119-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "右 安全→ (坦左移)" },
 	   {"type": "func","func": SpawnThing.bind(null,270,300,100,2000)}			
@@ -582,15 +588,18 @@ module.exports = {
   {"type": "text","sub_type": "message","delay": 60000,"message":  'Waves soon...',"message_TW": "半月准备"}	
  ],  
  "s-444-2000-2125-0": [{"type": "text","sub_type": "message","message":  'Front -> Right Scratch',"message_TW": "右前砸(闪) | 后拉" }, 
-      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)}
+      {"type": "func","func": Spawnitem2.bind(null,445,356,400,8,350,100,3000)},				
+      {"type": "func","func": Spawnitem1.bind(null,553,356,400,180,500,3000)},					
+      {"type": "func","func": Spawnitem1.bind(null,553,356,400,0,500,3000)}
  ],  
  "s-444-2000-2126-0": [  
   {"type": "func","func": Spawnitem1.bind(null,553,90,200,0,500,2000)},
   {"type": "func","func": Spawnitem1.bind(null,553,90,200,180,500,2000)}],  
  
  "s-444-2000-2131-0": [{"type": "text","sub_type": "message","message":  'Front -> Left Scratch',"message_TW": "左 范围(挡) | 后拉" },
-     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)}				
-				
+     {"type": "func","func": Spawnitem2.bind(null,445,358,340,8,660,100,4000)},				
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,180,500,4000)},					
+      {"type": "func","func": Spawnitem1.bind(null,553,358,340,0,500,4000)}								
  ], 
   "s-444-2000-2132-0": [  
   {"type": "func","func": Spawnitem1.bind(null,553,270,200,0,500,2000)},
@@ -604,7 +613,8 @@ module.exports = {
       {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}	
  ],  
  "s-444-2000-2137-0": [
-{"type": "func","func": skilld_event.bind(null, 137)},
+//{"type": "func","func": skilld_event.bind(null, 137)},
+{"type": "text","sub_type": "message","message":  'Hammer back ',"message_TW": "后砸 " },
      {"type": "func","func": Spawnitem2.bind(null,445,180,500,8,480,100,2000)}], 
  
  "s-444-2000-2138-0": [{"type": "text","sub_type": "message","message":  'Knockup (Bait)',"message_TW": "左 蓄力(击飞)" }],  
