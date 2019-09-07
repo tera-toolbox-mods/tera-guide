@@ -42,13 +42,13 @@ handlers['text']({
 "sub_type": "notification",
 "message": "Hit ALL",
 "message_TW": "打所有"
-},
+});
+handlers['text'](
 {
 "sub_type": "message",
 "message": "Hit ALL",
 "message_TW": "打所有"
-}
-);
+});
 } else {
  handlers['text']({"sub_type": "message","message_TW": '打投掷'});
 }			
