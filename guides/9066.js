@@ -42,7 +42,13 @@ handlers['text']({
 "sub_type": "notification",
 "message": "Hit ALL",
 "message_TW": "打所有"
-});
+},
+{
+"sub_type": "message",
+"message": "Hit ALL",
+"message_TW": "打所有"
+}
+);
 } else {
  handlers['text']({"sub_type": "message","message_TW": '打投掷'});
 }			
@@ -88,12 +94,18 @@ module.exports = {
  "h-466-46602-30": [{"type": "func","func": start_boss30}],
  
  
- "qb-466-46621-466050": [{"type": "text","sub_type": "notification","message":  'Don\'t hit RED',"message_TW": "打 蓝+白" }],
- "qb-466-46621-466051": [{"type": "text","sub_type": "notification","message":  'Don\'t hit WHITE',"message_TW": "打 红+蓝" }],
- "qb-466-46621-466052": [{"type": "text","sub_type": "notification","message":  'Don\'t hit BLUE',"message_TW": "打 红+白" }],//------------
- "qb-466-46622-466054": [{"type": "text","sub_type": "notification","message":  'Hit RED',"message_TW": "打红(逆)" }],
- "qb-466-46622-466055": [{"type": "text","sub_type": "notification","message":  'Hit WHITE',"message_TW": "打白(逆)" }],  //--------------------
- "qb-466-46622-466056": [{"type": "text","sub_type": "notification","message":  'Hit BLUE',"message_TW": "打蓝(逆)" }], 
+ "qb-466-46621-466050": [{"type": "text","sub_type": "notification","message":  'Don\'t hit RED',"message_TW": "打 蓝+白" },
+                         {"type": "text","sub_type": "message","message":  'Don\'t hit RED',"message_TW": "打 蓝+白" }],
+ "qb-466-46621-466051": [{"type": "text","sub_type": "notification","message":  'Don\'t hit WHITE',"message_TW": "打 红+蓝" },
+                         {"type": "text","sub_type": "message","message":  'Don\'t hit WHITE',"message_TW": "打 红+蓝" }],
+ "qb-466-46621-466052": [{"type": "text","sub_type": "notification","message":  'Don\'t hit BLUE',"message_TW": "打 红+白" },
+                         {"type": "text","sub_type": "message","message":  'Don\'t hit BLUE',"message_TW": "打 红+白" }],//------------
+ "qb-466-46622-466054": [{"type": "text","sub_type": "notification","message":  'Hit RED',"message_TW": "打红(逆)" },
+                         {"type": "text","sub_type": "message","message":  'Hit RED',"message_TW": "打红(逆)" }],
+ "qb-466-46622-466055": [{"type": "text","sub_type": "notification","message":  'Hit WHITE',"message_TW": "打白(逆)" },
+                         {"type": "text","sub_type": "message","message":  'Hit WHITE',"message_TW": "打白(逆)" }],  //--------------------
+ "qb-466-46622-466056": [{"type": "text","sub_type": "notification","message":  'Hit BLUE',"message_TW": "打蓝(逆)" },
+                         {"type": "text","sub_type": "message","message":  'Hit BLUE',"message_TW": "打蓝(逆)" }], 
  "s-466-46602-1116-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人(群体)" }], 
  "s-466-46602-2116-0": [{"type": "text","sub_type": "message","message":  'pull',"message_TW": "拉人(群体)" }], 
  "s-466-46602-1223-0": [{"type": "text","sub_type": "message","message":  'Double RED',"message_TW": "红圈" }],  
