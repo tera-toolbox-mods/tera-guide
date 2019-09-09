@@ -2,7 +2,8 @@
 //made by michengs
 let notice_guide = true;
 let player, entity, library, effect;
-
+let print = true;
+let rad = 300;
 let power = true;
 let Level = 0;
 let powerMsg = null;
@@ -91,12 +92,49 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
     }
 }
 
+
+
+
+
+/*
+
+
+	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 延迟 时间）
+function Spawnitem222(show,item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);
+	if (!show) return;	
+    for (let angle = -Math.PI; angle <= Math.PI; angle +=  Math.PI * intervalDegrees / 180) {
+        handlers['spawn']({
+        	"id": item,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
+
+
+
+
+*/
+
+
+
+
+
+
 function start_boss() {
 power = false;
 Level = 0;
 notice = true;
 powerMsg = null;
 steptwo = false ;
+rad = 300;   
+print = true;    
 }
 
 	function skilld_event(skillid, handlers, event, ent, dispatch) {
@@ -165,8 +203,57 @@ steptwo = true ;
 }					
 }
 
+function start_3boss40(handlers) {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "30%-------------------------"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
+	//构建特殊直线（提示标志  角度 最远距离   时间）
+function Spawnitem11(item,degrees, maxRadius, times, handlers, event, entity) {
+	let shield = entity['loc'].clone();
+	   shield.w = entity['loc'].w;
+		let X = Math.pow((-95703 - shield.x), 2),
+			Y = Math.pow((144980 - shield.y), 2),
+			C = Math.pow(X+Y, 0.5);  
+	   
+	if (C < 500) return;
+ let angle = degrees * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, entity);
+    }
+}
 
-
+// 	召喚特殊告示牌提示（  角度 距离   时间）
+function SpawnThingob( degrees, radius, times, handlers, event, entity ) {	
+	let shield_loc = shield = entity['loc'].clone();
+	shield_loc.w = shield.w = entity['loc'].w;	
+		let X = Math.pow((-95703 - shield.x), 2),
+			Y = Math.pow((144980 - shield.y), 2),
+			C = Math.pow(X+Y, 0.5);  
+  
+	if (C < 500) return;	
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "位置",
+			"message": "位置"
+        }, {loc: shield_loc});  
+  
+}
 module.exports = {
 
 	load(dispatch) {
@@ -200,7 +287,15 @@ module.exports = {
 
  
   //二王
-  
+   "h-982-3000-30": [{"type": "func","func": start_3boss40}], 
+   
+   
+  "s-982-3022-101-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,420,8000)},
+	                   {"type": "func","func": SpawnThingob.bind(null,0,105,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,210,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,315,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,420,8000)}	],   
+   
   "s-982-2000-105-0": [{"type": "text","sub_type": "message","message": "Spin","message_TW": "翻滚" }], 
   "s-982-2000-113-0": [{"type": "text","sub_type": "message","message": "Stun inc","message_TW": "双手眩晕" }],
   "s-982-2000-114-0": [{"type": "text","sub_type": "message","message": "Get IN","message_TW": "三连地板靠近" },

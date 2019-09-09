@@ -1,5 +1,7 @@
 ﻿// 
 //made by michengs
+let rad = 600;
+let print = true;
 let notice_guide = true;
 let player, entity, library, effect;
 function guid_voice(handlers) {   
@@ -79,7 +81,60 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay,times, 
         }, {loc: shield_loc});
     }
 }	
+// 	召喚告示牌提示（  角度 距离   时间）
 
+function start_3boss40(handlers) {
+if(print) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "30%-------------------------"
+});
+}		
+print = false;
+setTimeout(() => print = true, 10000);	
+}
+
+	//构建特殊直线（提示标志  角度 最远距离   时间）
+function Spawnitem11(item,degrees, maxRadius, times, handlers, event, entity) {
+	let shield = entity['loc'].clone();
+	   shield.w = entity['loc'].w;
+		let X = Math.pow((-95703 - shield.x), 2),
+			Y = Math.pow((144980 - shield.y), 2),
+			C = Math.pow(X+Y, 0.5);  
+   
+	if (C < 500) return;
+ let angle = degrees * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, entity);
+    }
+}
+
+// 	召喚特殊告示牌提示（  角度 距离   时间）
+function SpawnThingob( degrees, radius, times, handlers, event, entity ) {	
+	let shield_loc = shield = entity['loc'].clone();
+	shield_loc.w = shield.w = entity['loc'].w;	
+		let X = Math.pow((-95703 - shield.x), 2),
+			Y = Math.pow((144980 - shield.y), 2),
+			C = Math.pow(X+Y, 0.5);  
+ 
+	if (C < 500) return;	
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "位置",
+			"message": "位置"
+        }, {loc: shield_loc});  
+  
+}
 
 module.exports = {
 
@@ -91,8 +146,12 @@ module.exports = {
  
 
  
- 
-
+  "h-782-3000-30": [{"type": "func","func": start_3boss40}], 
+  "s-782-3022-101-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,420,8000)},
+	                   {"type": "func","func": SpawnThingob.bind(null,0,105,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,210,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,315,8000)},
+                       {"type": "func","func": SpawnThingob.bind(null,0,420,8000)}	],   
 	
  //一王
  
