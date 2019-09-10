@@ -240,8 +240,11 @@ function SpawnThingob( degrees, radius, times, handlers, event, entity ) {
 		let X = Math.pow((-95703 - shield.x), 2),
 			Y = Math.pow((144980 - shield.y), 2),
 			C = Math.pow(X+Y, 0.5);  
-  
-	if (C < 500) return;	
+ 
+	if (C < 500) {	
+    if (radius > 105) {return;}else{radius = 105 }
+        }
+	
    let angle =  Math.PI * degrees / 180 
         handlers['spawn']({
 			"sub_type": "build_object",
