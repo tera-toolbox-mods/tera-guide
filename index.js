@@ -161,7 +161,7 @@ class TeraGuide{
                 if(ent) return handle_event(Object.assign({}, ent, e), e.skill.id, 'Skill', 's', debug.debug || debug.skill || (ent['templateId'] % 1000 === 0 ? debug.boss : false), e.speed, e.stage);
             }
         }
-        dispatch.hook('S_ACTION_STAGE', 8, {order: 15}, s_action_stage);
+        dispatch.hook('S_ACTION_STAGE', 9, {order: 15}, s_action_stage);
 
         /** ABNORMALITY **/
 
