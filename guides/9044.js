@@ -470,7 +470,7 @@ module.exports = {
   {"type": "func","func": Spawnitem1.bind(null,553,270,200,180,500,2000)}], 
  "s-444-2000-1135-0": [
  //{"type": "text","sub_type": "message","message_TW": "完美格挡" },
-       {"type": "text","sub_type": "message","delay": 735,"message":  'Perfect Defense',"message_TW": "完美格挡" },
+       {"type": "text","sub_type": "message","delay": 200,"message":  'Perfect Defense',"message_TW": "完美格挡" },//------------------------------------------------------
     //  {"type": "text","sub_type": "message","delay": 1535,"message": "1" },		  
       {"type": "func","func": Spawnitem2.bind(null,445,356,220,12,210,100,4000)}	
  ],  
@@ -606,7 +606,7 @@ module.exports = {
   {"type": "func","func": Spawnitem1.bind(null,553,270,200,180,500,2000)}], 
  "s-444-2000-2135-0": [
  //{"type": "text","sub_type": "message","message_TW": "完美格挡快" },
-      {"type": "text","sub_type": "message","delay": 735,"message":  'Perfect Defense',"message_TW": "完美格挡" },
+      {"type": "text","sub_type": "message","delay": 200,"message":  'Perfect Defense',"message_TW": "完美格挡" },//--------------------------------
       {"type": "text","sub_type": "message","delay": 1535,"message": "2" },	  
      // {"type": "text","sub_type": "message","delay": 1535,"message": "1" },	
      // {"type": "text","sub_type": "message","delay": 2535,"message": "2" },		  
