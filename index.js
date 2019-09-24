@@ -831,8 +831,8 @@ class TeraGuide{
             	if (!dispatch.settings.stream) {
 	                switch(event['sub_type']) {
 	                //    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
-	                    case "notification": return dispatch.toClient('S_CHAT', 2, sending_event);
-	                    case "alert": return dispatch.toClient('S_CHAT', 2, sending_event);						
+	                    case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
+	                    case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);						
 						
 	                }
             	} 
@@ -846,12 +846,12 @@ class TeraGuide{
         }
 	 function sendMessage(message) {
         if (dispatch.settings.notice) {
-            dispatch.toClient('S_CHAT', 2, {
+            dispatch.toClient('S_CHAT', 3, {
                 channel: 21, //21 = p-notice, 1 = party, 2 = guild
                 message
             });
         } else if(dispatch.settings.systemNotice) {
-            dispatch.toClient('S_CHAT', 2, {
+            dispatch.toClient('S_CHAT', 3, {
                 channel: 1, //21 = p-notice, 1 = party, 2 = guild
                 message
             });				
