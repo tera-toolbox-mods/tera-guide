@@ -681,7 +681,7 @@ class TeraGuide{
             timers[item_unique_id] = setTimeout(()=> {
                 switch(sub_type) {
                     case "collection": return dispatch.toClient('S_SPAWN_COLLECTION', 4, sending_event);
-                    case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 7, sending_event);
+                    case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 8, sending_event);
                     case "build_object": return dispatch.toClient('S_SPAWN_BUILD_OBJECT', 2, sending_event);
                 }
             }, event['delay'] || 0 / speed);
