@@ -208,7 +208,18 @@ module.exports = {
 
 //-----------------------------------------------------------------------------------------------------2
  "s-450-45016-1308-0": [{"type": "text","sub_type": "message","message":  'Circle of poison',"message_TW": "圈" },
-	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,400,100,8000)}], 
+	                    {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,400,100,8000)},
+        {
+            "type": "spawn",
+            "id": 513,
+            "sub_delay": 99999999,
+            "pos": {
+                x: -23072,
+                y: 176198,
+                z: -875
+            }
+        } 						
+						], 
 
 "s-450-1002-1101-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'right',"message_TW": "右手" }],
 "s-450-1002-1102-0": [{"type": "text","class_position":"tank","sub_type": "message","message":  'left',"message_TW": "左手" }],
