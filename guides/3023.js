@@ -1,4 +1,4 @@
-// 
+//made by michengs
 let  notice = true  ; 
 let boss = 3;
 let lastboss = false;
@@ -12,36 +12,6 @@ let timer3;
 let timer4;
 let timer5;
 let counter = 0;
-function SpawnThing5( degrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;			
-   let angle =  Math.PI * degrees / 180 
-        handlers['spawn']({
-			"sub_type": "build_object",
-        	"id": 1,
-			"delay": delay,			
-        	"sub_delay": times,
-        	"distance": radius,
-        	"offset": angle,
-			"ownerName": "定时炸弹",
-			"message": "定时炸弹"
-        }, {loc: shield_loc});  
-}
-function SpawnThing6( degrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;			
-   let angle =  Math.PI * degrees / 180 
-        handlers['spawn']({
-			"sub_type": "build_object",
-        	"id": 1,
-			"delay": delay,			
-        	"sub_delay": times,
-        	"distance": radius,
-        	"offset": angle,
-			"ownerName": "炸弹",
-			"message": "炸弹"
-        }, {loc: shield_loc});  
-}
 	function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
      	let	rads = (degrees * Math.PI/180);
@@ -50,30 +20,6 @@ function SpawnThing6( degrees, radius, delay, times, handlers, event, entity ) {
         loc.y += Math.sin(finalrad) * distance;
         return loc;
     }
-// 	召喚光柱 ，告示牌提示（  角度 距离   延迟时间 时间）
-function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
-	let shield_loc = entity['loc'].clone();
-	shield_loc.w = entity['loc'].w;			
-   let angle =  Math.PI * degrees / 180 
-        handlers['spawn']({
-			"sub_type": "build_object",
-        	"id": 1,
-			"delay": delay,			
-        	"sub_delay": times,
-        	"distance": radius,
-        	"offset": angle,
-			"ownerName": "SAFE SPOT",
-			"message": "SAFE"
-        }, {loc: shield_loc});  
-        handlers['spawn']({
-			"sub_type": "item",
-        	"id": 88850,
-			"delay": delay,			
-        	"sub_delay": times,
-        	"distance": radius,
-        	"offset": angle
-        }, {loc: shield_loc});	
-}
 	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 时间）
 function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
@@ -106,7 +52,6 @@ function Spawnitemsp2(d1,d2,item,degree,distance, intervalDegrees, radius, delay
 }
 	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
 function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
-	
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;	
     let	degrees = 360 - degree;	
@@ -223,9 +168,7 @@ module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},	
-	
     // First boss
-  //  "h-3201-1000-100": [{"type": "func","func": guid_voice}],
     "h-3023-1000-99": [{"type": "func","func": start_boss}],	 
     "h-3023-1000-80": [{"type": "func","func": start_1boss80}], 
     "s-3023-1000-104-0": [{"type": "text","sub_type": "message","message":  'jump',"message_TW": "点名-跳劈" }],
@@ -254,12 +197,11 @@ module.exports = {
 	],
     "s-3023-1000-116-0": [{"type": "text","sub_type": "message","message":  'get out',"message_TW": "爆炸" },
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,500,6000)}],
-	
     "am-3023-1000-30231001": [{"type": "text","sub_type": "notification","message": "debuff blue","message_TW": "蓝色debuff" },{"type": "func","func": skilld_event.bind(null, 1001)}],
     "am-3023-1000-30231000": [{"type": "text","sub_type": "notification","message": "debuff red","message_TW": "红色debuff" },{"type": "func","func": skilld_event.bind(null, 1000)}],
-	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)},{"type": "text","sub_type": "message","message_TW": "起来了" }], //复生
-	"ae-0-0-30231000": [{"type": "func","func": skilld_event.bind(null, 30231000)},{"type": "text","sub_type": "notification","message": "red","message_TW": "red" }],	//开始红色
-	"ae-0-0-30231001": [{"type": "func","func": skilld_event.bind(null, 30231001)},{"type": "text","sub_type": "notification","message": "blue","message_TW": "blue" }],	//开始蓝色	
+	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}], //复生
+	"ae-0-0-30231000": [{"type": "func","func": skilld_event.bind(null, 30231000)}],	//开始红色
+	"ae-0-0-30231001": [{"type": "func","func": skilld_event.bind(null, 30231001)}],	//开始蓝色	
     "s-3023-1000-3107-0": [{"type": "text","sub_type": "message","message":  'smash',"message_TW": "重击" },
 						  {"type": "func","func": Spawnitem1.bind(null,553,90,80,10,1000,4000)},			
 						  {"type": "func","func": Spawnitem1.bind(null,553,270,80,350,1000,4000)}		
@@ -268,26 +210,18 @@ module.exports = {
 	                       {"type": "func","func": Spawnitem2.bind(null,912,0,0,8,320,3000)}],
     "s-3023-1000-3116-0": [{"type": "text","sub_type": "message","message":  'spin',"message_TW": "旋转攻击" },
 	                       {"type": "func","func": Spawnitem2.bind(null,912,0,0,8,320,3000)}],
-    "s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)},{"type": "text","sub_type": "notification","message_TW": "氣息紅" }],
-    "s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)},{"type": "text","sub_type": "notification","message_TW": "氣息藍" }],
-    "s-3023-1000-3223-0": [{"type": "text","sub_type": "message","message_TW": "紅色诅咒" }],
+    "s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)}],
+    "s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)}],
+  //  "s-3023-1000-3223-0": [{"type": "text","sub_type": "message","message_TW": "紅色诅咒" }],
     // 2王
-   	
     "s-3023-2000-164-0": [{"type": "text","sub_type": "message","message":  'Counter attack (bleeding)',"message_TW": "蓄力反击(流血)" }],
     "s-3023-2000-166-0": [{"type": "text","sub_type": "message","message":  'turn-back',"message_TW": "转身点名" }],
-	
     "s-3023-2000-175-0": [{"type": "text","sub_type": "message","message":  'debuff',"message_TW": "沉默" }],
-	
-	
     "s-3023-2000-178-0": [{"type": "text","sub_type": "message","message":  ' scratching',"message_TW": "毒抓後撓" }],
-	
-	
     "s-3023-2000-181-0": [{"type": "text","sub_type": "message","message":  'Insert the floor',"message_TW": "插地板(直线)" },
 						  {"type": "func","func": Spawnitem1.bind(null,553,90,80,10,1000,4000)},			
 						  {"type": "func","func": Spawnitem1.bind(null,553,270,80,350,1000,4000)}],
-	
     "s-3023-2000-182-0": [{"type": "text","sub_type": "message","message":  'Knock down',"message_TW": "踩地(击倒)" }],
-	
     "s-3023-2000-185-0": [{"type": "text","sub_type": "message","message":  'big jump',"message_TW": "大跳" },
                           {"type": "func","func": skilld_event.bind(null, 185)},	
 	                      {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,500,6000)},
@@ -295,7 +229,4 @@ module.exports = {
      "s-3023-2000-202-0": [{"type": "text","sub_type": "message","message":  'BACKSTAB',"message_TW": "後禽" }],
      "s-3023-2000-207-0": [{"type": "text","sub_type": "message","message":  'Phantom x5(bleed)',"message_TW": "幻影x5(流血)" }],	 
      "s-3023-2000-212-0": [{"type": "text","sub_type": "message","message":  'Flash (bleed)',"message_TW": "闪现(流血)" }],	 
-	 
- 
-	 
 };
