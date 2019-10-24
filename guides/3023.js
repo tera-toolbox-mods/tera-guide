@@ -197,8 +197,8 @@ module.exports = {
 	],
     "s-3023-1000-116-0": [{"type": "text","sub_type": "message","message":  'get out',"message_TW": "爆炸" },
 	{"type": "func","func": Spawnitem2.bind(null,912,0,0,15,500,6000)}],
-    "am-3023-1000-30231001": [{"type": "text","sub_type": "notification","message": "debuff blue","message_TW": "蓝色debuff" },{"type": "func","func": skilld_event.bind(null, 1001)}],
-    "am-3023-1000-30231000": [{"type": "text","sub_type": "notification","message": "debuff red","message_TW": "红色debuff" },{"type": "func","func": skilld_event.bind(null, 1000)}],
+    "am-3023-1000-30231001": [{"type": "func","func": skilld_event.bind(null, 1001)}],
+    "am-3023-1000-30231000": [{"type": "func","func": skilld_event.bind(null, 1000)}],
 	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}], //复生
 	"ae-0-0-30231000": [{"type": "func","func": skilld_event.bind(null, 30231000)}],	//开始红色
 	"ae-0-0-30231001": [{"type": "func","func": skilld_event.bind(null, 30231001)}],	//开始蓝色	
