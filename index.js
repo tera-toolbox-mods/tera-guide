@@ -77,7 +77,7 @@ class TeraGuide{
         // A boolean indicating if a guide was found
         let guide_found = false;
         let spguide = false;
-        let esguide = false;		
+        let esguide = false;
 		//let cc = cg;
         // The guide settings for the current zone
         let active_guide = {};
@@ -381,14 +381,12 @@ class TeraGuide{
             	dispatch.settings.speaks = !dispatch.settings.speaks;
             	command.message(`text-to-speech ${dispatch.settings.speaks?"on":"off"}.`);
             },			
-            通知() {
+            stream() {
             	dispatch.settings.stream = !dispatch.settings.stream;
-            	command.message(`消息通知已 ${dispatch.settings.stream?"关闭":"开启"}.`);
+            	command.message(`仅声音提示 ${dispatch.settings.stream?"开启":"关闭"}.`);
+            	command.message(`stream ${dispatch.settings.stream?"on":"off"}.`);				
             },
-            notice() {
-            	dispatch.settings.stream = !dispatch.settings.stream;
-            	command.message(`notice ${dispatch.settings.stream?"off":"on"}.`);
-            },			
+			
             組隊長通知() {
             	dispatch.settings.notice = !dispatch.settings.notice;	
             	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
@@ -548,7 +546,6 @@ class TeraGuide{
             help() {
 		command.message('補助 ，副本補助开/关 ，默认系统通知，通知颜色为绿色');
 		command.message('補助 语音，副本補助语音开/关');
-		command.message('補助 通知， 副本通知开/关');
 		command.message('補助 组队通知， 组队通知开/关');
 		command.message('補助 组队长通知，组队长通知开/关');		
 		command.message('補助 1~10，调节语音速度10为最快语速，默认为1正常速度');
@@ -566,9 +563,9 @@ class TeraGuide{
 		command.message(cbl + '補助 cbl，系统消息通知颜色为黑色 ');
 		command.message(cgr + '補助 cgr，系统消息通知颜色为灰色 ');	
 		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
+		command.message('guide stream，主播模式(stream)on/off');		
 		command.message('guide,  on/off, default system notification, notification color green ');
 		command.message('guide  voice，text-to-speech on/off');
-		command.message('guide notice， party notice on/off');
 		command.message('guide alert， Virtual captain  notifie on/off');
 		command.message('guide systemNotice，system Notice on/off');		
 		command.message('guide 1~10，to settings Voice speed');
@@ -598,6 +595,7 @@ class TeraGuide{
 
         // Spawn handler
         function spawn_handler(event, ent, speed=1.0) {
+            if(dispatch.settings.stream) return;
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Make sure sub_delay is defined
@@ -605,7 +603,7 @@ class TeraGuide{
             // Make sure distance is defined
             //if(!event['distance']) return debug_message(true, "Spawn handler needs a distance");
             // Ignore if dispatch.settings.streamer mode is enabled
-            if(dispatch.settings.stream) return;
+
 
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
@@ -701,8 +699,8 @@ class TeraGuide{
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Ignore if dispatch.settings.streamer mode is enabled
-            if(dispatch.settings.stream) return;
 
+            if(dispatch.settings.stream) return;
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
 
@@ -743,7 +741,7 @@ class TeraGuide{
 					};		
            }, (event['delay'] || 0 ) - 600 /speed);					
 	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-		     if(dispatch.settings.stream) return;
+
 		      sendMessage(message);		
            }, (event['delay'] || 0 )   /speed);
                     break;		
@@ -757,7 +755,7 @@ class TeraGuide{
 					};		
            }, (event['delay'] || 0 ) - 600 /speed);					
 	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-		     if(dispatch.settings.stream) return;
+
 		
 		      sendspMessage(message,cp);		
            }, (event['delay'] || 0 )   /speed);
@@ -772,7 +770,7 @@ class TeraGuide{
 					};		
            }, (event['delay'] || 0 ) - 600 /speed);					
 	     timers[event['id'] || random_timer_id--] = setTimeout(()=> {	
-		     if(dispatch.settings.stream) return;
+
 		
 		      sendspMessage(message,cg);		
            }, (event['delay'] || 0 )   /speed);
@@ -781,6 +779,7 @@ class TeraGuide{
 
 				//组队长通知
                 case "alert": {
+				  if(dispatch.settings.stream) return;
                     sending_event = {
 					channel: 21,
 					authorName: 'guide',
@@ -789,7 +788,7 @@ class TeraGuide{
                     break;
                 }
                 case "MSG": {
-
+                 if(dispatch.settings.stream) return;
 	                        timers[event['id'] || random_timer_id--] = setTimeout(()=> {
               command.message( cr + message );
               console.log( cr + message );			  
@@ -798,6 +797,7 @@ class TeraGuide{
                     break;
                 }				
                 case "PRMSG": {
+				  if(dispatch.settings.stream) return;	
               command.message( cr + message );	             
                     break;
                 }				
@@ -814,6 +814,7 @@ class TeraGuide{
                 }	
                  //团队长通知				
                 case "notification": {
+					if(dispatch.settings.stream) return;
                     sending_event = {
 					channel: 25,
 					authorName: 'guide',
@@ -828,14 +829,14 @@ class TeraGuide{
 
             // Create the timer
             timers[event['id'] || random_timer_id--] = setTimeout(()=> {
-            	if (!dispatch.settings.stream) {
+         
 	                switch(event['sub_type']) {
 	                //    case "message": return dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, sending_events);	
 	                    case "notification": return dispatch.toClient('S_CHAT', 3, sending_event);
 	                    case "alert": return dispatch.toClient('S_CHAT', 3, sending_event);						
 						
 	                }
-            	} 
+            	 
 				/*
 				else {
             		// If dispatch.settings.streamer mode is enabled, send message all messages to party chat instead
@@ -845,6 +846,7 @@ class TeraGuide{
             }, (event['delay'] || 0 ) / speed);
         }
 	 function sendMessage(message) {
+	    if(dispatch.settings.stream) return;
         if (dispatch.settings.notice) {
             dispatch.toClient('S_CHAT', 3, {
                 channel: 21, //21 = p-notice, 1 = party, 2 = guild
@@ -856,6 +858,7 @@ class TeraGuide{
                 message
             });				
         } else {
+			
             dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
                 type: 42,
                 chat: 0,
@@ -865,7 +868,7 @@ class TeraGuide{
         }
     }	
 	 function sendspMessage(message,spcc) {
-       
+             if(dispatch.settings.stream) return;
             dispatch.toClient('S_DUNGEON_EVENT_MESSAGE', 2, {
                 type: 42,
                 chat: 0,
