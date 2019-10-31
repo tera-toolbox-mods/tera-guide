@@ -77,7 +77,7 @@ clearTimeout(timer5);
 timer5 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
-"message_TW": "泰山压顶准备!",
+"message_TW": "!!!",
 "message": "Big jump coming soon！"
 });	
   }, 110000);
