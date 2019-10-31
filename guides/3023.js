@@ -77,7 +77,7 @@ clearTimeout(timer5);
 timer5 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
-"message_TW": "大跳準備喲!",
+"message_TW": "泰山压顶准备!",
 "message": "Big jump coming soon！"
 });	
   }, 110000);
@@ -114,7 +114,7 @@ clearTimeout(timer2);
 timer1 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
-"message_TW": "躺地板!",
+"message_TW": "!",
 });	
 		debuff = 0
   }, 70000);		   
@@ -126,7 +126,7 @@ clearTimeout(timer1);
 timer2 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
-"message_TW": "躺地板!",
+"message_TW": "!",
 });	
 		debuff = 0
   }, 70000);	
@@ -139,7 +139,7 @@ clearTimeout(timer4);
 timer4 = setTimeout(()=>{
 handlers['text']({
 "sub_type": "message",
-"message_TW": "quadra kill 准备就绪!",
+"message_TW": "4连挥刀准备!",
 "message": "quadra kill coming soon！"
 });	
   }, 70000);
@@ -158,7 +158,7 @@ if(print) {
 handlers['text']({
 "sub_type": "message",
 "message": "80%",
-"message_TW": "quadra kill 准备就绪!"
+"message_TW": "4连挥刀准备!!"
 });
 }		
 print = false;
@@ -217,7 +217,7 @@ module.exports = {
     "s-3023-2000-164-0": [{"type": "text","sub_type": "message","message":  'Counter attack (bleeding)',"message_TW": "蓄力反击(流血)" }],
     "s-3023-2000-166-0": [{"type": "text","sub_type": "message","message":  'turn-back',"message_TW": "转身点名" }],
     "s-3023-2000-175-0": [{"type": "text","sub_type": "message","message":  'debuff',"message_TW": "沉默" }],
-    "s-3023-2000-178-0": [{"type": "text","sub_type": "message","message":  ' scratching',"message_TW": "毒抓後撓" }],
+    "s-3023-2000-178-0": [{"type": "text","sub_type": "message","message":  ' scratching',"message_TW": "毒抓" }],
     "s-3023-2000-181-0": [{"type": "text","sub_type": "message","message":  'Insert the floor',"message_TW": "插地板(直线)" },
 						  {"type": "func","func": Spawnitem1.bind(null,553,90,80,10,1000,4000)},			
 						  {"type": "func","func": Spawnitem1.bind(null,553,270,80,350,1000,4000)}],
@@ -226,7 +226,7 @@ module.exports = {
                           {"type": "func","func": skilld_event.bind(null, 185)},	
 	                      {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,500,6000)},
 	                      {"type": "func","func": Spawnitem2.bind(null,912,0,0,15,750,6000)}],
-     "s-3023-2000-202-0": [{"type": "text","sub_type": "message","message":  'BACKSTAB',"message_TW": "後禽" }],
+     "s-3023-2000-202-0": [{"type": "text","sub_type": "message","message":  'BACKSTAB',"message_TW": "后擒" }],
      "s-3023-2000-207-0": [{"type": "text","sub_type": "message","message":  'Phantom x5(bleed)',"message_TW": "幻影x5(流血)" }],	 
      "s-3023-2000-212-0": [{"type": "text","sub_type": "message","message":  'Flash (bleed)',"message_TW": "闪现(流血)" }],	 
 };
