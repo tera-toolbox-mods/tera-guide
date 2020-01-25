@@ -147,7 +147,7 @@ function start_debuffs(handlers, event, entity, dispatch) {
 		}
 	};
 		if (!debuff_tracker_started) {
-		dispatch.hook('S_ABNORMALITY_BEGIN', 3, abnormality_change.bind(null, true));
+		dispatch.hook('S_ABNORMALITY_BEGIN', 4, abnormality_change.bind(null, true));
 		dispatch.hook('S_ABNORMALITY_END', 1, abnormality_change.bind(null, false));
 		debuff_tracker_started = true;
 	}	
