@@ -237,8 +237,8 @@ class TeraGuide{
                 if(target_ent) handle_event(target_ent, e.id, 'Abnormality', 'ab', debug.debug || debug.abnormal);
             }
         }
-        dispatch.hook('S_ABNORMALITY_BEGIN', 3, {order: 15}, abnormality_triggered);
-        dispatch.hook('S_ABNORMALITY_REFRESH', 1, {order: 15}, abnormality_triggered);
+        dispatch.hook('S_ABNORMALITY_BEGIN', 4, {order: 15}, abnormality_triggered);
+        dispatch.hook('S_ABNORMALITY_REFRESH', 2, {order: 15}, abnormality_triggered);
 
         /** HEALTH **/
 
@@ -303,13 +303,15 @@ class TeraGuide{
                    //奧盧卡                 暴風拉斯       
             if (9750 == e.zone ||   9066 == e.zone || 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
 			spguide = true;
-			        // 
+			        // 技能1000
             } else if( 9000 == e.zone ||   3023 == e.zone ||   9759 == e.zone  ) {
 			esguide = true;
+			       // 技能100-200 + 3000
             }
 			else{				
                spguide = false;
 			   esguide = false;
+			   	  // 技能100-200 
             }
                 guide_found = true;
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);

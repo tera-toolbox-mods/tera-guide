@@ -777,6 +777,10 @@
       "string": "Akalath Quarantine"
     },	
     {
+      "id": 3020,
+      "string": "金鳞号"
+    },	
+    {
       "id": 3201,
       "string": "Gossamer Vault (Hard)"
     }
