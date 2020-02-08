@@ -174,7 +174,7 @@ module.exports = {
     "s-3023-1000-104-0": [{"type": "text","sub_type": "message","message":  'jump',"message_TW": "点名-跳劈" }],
     "s-3023-1000-105-0": [{"type": "text","sub_type": "message","message":  'back',"message_TW": "后方攻击" }],
     "s-3023-1000-110-0": [{"type": "text","sub_type": "message","message":  'stun',"message_TW": "晕" },
-	{"type": "func","func": Spawnitem2.bind(null,445,0,175,15,225,6000)}],
+	{"type": "func","func": Spawnitem2.bind(null,445,0,175,10,225,6000)}],
     "s-3023-1000-111-0": [{"type": "text","sub_type": "message","message":  '↓ left pull',"message_TW": "↓ 左拉" },
 						  {"type": "func","func": Spawnitem1.bind(null,445,270,200,180,500,2000)},					
                           {"type": "func","func": Spawnitem1.bind(null,445,270,200,0,300,2000)},
@@ -212,7 +212,7 @@ module.exports = {
 	                      {"type": "func","func": Spawnitemsp2.bind(null,-2,1,445,0,0,10,300,100,2000)}	
 	],
     "s-3023-1000-116-0": [{"type": "text","sub_type": "message","message":  'get out',"message_TW": "爆炸" },
-	{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,500,6000)}],
+	{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,500,6000)}],
     "am-3023-1000-30231001": [{"type": "func","func": skilld_event.bind(null, 1001)}],
     "am-3023-1000-30231000": [{"type": "func","func": skilld_event.bind(null, 1000)}],
 	"ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}], //复生
@@ -226,8 +226,10 @@ module.exports = {
 	                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,320,3500)}],
     "s-3023-1000-3116-0": [{"type": "text","sub_type": "message","message":  'spin',"message_TW": "旋转攻击准备" },
 	                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,320,5000)}],
-    "s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)}],
-    "s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)}],
+    "s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)},
+	                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,575,6000)}],
+    "s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)},
+	                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,575,6000)}],
   //  "s-3023-1000-3223-0": [{"type": "text","sub_type": "message","message_TW": "紅色诅咒" }],
     // 2王
     "s-3023-2000-164-0": [{"type": "text","sub_type": "message","message":  'Counter attack (bleeding)',"message_TW": "蓄力反击(流血)" }],
