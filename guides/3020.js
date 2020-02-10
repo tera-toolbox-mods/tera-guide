@@ -10,6 +10,31 @@ function  applyDistance(loc, distance, degrees) {
         loc.y += Math.sin(finalrad) * distance;
         return loc;
 }
+// 	召喚光柱 ，告示牌提示（  角度 距离   延迟时间 时间）
+function SpawnThing( degrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;			
+   let angle =  Math.PI * degrees / 180 
+        handlers['spawn']({
+			"sub_type": "build_object",
+        	"id": 1,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle,
+			"ownerName": "SAFE SPOT",
+			"message": "SAFE"
+        }, {loc: shield_loc});  
+        handlers['spawn']({
+			"sub_type": "item",
+        	"id": 88850,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});	
+}
+
 	//构建圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 延迟 时间）
 function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
@@ -35,7 +60,8 @@ module.exports = {
 	},
 
 
-"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "晕"}],
+"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "晕"},
+                      {"type": "func","func": Spawnitem2.bind(null,553,0,150,15,125,200,3000)}],
 
 
 "s-3020-2200-120-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "进-出-进"},
@@ -55,6 +81,17 @@ module.exports = {
 
 "s-3020-9101-122-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "强袭"}],
 	   		   
+
+ "s-3020-2201-121-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-121" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+ "s-3020-2201-125-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-125" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+ "s-3020-2201-126-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-126" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+ "s-3020-2201-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "2201-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+  
+  
+ "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+ "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
+ "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],  
+  
 
 
 "s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "强袭"}],
