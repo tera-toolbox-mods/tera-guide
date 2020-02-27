@@ -47,8 +47,8 @@ module.exports = {
 "s-3026-1000-155-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "火焰柱| 击倒"}],      //30不可防
 "s-3026-1000-137-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "咆哮击倒"}],
 "s-3026-1000-138-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "AOE"},
-                      {"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1250,200,8000)}],
-"s-3026-1000-212-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "恐惧"}]//吃同色
+                      {"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1250,200,8000)}]
+//"s-3026-1000-212-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "恐惧"}]//吃同色
 
 
 //-------------------qb 3026005   恐惧
