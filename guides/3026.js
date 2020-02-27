@@ -208,8 +208,8 @@ module.exports = {
                       {"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1275,200,13000)}],
 "s-3026-1000-138-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "AOE"}],
 
-"qb-3026-1000-3026005": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "吃同色"},{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
-"qb-3026-1000-3026004": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "吃异色"},{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
+"qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
+"qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
 
 "s-3026-1000-212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
 "s-3026-1000-141-0": [{"type": "func","func": skilld_event.bind(null, 141)}],   
@@ -222,9 +222,9 @@ module.exports = {
 
 "ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}],
 
-"am-3026-1000-3026001": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "寒冰buff"},{"type": "func","func": skilld_event.bind(null, 3026001)}],//红色
+"am-3026-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}],//红色
 
-"am-3026-1000-3026002": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "火焰buff"},{"type": "func","func": skilld_event.bind(null, 3026002)}]//蓝色
+"am-3026-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}]//蓝色
 
 		 
 };
