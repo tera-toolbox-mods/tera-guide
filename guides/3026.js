@@ -200,7 +200,7 @@ module.exports = {
 "s-3026-1000-118-1": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "大跳无敌闪"}],
 "s-3026-1000-145-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "眩晕流血"}],
 "s-3026-1000-206-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "后跳扫 | 击飞"}],
-"s-3026-1000-206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,325,200,3000)}],
+"s-3026-1000-206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,350,200,3000)}],
 "s-3026-1000-153-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "毒尾后扫| 击倒"}],
 "s-3026-1000-154-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "冰风暴| 持续伤害"}],   //30不可防
 "s-3026-1000-155-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "火焰柱| 击倒"}],      //30不可防
@@ -211,13 +211,13 @@ module.exports = {
 "qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
 "qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
 
-"s-3026-1000-212-0": [{"type": "func","func": skilld_event.bind(null, 212)}],
+"s-3026-1000-212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],
 "s-3026-1000-141-0": [{"type": "func","func": skilld_event.bind(null, 141)}],   
-"s-3026-1000-215-0": [{"type": "func","func": skilld_event.bind(null, 215)}],      
+"s-3026-1000-215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],      
 "s-3026-1000-144-0": [{"type": "func","func": skilld_event.bind(null, 144)}],
-"s-3026-1000-213-0": [{"type": "func","func": skilld_event.bind(null, 213)}],
+"s-3026-1000-213-0": [{"type": "func","func": skilld_event.bind(null, 213)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],
 "s-3026-1000-143-0": [{"type": "func","func": skilld_event.bind(null, 143)}],
-"s-3026-1000-214-0": [{"type": "func","func": skilld_event.bind(null, 214)}],
+"s-3026-1000-214-0": [{"type": "func","func": skilld_event.bind(null, 214)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],
 "s-3026-1000-142-0": [{"type": "func","func": skilld_event.bind(null, 142)}],
 
 "ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}],
