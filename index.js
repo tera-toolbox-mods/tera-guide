@@ -848,7 +848,10 @@ class TeraGuide{
             }, (event['delay'] || 0 ) / speed);
         }
 	 function sendMessage(message) {
-	    if(dispatch.settings.stream) return;
+	    if(dispatch.settings.stream){
+		command.message( dispatch.settings.cc +  message );	
+		return;	
+		} 
         if (dispatch.settings.notice) {
             dispatch.toClient('S_CHAT', 3, {
                 channel: 21, //21 = p-notice, 1 = party, 2 = guild
