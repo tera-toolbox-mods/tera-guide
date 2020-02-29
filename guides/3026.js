@@ -151,11 +151,13 @@ handlers['text']({
 }
 
 
-if (skillid === 3026004) { //愤怒
-qbacting = true;
+
+if ([3026004,3126004].includes(skillid)) {   // //愤怒
+qbacting = true;	   
 }
-if (skillid === 3026005) { //恐惧
-qbacting = false;
+
+if ([3026005,3126005].includes(skillid)) {   // //恐惧
+qbacting = false;	   
 }
 
 if (skillid === 99020020) { //死亡解除debuff
@@ -163,7 +165,7 @@ debuff = 0
 clearTimeout(timer2);
 clearTimeout(timer1);
 }
-if ([3026001].includes(skillid)) {   //debuff为红色
+if ([3026001,3126001].includes(skillid)) {   //debuff为红色
 debuff = 1
 clearTimeout(timer1);
 clearTimeout(timer2);
@@ -175,7 +177,7 @@ handlers['text']({
 		debuff = 0
   }, 80000);		   
 }
-if ([3026002].includes(skillid)) {    //debuff为蓝色
+if ([3026002,3126002].includes(skillid)) {    //debuff为蓝色
 debuff = 2
 clearTimeout(timer2);
 clearTimeout(timer1);
@@ -210,7 +212,8 @@ module.exports = {
 
 "qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
 "qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
-
+"qb-3026-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}],//吃同色恐惧
+"qb-3026-1000-3126004": [{"type": "func","func": skilld_event.bind(null, 3126004)}],//吃异色愤怒
 "s-3026-1000-212-0": [{"type": "func","func": skilld_event.bind(null, 212)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],
 "s-3026-1000-141-0": [{"type": "func","func": skilld_event.bind(null, 141)}],   
 "s-3026-1000-215-0": [{"type": "func","func": skilld_event.bind(null, 215)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,15,120,200,6000)}],      
@@ -223,8 +226,8 @@ module.exports = {
 "ae-0-0-99020020": [{"type": "func","func": skilld_event.bind(null, 99020020)}],
 
 "am-3026-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}],//红色
-
-"am-3026-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}]//蓝色
-
+"am-3026-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}],//蓝色
+"am-3026-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}],//红色
+"am-3026-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}]//蓝色
 		 
 };
