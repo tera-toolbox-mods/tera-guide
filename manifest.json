@@ -1,8 +1,8 @@
 {
     "files": {
         "LICENSE": "7f2ae2125b491e75c546a5d538f82ad4431d5d6b1bbd4aea724864a21daeca63",
-        "StrSheet_Dungeon.json": "66c45b4223742df2a00a2b71384a6a550fa066a735d497376c6ceb90295143f5",
-        "StrSheet_TW_Dungeon.json": "e6e95609cad62a1931155cf39cb6592d415e217f8991b8f21d76edd33c61aedb",
+        "StrSheet_Dungeon.json": "a885e1c4e1dd8fca04430beb6083fe5400a52ecc25893cd42d19e324b0a2d9c6",
+        "StrSheet_TW_Dungeon.json": "4e92eb0214df210aba855f7ae650f176ebf4a8e46dd65c17d3276f2d64b8053a",
         "dbg.json": "443a13a9da6c4f3139d2e85726ea9f6ea8f6b32cd16db3e38723de97117a9df6",
         "dispatch.js": "8550f756e05b171839867491a9f52385f1aef8bfbbed3c80e0afe6aff1d53902",
         "guides/3017.js": "cf369ac4389dfba436cf837cbb5698f1a6ba11fd9deaf7dd464ecf8fb9610ab2",
@@ -11,7 +11,9 @@
         "guides/3020.js": "985efbfc9e0a6dd373c831e61a63a1cd6c606d2fe70d99dff1e5c22765d8d14a",
         "guides/3023.js": "f5d2b007a3533140962f861e5e090d6fb70cadc8709fe17a4f450a50b0ddaeee",
         "guides/3026.js": "80f634e139ab9849d8ce7046ec056b70e6dc21e3fe05e36a7e85395efed30515",
+        "guides/3027.js": "fd9a95f5ad3a55a091844dcd9f5d7112396e0010a81222f6531f9118fda0c316",
         "guides/3101.js": "1ee8fdfcc9df5130e054ed83c39ce8d6baf9cb96cfb576c0a71c18530c857167",
+        "guides/3126.js": "f24840ff977e665b2608b508c41281f88055a8f55ae6ad526f7dbab34190279e",
         "guides/3201.js": "5a0ec146545616fab7d2da6cf94521056e221a733a00ba8add906cac82ed13ed",
         "guides/9034.js": "e6aa63be7be3c4efb0c87daa7c294c8dfc762c7e61cac5a1ba50e2b679bab78a",
         "guides/9044.js": "ada8d55aab53c1648908e6cbfc255bcbd8692aaf7371c2d7e2a15cfa96209fe6",
