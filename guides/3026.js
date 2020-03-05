@@ -54,21 +54,21 @@ const boss_skill =
 function skilld_event(skillid, handlers, event, ent, dispatch) {	
 
 if ([3026004,3126004,3026005,3126005].includes(skillid)) {   // //愤怒0  恐惧1
-qbacting = skillid % 2;	   
+qbacting = skillid % 2;	
+//qbacting = null   
 }
 
 if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // //蓝色0  红色1
-debuff = skillid % 2;	
-clearTimeout(timer1);
+//debuff = skillid % 2;	
+//clearTimeout(timer1);
 clearTimeout(timer2);
-timer1 = setTimeout(()=>{
-debuff = null;
-  }, 90000);	
+	
  timer2 = setTimeout(()=>{
- if  (debuff != null) {	 
+ if  (debuff != null) {
+	 
 handlers['text']({
 "sub_type": "notification",
-"message_TW": (`${debuff_TipMsg[debuff].msg} `)
+"message_TW": (`${debuff_TipMsg[debuff % 2].msg} `)
 });	
 handlers['text']({
 "sub_type": "speech",
@@ -101,11 +101,53 @@ handlers['text']({
 
 if (skillid === 99020020) { //死亡解除debuff
 debuff = null;
-clearTimeout(timer1);
+//clearTimeout(timer1);
 clearTimeout(timer2);
 }
-
+/*
+if (skillid === 157) { //debuff
+ if  (debuff != null) {
+handlers['text']({
+"sub_type": "message",
+"delay": 2000,
+"message": debuffs_targe[debuff]
+ });	 
 }
+}
+*/
+}
+
+
+// NULL % 2 =0
+// 1 % 2 =1
+//0 % 2 =0
+//2 % 2 =0 
+
+let debuff_tracker_started = false;
+let debuffs_targe = {
+	30260001: "火焰debuff",
+	30260002: "寒冰debuff",
+	31260001: "火焰debuff",
+	31260002: "寒冰debuff"	
+};
+function start_debuff(handlers, event, entity, dispatch) {
+	const abnormality_change = (added, event) => {
+		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
+				if (added) {
+			setTimeout(() =>  debuff = event.id, 500);			   
+				} else {
+                  debuff = null
+				}
+		}
+	};
+
+	if (!debuff_tracker_started) {
+		dispatch.hook('S_ABNORMALITY_BEGIN', 4, abnormality_change.bind(null, true));
+		dispatch.hook('S_ABNORMALITY_END', 1, abnormality_change.bind(null, false));
+		debuff_tracker_started = true;
+	}
+}
+
 
 module.exports = {
 	load(dispatch) {
@@ -117,7 +159,7 @@ module.exports = {
 "s-3026-1000-109-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "左转击退"}],	
 "s-3026-1000-159-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "左转击退"}],
 "s-3026-1000-120-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "咆哮集中"}],
-"s-3026-1000-157-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "冰火交换"}],
+"s-3026-1000-157-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "交换"},{"type": "func","func": start_debuff}],
 "s-3026-1000-103-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "毒尾后扫"}],
 "s-3026-1000-118-1": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "大跳无敌闪"}],
 "s-3026-1000-118-2": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "闪"}],
@@ -130,6 +172,8 @@ module.exports = {
 "s-3026-1000-137-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "咆哮击倒"},
                       {"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1275,200,13000)}],
 "s-3026-1000-138-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "AOE"}],
+"s-3026-1000-139-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "[温度] 60° 全体(吃冰)"}],
+"s-3026-1000-140-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "[温度] 40° 全体(吃火)"}],
 "qb-3026-1000-3026005": [{"type": "func","func": skilld_event.bind(null, 3026005)}],//吃同色恐惧
 "qb-3026-1000-3026004": [{"type": "func","func": skilld_event.bind(null, 3026004)}],//吃异色愤怒
 "qb-3026-1000-3126005": [{"type": "func","func": skilld_event.bind(null, 3126005)}],//吃同色恐惧
