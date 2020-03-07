@@ -60,9 +60,66 @@ qbacting = skillid % 2;
 
 if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // //蓝色0  红色1
 //debuff = skillid % 2;	
-//clearTimeout(timer1);
+clearTimeout(timer1);
 clearTimeout(timer2);
-	
+ timer1 = setTimeout(()=>{
+ if  (debuff != null) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "注意debuff最后10s"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 1000,
+"message_TW": "9"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 2000,
+"message_TW": "8"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 3000,
+"message_TW": "7"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 4000,
+"message_TW": "6"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 5000,
+"message_TW": "5"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 6000,
+"message_TW": "4"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 7000,
+"message_TW": "3"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 8000,
+"message_TW": "2"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 9000,
+"message_TW": "1"
+});	
+handlers['text']({
+"sub_type": "message",
+"delay": 10000,
+"message_TW": "地板位"
+});	
+ }
+  }, 80000);  	
  timer2 = setTimeout(()=>{
  if  (debuff != null) {
 	 
@@ -100,8 +157,8 @@ handlers['text']({
 
 
 if (skillid === 99020020) { //死亡解除debuff
-debuff = null;
-//clearTimeout(timer1);
+//debuff = null;
+clearTimeout(timer1);
 clearTimeout(timer2);
 }
 /*
