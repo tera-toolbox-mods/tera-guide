@@ -12,5 +12,8 @@
     "description": "副本补助，教玩副本",
     "servers": ["https://raw.githubusercontent.com/michengs/tera-guide/master/"],
     "supportUrl": "https://github.com/michengs/tera-guide/pulls",
-    "version": "81.03"
+    "dependencies": {
+        "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
+    },
+    "version": "91.03"
 }
