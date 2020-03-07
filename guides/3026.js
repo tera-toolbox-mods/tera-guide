@@ -5,6 +5,12 @@ let	print = true;
 let debuff = null ;
 let timer1;
 let timer2;
+let timer3;
+let timer4;
+let timer5;
+
+
+
 let qbacting = null;
 function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
@@ -62,64 +68,19 @@ if ([3026001,3126001,3026002,3126002].includes(skillid)) {   // //蓝色0  红�
 //debuff = skillid % 2;	
 clearTimeout(timer1);
 clearTimeout(timer2);
+clearTimeout(timer3);
+clearTimeout(timer4);
+clearTimeout(timer5);
+
  timer1 = setTimeout(()=>{
  if  (debuff != null) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "注意debuff最后10s"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 1000,
-"message_TW": "9"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message_TW": "8"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 3000,
-"message_TW": "7"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 4000,
-"message_TW": "6"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 5000,
-"message_TW": "5"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 6000,
-"message_TW": "4"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 7000,
-"message_TW": "3"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 8000,
-"message_TW": "2"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 9000,
-"message_TW": "1"
-});	
-handlers['text']({
-"sub_type": "message",
-"delay": 10000,
-"message_TW": "地板位"
+"message_TW": "attention please debuff最后20s"
 });	
  }
-  }, 80000);  	
+  }, 70000);  
+  
  timer2 = setTimeout(()=>{
  if  (debuff != null) {
 	 
@@ -128,11 +89,35 @@ handlers['text']({
 "message_TW": (`${debuff_TipMsg[debuff % 2].msg} `)
 });	
 handlers['text']({
-"sub_type": "speech",
+"sub_type": "message",
 "message_TW": "倒计时50s"
 });	
  }
-  }, 40000);   
+  }, 40000);  
+ timer3 = setTimeout(()=>{
+ if  (debuff != null) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "attention please debuff最后15s"
+});	
+ }
+  }, 75000);  
+ timer4 = setTimeout(()=>{
+ if  (debuff != null) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "attention please debuff最后10s"
+});	
+ }
+  }, 80000);  
+ timer5 = setTimeout(()=>{
+ if  (debuff != null) {
+handlers['text']({
+"sub_type": "message",
+"message_TW": "attention please debuff最后5s"
+});	
+ }
+  }, 85000);   
 }
 
 if ([213,214].includes(skillid)) {   // //蓝内
@@ -210,6 +195,9 @@ module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
+	
+"s-3026-1000-112-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Jump","message_TW": "冰带(闪)"}],
+"s-3026-1000-107-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Jump","message_TW": "岩浆(闪)"}],
 		
 "s-3026-1000-108-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "右转击退"}],	
 "s-3026-1000-158-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "右转击退"}],
