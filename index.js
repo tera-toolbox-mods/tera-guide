@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const dbg = require('./dbg');
 let voice = null;
-try { voice = require('voice') }
+try { voice = require('./voice/voice') }
 catch(e) { voice = null; }
 // Tank class ids(brawler + lancer)
 const TANK_CLASS_IDS = [1, 10];
