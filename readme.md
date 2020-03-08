@@ -45,21 +45,6 @@ proxy频道输入:補助 help，获取更多使用信息。
 
 
 
-## Voice Dependencies
-
-## 语音依赖
-
-https://github.com/michengs/voice
-
- Download and extract it to proxy/node_modules
- 
- MAKE SURE IT'S NAMED "voice"
- 
-下载并解压到 proxy/node_modules里面注意重命名为:voice
-
-
-
-
 
 ## Supported Dungeon
 
@@ -105,6 +90,10 @@ RK9-机库               RK9 NM
 貪婪的卡舒帕露峽谷      Rift's Edge (Hard) (10-Person)
 
 贝尔亚克城堡            (Akalath Quarantine)
+
+凯尔赛克隐藏地(Corrupted Skynest)
+
+狂气竞技场
 
 Add Dungeon for other modules ....
 
