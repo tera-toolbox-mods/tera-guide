@@ -76,7 +76,7 @@ clearTimeout(timer5);
  if  (debuff != null) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "attention please debuff最后20s"
+"message_TW": "警告  debuff最后20s"
 });	
  }
   }, 70000);  
@@ -98,7 +98,7 @@ handlers['text']({
  if  (debuff != null) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "attention please debuff最后15s"
+"message_TW": "警告    debuff最后15s"
 });	
  }
   }, 75000);  
@@ -106,7 +106,7 @@ handlers['text']({
  if  (debuff != null) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "attention please debuff最后10s"
+"message_TW": "警告    debuff最后10s"
 });	
  }
   }, 80000);  
@@ -114,7 +114,7 @@ handlers['text']({
  if  (debuff != null) {
 handlers['text']({
 "sub_type": "message",
-"message_TW": "attention please debuff最后5s"
+"message_TW": "警告    debuff最后5s"
 });	
  }
   }, 85000);   
