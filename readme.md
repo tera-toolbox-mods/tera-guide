@@ -89,9 +89,9 @@ RK9-机库               RK9 NM
 
 貪婪的卡舒帕露峽谷      Rift's Edge (Hard) (10-Person)
 
-贝尔亚克城堡            (Akalath Quarantine)
+贝尔亚克城堡            Akalath Quarantine
 
-凯尔赛克隐藏地          (Corrupted Skynest)
+凯尔赛克隐藏地          Corrupted Skynest
 
 不灭凯尔塞克隐藏地      Corrupted Skynest (Hard) Entrance
 
