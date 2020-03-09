@@ -91,11 +91,13 @@ RK9-机库               RK9 NM
 
 贝尔亚克城堡            Akalath Quarantine
 
+狂气竞技场              Forbidden Arena
+
 凯尔赛克隐藏地          Corrupted Skynest
 
 不灭凯尔塞克隐藏地      Corrupted Skynest (Hard) Entrance
 
-狂气竞技场              Forbidden Arena
+
 
 Add Dungeon for other modules ....
 
