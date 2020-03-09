@@ -1,6 +1,4 @@
 //made by michengs
-let  notice = true  ; 
-let boss = 3;
 let lastboss = false;
 let player, entity, library, effect;
 let	print = true;

@@ -3,7 +3,6 @@ let notice_guide = true;
 let   notice = true  ; 
 let boss = 3;
 let lastboss = false;
-let timer = 01;
 let player, entity, library, effect;
 let	print = false;
 
