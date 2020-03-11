@@ -116,8 +116,12 @@ function Spawnitem11(item,degrees, maxRadius, times, handlers, event, entity) {
 
 // 	召喚特殊告示牌提示（  角度 距离   时间）
 function SpawnThingob( degrees, radius, times, handlers, event, entity ) {	
-	let shield_loc = shield = entity['loc'].clone();
-	shield_loc.w = shield.w = entity['loc'].w;	
+	let shield_loc = entity['loc'].clone();
+	let shield = entity['loc'].clone();
+	    shield_loc.w  = entity['loc'].w;	
+	    shield.w = entity['loc'].w;
+	
+	
 		let X = Math.pow((-95703 - shield.x), 2),
 			Y = Math.pow((144980 - shield.y), 2),
 			C = Math.pow(X+Y, 0.5);  

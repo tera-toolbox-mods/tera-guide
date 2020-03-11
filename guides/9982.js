@@ -215,8 +215,10 @@ setTimeout(() => print = true, 10000);
 }
 	//构建特殊直线（提示标志  角度 最远距离   时间）
 function Spawnitem11(item,degrees, maxRadius, times, handlers, event, entity) {
+	let shield_loc = entity['loc'].clone();
 	let shield = entity['loc'].clone();
-	   shield.w = entity['loc'].w;
+	    shield_loc.w  = entity['loc'].w;	
+	    shield.w = entity['loc'].w;
 		let X = Math.pow((-95703 - shield.x), 2),
 			Y = Math.pow((144980 - shield.y), 2),
 			C = Math.pow(X+Y, 0.5);  
