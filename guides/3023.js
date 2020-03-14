@@ -1,13 +1,10 @@
 //made by michengs
-let lastboss = false;
 let player, entity, library, effect;
 let	print = true;
-let debuff = 0 ;
+let debuff = null ;
 let timer1;
-let timer2;
 let timer3;
 let timer4;
-let timer5;
 let counter = 0;
 	function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
@@ -35,7 +32,7 @@ function Spawnitem2(item,degrees,distance, intervalDegrees, radius, times, handl
 function Spawnitemsp2(d1,d2,item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
 	let shield_loc = entity['loc'].clone();
 	shield_loc.w = entity['loc'].w;
-                                                                                                                                                                                                                                                                                                                                                                   let	degrees = 360 - degree;	
+                                                                                                                                                                                                                                                                      let	degrees = 360 - degree;	
 	applyDistance(shield_loc, distance, degrees);
     for (let angle = -Math.PI/ d1; angle <= Math.PI/ d2; angle +=  Math.PI * intervalDegrees / 180) {
         handlers['spawn']({		
@@ -63,71 +60,41 @@ function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, eve
         }, {loc: shield_loc});
     }
 }
+
+const AQ_TipMsg =
+{
+ 0: {msgt: 'IN',     msg: '进去喲'}, 
+ 1: {msgt: 'OUT',     msg: '出來喲'}
+};
+
 function skilld_event(skillid, handlers, event, ent, dispatch) {	
 if (skillid === 99020020) { //死亡解除debuff
-debuff = 0
-clearTimeout(timer2);
+debuff = null
 clearTimeout(timer1);
 }
-if (skillid === 185) { //死亡解除debuff
-clearTimeout(timer5);
-timer5 = setTimeout(()=>{
-handlers['text']({
-"sub_type": "message",
-"message_TW": "!!!",
-"message": "Big jump coming soon！"
-});	
-  }, 110000);
-}
-if (skillid === 3119 && debuff === 1 ) {    //紅色气息判断
-handlers['text']({
-"sub_type": "message",
-"message": "OUT",
-"message_TW": "出"
-});	
-} else if (skillid === 3119 && debuff === 2 ) {    //紅色气息判断
-handlers['text']({
-"sub_type": "message",
-"message": "IN",
-"message_TW": "进"
-});	
-} else if (skillid === 3220 && debuff === 1 ) {    //蓝色气息判断
-handlers['text']({
-"sub_type": "message",
-"message": "IN",
-"message_TW": "进"
-});	
-} else if (skillid === 3220 && debuff === 2 ) {    //蓝色气息判断
-handlers['text']({
-"sub_type": "message",
-"message": "OUT",
-"message_TW": "出"
-});	
-}
-if ([30231000, 1000].includes(skillid)) {   //debuff为红色
-debuff = 1
+
+if ([30231000, 1000,30231001, 1001].includes(skillid)) {    //debuff
+debuff  = skillid % 2;
 clearTimeout(timer1);
-clearTimeout(timer2);
 timer1 = setTimeout(()=>{
-handlers['text']({
-"sub_type": "message",
-"message_TW": "!",
-});	
-		debuff = 0
-  }, 70000);		   
-}
-if ([30231001, 1001].includes(skillid)) {    //debuff为蓝色
-debuff = 2
-clearTimeout(timer2);
-clearTimeout(timer1);
-timer2 = setTimeout(()=>{
-handlers['text']({
-"sub_type": "message",
-"message_TW": "!",
-});	
-		debuff = 0
+debuff = null
   }, 70000);	
- }
+ }                                                //1蓝 
+//											   //0 红
+if (skillid === 3119 && debuff != null ) {    //紅色气息
+handlers['text']({
+"sub_type": "message",
+"message": (`${AQ_TipMsg[(debuff + 3) %2].msgt}`),
+"message_TW": (`${AQ_TipMsg[(debuff + 3) %2].msg}`)
+});	
+} else if (skillid === 3220 && debuff != null ) {    //蓝色气息
+handlers['text']({
+"sub_type": "message",
+"message": (`${AQ_TipMsg[debuff].msgt}`),
+"message_TW": (`${AQ_TipMsg[debuff].msg}`)
+});	
+} 
+ 
  if ([1113, 1114].includes(skillid)) { //4连挥刀预判
 clearTimeout(timer3);
 counter++;
@@ -146,11 +113,8 @@ counter = 0;
   }, 20000);	
  }
 }
-function start_boss() {
-let	print = true;
-debuff = 0;
-}
-function start_1boss80(handlers) {
+
+function start_boss_eighty(handlers) {
 if(print) {
 handlers['text']({
 "sub_type": "message",
@@ -165,9 +129,8 @@ module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},	
-    // First boss
-    "h-3023-1000-99": [{"type": "func","func": start_boss}],	 
-    "h-3023-1000-80": [{"type": "func","func": start_1boss80}], 
+    // First boss 
+    "h-3023-1000-80": [{"type": "func","func": start_boss_eighty}], 
     "s-3023-1000-104-0": [{"type": "text","sub_type": "message","message":  'jump',"message_TW": "点名-跳劈" }],
     "s-3023-1000-105-0": [{"type": "text","sub_type": "message","message":  'back',"message_TW": "后方攻击" }],
     "s-3023-1000-110-0": [{"type": "text","sub_type": "message","message":  'stun',"message_TW": "晕" },
