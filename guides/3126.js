@@ -68,7 +68,7 @@ handlers['text']({
 "message_TW": "警告  debuff最后20s"
 });	
  }
-  }, 70000);  
+  }, 50000);  
  timer2 = setTimeout(()=>{
  if  (debuff != null) {
 handlers['text']({
@@ -81,7 +81,7 @@ handlers['text']({
 "message_TW": "倒计时50s"
 });	
  }
-  }, 40000);  
+  }, 70000);  
  timer3 = setTimeout(()=>{
  if  (debuff != null) {
 handlers['text']({
@@ -90,7 +90,7 @@ handlers['text']({
 "message_TW": "警告    debuff最后15s"
 });	
  }
-  }, 75000);  
+  }, 55000);  
  timer4 = setTimeout(()=>{
  if  (debuff != null) {
 handlers['text']({
@@ -99,7 +99,7 @@ handlers['text']({
 "message_TW": "警告    debuff最后10s"
 });	
  }
-  }, 80000);  
+  }, 60000);  
  timer5 = setTimeout(()=>{
  if  (debuff != null) {
 handlers['text']({
@@ -108,7 +108,7 @@ handlers['text']({
 "message_TW": "警告    debuff最后5s"
 });	
  }
-  }, 85000);   
+  }, 65000);   
 }
 if ([213,214].includes(skillid)) {   // //蓝内
  if  (debuff != null) {
@@ -117,6 +117,13 @@ handlers['text']({
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
 "message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 });	
+setTimeout(()=>{
+handlers['text']({
+"sub_type": "message",
+"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
+"message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+});	
+  }, 8000); 
  } 
 }
 if ([212,215].includes(skillid)) {   // //红内
@@ -125,7 +132,14 @@ handlers['text']({
 "sub_type": "message",
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
 "message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+});
+setTimeout(()=>{
+handlers['text']({
+"sub_type": "message",
+"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
+"message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 });	
+  }, 8000); 	
  }
 }
 if (skillid === 99020020) { //死亡解除debuff
@@ -160,7 +174,7 @@ function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 				if (added) {
-			setTimeout(() =>  debuff = event.id, 500);			   
+			setTimeout(() =>  debuff = event.id, 50);			   
 				} else {
                   debuff = null
 				}
@@ -230,5 +244,21 @@ module.exports = {
 "am-3126-1000-30260001": [{"type": "func","func": skilld_event.bind(null, 3026001)}],//红色
 "am-3126-1000-30260002": [{"type": "func","func": skilld_event.bind(null, 3026002)}],//蓝色
 "am-3126-1000-31260001": [{"type": "func","func": skilld_event.bind(null, 3126001)}],//红色
-"am-3126-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}]//蓝色
+"am-3126-1000-31260002": [{"type": "func","func": skilld_event.bind(null, 3126002)}],//蓝色
+
+
+
+
+"s-3126-1000-2107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Closest","message_TW": "注视最近"}],
+"s-3126-1000-1107-0": [{"type": "text","sub_type": "message","message": "(Debuffs) Farthest","message_TW": "注视最远"}],
+
+
+
+"am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "Layer 3","message_TW": "3層debuff"},				
+                          {"type": "text","sub_type": "message","delay": 125000,"message":  '2 minutes'}],//
+"am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_TW": "2層debuff"}],//
+"am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_TW": "1層debuff"}]//
+
+
+
 };
