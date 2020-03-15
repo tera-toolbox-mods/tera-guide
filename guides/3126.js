@@ -8,6 +8,8 @@ let timer3;
 let timer4;
 let timer5;
 let qbacting = null;
+let blue = false;
+let red = false;
 function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
      	let	rads = (degrees * Math.PI/180);
@@ -117,13 +119,13 @@ handlers['text']({
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
 "message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
 });	
+blue = true;
+red  = false;
 setTimeout(()=>{
-handlers['text']({
-"sub_type": "message",
-"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
-"message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
-});	
-  }, 8000); 
+blue = false;
+red  = true;
+  }, 6600);   
+setTimeout(() => red  = false, 9400);	
  } 
 }
 if ([212,215].includes(skillid)) {   // //红内
@@ -133,13 +135,13 @@ handlers['text']({
 "message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
 "message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
 });
+blue = false;
+red  = true;
 setTimeout(()=>{
-handlers['text']({
-"sub_type": "message",
-"message": (`${boss_skill[skillid].msgt} | ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
-"message_TW": (`${boss_skill[skillid].msg} | ${CK_TipMsg[(qbacting + debuff) %2].msg}`)
-});	
-  }, 8000); 	
+blue = true;
+red  = false;
+  }, 6600);   
+setTimeout(() => blue  = false, 9400);	
  }
 }
 if (skillid === 99020020) { //死亡解除debuff
@@ -147,17 +149,6 @@ if (skillid === 99020020) { //死亡解除debuff
 clearTimeout(timer1);
 clearTimeout(timer2);
 }
-/*
-if (skillid === 157) { //debuff
- if  (debuff != null) {
-handlers['text']({
-"sub_type": "message",
-"delay": 2000,
-"message": debuffs_targe[debuff]
- });	 
-}
-}
-*/
 }
 // NULL % 2 =0
 // 1 % 2 =1
@@ -174,7 +165,20 @@ function start_debuff(handlers, event, entity, dispatch) {
 	const abnormality_change = (added, event) => {
 		if ((player.isMe(event.target) || player.playersInParty.includes(event.target.toString())) && debuffs_targe[event.id]) {
 				if (added) {
-			setTimeout(() =>  debuff = event.id, 50);			   
+			    debuff = event.id ;	
+                if(blue){
+				handlers['text']({
+				"sub_type": "message",
+				"message": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msgt}`),
+				"message_TW": (` ${CK_TipMsg[(qbacting + debuff +1) %2].msg}`)
+				 });		
+				}else if(red){
+				 handlers['text']({
+				 "sub_type": "message",
+				 "message": (` ${CK_TipMsg[(qbacting + debuff) %2].msgt}`),
+				 "message_TW": (`${CK_TipMsg[(qbacting + debuff) %2].msg}`)
+				 });		
+				} 			   
 				} else {
                   debuff = null
 				}
