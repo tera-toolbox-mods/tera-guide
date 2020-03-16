@@ -91,6 +91,8 @@ RK9-机库               RK9 NM
 
 贝尔亚克城堡            Akalath Quarantine
 
+金鳞号                  Golden Scale (Sailing Instance)
+
 狂气竞技场              Forbidden Arena
 
 凯尔赛克隐藏地          Corrupted Skynest
