@@ -89,6 +89,11 @@ function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, eve
         }, {loc: shield_loc});
     }
 }
+
+//121 123  前砸 旋转  大前砸     绿绿
+//122 120  旋转  前砸  旋转     紫紫   前方走
+//122 123  旋转  前砸  大前砸     紫绿  第二下前方移動
+
 function skilld_event(skillid, handlers, event, ent, dispatch) {
 		
 		if (skillid == 121) green = true;
@@ -96,29 +101,29 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 
 if (skillid == 120){
 	if (purple && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "旋转-前砸-旋转"}); 
+		handlers['text']({"sub_type": "msgcp","message": "Inside -outer -Inside","message_TW": "旋转-前砸-旋转"}); 
 		setTimeout(() => purple = false, 2000);		
 	} else if(purple && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "旋转-前砸"}); 
-		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "back","message_TW": "旋转"}); 		
+		handlers['text']({"sub_type": "msgcp","message": "Inside -outer","message_TW": "旋转-前砸"}); 
+		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "Inside","message_TW": "旋转"}); 		
 		setTimeout(() => purple = false, 2000);			 	 		 
 	 
   }
 }
 if (skillid == 123){
 	if (green && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "前砸-旋转-大前砸"}); 
+		handlers['text']({"sub_type": "msgcp","message": "outer -Inside-outer","message_TW": "前砸-旋转-大前砸"}); 
 		setTimeout(() => green = false, 2000);		
 	 } else if(purple && !boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "旋转-前砸-大前砸"}); 
+		handlers['text']({"sub_type": "msgcp","message": "Inside -outer -outer","message_TW": "旋转-前砸-大前砸"}); 
 		setTimeout(() => purple = false, 2000);			 	 		 
 	 } else if(green && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "前砸-前砸"}); 
-		handlers['text']({"sub_type": "msgcp","delay":6000,"message": "back","message_TW": "大前砸"}); 		
+		handlers['text']({"sub_type": "msgcp","message": "outer -Inside","message_TW": "前砸-旋转"}); 
+		handlers['text']({"sub_type": "msgcp","delay":6000,"message": "outer","message_TW": "大前砸"}); 		
 		setTimeout(() => purple = false, 2000);							
    } else if(purple && boss_thirty){
-		handlers['text']({"sub_type": "msgcp","message": "back","message_TW": "旋转-前砸"}); 
-		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "back","message_TW": "大前砸"}); 		
+		handlers['text']({"sub_type": "msgcp","message": "Inside -outer","message_TW": "旋转-前砸"}); 
+		handlers['text']({"sub_type": "msgcp","delay": 6000,"message": "outer","message_TW": "大前砸"}); 		
 		setTimeout(() => purple = false, 2000);	
   }
  }
@@ -131,8 +136,8 @@ if (print) return
 
 let debuff_tracker_started = false;
 let debuffs_targe = {
-	30209101: {name: "闪电 | 闪",},
-	30209102: {name: "魔女 | 闪"},
+	30209101: {msgt: 'lightning',     msg: '闪电'}, 
+	30209102: {msgt: 'Witch',     msg: '魔女'}
 };
 let debuff_call_event = null;
 function start_Sailing_Instance(handlers, event, entity, dispatch) {
@@ -145,10 +150,11 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 				debuff_call_event = setTimeout(() => {
 					handlers['text']({
 			        	"sub_type": "message",
-						"message": debuffs_targe[event.id].name
+						"message": debuffs_targe[event.id].msg,
+						"message_TW": debuffs_targe[event.id].msgt						
 			        });
 					debuff_call_event = null;
-				}, 2000);
+				}, 1500);
 				} else {
 
 				}
@@ -170,16 +176,16 @@ module.exports = {
 
 
 
-"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "吸蓝"},
+"s-3020-1900-104-0": [{"type": "text","sub_type": "message","message": "Suck blue(dodge)","message_TW": "吸蓝"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,300,200,3000)}],
 
-"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "吸蓝"},
+"s-3020-1200-103-0": [{"type": "text","sub_type": "message","message": "Suck blue(dodge)","message_TW": "吸蓝"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,200,3000)}],
 					  
 					  
 
 
-"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "晕"},
+"s-3020-2200-108-0": [{"type": "text","sub_type": "message","message": "Charge (Halo Tan)","message_TW": "晕"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,170,20,120,200,2000)}],
 
 
@@ -267,29 +273,29 @@ module.exports = {
 // "s-3020-6103-203-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-203" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 // "s-3020-6103-202-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-202" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}], 
 // "s-3020-6103-201-0": [{"type": "text","sub_type": "message","message":  'Left swipe',"message_TW": "6103-201" },{"type": "func","func": SpawnThing.bind(null,0,0,100,2000)}],  
-  "s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "跳劈"},
+  "s-3020-2200-127-0": [{"type": "text","sub_type": "message","message": "smashing","message_TW": "跳劈"},
                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,15,200,250,1000)},
                         {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,1000,4000)}
   
   ],
 
 
-"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "强袭"}],
-"s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "点名蓄力"},				
+"s-3020-2200-128-0": [{"type": "text","sub_type": "message","message": "'Golf (fly)","message_TW": "强袭"}],
+"s-3020-2200-129-0": [{"type": "text","sub_type": "message","message": "Vendetta-Straight Skull","message_TW": "点名蓄力"},				
   {"type": "func","func": Spawnitem1.bind(null,445,90,100,0,500,6000)},					
   {"type": "func","func": Spawnitem1.bind(null,445,270,100,0,500,6000)}],
-"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "咆哮远离"}],
+"s-3020-2200-131-0": [{"type": "text","sub_type": "message","message_TW": "咆哮远离"}],
 
-"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "点名扩散圈"},
+"s-3020-2200-133-1": [{"type": "text","sub_type": "message","message_TW": "点名扩散圈"},
                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,10,300,200,4000)}],
 
-"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "准备跳"}],
+"s-3020-2200-135-0": [{"type": "text","sub_type": "message","message": "skipping rope","message_TW": "准备跳"}],
 
-"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "扩散圈"}],
+"s-3020-2200-137-0": [{"type": "text","sub_type": "message","message": "diffusion","message_TW": "扩散圈"}],
 
-"s-3020-2200-139-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "收缩圈"}],
+"s-3020-2200-139-0": [{"type": "text","sub_type": "message","message": "Shrink","message_TW": "收缩圈"}],
 
 "s-3020-2200-202-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "defence 3秒"}],
 "s-3020-2200-203-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "defence 10秒"}],
-"s-3020-2200-204-0": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "变身"}]		 
+"s-3020-2200-204-0": [{"type": "text","sub_type": "message","message": "30% transformationp","message_TW": "变身"}]		 
 };
