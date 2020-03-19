@@ -150,8 +150,8 @@ function start_Sailing_Instance(handlers, event, entity, dispatch) {
 				debuff_call_event = setTimeout(() => {
 					handlers['text']({
 			        	"sub_type": "message",
-						"message": debuffs_targe[event.id].msg,
-						"message_TW": debuffs_targe[event.id].msgt						
+						"message": debuffs_targe[event.id].msgt,
+						"message_TW": debuffs_targe[event.id].msg						
 			        });
 					debuff_call_event = null;
 				}, 1500);

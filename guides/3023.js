@@ -123,7 +123,7 @@ handlers['text']({
 });
 }		
 print = false;
-setTimeout(() => print = true, 10000);	
+//setTimeout(() => print = true, 10000);	
 }
 module.exports = {
 	load(dispatch) {
