@@ -34,6 +34,38 @@ function Spawnitem2(item,degree,distance, intervalDegrees, radius, delay, times,
         }, {loc: shield_loc});
     }
 }	
+		//构建特殊圆形范围提示    （提示标志  偏移角度 偏移距离 间隔 半径 延迟 时间）90°-180  Π/2-Π   -2 - 1
+function Spawnitemsp2(d1,d2,item,degree,distance, intervalDegrees, radius, delay, times, handlers, event, entity ) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;
+                                                                                                                                                                                                                                                                      let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);
+    for (let angle = -Math.PI/ d1; angle <= Math.PI/ d2; angle +=  Math.PI * intervalDegrees / 180) {
+        handlers['spawn']({		
+        	"id": item,
+			"delay": delay,			
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
+	//构建直线（提示标志 偏移角度 偏移距离  角度 最远距离   时间）
+function Spawnitem1(item,degree,distance,angles, maxRadius, times, handlers, event, entity) {
+	let shield_loc = entity['loc'].clone();
+	shield_loc.w = entity['loc'].w;	
+    let	degrees = 360 - degree;	
+	applyDistance(shield_loc, distance, degrees);		
+    let angle = angles * Math.PI/180
+    for (let radius=50 ; radius<=maxRadius; radius+=50) {
+        handlers['spawn']({
+        	"id": item,
+        	"sub_delay": times,
+        	"distance": radius,
+        	"offset": angle
+        }, {loc: shield_loc});
+    }
+}
 const CK_TipMsg =
 {
  0: {msgt: 'IN',     msg: '进'}, 
@@ -198,20 +230,36 @@ module.exports = {
 "s-3126-1000-1110-0": [{"type": "text","sub_type": "message","message": "fire","message_TW": "岩浆(闪)"}],
 "s-3126-1000-2112-0": [{"type": "text","sub_type": "message","message": "Ice()","message_TW": "冰带(闪)"}],
 "s-3126-1000-2110-0": [{"type": "text","sub_type": "message","message": "fire","message_TW": "岩浆(闪)"}],
-"s-3126-1000-1108-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"}],
-"s-3126-1000-2108-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"}],
-"s-3126-1000-1158-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"}],
-"s-3126-1000-2158-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"}],
-"s-3126-1000-1109-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"}],
-"s-3126-1000-2109-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"}],
-"s-3126-1000-1159-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"}],
-"s-3126-1000-2159-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"}],
+"s-3126-1000-1108-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-2108-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-1158-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-2158-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "右转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-1109-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-2109-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-1159-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
+"s-3126-1000-2159-0": [{"type": "text","sub_type": "message","message": "beat back","message_TW": "左转击退"},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,0,8,440,100,2000)}],
 "s-3126-1000-1120-0": [{"type": "text","sub_type": "message","message": "together","message_TW": "咆哮集中"}],
 "s-3126-1000-2120-0": [{"type": "text","sub_type": "message","message": "together","message_TW": "咆哮集中"}],
 "s-3126-1000-1157-0": [{"type": "text","sub_type": "message","message": "change","message_TW": "交换"},{"type": "func","func": start_debuff}],
 "s-3126-1000-2157-0": [{"type": "text","sub_type": "message","message": "change","message_TW": "交换"},{"type": "func","func": start_debuff}],
-"s-3126-1000-1103-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫"}],
-"s-3126-1000-2103-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫"}],
+"s-3126-1000-1103-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3126-1000-2103-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
 "s-3126-1000-1118-1": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "大跳无敌闪"}],
 "s-3126-1000-2118-1": [{"type": "text","sub_type": "message","message": "Jump","message_TW": "大跳无敌闪"}],
 "s-3126-1000-1114-0": [{"type": "text","sub_type": "message","message": "front fire","message_TW": "前方 岩浆(远离)"}],
@@ -222,10 +270,35 @@ module.exports = {
 "s-3126-1000-2206-0": [{"type": "text","sub_type": "message","message": "Jump back","message_TW": "后跳扫 | 击飞"}],
 "s-3126-1000-1206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,350,200,3000)}],
 "s-3126-1000-2206-2": [{"type": "func","func": Spawnitem2.bind(null,553,0,0,15,350,200,3000)}],
-"s-3126-1000-1153-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫| 击倒"}],
-"s-3126-1000-2153-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫| 击倒"}],
-"s-3126-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_TW": "冰风暴| 持续伤害"}],   //30不可防
-"s-3126-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_TW": "冰风暴| 持续伤害"}],   //30不可防
+"s-3126-1000-1153-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫| 击倒"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3126-1000-2153-0": [{"type": "text","sub_type": "message","message": "tail","message_TW": "毒尾后扫| 击倒"},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-4/3,1,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitemsp2.bind(null,-1,9/13,445,0,0,10,500,100,1500)},
+					   {"type": "func","func": Spawnitem1.bind(null,445,0,0,135,500,1500)},					
+                       {"type": "func","func": Spawnitem1.bind(null,445,0,0,260,500,1500)}],
+"s-3026-1000-1105-0": [{"type": "func","func": Spawnitem2.bind(null,445,135,500,10,270,100,3000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,315,500,10,270,100,3250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,45,500,10,270,100,3500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,235,500,10,270,100,3750)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,90,500,10,270,100,4000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,270,500,10,270,100,4250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,500,10,270,100,4500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,180,500,10,270,100,4750)}],
+
+"s-3026-1000-2105-0": [{"type": "func","func": Spawnitem2.bind(null,445,135,500,10,270,100,3000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,315,500,10,270,100,3250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,45,500,10,270,100,3500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,235,500,10,270,100,3750)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,90,500,10,270,100,4000)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,270,500,10,270,100,4250)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,0,500,10,270,100,4500)},
+                       {"type": "func","func": Spawnitem2.bind(null,445,180,500,10,270,100,4750)}],					   
+"s-3126-1000-1154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_TW": "冰风暴| 持续伤害"},{"type": "func","func": Spawnitem2.bind(null,445,180,80,8,520,100,5000)}],   //30不可防
+"s-3126-1000-2154-0": [{"type": "text","sub_type": "message","message": "Ice storm","message_TW": "冰风暴| 持续伤害"},{"type": "func","func": Spawnitem2.bind(null,445,180,80,8,520,100,5000)}],   //30不可防
 "s-3126-1000-1155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_TW": "火焰柱| 击倒"}],      //30不可防
 "s-3126-1000-2155-0": [{"type": "text","sub_type": "message","message": "Knock down","message_TW": "火焰柱| 击倒"}],      //30不可防
 "s-3126-1000-1137-0": [{"type": "text","sub_type": "message","message": "Knock down","message_TW": "咆哮击倒"},{"type": "func","func": Spawnitem2.bind(null,553,0,0,2,1275,200,13000)}],
@@ -259,7 +332,7 @@ module.exports = {
 
 
 "am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "Layer 3","message_TW": "3層debuff"},				
-                          {"type": "text","sub_type": "message","delay": 125000,"message":  '2 minutes'}],//
+                          {"type": "text","sub_type": "message","delay": 175000,"message":  '3 minutes'}],//
 "am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_TW": "2層debuff"}],//
 "am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_TW": "1層debuff"}]//
 
