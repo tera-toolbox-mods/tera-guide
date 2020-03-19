@@ -4,6 +4,8 @@ let player, entity, library, effect;
 let timer1;
 let notices = true;
 let print = true;
+let printHP = true;
+let isHP_69_39 = false;
 function  applyDistance(loc, distance, degrees) {
         let r = loc.w; //(loc.w / 0x8000) * Math.PI;
      	let	rads = (degrees * Math.PI/180);
@@ -66,69 +68,67 @@ function Spawnitem11(item,degree,distance,angles, maxRadius, times, handlers, ev
 
 function skilld_event(skillid, handlers, event, ent, dispatch) {	
 
-if ([90,60,30,351].includes(skillid)) {   // //破盾
-//debuff = skillid % 2;	
-//clearTimeout(timer1);
-if (print) {
-print = false;
-setTimeout(() => print = true, 15000);	
-if (skillid == 351) {
-handlers['text']({
-"sub_type": "message",
-"message": "SHIELD!",
-"message_TW": "破盾"
-});	
- } else {
-handlers['text']({
-"sub_type": "message",
-"message_TW": "准备破盾"
-});	 	 
-  }		
- }
+if ([351].includes(skillid)) {   // //破盾
 if (notices) {
 clearTimeout(timer1);
 notices = false;
 setTimeout(() => notices = true, 5000);	
- timer1 = setTimeout(()=>{
-	 
+timer1 = setTimeout(()=>{	 
 handlers['text']({
 "sub_type": "message",
-"message_TW": "倒计时破盾"
+"message": isHP_69_39 ? "!" : "After 5s SHIELD!!!!",
+"message_TW": isHP_69_39 ? "!" : "5秒后准备破盾!!!"
 });	
-
   }, 85000);   
  }  
- }
+ } 
+if ([69,39].includes(skillid)) {	
+if (printHP) {
+clearTimeout(timer1);	
+printHP = false;
+isHP_69_39 = true;
+setTimeout(() => printHP = true, 15000);		 
+  } 
+ }  
+if ([90,60,30].includes(skillid)) {
+if (print) {
+print = false;
+isHP_69_39 = false;
+setTimeout(() => print = true, 15000);		
+handlers['text']({
+"sub_type": "message",
+"message": skillid,
+"message_TW": "准备破盾"
+});	  
+  } 
+ } 
 }
+
+	
 module.exports = {
 	load(dispatch) {
 		({ player, entity, library, effect } = dispatch.require.library);
 	},
 	
 	
-	
+	// 90 60 30 都固定出盾 90-99 69-60 39-30 这3个期间段不会出盾 其余期间 盾CD是1分半
 	// boss位置 ，角度， 持续时间,类型， 偏角       ，偏距，       ，最小半径   ，角度范围 ，间距      ，半径         
 	//(distance, angle, duration, type, offsetAngle, offsetDistance, minRadius, maxRadius, rotateAngle, rotateRadius) 
 	
 
-"h-3027-1000-90": [{"type": "func","func": skilld_event.bind(null, 90)}],
-	
+"h-3027-1000-90": [{"type": "func","func": skilld_event.bind(null, 90)}],	
 "h-3027-1000-60": [{"type": "func","func": skilld_event.bind(null, 60)}],	
-	
 "h-3027-1000-30": [{"type": "func","func": skilld_event.bind(null, 30)}],	
+"h-3027-1000-69": [{"type": "func","func": skilld_event.bind(null, 69)}],	
+"h-3027-1000-39": [{"type": "func","func": skilld_event.bind(null, 39)}],	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-"s-3027-1001-255-0": [{"type": "text","sub_type": "message","message": "!","message_TW": "！"},{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,5000)}],	//0
-"s-3027-1002-256-0": [{"type": "text","sub_type": "message","message": "!","message_TW": "！"},{"type": "func","func": Spawnitem11.bind(null,912,0,0,0,3000,5000)}],	//60
-	
-	
+"s-3027-1001-255-0": [{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,5000)}],	//0
+"s-3027-1002-256-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,0,0,3000,5000)}],	//60	
+"s-3027-1003-257-0": [{"type": "func","func": Spawnitem1.bind(null,912,0,0,0,3000,5000)}],	//0
+"s-3027-1004-258-0": [{"type": "func","func": Spawnitem11.bind(null,912,0,0,0,3000,5000)}],	//60	
 	
 "s-3027-1000-108-0": [{"type": "text","class_position":"tank","sub_type": "message","message": "Strike(slow)","message_TW": "一刀(慢)"}],
 
