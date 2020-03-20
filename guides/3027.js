@@ -2,6 +2,7 @@
 
 let player, entity, library, effect;
 let timer1;
+let timer2;
 let notices = true;
 let print = true;
 let printHP = true;
@@ -71,6 +72,7 @@ function skilld_event(skillid, handlers, event, ent, dispatch) {
 if ([351].includes(skillid)) {   // //破盾
 if (notices) {
 clearTimeout(timer1);
+clearTimeout(timer2);
 notices = false;
 setTimeout(() => notices = true, 5000);	
 timer1 = setTimeout(()=>{	 
@@ -79,12 +81,20 @@ handlers['text']({
 "message": isHP_69_39 ? "!" : "After 5s SHIELD!!!!",
 "message_TW": isHP_69_39 ? "!" : "5秒后准备破盾!!!"
 });	
-  }, 85000);   
+  }, 85000);  
+timer2 = setTimeout(()=>{	 
+handlers['text']({
+"sub_type": "message",
+"message": isHP_69_39 ? "!" : "After 15s SHIELD!!!!",
+"message_TW": isHP_69_39 ? "!" : "15秒后准备破盾!!!"
+});	
+  }, 75000);  
  }  
  } 
 if ([69,39].includes(skillid)) {	
 if (printHP) {
 clearTimeout(timer1);	
+clearTimeout(timer2);
 printHP = false;
 isHP_69_39 = true;
 setTimeout(() => printHP = true, 15000);		 
