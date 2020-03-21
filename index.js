@@ -359,237 +359,152 @@ class TeraGuide{
                     // Call a function handler with the event we got from arg2 with yourself as the entity
                     function_event_handlers[arg1](JSON.parse(arg2), player);
             },
-            语音() {
-         if(!voice){
-      	command.message(`需要voice依赖`);
-			 return;		
-			}
-            	dispatch.settings.speaks = !dispatch.settings.speaks;
-            	command.message(`语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`);
-            },	
-            語音() {
-         if(!voice){
-      	command.message(`需要voice依赖`);
-			 return;		
-			}
-            	dispatch.settings.speaks = !dispatch.settings.speaks;
-            	command.message(`语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`);
-            },
            voice() {
          if(!voice){
       	command.message(`need voice Dependencies`);
 			 return;		
 			}
             	dispatch.settings.speaks = !dispatch.settings.speaks;
-            	command.message(`text-to-speech ${dispatch.settings.speaks?"on":"off"}.`);
+				text_handler({"sub_type": "PRMSG","message_TW": `语音通知 ${dispatch.settings.speaks?"开启":"关闭"}.`, "message": `text-to-speech ${dispatch.settings.speaks?"on":"off"}.` }); 				
             },			
             stream() {
             	dispatch.settings.stream = !dispatch.settings.stream;
-            	command.message(`仅声音提示 ${dispatch.settings.stream?"开启":"关闭"}.`);
-            	command.message(`stream ${dispatch.settings.stream?"on":"off"}.`);				
+				text_handler({"sub_type": "PRMSG","message_TW": `主播模式 ${dispatch.settings.stream?"开启":"关闭"}.`, "message": `stream ${dispatch.settings.stream?"on":"off"}.` }); 				
             },
-			
-            組隊長通知() {
-            	dispatch.settings.notice = !dispatch.settings.notice;	
-            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
+            spawnObject() {
+            	dispatch.settings.spawnObject = !dispatch.settings.spawnObject;
+				text_handler({"sub_type": "PRMSG","message_TW": `仅文本提示 ${dispatch.settings.spawnObject?"关闭":"开启"}.`, "message": `spawn object ${dispatch.settings.spawnObject?"on":"off"}.` });  				
             },				
-            组队长通知() {
-            	dispatch.settings.notice = !dispatch.settings.notice;	
-            	command.message(`虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`);
-            },	
             alert() {
             	dispatch.settings.notice = !dispatch.settings.notice;
-            	command.message(`Virtual captain has been ${dispatch.settings.notice?"on":"off"}.`);
-            },
-            組隊通知() {
-            	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
-            	command.message(`组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`);
-            },			
+				text_handler({"sub_type": "PRMSG","message_TW": `虚拟队长通知已 ${dispatch.settings.notice?"开启":"关闭"}.`, "message": `Virtual captain has been ${dispatch.settings.notice?"on":"off"}.` });  				
+            },		
             systemNotice() {
             	dispatch.settings.systemNotice = !dispatch.settings.systemNotice;
             	command.message(`system Notice ${dispatch.settings.systemNotice?"on":"off"}.`);
+				text_handler({"sub_type": "PRMSG","message_TW": `组队通知已 ${dispatch.settings.systemNotice?"开启":"关闭"}.`, "message": `system Notice ${dispatch.settings.systemNotice?"on":"off"}.` });  				
             },
             1() {          	
-            	command.message(`语音速度1`);
-            	command.message(`Voice speed 1`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度1`, "message": `Voice speed 1` });  				
 	           dispatch.settings.rate.splice(0,1, rate1);			
             },			
             2() {       
-            	command.message(`语音速度2`);
-            	command.message(`Voice speed 2`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度2`, "message": `Voice speed 2` });  			
 	           dispatch.settings.rate.splice(0,1, rate2);			
             },
             3() {
-            
-            	command.message(`语音速度3`);
-            	command.message(`Voice speed 3`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度3`, "message": `Voice speed 3` });  			
 	           dispatch.settings.rate.splice(0,1, rate3);					
             },	
             4() {
-            
-            	command.message(`语音速度4`);
-            	command.message(`Voice speed 4`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度4`, "message": `Voice speed 4` });  			
 	           dispatch.settings.rate.splice(0,1, rate4);					
             },				
             5() {
-            
-            	command.message(`语音速度5`);
-            	command.message(`Voice speed 5`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度5`, "message": `Voice speed 5` });  				
 	           dispatch.settings.rate.splice(0,1, rate5);					
             },
             6() {
-            	
-            	command.message(`语音速度6`);
-            	command.message(`Voice speed 6`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度6`, "message": `Voice speed 6` });  			
 	           dispatch.settings.rate.splice(0,1, rate6);					
             },	
             7() {
-            
-            	command.message(`语音速度7`);
-            	command.message(`Voice speed 7`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度7`, "message": `Voice speed 7` });  				
 	           dispatch.settings.rate.splice(0,1, rate7);					
             },				
             8() {
-            
-            	command.message(`语音速度8`);
-            	command.message(`Voice speed 8`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度8`, "message": `Voice speed 8` });  			
 	           dispatch.settings.rate.splice(0,1, rate8);					
             },	
 	        9() {
-            	
-            	command.message(`语音速度9`);
-            	command.message(`Voice speed 9`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度9`, "message": `Voice speed 9` });  				
 	           dispatch.settings.rate.splice(0,1, rate9);					
             },			
             10() {
-            	
-            	command.message(`语音速度10`);
-            	command.message(`Voice speed 10`);				
+			   text_handler({"sub_type": "PRMSG","message_TW": `语音速度10`, "message": `Voice speed 10` });  			
 	           dispatch.settings.rate.splice(0,1, rate10);					
             },
             cr() {
-               command.message( cr +"系统消息通知颜色红色");
-		       command.message(cr + ' system message notification color is red ');			   
+				text_handler({"sub_type": "CRMSG","message_TW": `系统消息通知颜色红色`, "message": `system message notification color is red` }); 		   
 	           dispatch.settings.cc.splice(0,1, cr );		   
             },
             cc() {
-            
-            	command.message( dispatch.settings.cc +"查看系统消息通知颜色");
-		command.message(dispatch.settings.cc + 'View the current system message notification color');			   
+				text_handler({"sub_type": "PRMSG","message_TW": `查看系统消息通知颜色`, "message": `View the current system message notification color` }); 							   
             },			
             co() {
-            	command.message( co +"系统消息通知颜色橘色");
-		command.message(co + ' system message notification color is ORANGE ');				
+				text_handler({"sub_type": "COMSG","message_TW": `系统消息通知颜色橘色`, "message": `system message notification color is  ORANGE` }); 			
 	           dispatch.settings.cc.splice(0,1, co);					
             },
             cy() {
-            	command.message( cy +"系统消息通知颜色黄色");
-		command.message(cy + ' system message notification color is YELLOW ');				
+				text_handler({"sub_type": "CYMSG","message_TW": `系统消息通知颜色黄色`, "message": `system message notification color is YELLOW` }); 			
 	           dispatch.settings.cc.splice(0,1, cy);					
             },
             cg() {
-            	command.message( cg +"系统消息通知颜色绿色");
-		command.message(cg + ' system message notification color is GREEN ');				
+				text_handler({"sub_type": "CGMSG","message_TW": `系统消息通知颜色绿色`, "message": `system message notification color is GREEN` }); 			
 	           dispatch.settings.cc.splice(0,1, cg);					
             },
             cdb() {
-
-            	command.message( cdb +"系统消息通知颜色深蓝色");
-		command.message(cdb + ' system message notification color is DARK BLUE ');					
+				text_handler({"sub_type": "CDBMSG","message_TW": `系统消息通知颜色深蓝色`, "message": `system message notification color is DARK BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, cr);					
             },
             cb() {
-
-            	command.message( cb +"系统消息通知颜色蓝色");
-		command.message(cb + ' system message notification color is BLUE ');				
+				text_handler({"sub_type": "CBMSG","message_TW": `系统消息通知颜色蓝色`, "message": `system message notification color is BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, cb);				
             },
             cv() {
-            	command.message( cv +"系统消息通知颜色紫色");
-		command.message(cv + ' system message notification color is VIOLET ');				
+				text_handler({"sub_type": "CVMSG","message_TW": `系统消息通知颜色紫色`, "message": `system message notification color is VIOLET` }); 			
 	           dispatch.settings.cc.splice(0,1, cv);				
             },
             cp() {
-
-            	command.message( cp +"系统消息通知颜色粉色");
-		command.message(cp + ' system message notification color is PINK ');					
+				text_handler({"sub_type": "CPMSG","message_TW": `系统消息通知颜色粉色`, "message": `system message notification color is PINK` }); 			
 	           dispatch.settings.cc.splice(0,1, cp);				
             },
             clp() {
-
-            	command.message( clp +"系统消息通知颜色浅粉色");
-		command.message(clp + ' system message notification color is LIGHT PINK ');				
+				text_handler({"sub_type": "CLPMSG","message_TW": `系统消息通知颜色浅粉色`, "message": `system message notification color is LIGHT PINK` }); 			
 	           dispatch.settings.cc.splice(0,1, clp);				
             },
             clb() {
-
-            	command.message( clb +"系统消息通知颜色浅蓝色");
-		command.message(clb + ' system message notification color is LIGHT BLUE ');					
+				text_handler({"sub_type": "CLBMSG","message_TW": `系统消息通知颜色浅蓝色`, "message": `system message notification color is LIGHT BLUE` }); 			
 	           dispatch.settings.cc.splice(0,1, clb);				
             },
             cbl() {
-
-            	command.message( cbl +"系统消息通知颜色黑色");
-		command.message(cbl + ' system message notification color is BLACK ');			
+				text_handler({"sub_type": "CBLMSG","message_TW": `系统消息通知颜色黑色`, "message": `system message notification color is  BLACK` }); 			
 	           dispatch.settings.cc.splice(0,1, cbl);				
             },
             cgr() {
-		command.message(cgr + ' system message notification color is GRAY ');	
-            	command.message( cgr +"系统消息通知颜色灰色");
+				text_handler({"sub_type": "CGRMSG","message_TW": `系统消息通知颜色灰色`, "message": `system message notification color is  BLACK` }); 			
 	           dispatch.settings.cc.splice(0,1, cgr);				
             },	
             cw() {
-
-            	command.message( cw +"系统消息通知颜色白色");
-		command.message(cw + ' system message notification color is WHITE ');					
+				text_handler({"sub_type": "CWMSG","message_TW": `系统消息通知颜色白色`, "message": `system message notification color is  BLACK` }); 			
 	           dispatch.settings.cc.splice(0,1, cw);				
-            },
-			
+            },			
             help() {
-		command.message('補助 ，副本補助开/关 ，默认系统通知，通知颜色为绿色');
-		command.message('補助 语音，副本補助语音开/关');
-		command.message('補助 组队通知， 组队通知开/关');
-		command.message('補助 组队长通知，组队长通知开/关');		
-		command.message('補助 1~10，调节语音速度10为最快语速，默认为1正常速度');
-		command.message(dispatch.settings.cc + '補助 cc，查看当前系统消息通知颜色');		
-		command.message(cr + '補助 cr，系统消息通知颜色为红色 ');
-		command.message(co + '補助 co，系统消息通知颜色为橙色 ');
-		command.message(cy + '補助 cy，系统消息通知颜色为黄色 ');
-		command.message(cg + '補助 cg，系统消息通知颜色为绿色 ');
-		command.message(cdb + '補助 cdb，系统消息通知颜色为青色 ');	
-		command.message(cb + '補助 cb，系统消息通知颜色为蓝色 ');
-		command.message(cv + '補助 cv，系统消息通知颜色为紫色 ');
-		command.message(cp + '補助 cp，系统消息通知颜色为粉红色 ');
-		command.message(clp + '補助 clp，系统消息通知颜色为浅粉色 ');	
-		command.message(clb + '補助 clb，系统消息通知颜色为浅蓝色 ');
-		command.message(cbl + '補助 cbl，系统消息通知颜色为黑色 ');
-		command.message(cgr + '補助 cgr，系统消息通知颜色为灰色 ');	
-		command.message(cw + '補助 cw，系统消息通知颜色为白色 ');
-		command.message('guide stream，主播模式(stream)on/off');		
-		command.message('guide,  on/off, default system notification, notification color green ');
-		command.message('guide  voice，text-to-speech on/off');
-		command.message('guide alert， Virtual captain  notifie on/off');
-		command.message('guide systemNotice，system Notice on/off');		
-		command.message('guide 1~10，to settings Voice speed');
-		command.message(dispatch.settings.cc + 'guide cc，View the current system message notification color');
-		command.message(cr + 'guide cr， system message notification color is red ');
-		command.message(co + 'guide co， system message notification color is ORANGE ');
-		command.message(cy + 'guide cy， system message notification color is YELLOW ');
-		command.message(cg + 'guide cg， system message notification color is GREEN ');
-		command.message(cdb + 'guide cdb， system message notification color is DARK BLUE ');	
-		command.message(cb + 'guide cb， system message notification color is BLUE ');
-		command.message(cv + 'guide cv， system message notification color is VIOLET ');
-		command.message(cp + 'guide cp， system message notification color is PINK ');
-		command.message(clp + 'guide clp， system message notification color is LIGHT PINK ');	
-		command.message(clb + 'guide clb， system message notification color is LIGHT BLUE ');
-		command.message(cbl + 'guide cbl， system message notification color is BLACK ');
-		command.message(cgr + 'guide cgr， system message notification color is GRAY ');	
-		command.message(cw + 'guide cw， system message notification color is WHITE ');	
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide ，副本補助开/关 ，默认系统通知，通知颜色为黄色', "message": 'guide,  on/off, default system notification, notification color yellow ' });  					
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide voice，副本補助语音开/关', "message": 'guide  voice，text-to-speech on/off' });  
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide systemNotice， 组队通知开/关', "message": 'guide systemNotice，system Notice on/off' });  	
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide alert ，组队长通知开/关', "message": 'guide alert， Virtual captain  notifie on/off' });  	
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide 1~10，调节语音速度10为最快语速，默认为1正常速度', "message": 'guide 1~10，to settings Voice speed' });  
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide spawnObject，地面提示开/关', "message": 'guide spawnObject，spawn Object on/off' }); 
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide stream，主播模式开关', "message": 'guide stream，(stream)on/off' }); 	
+			   text_handler({"sub_type": "PRMSG","message_TW": 'guide cc，查看当前系统消息通知颜色', "message": 'guide cc，View the current system message notification color' }); 	
+			   text_handler({"sub_type": "CRMSG","message_TW": 'guide cr，消息通知颜色为红色', "message": 'guide cr，message color is red' }); 				   
+			   text_handler({"sub_type": "COMSG","message_TW": 'guide co，消息通知颜色为橙色', "message": 'guide co，message color is ORANGE' }); 	
+			   text_handler({"sub_type": "CYMSG","message_TW": 'guide cy，消息通知颜色为黄色', "message": 'guide cy，message color is YELLOW' }); 	
+			   text_handler({"sub_type": "CGMSG","message_TW": 'guide cg，消息通知颜色为绿色', "message": 'guide cg，message color is GREEN' }); 	
+			   text_handler({"sub_type": "CDBMSG","message_TW": 'guide cdb，消息通知颜色为青色', "message": 'guide cdb，message color is DARK BLUE' }); 	
+			   text_handler({"sub_type": "CBMSG","message_TW": 'guide cb，消息通知颜色为蓝色', "message": 'guide cb，message color is BLUE' }); 	
+			   text_handler({"sub_type": "CVMSG","message_TW": 'guide cv，消息通知颜色为紫色', "message": 'guide cv，message color is VIOLET' }); 	
+			   text_handler({"sub_type": "CPMSG","message_TW": 'guide cp，消息通知颜色为粉红色', "message": 'guide cp，message color is PINK' }); 	
+			   text_handler({"sub_type": "CLPMSG","message_TW": 'guide clp，消息通知颜色为浅粉色', "message": 'guide clp，message color is LIGHT PINK' }); 	
+			   text_handler({"sub_type": "CLBMSG","message_TW": 'guide clb，消息通知颜色为浅蓝色', "message": 'guide clb，message color is LIGHT BLUE' }); 	
+			   text_handler({"sub_type": "CBLMSG","message_TW": 'guide cbl，消息通知颜色为黑色', "message": 'guide cbl，message color is BLACK' }); 	
+			   text_handler({"sub_type": "CGRMSG","message_TW": 'guide cgr，消息通知颜色为灰色', "message": 'guide cgr，message color is GRAY' }); 				   
+			   text_handler({"sub_type": "CWMSG","message_TW": 'guide cw，消息通知颜色为白色', "message": 'guide cw，message color is WHITE' }); 				   
             },
             $default() {
               dispatch.settings.enabled = !dispatch.settings.enabled;
-                command.message(`副本補助已 ${dispatch.settings.enabled?"on":"off"}.`);
-                command.message(`guide ${dispatch.settings.enabled?"on":"off"}.`);				
+				text_handler({"sub_type": "PRMSG","message_TW": `副本補助已 ${dispatch.settings.enabled?"on":"off"}.`, "message": `guide ${dispatch.settings.enabled?"on":"off"}.` });  				
             }
         });
 		
@@ -598,6 +513,7 @@ class TeraGuide{
         // Spawn handler
         function spawn_handler(event, ent, speed=1.0) {
             if(dispatch.settings.stream) return;
+            if(!dispatch.settings.spawnObject) return;			
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Make sure sub_delay is defined
@@ -701,8 +617,8 @@ class TeraGuide{
             // Make sure id is defined
             if(!event['id']) return debug_message(true, "Spawn handler needs a id");
             // Ignore if dispatch.settings.streamer mode is enabled
-
             if(dispatch.settings.stream) return;
+            if(!dispatch.settings.spawnObject) return;	
             // Set sub_type to be collection as default for backward compatibility
             const sub_type =  event['sub_type'] || 'collection';
 
@@ -797,12 +713,64 @@ class TeraGuide{
                         }, (event['delay'] || 0 ) - 600 /speed);		  
 		  
                     break;
-                }				
-                case "PRMSG": {
-				  if(dispatch.settings.stream) return;	
-              command.message( cr + message );	             
+                }
+                case "COMSG": {
+              command.message( co + message );	             
                     break;
                 }				
+                case "CYMSG": {
+              command.message( cy + message );	             
+                    break;
+                }				
+                case "CGMSG": {
+              command.message( cg + message );	             
+                    break;
+                }				
+                case "CDBMSG": {
+              command.message( cdb + message );	             
+                    break;
+                }				
+                case "CBMSG": {
+              command.message( cb + message );	             
+                    break;
+                }				
+                case "CVMSG": {
+              command.message( cv + message );	             
+                    break;
+                }				
+                case "CPMSG": {
+              command.message( cp + message );	             
+                    break;
+                }				
+                case "CLPMSG": {
+              command.message( clp + message );	             
+                    break;
+                }				
+                case "CLBMSG": {
+              command.message( clb + message );	             
+                    break;
+                }				
+                case "CBLMSG": {
+              command.message( cbl + message );	             
+                    break;
+                }				
+                case "CGRMSG": {
+              command.message( cgr + message );	             
+                    break;
+                }				
+                case "CWMSG": {
+              command.message( cw + message );	             
+                    break;
+                }
+                case "CRMSG": {
+              command.message( cr + message );	             
+                    break;
+                }					
+                case "PRMSG": {
+				  if(dispatch.settings.stream) return;	
+              command.message( dispatch.settings.cc + message );	             
+                    break;
+                }					
 				//语音通知
                 case "speech": {
 		            if(voice){
@@ -923,7 +891,7 @@ class TeraGuide{
 			if(voice){
           voice.speak(alerts,1)
          // command.message( cg + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）');	 
-         text_handler({"sub_type": "PRMSG","message_TW": '（输入"guide help"可获取更多使用信息）', "message": '（Enter "guide help" for more information）' });  		  
+         text_handler({"sub_type": "CRMSG","message_TW": '（输入"guide help"可获取更多使用信息）', "message": '（Enter "guide help" for more information）' });  		  
 			} else {
          // command.message( cr + alerts + cr +'（输入"guide help"可获取更多使用信息）\n ：（Enter "guide help" for more information）' );
          text_handler({"sub_type": "PRMSG","message_TW": '（输入"guide help"可获取更多使用信息）', "message": '（Enter "guide help" for more information）' });  	  

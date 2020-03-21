@@ -4,6 +4,7 @@ const DefaultSettings = {
     "systemNotice": false,
     "notice": false,
     "stream": false,
+    "spawnObject": true,	
 	"cc": [
 		"</font><font color=\"#ffff00\">"
 	],
