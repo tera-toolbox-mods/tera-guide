@@ -332,7 +332,7 @@ module.exports = {
 
 
 "am-3126-1000-31260068": [{"type": "text","sub_type": "message","message": "Layer 3","message_TW": "3層debuff"},				
-                          {"type": "text","sub_type": "message","delay": 175000,"message":  '3 minutes'}],//
+                          {"type": "text","sub_type": "message","delay": 145000,"message":  '2.5 minutes'}],//
 "am-3126-1000-31260067": [{"type": "text","sub_type": "message","message": "Layer 2","message_TW": "2層debuff"}],//
 "am-3126-1000-31260251": [{"type": "text","sub_type": "message","message": "Layer 1","message_TW": "1層debuff"}]//
 
