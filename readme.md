@@ -28,18 +28,19 @@ Note: All commands starts with "guide"
 
 
     - guide to toggle module (DEFAULT: ON)
+    - guide spawnObject   to toggle spawn Ground object (DEFAULT: ON)	
     - guide voice to toggle text-to-speech (DEFAULT: ON)
     - guide notice to toggle  party notice  (DEFAULT: OFF)
     - guide alert to toggle Virtual captain  notifie (DEFAULT: OFF)
-    - guide systemNotice to toggle system Notice 
-    - guide 1to10 to settings Voice speed
+    - guide systemNotice to toggle system Notice (DEFAULT: OFF)
+    - guide 1to10 to settings Voice speed (DEFAULT: 1)
+    - guide cr to cw to settings message color (DEFAULT: yellow)	
     - guide help to show what commands are there in the tera-guide guide module
 
 
 proxy频道输入:補助 help，获取更多使用信息。 
 
-<img src=https://u.cubeupload.com/michengs/HG9GDC237G6EQ3X6.png>
-
+<img src=https://i.imgur.com/M8jqiBJ.png>
 
 
 
