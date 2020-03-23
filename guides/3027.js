@@ -155,7 +155,7 @@ module.exports = {
 //"s-3027-1000-355-0": [{"type": "text","sub_type": "message","message": "Eviscerate","message_TW": "下巴粉碎"}],  //连招  右侧上
 "s-3027-1000-114-0": [{"type": "text","sub_type": "message","message": "Split strike","message_TW": "劈擊"}],
 
-"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Donuts","message_TW": "吸 | 炸圈"},{"type": "text","sub_type": "message","delay": 3750,"message":  'Waves soon...',"message_TW": "進"},{"type": "func","func": Spawnitem2.bind(null,445,0,0,12,240,200,5000)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,480,200,5000)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,975,200,5000)}],
+"s-3027-1000-350-0": [{"type": "text","sub_type": "message","message": "Donuts","message_TW": "吸 | 炸圈"},{"type": "text","sub_type": "message","delay": 3750,"message":  'Waves soon...',"message_TW": "進"},{"type": "func","func": Spawnitem2.bind(null,445,0,0,12,240,200,5000)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,8,480,200,5000)},{"type": "func","func": Spawnitem2.bind(null,445,0,0,3,950,200,5000)}],
 
 
 "s-3027-1000-357-0": [{"type": "text","sub_type": "message","message": "get out","message_TW": "吸 | 远离"}],    //连招
