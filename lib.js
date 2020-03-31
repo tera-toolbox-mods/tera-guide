@@ -4,13 +4,14 @@ const MARKER_ITEM_ID = 88850;
 
 let global_gameId_tracker = 1;
 
-//构建提示物品      1目标 2偏角 3偏距 4延迟 5持续时间 6标记 7告示牌文本
+//构建提示物品      1目标 2偏角 3偏距 4延迟 5持续时间 6标记 7告示牌文本   
 function SpawnMarker(target,degrees, radius, delay, times, marker, text, handlers, event, entity) {
+    let shield_loc ;
 	if (!text) text = ["SAFE SPOT", "SAFE"];
 	if (!target) {
-	let shield_loc   = entity['loc'].clone();	
+	 shield_loc   = entity['loc'].clone();	
 	} else {
-	let shield_loc   = entity['dest'].clone();			
+	 shield_loc   = entity['dest'].clone();			
 	}
 	    shield_loc.w = entity['loc'].w;
 
@@ -83,10 +84,11 @@ function SpawnVector(item, degree, distance, angles, maxRadius, delay, times, ha
 }
 //构建圆   1目标 2标记物 3偏角 4偏距 5间距 6半径 7延迟 8持续时间 
 function SpawnCircle(target,item, degree, distance, intervalDegrees, radius, delay, times, handlers, event, entity) {
+	let shield_loc;
 	if (!target) {
-	let shield_loc   = entity['loc'].clone();	
+	 shield_loc   = entity['loc'].clone();	
 	} else {
-	let shield_loc   = entity['dest'].clone();			
+	 shield_loc   = entity['dest'].clone();			
 	}
 	
 	shield_loc.w = entity['loc'].w;
@@ -111,8 +113,8 @@ function SpawnSemicircle(d1, d2, item, degree, distance, intervalDegrees, radius
 	let shield_loc   = entity['loc'].clone();
 	    shield_loc.w = entity['loc'].w;
 	let degrees = 360 - degree;
-    let db = null
-	let dg = null
+    let db ;
+	let dg ;
 	applyDistance(shield_loc, distance, degrees);
 	
 	if (d1<=180 && d2<=180) {
