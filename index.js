@@ -300,22 +300,18 @@ class TeraGuide{
             // Try loading a guide
             try {
                 active_guide = require('./guides/' + e.zone);
-                   //奧盧卡                 暴風拉斯       
-            if (3126 == e.zone ||   3026 == e.zone ||   9750 == e.zone ||   9066 == e.zone || 9050 == e.zone ||  9054 == e.zone || 9754 == e.zone || 9916 == e.zone || 9781 == e.zone || 3017 == e.zone || 9044 == e.zone || 9070 == e.zone || 9920 == e.zone || 9970 == e.zone || 9981 == e.zone) {
-			spguide = true;
-			esguide = false;			
-			        // 技能1000
-            } else if( 9000 == e.zone ||   3023 == e.zone ||   9759 == e.zone  ) {
+ 
+            if ([3126,3026,9750,9066,9050,9054,9754,9916,9781,3017,9044,9070,9920,9970,9981].includes(e.zone)) { 
+			spguide = true;   //skill  1000-3000 
+			esguide = false;
+            }else if([9000,3023,9759].includes(e.zone)) { 
+			spguide = false; //skill  100-200-3000 
 			esguide = true;
-            spguide = false;			
-			       // 技能100-200 + 3000
-            }
-			else{				
-               spguide = false;
-			   esguide = false;
-			   	  // 技能100-200 
-            }
-                guide_found = true;
+            }else{
+            spguide = false; //skill  100-200 
+			esguide = false;				
+			}
+            guide_found = true;
 		StrSheet_Dungeon_String = MapID.find(obj => obj.id === e.zone);
 		StrSheet_TW_Dungeon_String = MapID_TW.find(obj => obj.id === e.zone);		
 		if (StrSheet_TW_Dungeon_String) {
