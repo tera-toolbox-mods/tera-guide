@@ -131,10 +131,8 @@ module.exports = {
     "s-3023-1000-3116-0": [{"type": "text","sub_type": "message","message":  'spin',"message_TW": "旋转攻击准备" },
 						   {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,10,320,0,5000)}],
     "s-3023-1000-3119-0": [{"type": "func","func": skilld_event.bind(null, 3119)},
-						   {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,10,270,0,4000)},
 						   {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,575,0,4000)}],
     "s-3023-1000-3220-0": [{"type": "func","func": skilld_event.bind(null, 3220)},
-						   {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,10,270,0,4000)},
 						   {"type": "func","func": SpawnCircle.bind(null,false,445,0,0,8,575,0,4000)}],
     // 2王
     "s-3023-2000-164-0": [{"type": "text","sub_type": "message","message":  'Counter attack (bleeding)',"message_TW": "蓄力反击(流血)" }],
