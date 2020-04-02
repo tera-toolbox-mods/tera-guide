@@ -1,4 +1,4 @@
-const HIGHLIGHT_ITEM_ID = 209904; // 88850 - Keen Bahaar's Mask; 98260 - Vergos's Head; 209904 - Skill Advancement Tome IV
+const HIGHLIGHT_ITEM_ID = 110684; // 88850 - Keen Bahaar's Mask; 98260 - Vergos's Head; 209904 - Skill Advancement Tome IV
 
 //构建告示牌/高光   (1目标   2角度   3距离    4延迟  5持续时间 6光柱      7标签)
 function SpawnMarker(target, angle, distance, delay, duration, highlight, label, handlers, event, entity) {
@@ -114,13 +114,15 @@ function SpawnSemicircle(d1, d2, item, offsetAngle, offsetDistance, interval, ra
 
 //                 (1类型  2目标   3物品   4偏角         5偏距        6角度   7距离    8延迟  9持续时间 10标签)
 function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, distance, delay, duration, label, handlers, event, entity) {
-	setTimeout(() => { // use local delay
+
 		let shield_loc;
 
 		if (target && entity.dest !== undefined) {
 			shield_loc = entity['dest'].clone();
-		} else {
+		} else if (entity.loc !== undefined) {
 			shield_loc = entity['loc'].clone();
+		} else {
+			return;
 		}
 
 		shield_loc.w = entity['loc'].w;
@@ -132,7 +134,8 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 			case "collection":
 				handlers['spawn']({
 					id: item,
-					sub_delay: duration,
+			        delay: delay,						
+					sub_delay: (duration + delay),
 					distance: distance,
 					offset: angle
 				}, {
@@ -145,7 +148,8 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 				handlers['spawn']({
 					sub_type: "item",
 					id: item,
-					sub_delay: duration,
+			        delay: delay,						
+					sub_delay: (duration + delay),
 					distance: distance,
 					offset: angle
 				}, {
@@ -158,7 +162,8 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 				handlers['spawn']({
 					sub_type: "build_object",
 					id: item,
-					sub_delay: duration,
+			        delay: delay,						
+					sub_delay: (duration + delay),
 					distance: distance,
 					offset: angle,
 					ownerName: label[0],
@@ -168,7 +173,7 @@ function SpawnObject(type, target, item, offsetAngle, offsetDistance, angle, dis
 				});
 				break;
 		}
-	}, delay);
+
 }
 
 function applyDistance(loc, offsetDistance, offsetAngle) {
