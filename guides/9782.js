@@ -45,7 +45,7 @@ function SpawnThing( degrees, radius, times, handlers, event, entity ) {
         }, {loc: shield_loc});  
         handlers['spawn']({
 			"sub_type": "item",
-        	"id": 88850,
+        	"id": 110684,
         	"sub_delay": times,
         	"distance": radius,
         	"offset": angle
