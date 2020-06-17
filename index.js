@@ -385,7 +385,7 @@ class TeraGuide{
             timers[item_unique_id] = setTimeout(()=> {
                 switch(sub_type) {
                     case "collection": return dispatch.toClient('S_SPAWN_COLLECTION', 4, sending_event);
-                    case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 6, sending_event);
+                    case "item": return dispatch.toClient('S_SPAWN_DROPITEM', 8, sending_event);
                     case "build_object": return dispatch.toClient('S_SPAWN_BUILD_OBJECT', 2, sending_event);
                 }
             }, event['delay'] || 0 / speed);
@@ -427,7 +427,7 @@ class TeraGuide{
         // Text handler
         function text_handler(event, ent, speed=1.0) {
             // Fetch the message(with region tag)
-            const message = event[`message_${dispatch.region}`] || event[`message_${dispatch.region.toUpperCase()}`] || event['message'];
+            const message = event[`message_${dispatch.language}`] || event[`message_${dispatch.language.toUpperCase()}`] || event['message'];
             // Make sure sub_type is defined
             if(!event['sub_type']) return debug_message(true, "Text handler needs a sub_type");
             // Make sure message is defined
