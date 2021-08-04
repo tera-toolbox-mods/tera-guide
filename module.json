@@ -1,10 +1,10 @@
 {
-    "servers": ["https://raw.githubusercontent.com/Kaseaa/tera-guide/master/"],
-    "supportUrl": "https://github.com/Kaseaa/tera-guide/issues",
+    "servers": ["https://raw.githubusercontent.com/tera-toolbox-mods/tera-guide/master/"],
+    "supportUrl": "https://github.com/tera-toolbox-mods/tera-guide/issues",
     "name": "tera-guide",
     "author": "Kasea",
     "dependencies": {
-        "library": "https://raw.githubusercontent.com/Kaseaa/library/master/module.json"
+        "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
     },
     "options": {
         "guiName": "Tera Guide"
