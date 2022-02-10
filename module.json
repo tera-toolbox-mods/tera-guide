@@ -3,6 +3,7 @@
     "supportUrl": "https://github.com/Kaseaa/tera-guide/issues",
     "name": "tera-guide",
     "author": "Kasea",
+    "disableAutoUpdate": true,
     "dependencies": {
         "library": "https://raw.githubusercontent.com/Kaseaa/library/master/module.json"
     },
